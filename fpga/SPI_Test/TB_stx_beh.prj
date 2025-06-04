@@ -1,0 +1,2 @@
+vhdl isim_temp "Skifte_reg_til_Parallel.vhd"
+vhdl isim_temp "TB.vhd"

@@ -1,0 +1,8 @@
+V3 3
+FL /home/Andreas/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd 2025/06/04.16:07:28 P.20131013
+EN work/Skifte_reg_til_Parallel 1749053254 \
+      FL /home/Andreas/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd \
+      PB ieee/std_logic_1164 1381692176 PB ieee/STD_LOGIC_UNSIGNED 1381692179
+AR work/Skifte_reg_til_Parallel/Behavioral 1749053255 \
+      FL /home/Andreas/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd \
+      EN work/Skifte_reg_til_Parallel 1749053254
