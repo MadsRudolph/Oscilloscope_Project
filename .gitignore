@@ -1,0 +1,104 @@
+# =========================
+# General OS/System Files
+# =========================
+.DS_Store
+Thumbs.db
+*.swp
+*.tmp
+*.bak
+*.backup
+*.~lock.*
+*~
+
+# =========================
+# Microcontroller (AVR / PlatformIO)
+# =========================
+microcontroller/.pio/
+microcontroller/.vscode/
+microcontroller/.clangd
+microcontroller/.ccls-cache/
+microcontroller/.gcc-flags.json
+
+microcontroller/*.elf
+microcontroller/*.hex
+microcontroller/*.bin
+microcontroller/*.map
+microcontroller/*.lst
+microcontroller/*.o
+microcontroller/*.a
+microcontroller/*.d
+
+microcontroller/build/
+microcontroller/output/
+microcontroller/*.log
+
+# =========================
+# FPGA (Xilinx ISE)
+# =========================
+fpga/*.bgn
+fpga/*.bit
+fpga/*.bld
+fpga/*.cmd_log
+fpga/*.drc
+fpga/*.ll
+fpga/*.lso
+fpga/*.msd
+fpga/*.msk
+fpga/*.ncd
+fpga/*.ngc
+fpga/*.ngd
+fpga/*.ngr
+fpga/*.pad
+fpga/*.par
+fpga/*.pcf
+fpga/*.prj
+fpga/*.ptwx
+fpga/*.rbb
+fpga/*.rbd
+fpga/*.stx
+fpga/*.syr
+fpga/*.twr
+fpga/*.twx
+fpga/*.unroutes
+fpga/*.ut
+fpga/*.xpi
+fpga/*.xst
+
+fpga/*_bitgen.xwbt
+fpga/*_envsettings.html
+fpga/*_map.map
+fpga/*_map.mrp
+fpga/*_map.ngm
+fpga/*_map.xrpt
+fpga/*_ngdbuild.xrpt
+fpga/*_pad.csv
+fpga/*_pad.txt
+fpga/*_par.xrpt
+fpga/*_summary.html
+fpga/*_summary.xml
+fpga/*_usage.xml
+fpga/*_xst.xrpt
+
+# iMPACT
+fpga/_impactbatch.log
+fpga/impact.xsl
+fpga/impact_impact.xwbt
+fpga/ise_impact.cmd
+fpga/webtalk_impact.xml
+
+# Core Generator
+fpga/xaw2verilog.log
+
+# Project-wide
+fpga/*.gise
+fpga/par_usage_statistics.html
+fpga/usage_statistics_webtalk.html
+fpga/webtalk.log
+fpga/webtalk_pn.xml
+
+# Generated folders
+fpga/iseconfig/
+fpga/xlnx_auto_0_xdb/
+fpga/xst/
+fpga/_ngo/
+fpga/_xmsgs/
