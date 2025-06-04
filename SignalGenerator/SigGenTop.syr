@@ -4,13 +4,13 @@ Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.84 secs
+Total CPU time to Xst completion: 0.19 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.84 secs
+Total CPU time to Xst completion: 0.20 secs
  
 --> Reading design: SigGenTop.prj
 
@@ -68,7 +68,7 @@ Automatic Register Balancing       : No
 
 ---- Target Options
 Add IO Buffers                     : YES
-Global Maximum Fanout              : 500
+Global Maximum Fanout              : 100000
 Add Generic Clock Buffer(BUFG)     : 24
 Register Duplication               : YES
 Slice Packing                      : YES
@@ -107,21 +107,32 @@ Cores Search Directories           : {"ipcore_dir"  }
 =========================================================================
 *                          HDL Compilation                              *
 =========================================================================
+WARNING:HDLParsers:3607 - Unit work/SigGenTop is now defined in a different file.  It was defined in "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SigGenTop.vhd", and is now defined in "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenTop.vhd".
+WARNING:HDLParsers:3607 - Unit work/SigGenTop/Behavioral is now defined in a different file.  It was defined in "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SigGenTop.vhd", and is now defined in "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenTop.vhd".
+WARNING:HDLParsers:3607 - Unit work/DivClk is now defined in a different file.  It was defined in "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/DivClk (1).vhd", and is now defined in "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/DivClk (1).vhd".
+WARNING:HDLParsers:3607 - Unit work/DivClk/DivClk_arch is now defined in a different file.  It was defined in "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/DivClk (1).vhd", and is now defined in "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/DivClk (1).vhd".
+WARNING:HDLParsers:3607 - Unit work/SevenSeg5 is now defined in a different file.  It was defined in "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SevenSeg5.vhd", and is now defined in "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SevenSeg5.vhd".
+WARNING:HDLParsers:3607 - Unit work/SevenSeg5/SevenSeg_arch is now defined in a different file.  It was defined in "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SevenSeg5.vhd", and is now defined in "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SevenSeg5.vhd".
+WARNING:HDLParsers:3607 - Unit work/SigGenControl is now defined in a different file.  It was defined in "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SigGenControl.vhd", and is now defined in "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenControl.vhd".
+WARNING:HDLParsers:3607 - Unit work/SigGenControl/Behavioral is now defined in a different file.  It was defined in "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SigGenControl.vhd", and is now defined in "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenControl.vhd".
+WARNING:HDLParsers:3607 - Unit work/SigGenDatapath is now defined in a different file.  It was defined in "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SigGenDatapath.vhd", and is now defined in "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd".
+WARNING:HDLParsers:3607 - Unit work/SigGenDatapath/Behavioral is now defined in a different file.  It was defined in "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SigGenDatapath.vhd", and is now defined in "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd".
+WARNING:HDLParsers:3607 - Unit work/BTNdb is now defined in a different file.  It was defined in "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/BTNdb.vhd", and is now defined in "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/BTNdb.vhd".
+WARNING:HDLParsers:3607 - Unit work/BTNdb/Behavioral is now defined in a different file.  It was defined in "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/BTNdb.vhd", and is now defined in "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/BTNdb.vhd".
 Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/ipcore_dir/SinusLUT.vhd" in Library work.
 Architecture sinuslut_a of Entity sinuslut is up to date.
-Compiling vhdl file "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/BTNdb.vhd" in Library work.
+Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/BTNdb.vhd" in Library work.
 Architecture behavioral of Entity btndb is up to date.
-Compiling vhdl file "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/DivClk (1).vhd" in Library work.
+Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/DivClk (1).vhd" in Library work.
 Architecture divclk_arch of Entity divclk is up to date.
-Compiling vhdl file "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SigGenControl.vhd" in Library work.
+Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenControl.vhd" in Library work.
 Architecture behavioral of Entity siggencontrol is up to date.
-Compiling vhdl file "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SigGenDatapath.vhd" in Library work.
+Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd" in Library work.
 Architecture behavioral of Entity siggendatapath is up to date.
-Compiling vhdl file "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SevenSeg5.vhd" in Library work.
+Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SevenSeg5.vhd" in Library work.
 Architecture sevenseg_arch of Entity sevenseg5 is up to date.
-Compiling vhdl file "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SigGenTop.vhd" in Library work.
-Entity <siggentop> compiled.
-Entity <siggentop> (Architecture <behavioral>) compiled.
+Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenTop.vhd" in Library work.
+Architecture behavioral of Entity siggentop is up to date.
 
 =========================================================================
 *                     Design Hierarchy Analysis                         *
@@ -157,7 +168,7 @@ Entity <BTNdb> analyzed. Unit <BTNdb> generated.
 
 Analyzing generic Entity <SigGenDatapath> in library <work> (Architecture <Behavioral>).
 	PWMinc = "0000001"
-WARNING:Xst:2211 - "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SigGenDatapath.vhd" line 61: Instantiating black box module <SinusLUT>.
+WARNING:Xst:2211 - "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd" line 61: Instantiating black box module <SinusLUT>.
 Entity <SigGenDatapath> analyzed. Unit <SigGenDatapath> generated.
 
 Analyzing Entity <SevenSeg5> in library <work> (Architecture <SevenSeg_arch>).
@@ -171,7 +182,7 @@ Entity <SevenSeg5> analyzed. Unit <SevenSeg5> generated.
 Performing bidirectional port resolution...
 
 Synthesizing Unit <DivClk>.
-    Related source file is "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/DivClk (1).vhd".
+    Related source file is "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/DivClk (1).vhd".
     Found 32-bit adder for signal <$add0000>.
     Found 32-bit comparator equal for signal <Clear1$cmp_eq0000> created at line 36.
     Found 1-bit register for signal <Clk1_D>.
@@ -186,7 +197,7 @@ Unit <DivClk> synthesized.
 
 
 Synthesizing Unit <SevenSeg5>.
-    Related source file is "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SevenSeg5.vhd".
+    Related source file is "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SevenSeg5.vhd".
     Found 16x16-bit ROM for signal <DataN$rom0000>.
     Found 4-bit register for signal <an>.
     Found 8-bit register for signal <cat>.
@@ -204,7 +215,7 @@ Unit <SevenSeg5> synthesized.
 
 
 Synthesizing Unit <BTNdb>.
-    Related source file is "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/BTNdb.vhd".
+    Related source file is "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/BTNdb.vhd".
     Found finite state machine <FSM_0> for signal <State>.
     -----------------------------------------------------------------------
     | States             | 4                                              |
@@ -227,7 +238,7 @@ Unit <BTNdb> synthesized.
 
 
 Synthesizing Unit <SigGenControl>.
-    Related source file is "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SigGenControl.vhd".
+    Related source file is "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenControl.vhd".
     Found finite state machine <FSM_1> for signal <State>.
     -----------------------------------------------------------------------
     | States             | 4                                              |
@@ -252,7 +263,7 @@ Unit <SigGenControl> synthesized.
 
 
 Synthesizing Unit <SigGenDatapath>.
-    Related source file is "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SigGenDatapath.vhd".
+    Related source file is "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd".
     Found 16-bit adder for signal <MulC$addsub0000> created at line 97.
     Found 16-bit adder for signal <MulC$addsub0001> created at line 97.
     Found 16-bit adder for signal <MulC$addsub0002> created at line 97.
@@ -277,7 +288,7 @@ Unit <SigGenDatapath> synthesized.
 
 
 Synthesizing Unit <SigGenTop>.
-    Related source file is "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SigGenTop.vhd".
+    Related source file is "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenTop.vhd".
 WARNING:Xst:1780 - Signal <Shape<7:2>> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 Unit <SigGenTop> synthesized.
 
@@ -728,14 +739,14 @@ Offset:              4.283ns (Levels of Logic = 1)
 =========================================================================
 
 
-Total REAL time to Xst completion: 7.00 secs
-Total CPU time to Xst completion: 7.30 secs
+Total REAL time to Xst completion: 8.00 secs
+Total CPU time to Xst completion: 7.31 secs
  
 --> 
 
-Total memory usage is 4526984 kilobytes
+Total memory usage is 4527212 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :    2 (   0 filtered)
+Number of warnings :   14 (   0 filtered)
 Number of infos    :    1 (   0 filtered)
 

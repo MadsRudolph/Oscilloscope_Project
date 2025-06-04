@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2025-06-04T13:31:31</DateModified>
+  <DateModified>2025-06-04T15:07:15</DateModified>
   <ModuleName>SigGenTop</ModuleName>
   <SummaryTimeStamp>Unknown</SummaryTimeStamp>
   <SavedFilePath>C:/Users/s240324/Oscilloscope_Project/SignalGenerator/iseconfig/SigGenTop.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>C:/Users/s240324/Oscilloscope_Project/SignalGenerator</ImplementationReportsDirectory>
+  <ImplementationReportsDirectory>C:/Users/s240324/Oscilloscope_Project/SignalGenerator\</ImplementationReportsDirectory>
   <DateInitialized>2025-06-04T13:31:31</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>

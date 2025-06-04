@@ -1,14 +1,14 @@
-AR siggendatapath behavioral "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SigGenDatapath.vhd" sub00/vhpl09 1749040129
-EN siggendatapath NULL "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SigGenDatapath.vhd" sub00/vhpl08 1749040128
-EN sevenseg5 NULL "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SevenSeg5.vhd" sub00/vhpl10 1749040130
-AR sevenseg5 sevenseg_arch "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SevenSeg5.vhd" sub00/vhpl11 1749040131
-EN siggencontrol NULL "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SigGenControl.vhd" sub00/vhpl06 1749040126
-EN siggentop NULL "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SigGenTop.vhd" sub00/vhpl12 1749040132
-AR siggentop behavioral "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SigGenTop.vhd" sub00/vhpl13 1749040133
-AR btndb behavioral "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/BTNdb.vhd" sub00/vhpl03 1749040123
-AR sinuslut sinuslut_a C:/Users/s240324/Oscilloscope_Project/SignalGenerator/ipcore_dir/SinusLUT.vhd sub00/vhpl01 1749040121
-AR siggencontrol behavioral "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SigGenControl.vhd" sub00/vhpl07 1749040127
-EN divclk NULL "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/DivClk (1).vhd" sub00/vhpl04 1749040124
-EN btndb NULL "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/BTNdb.vhd" sub00/vhpl02 1749040122
-EN sinuslut NULL C:/Users/s240324/Oscilloscope_Project/SignalGenerator/ipcore_dir/SinusLUT.vhd sub00/vhpl00 1749040120
-AR divclk divclk_arch "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/DivClk (1).vhd" sub00/vhpl05 1749040125
+AR siggendatapath behavioral "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd" sub00/vhpl09 1749042454
+EN siggendatapath NULL "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd" sub00/vhpl08 1749042453
+EN sevenseg5 NULL "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SevenSeg5.vhd" sub00/vhpl10 1749042455
+AR sevenseg5 sevenseg_arch "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SevenSeg5.vhd" sub00/vhpl11 1749042456
+EN siggencontrol NULL "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenControl.vhd" sub00/vhpl06 1749042451
+EN siggentop NULL "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenTop.vhd" sub00/vhpl12 1749042457
+AR siggentop behavioral "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenTop.vhd" sub00/vhpl13 1749042458
+AR btndb behavioral "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/BTNdb.vhd" sub00/vhpl03 1749042448
+AR sinuslut sinuslut_a C:/Users/s240324/Oscilloscope_Project/SignalGenerator/ipcore_dir/SinusLUT.vhd sub00/vhpl01 1749042446
+AR siggencontrol behavioral "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenControl.vhd" sub00/vhpl07 1749042452
+EN divclk NULL "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/DivClk (1).vhd" sub00/vhpl04 1749042449
+EN btndb NULL "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/BTNdb.vhd" sub00/vhpl02 1749042447
+EN sinuslut NULL C:/Users/s240324/Oscilloscope_Project/SignalGenerator/ipcore_dir/SinusLUT.vhd sub00/vhpl00 1749042445
+AR divclk divclk_arch "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/DivClk (1).vhd" sub00/vhpl05 1749042450
