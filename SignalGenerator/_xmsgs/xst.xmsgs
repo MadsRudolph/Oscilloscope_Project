@@ -5,7 +5,43 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="Xst" num="2211" delta="old" >&quot;<arg fmt="%s" index="1">C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SigGenDatapath.vhd</arg>&quot; line <arg fmt="%d" index="2">61</arg>: Instantiating black box module &lt;<arg fmt="%s" index="3">SinusLUT</arg>&gt;.
+<msg type="warning" file="HDLParsers" num="3607" delta="new" >Unit <arg fmt="%s" index="1">work/SigGenTop</arg> is now defined in a different file.  It was defined in &quot;<arg fmt="%s" index="2">C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SigGenTop.vhd</arg>&quot;, and is now defined in &quot;<arg fmt="%s" index="3">C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenTop.vhd</arg>&quot;.
+</msg>
+
+<msg type="warning" file="HDLParsers" num="3607" delta="new" >Unit <arg fmt="%s" index="1">work/SigGenTop/Behavioral</arg> is now defined in a different file.  It was defined in &quot;<arg fmt="%s" index="2">C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SigGenTop.vhd</arg>&quot;, and is now defined in &quot;<arg fmt="%s" index="3">C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenTop.vhd</arg>&quot;.
+</msg>
+
+<msg type="warning" file="HDLParsers" num="3607" delta="new" >Unit <arg fmt="%s" index="1">work/DivClk</arg> is now defined in a different file.  It was defined in &quot;<arg fmt="%s" index="2">C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/DivClk (1).vhd</arg>&quot;, and is now defined in &quot;<arg fmt="%s" index="3">C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/DivClk (1).vhd</arg>&quot;.
+</msg>
+
+<msg type="warning" file="HDLParsers" num="3607" delta="new" >Unit <arg fmt="%s" index="1">work/DivClk/DivClk_arch</arg> is now defined in a different file.  It was defined in &quot;<arg fmt="%s" index="2">C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/DivClk (1).vhd</arg>&quot;, and is now defined in &quot;<arg fmt="%s" index="3">C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/DivClk (1).vhd</arg>&quot;.
+</msg>
+
+<msg type="warning" file="HDLParsers" num="3607" delta="new" >Unit <arg fmt="%s" index="1">work/SevenSeg5</arg> is now defined in a different file.  It was defined in &quot;<arg fmt="%s" index="2">C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SevenSeg5.vhd</arg>&quot;, and is now defined in &quot;<arg fmt="%s" index="3">C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SevenSeg5.vhd</arg>&quot;.
+</msg>
+
+<msg type="warning" file="HDLParsers" num="3607" delta="new" >Unit <arg fmt="%s" index="1">work/SevenSeg5/SevenSeg_arch</arg> is now defined in a different file.  It was defined in &quot;<arg fmt="%s" index="2">C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SevenSeg5.vhd</arg>&quot;, and is now defined in &quot;<arg fmt="%s" index="3">C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SevenSeg5.vhd</arg>&quot;.
+</msg>
+
+<msg type="warning" file="HDLParsers" num="3607" delta="new" >Unit <arg fmt="%s" index="1">work/SigGenControl</arg> is now defined in a different file.  It was defined in &quot;<arg fmt="%s" index="2">C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SigGenControl.vhd</arg>&quot;, and is now defined in &quot;<arg fmt="%s" index="3">C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenControl.vhd</arg>&quot;.
+</msg>
+
+<msg type="warning" file="HDLParsers" num="3607" delta="new" >Unit <arg fmt="%s" index="1">work/SigGenControl/Behavioral</arg> is now defined in a different file.  It was defined in &quot;<arg fmt="%s" index="2">C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SigGenControl.vhd</arg>&quot;, and is now defined in &quot;<arg fmt="%s" index="3">C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenControl.vhd</arg>&quot;.
+</msg>
+
+<msg type="warning" file="HDLParsers" num="3607" delta="new" >Unit <arg fmt="%s" index="1">work/SigGenDatapath</arg> is now defined in a different file.  It was defined in &quot;<arg fmt="%s" index="2">C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SigGenDatapath.vhd</arg>&quot;, and is now defined in &quot;<arg fmt="%s" index="3">C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd</arg>&quot;.
+</msg>
+
+<msg type="warning" file="HDLParsers" num="3607" delta="new" >Unit <arg fmt="%s" index="1">work/SigGenDatapath/Behavioral</arg> is now defined in a different file.  It was defined in &quot;<arg fmt="%s" index="2">C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SigGenDatapath.vhd</arg>&quot;, and is now defined in &quot;<arg fmt="%s" index="3">C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd</arg>&quot;.
+</msg>
+
+<msg type="warning" file="HDLParsers" num="3607" delta="new" >Unit <arg fmt="%s" index="1">work/BTNdb</arg> is now defined in a different file.  It was defined in &quot;<arg fmt="%s" index="2">C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/BTNdb.vhd</arg>&quot;, and is now defined in &quot;<arg fmt="%s" index="3">C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/BTNdb.vhd</arg>&quot;.
+</msg>
+
+<msg type="warning" file="HDLParsers" num="3607" delta="new" >Unit <arg fmt="%s" index="1">work/BTNdb/Behavioral</arg> is now defined in a different file.  It was defined in &quot;<arg fmt="%s" index="2">C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/BTNdb.vhd</arg>&quot;, and is now defined in &quot;<arg fmt="%s" index="3">C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/BTNdb.vhd</arg>&quot;.
+</msg>
+
+<msg type="warning" file="Xst" num="2211" delta="new" >&quot;<arg fmt="%s" index="1">C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd</arg>&quot; line <arg fmt="%d" index="2">61</arg>: Instantiating black box module &lt;<arg fmt="%s" index="3">SinusLUT</arg>&gt;.
 </msg>
 
 <msg type="warning" file="Xst" num="1780" delta="old" >Signal &lt;<arg fmt="%s" index="1">Shape&lt;7:2&gt;</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.

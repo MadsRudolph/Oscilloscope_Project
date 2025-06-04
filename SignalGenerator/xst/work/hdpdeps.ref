@@ -1,58 +1,64 @@
-V3 37
+V3 43
 FL "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/BTNdb.vhd" 2025/06/04.13:28:57 P.15xf
-EN work/BTNdb 1749040122 \
-      FL "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/BTNdb.vhd" \
-      PB ieee/std_logic_1164 1335251622 PB ieee/std_logic_arith 1335251623 \
-      PB ieee/STD_LOGIC_UNSIGNED 1335251625
-AR work/BTNdb/Behavioral 1749040123 \
-      FL "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/BTNdb.vhd" \
-      EN work/BTNdb 1749040122
 FL "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/DivClk (1).vhd" 2025/06/04.13:28:52 P.15xf
-EN work/DivClk 1749040124 \
-      FL "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/DivClk (1).vhd" \
-      PB ieee/std_logic_1164 1335251622 PB ieee/std_logic_arith 1335251623 \
-      PB ieee/STD_LOGIC_UNSIGNED 1335251625
-AR work/DivClk/DivClk_arch 1749040125 \
-      FL "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/DivClk (1).vhd" \
-      EN work/DivClk 1749040124
 FL "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SevenSeg5.vhd" 2025/06/04.13:28:55 P.15xf
-EN work/SevenSeg5 1749040130 \
-      FL "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SevenSeg5.vhd" \
-      PB ieee/std_logic_1164 1335251622 PB ieee/std_logic_arith 1335251623 \
-      PB ieee/STD_LOGIC_UNSIGNED 1335251625
-AR work/SevenSeg5/SevenSeg_arch 1749040131 \
-      FL "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SevenSeg5.vhd" \
-      EN work/SevenSeg5 1749040130
 FL "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SigGenControl.vhd" 2025/06/04.13:28:48 P.15xf
-EN work/SigGenControl 1749040126 \
-      FL "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SigGenControl.vhd" \
-      PB ieee/std_logic_1164 1335251622 PB ieee/std_logic_arith 1335251623 \
-      PB ieee/STD_LOGIC_UNSIGNED 1335251625
-AR work/SigGenControl/Behavioral 1749040127 \
-      FL "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SigGenControl.vhd" \
-      EN work/SigGenControl 1749040126 CP Disp CP BTNdb
 FL "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SigGenDatapath.vhd" 2025/06/04.13:28:50 P.15xf
-EN work/SigGenDatapath 1749040128 \
-      FL "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SigGenDatapath.vhd" \
-      PB ieee/std_logic_1164 1335251622 PB ieee/std_logic_arith 1335251623 \
-      PB ieee/STD_LOGIC_UNSIGNED 1335251625
-AR work/SigGenDatapath/Behavioral 1749040129 \
-      FL "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SigGenDatapath.vhd" \
-      EN work/SigGenDatapath 1749040128 CP FreqCnt CP nSigCnt CP work/SinusLUT \
-      CP PWMwrap CP SigSquare CP SigSaw CP Sig CP PWM CP PWMout
 FL "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SigGenTop.vhd" 2025/06/04.14:28:22 P.15xf
-EN work/SigGenTop 1749040132 \
-      FL "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SigGenTop.vhd" \
-      PB ieee/std_logic_1164 1335251622 PB ieee/std_logic_arith 1335251623 \
-      PB ieee/STD_LOGIC_UNSIGNED 1335251625
-AR work/SigGenTop/Behavioral 1749040133 \
-      FL "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SigGenTop.vhd" \
-      EN work/SigGenTop 1749040132 CP work/DivClk CP work/SigGenControl \
-      CP work/SigGenDataPath CP work/SevenSeg5 CP LD
 FL C:/Users/s240324/Oscilloscope_Project/SignalGenerator/ipcore_dir/SinusLUT.vhd 2025/06/04.14:07:39 P.15xf
-EN work/SinusLUT 1749040120 \
+EN work/SinusLUT 1749042445 \
       FL C:/Users/s240324/Oscilloscope_Project/SignalGenerator/ipcore_dir/SinusLUT.vhd \
       PB ieee/std_logic_1164 1335251622
-AR work/SinusLUT/SinusLUT_a 1749040121 \
+AR work/SinusLUT/SinusLUT_a 1749042446 \
       FL C:/Users/s240324/Oscilloscope_Project/SignalGenerator/ipcore_dir/SinusLUT.vhd \
-      EN work/SinusLUT 1749040120
+      EN work/SinusLUT 1749042445
+FL "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/BTNdb.vhd" 2025/06/04.13:28:57 P.15xf
+EN work/BTNdb 1749042447 \
+      FL "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/BTNdb.vhd" \
+      PB ieee/std_logic_1164 1335251622 PB ieee/std_logic_arith 1335251623 \
+      PB ieee/STD_LOGIC_UNSIGNED 1335251625
+AR work/BTNdb/Behavioral 1749042448 \
+      FL "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/BTNdb.vhd" \
+      EN work/BTNdb 1749042447
+FL "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/DivClk (1).vhd" 2025/06/04.13:28:52 P.15xf
+EN work/DivClk 1749042449 \
+      FL "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/DivClk (1).vhd" \
+      PB ieee/std_logic_1164 1335251622 PB ieee/std_logic_arith 1335251623 \
+      PB ieee/STD_LOGIC_UNSIGNED 1335251625
+AR work/DivClk/DivClk_arch 1749042450 \
+      FL "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/DivClk (1).vhd" \
+      EN work/DivClk 1749042449
+FL "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SevenSeg5.vhd" 2025/06/04.13:28:55 P.15xf
+EN work/SevenSeg5 1749042455 \
+      FL "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SevenSeg5.vhd" \
+      PB ieee/std_logic_1164 1335251622 PB ieee/std_logic_arith 1335251623 \
+      PB ieee/STD_LOGIC_UNSIGNED 1335251625
+AR work/SevenSeg5/SevenSeg_arch 1749042456 \
+      FL "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SevenSeg5.vhd" \
+      EN work/SevenSeg5 1749042455
+FL "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenControl.vhd" 2025/06/04.13:28:48 P.15xf
+EN work/SigGenControl 1749042451 \
+      FL "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenControl.vhd" \
+      PB ieee/std_logic_1164 1335251622 PB ieee/std_logic_arith 1335251623 \
+      PB ieee/STD_LOGIC_UNSIGNED 1335251625
+AR work/SigGenControl/Behavioral 1749042452 \
+      FL "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenControl.vhd" \
+      EN work/SigGenControl 1749042451 CP Disp CP BTNdb
+FL "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd" 2025/06/04.13:28:50 P.15xf
+EN work/SigGenDatapath 1749042453 \
+      FL "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd" \
+      PB ieee/std_logic_1164 1335251622 PB ieee/std_logic_arith 1335251623 \
+      PB ieee/STD_LOGIC_UNSIGNED 1335251625
+AR work/SigGenDatapath/Behavioral 1749042454 \
+      FL "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd" \
+      EN work/SigGenDatapath 1749042453 CP FreqCnt CP nSigCnt CP work/SinusLUT \
+      CP PWMwrap CP SigSquare CP SigSaw CP Sig CP PWM CP PWMout
+FL "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenTop.vhd" 2025/06/04.14:28:22 P.15xf
+EN work/SigGenTop 1749042457 \
+      FL "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenTop.vhd" \
+      PB ieee/std_logic_1164 1335251622 PB ieee/std_logic_arith 1335251623 \
+      PB ieee/STD_LOGIC_UNSIGNED 1335251625
+AR work/SigGenTop/Behavioral 1749042458 \
+      FL "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenTop.vhd" \
+      EN work/SigGenTop 1749042457 CP work/DivClk CP work/SigGenControl \
+      CP work/SigGenDataPath CP work/SevenSeg5 CP LD
