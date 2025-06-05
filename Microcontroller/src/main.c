@@ -34,15 +34,21 @@ int main(void)
         switch (state)
         {
         case state_init:
-            // init_ADC_kanal0(); // Uncomment to initialize ADC0 with auto-trigger via Timer1
+            // init_ADC_kanal0(); // Uncomment to initialize ADC0 with auto-trigger via Timer1 ***mayby make it so ADC refrencec is 3.3V this is not the case at the moment
             // init_timer1(200); // Set ADC sample rate using Timer1, see formula: sample_rate = F_CPU / (8 * parameter)
             master_init(); // Initialize SPI master (see SPI.c for details)
             state = state_transmit_SPI;
             break;
 
         case state_transmit_SPI:
-            master_transmit();   // Send data via SPI (add parameter if needed)
-            PORTB |= (1 << PB0); // Set SS high to deactivate SPI slave
+            // Repeated SPI transfers with visible SS activity on oscilloscope
+            while (1)
+            {
+                master_transmit(170);   // Send data via SPI (0b10101010 = 0xAA)
+                _delay_ms(100);         // Short delay to clearly observe SS/SCK on scope
+                master_transmit(85);    // Send data via SPI (0b01010101 = 0x55)
+                _delay_ms(100);         // Short delay to clearly observe SS/SCK on scope
+            }
             break;
 
         default:
