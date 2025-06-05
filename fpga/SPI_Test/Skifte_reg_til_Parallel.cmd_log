@@ -11,3 +11,8 @@ xst -intstyle ise -ifn "/home/Andreas/Oscilloscope_Project/fpga/SPI_Test/Skifte_
 xst -intstyle ise -ifn "/home/Andreas/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.xst" -ofn "/home/Andreas/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.syr" 
 xst -intstyle ise -ifn "/home/Andreas/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.xst" -ofn "/home/Andreas/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.syr" 
 xst -intstyle ise -ifn "/home/Andreas/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.xst" -ofn "/home/Andreas/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.syr" 
+xst -intstyle ise -ifn "/home/vboxuser/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.xst" -ofn "/home/vboxuser/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.syr" 
+xst -intstyle ise -ifn "/home/vboxuser/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.xst" -ofn "/home/vboxuser/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.syr" 
+xst -intstyle ise -ifn "/home/vboxuser/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.xst" -ofn "/home/vboxuser/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.syr" 
+xst -intstyle ise -ifn "/home/vboxuser/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.xst" -ofn "/home/vboxuser/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.syr" 
+xst -intstyle ise -ifn "/home/vboxuser/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.xst" -ofn "/home/vboxuser/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.syr" 

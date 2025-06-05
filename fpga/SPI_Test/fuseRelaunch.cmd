@@ -1,1 +1,1 @@
--intstyle "ise" -incremental -o "/home/Andreas/Oscilloscope_Project/fpga/SPI_Test/TB_isim_beh.exe" -prj "/home/Andreas/Oscilloscope_Project/fpga/SPI_Test/TB_beh.prj" "work.TB" 
+-intstyle "ise" -incremental -o "/home/vboxuser/Oscilloscope_Project/fpga/SPI_Test/TB_isim_beh.exe" -prj "/home/vboxuser/Oscilloscope_Project/fpga/SPI_Test/TB_beh.prj" "work.TB" 
