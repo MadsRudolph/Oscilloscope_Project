@@ -25,7 +25,7 @@ void master_init()
     DDRB |= (1 << PB0) | (1 << PB1) | (1 << PB2); // Set SS, MOSI, and SCK as output
     DDRB &= ~(1 << PB3);                          // Set MISO as input
 
-    SPCR |= (1 << SPI2X) | (1 << SPE) | (1 << MSTR); // Enable SPI in master mode
+    SPCR |= (1 << SPI2X) | (1 << SPE) | (1 << MSTR) | (1 << DORD); // Enable SPI in master mode, (DORD = 1) makes so LSB transmits first
     SPCR &= ~(1 << SPR0) & ~(1 << SPR1);             // Set SPI clock speed to 8MHz
     SPCR &= ~(1 << CPOL) & ~(1 << CPHA);             // Sample on rising edge, transmit on falling (S.200–202)
 }
