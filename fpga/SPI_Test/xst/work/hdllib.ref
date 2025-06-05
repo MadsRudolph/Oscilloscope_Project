@@ -1,2 +1,4 @@
-EN skifte_reg_til_parallel NULL /home/vboxuser/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd sub00/vhpl00 1749111422
-AR skifte_reg_til_parallel behavioral /home/vboxuser/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd sub00/vhpl01 1749111423
+AR protokolblok behavioral /home/vboxuser/Oscilloscope_Project/fpga/SPI_Test/ProtokolBlok.vhd sub00/vhpl03 1749119865
+EN skifte_reg_til_parallel NULL /home/vboxuser/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd sub00/vhpl00 1749124359
+AR skifte_reg_til_parallel behavioral /home/vboxuser/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd sub00/vhpl01 1749124360
+EN protokolblok NULL /home/vboxuser/Oscilloscope_Project/fpga/SPI_Test/ProtokolBlok.vhd sub00/vhpl02 1749119864

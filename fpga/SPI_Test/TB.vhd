@@ -131,10 +131,12 @@ BEGIN
 		wait for SCK_period; 
 		MOSI <= '1';
 		
+		wait for 2*SCK_period;
+		SSnot <= '1';
+		
 		wait for 2*SCK_period; 
 		
-		RESET <= '1';
-      
+		
 		wait;
    end process;
 
