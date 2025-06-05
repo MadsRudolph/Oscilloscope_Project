@@ -10,24 +10,24 @@
 uint8_t master_transmit(uint8_t data)
 {
     PORTB &= ~(1 << PB0); // Set SS low to activate slave
-    _delay_ms(10);        // Delay to ensure slave readiness
     SPDR = data;          // Load data into SPI Data Register
 
     while (!(SPSR & (1 << SPIF)))
         ; // Wait for transmission to complete
-
-    return SPDR; // Return received data (SPI is full-duplex)
+    PORTB |= (1 << PB0);  // Set SS high to deactivate slave
+    return SPDR;          // Return received data (SPI is full-duplex)
 }
 
 // Initialize SPI in master mode
 void master_init()
 {
-    DDRB |= (1 << PB0) | (1 << PB1) | (1 << PB2); // Set SS, MOSI, and SCK as output, on ArduinoMega2560(SS(D3), MOSI(D52), SCK(51))
+    DDRB |= (1 << PB0) | (1 << PB1) | (1 << PB2); // Set SS, MOSI, and SCK as output, on ArduinoMega2560(SS(D53), MOSI(D52), SCK(51))
     DDRB &= ~(1 << PB3);                          // Set MISO as input, on ArduinoMega2560(MISO(D50))
+    PORTB |= (1 << PB0);                          // Set SS high (inactive)
 
-    SPCR |= (1 << SPI2X) | (1 << SPE) | (1 << MSTR) | (1 << DORD); // Enable SPI in master mode, (DORD = 1) makes so LSB transmits first
-    SPCR &= ~(1 << SPR0) & ~(1 << SPR1);             // Set SPI clock speed to 8MHz
-    SPCR &= ~(1 << CPOL) & ~(1 << CPHA);             // Sample on rising edge, transmit on falling (S.200–202)
+    SPCR |= (1 << SPE) | (1 << MSTR) | (1 << DORD); // Enable SPI in master mode, (DORD = 1) makes so LSB transmits first
+    SPCR |= (1 << SPR0) | (1 << SPR1);             // Set clock rate fck/128 (S.203), 250 kHz with F_CPU = 16 MHz
+    SPCR &= ~((1 << CPOL) | (1 << CPHA));          // Sample on rising edge, transmit on falling (S.200–202)
 }
 
 // Receive a byte via SPI as slave
@@ -35,7 +35,7 @@ unsigned char slave_reciver(unsigned char data)
 {
     SPDR = data; // Send dummy data to initiate clock
 
-    while (!(SPSR & (SPIF)))
+    while (!(SPSR & (1 << SPIF)))
         ; // Wait for transmission to complete
 
     return SPDR; // Return received data
@@ -45,6 +45,6 @@ unsigned char slave_reciver(unsigned char data)
 void slave_init()
 {
     DDRB |= (1 << DDB3); // Set MISO as output
-    SPCR |= 0b01001000;  // Enable SPI in slave mode with interrupt
-    PORTB |= (1 << PB0); // Set SS high (inactive)
+    SPCR |= (1 << SPE) | (1 << DORD);  // Enable SPI in slave mode, LSB first
+    // PORTB |= (1 << PB0); // REMOVE this line — SS should not be driven by slave
 }

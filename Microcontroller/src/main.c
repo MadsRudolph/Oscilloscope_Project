@@ -41,8 +41,14 @@ int main(void)
             break;
 
         case state_transmit_SPI:
-            master_transmit(170);   // Send data via SPI (add parameter if needed)
-            PORTB |= (1 << PB0); // Set SS high to deactivate SPI slave
+            // Repeated SPI transfers with visible SS activity on oscilloscope
+            while (1)
+            {
+                master_transmit(170);   // Send data via SPI (0b10101010 = 0xAA)
+                _delay_ms(100);         // Short delay to clearly observe SS/SCK on scope
+                master_transmit(85);    // Send data via SPI (0b01010101 = 0x55)
+                _delay_ms(100);         // Short delay to clearly observe SS/SCK on scope
+            }
             break;
 
         default:
