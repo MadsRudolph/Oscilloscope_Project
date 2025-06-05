@@ -7,3 +7,11 @@ NET"LED[3]" LOC = P6;
 NET"LED[2]" LOC = P7;
 NET"LED[1]" LOC = M11;
 NET"LED[0]" LOC = M5;
+
+
+  #test input
+NET"SCK" CLOCK_DEDICATED_ROUTE = FALSE; #Deaktiverer krav for masterclk
+
+NET"MOSI" LOC = B2;
+NET"SCK" LOC = A3;
+NET"SSnot" LOC = J3;
