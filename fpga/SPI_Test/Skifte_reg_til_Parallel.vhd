@@ -9,13 +9,13 @@ entity Skifte_reg_til_Parallel is
            MOSI : in  STD_LOGIC;
            RESET : in  STD_LOGIC;
            CLK : in  STD_LOGIC;
-           LED : out  STD_LOGIC_VECTOR (7 downto 0));
+           LED : out  STD_LOGIC_VECTOR (7 downto 0);
+			  SSnot : in STD_LOGIC);
 			 
 
 end Skifte_reg_til_Parallel;
 
 architecture Behavioral of Skifte_reg_til_Parallel is
-signal Q : std_logic_vector (7 downto 0);
 signal skift_reg : std_logic_vector (7 downto 0);
 signal para_reg : std_logic_vector (7 downto 0);
 signal Counter : integer range 0 to 8; 
@@ -27,7 +27,7 @@ begin
 			if RESET = '1' then 
 			skift_reg <= "00000000";
 			Counter <= 0; 
-				elsif rising_edge(SCK) then
+				elsif rising_edge(SCK) and SSnot = '0' then
 				 if Counter < 8 then
 					skift_reg <= MOSI & skift_reg(7 downto 1); 
 					Counter <= Counter + 1; 

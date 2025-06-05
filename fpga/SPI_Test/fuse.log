@@ -1,14 +1,14 @@
-Running: /opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64/unwrapped/fuse -intstyle ise -incremental -o /home/Andreas/Oscilloscope_Project/fpga/SPI_Test/TB_isim_beh.exe -prj /home/Andreas/Oscilloscope_Project/fpga/SPI_Test/TB_beh.prj work.TB 
+Running: /opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64/unwrapped/fuse -intstyle ise -incremental -o /home/vboxuser/Oscilloscope_Project/fpga/SPI_Test/TB_isim_beh.exe -prj /home/vboxuser/Oscilloscope_Project/fpga/SPI_Test/TB_beh.prj work.TB 
 ISim P.20131013 (signature 0xfbc00daa)
 Number of CPUs detected in this system: 4
 Turning on mult-threading, number of parallel sub-compilation jobs: 8 
 Determining compilation order of HDL files
-Parsing VHDL file "/home/Andreas/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd" into library work
-Parsing VHDL file "/home/Andreas/Oscilloscope_Project/fpga/SPI_Test/TB.vhd" into library work
+Parsing VHDL file "/home/vboxuser/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd" into library work
+Parsing VHDL file "/home/vboxuser/Oscilloscope_Project/fpga/SPI_Test/TB.vhd" into library work
 Starting static elaboration
 Completed static elaboration
 Fuse Memory Usage: 84416 KB
-Fuse CPU Usage: 500 ms
+Fuse CPU Usage: 670 ms
 Compiling package standard
 Compiling package std_logic_1164
 Compiling package std_logic_arith
@@ -17,7 +17,7 @@ Compiling architecture behavioral of entity Skifte_reg_til_Parallel [skifte_reg_
 Compiling architecture behavior of entity tb
 Time Resolution for simulation is 1ps.
 Compiled 7 VHDL Units
-Built simulation executable /home/Andreas/Oscilloscope_Project/fpga/SPI_Test/TB_isim_beh.exe
-Fuse Memory Usage: 656736 KB
-Fuse CPU Usage: 550 ms
-GCC CPU Usage: 280 ms
+Built simulation executable /home/vboxuser/Oscilloscope_Project/fpga/SPI_Test/TB_isim_beh.exe
+Fuse Memory Usage: 656728 KB
+Fuse CPU Usage: 790 ms
+GCC CPU Usage: 2210 ms
