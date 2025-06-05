@@ -1,0 +1,21 @@
+//! **************************************************************************
+// Written by: Map P.15xf on Thu Jun 05 16:23:36 2025
+//! **************************************************************************
+
+SCHEMATIC START;
+COMP "LED<0>" LOCATE = SITE "M5" LEVEL 1;
+COMP "SCK" LOCATE = SITE "A3" LEVEL 1;
+PIN SCK_pin<0> = BEL "SCK" PINNAME PAD;
+PIN "SCK_pin<0>" CLOCK_DEDICATED_ROUTE = FALSE;
+COMP "LED<1>" LOCATE = SITE "M11" LEVEL 1;
+COMP "LED<2>" LOCATE = SITE "P7" LEVEL 1;
+COMP "LED<3>" LOCATE = SITE "P6" LEVEL 1;
+COMP "LED<4>" LOCATE = SITE "N5" LEVEL 1;
+COMP "SSnot" LOCATE = SITE "J3" LEVEL 1;
+COMP "LED<5>" LOCATE = SITE "N4" LEVEL 1;
+COMP "LED<6>" LOCATE = SITE "P4" LEVEL 1;
+COMP "LED<7>" LOCATE = SITE "G1" LEVEL 1;
+COMP "MOSI" LOCATE = SITE "B2" LEVEL 1;
+NET "SCK_BUFGP/IBUFG" BEL "SCK_BUFGP/BUFG.GCLKMUX" USELOCALCONNECT;
+SCHEMATIC END;
+

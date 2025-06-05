@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2025-06-05T09:10:50</DateModified>
+  <DateModified>2025-06-05T16:37:50</DateModified>
   <ModuleName>Skifte_reg_til_Parallel</ModuleName>
-  <SummaryTimeStamp>2025-06-05T07:40:24</SummaryTimeStamp>
-  <SavedFilePath>/home/vboxuser/Oscilloscope_Project/fpga/SPI_Test/iseconfig/Skifte_reg_til_Parallel.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>/home/vboxuser/Oscilloscope_Project/fpga/SPI_Test/</ImplementationReportsDirectory>
+  <SummaryTimeStamp>2025-06-05T16:23:50</SummaryTimeStamp>
+  <SavedFilePath>C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/iseconfig/Skifte_reg_til_Parallel.xreport</SavedFilePath>
+  <ImplementationReportsDirectory>C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test\</ImplementationReportsDirectory>
   <DateInitialized>2025-06-04T14:30:04</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>

@@ -44,7 +44,6 @@ ARCHITECTURE behavior OF TB IS
          SCK : IN  std_logic;
          MOSI : IN  std_logic;
          RESET : IN  std_logic;
-         CLK : IN  std_logic;
          LED : OUT  std_logic_vector(7 downto 0);
 			SSnot : IN std_logic
         );
@@ -54,14 +53,12 @@ ARCHITECTURE behavior OF TB IS
    signal SCK : std_logic := '0';
    signal MOSI : std_logic := '0';
    signal RESET : std_logic := '0';
-   signal CLK : std_logic := '0';
 	signal SSnot : std_logic := '1';
 
  	--Outputs
    signal LED : std_logic_vector(7 downto 0);
 
    -- Clock period definitions
-   constant CLK_period : time := 10 ns;
 	constant SCK_period : time := 10 ns; 
 BEGIN
  
@@ -70,19 +67,9 @@ BEGIN
           SCK => SCK,
           MOSI => MOSI,
           RESET => RESET,
-          CLK => CLK,
           LED => LED,
 			 SSnot => SSnot
         );
-
-   -- Clock process definitions
-   CLK_process :process
-   begin
-		CLK <= '0';
-		wait for CLK_period/2;
-		CLK <= '1';
-		wait for CLK_period/2;
-   end process;
  
   -- Clock process definitions
    SCK_process :process
@@ -134,7 +121,7 @@ BEGIN
 		wait for 2*SCK_period;
 		SSnot <= '1';
 		
-		wait for 2*SCK_period; 
+		wait for SCK_period; 
 		
 		
 		wait;
