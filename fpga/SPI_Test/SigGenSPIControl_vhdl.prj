@@ -1,0 +1,3 @@
+vhdl work "C:\Users\s240324\Oscilloscope_Project\fpga\SPI_Test\Skifte_reg_til_Parallel.vhd"
+vhdl work "C:\Users\s240324\Oscilloscope_Project\fpga\SPI_Test\ProtokolBlok.vhd"
+vhdl work "C:\Users\s240324\Oscilloscope_Project\fpga\SPI_Test\SigGenSPIControl.vhd"

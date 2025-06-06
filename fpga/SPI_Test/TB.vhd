@@ -14,7 +14,7 @@ ARCHITECTURE behavior OF TB IS
          SCK : IN  std_logic;
          MOSI : IN  std_logic;
          RESET : IN  std_logic;
-         LED : OUT  std_logic_vector(7 downto 0);
+         SPIdat : OUT  std_logic_vector(7 downto 0);
 			SSnot : IN std_logic
         );
     END COMPONENT;
@@ -26,7 +26,7 @@ ARCHITECTURE behavior OF TB IS
 	signal SSnot : std_logic := '1';
 
  	--Outputs
-   signal LED : std_logic_vector(7 downto 0);
+   signal SPIdat : std_logic_vector(7 downto 0);
 
    -- Clock period definitions
 	constant SCK_period : time := 10 ns; 
@@ -37,7 +37,7 @@ BEGIN
           SCK => SCK,
           MOSI => MOSI,
           RESET => RESET,
-          LED => LED,
+          SPIdat => SPIdat,
 			 SSnot => SSnot
         );
  

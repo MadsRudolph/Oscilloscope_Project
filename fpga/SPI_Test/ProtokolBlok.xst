@@ -1,5 +1,5 @@
-set -tmpdir "/home/vboxuser/Oscilloscope_Project/fpga/SPI_Test/xst/projnav.tmp"
-set -xsthdpdir "/home/vboxuser/Oscilloscope_Project/fpga/SPI_Test/xst"
+set -tmpdir "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/xst/projnav.tmp"
+set -xsthdpdir "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/xst"
 elaborate
 -ifn ProtokolBlok.prj
 -ifmt mixed

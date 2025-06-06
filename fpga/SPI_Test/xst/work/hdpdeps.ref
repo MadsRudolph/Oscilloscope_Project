@@ -1,17 +1,26 @@
-V3 8
+V3 14
 FL /home/Andreas/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd 2025/06/04.16:07:28 P.15xf
 FL /home/vboxuser/Oscilloscope_Project/fpga/SPI_Test/ProtokolBlok.vhd 2025/06/05.10:37:40 P.15xf
-EN work/ProtokolBlok 1749119864 \
-      FL /home/vboxuser/Oscilloscope_Project/fpga/SPI_Test/ProtokolBlok.vhd \
-      PB ieee/std_logic_1164 1381692176
-AR work/ProtokolBlok/Behavioral 1749119865 \
-      FL /home/vboxuser/Oscilloscope_Project/fpga/SPI_Test/ProtokolBlok.vhd \
-      EN work/ProtokolBlok 1749119864
 FL /home/vboxuser/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd 2025/06/05.11:49:49 P.15xf
-FL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd 2025/06/06.10:02:45 P.15xf
-EN work/Skifte_reg_til_Parallel 1749197230 \
+FL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/ProtokolBlok.vhd 2025/06/06.15:32:08 P.15xf
+EN work/ProtokolBlok 1749217956 \
+      FL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/ProtokolBlok.vhd \
+      PB ieee/std_logic_1164 1381692176
+AR work/ProtokolBlok/Behavioral 1749217957 \
+      FL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/ProtokolBlok.vhd \
+      EN work/ProtokolBlok 1749217956
+FL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/SigGenSPIControl.vhd 2025/06/06.15:52:31 P.15xf
+EN work/SigGenSPIControl 1749217960 \
+      FL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/SigGenSPIControl.vhd \
+      PB ieee/std_logic_1164 1381692176
+AR work/SigGenSPIControl/Behavioral 1749217961 \
+      FL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/SigGenSPIControl.vhd \
+      EN work/SigGenSPIControl 1749217960 CP work/ProtokolBlok \
+      CP work/Skifte_reg_til_Parallel
+FL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd 2025/06/06.15:22:16 P.15xf
+EN work/Skifte_reg_til_Parallel 1749217958 \
       FL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd \
       PB ieee/std_logic_1164 1381692176 PB ieee/STD_LOGIC_UNSIGNED 1335251625
-AR work/Skifte_reg_til_Parallel/Behavioral 1749197231 \
+AR work/Skifte_reg_til_Parallel/Behavioral 1749217959 \
       FL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd \
-      EN work/Skifte_reg_til_Parallel 1749197230
+      EN work/Skifte_reg_til_Parallel 1749217958

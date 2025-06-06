@@ -15,3 +15,5 @@ NET"SCK" CLOCK_DEDICATED_ROUTE = FALSE; #Deaktiverer krav for masterclk
 NET"MOSI" LOC = B2;
 NET"SCK" LOC = A3;
 NET"SSnot" LOC = J3;
+
+NET "Reset" LOC = A7;
