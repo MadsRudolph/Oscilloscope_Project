@@ -7,14 +7,15 @@ entity Skifte_reg_til_Parallel is
     Port ( SCK : in  STD_LOGIC;
            MOSI : in  STD_LOGIC;
            RESET : in  STD_LOGIC;
-           LED : out  STD_LOGIC_VECTOR (7 downto 0);
-			  SSnot : in STD_LOGIC);
-			 
+           SPIdat : out  STD_LOGIC_VECTOR (7 downto 0);
+			  SSnot : in STD_LOGIC;
+			  DataReady: out std_logic);
 
 end Skifte_reg_til_Parallel;
 
 architecture Behavioral of Skifte_reg_til_Parallel is
 signal skift_reg : std_logic_vector (7 downto 0);
+
 
 begin
 	
@@ -27,6 +28,11 @@ begin
 			end if;
 	end process; 	 
 
-LED <= skift_reg when SSnot = '1' else (others => 'Z'); 
+SPIdat <= skift_reg when SSnot = '1' else (others => 'Z');
+
+DataReady <= '1' when SSnot = '1' else '0'; 
 
 end Behavioral;
+
+
+

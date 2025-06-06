@@ -16,5 +16,5 @@ Compiling architecture behavior of entity tb
 Time Resolution for simulation is 1ps.
 Compiled 7 VHDL Units
 Built simulation executable C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/TB_isim_beh.exe
-Fuse Memory Usage: 34136 KB
-Fuse CPU Usage: 468 ms
+Fuse Memory Usage: 34360 KB
+Fuse CPU Usage: 421 ms
