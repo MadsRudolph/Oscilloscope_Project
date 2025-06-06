@@ -45,8 +45,8 @@ Setup/Hold to clock SCK
             |Max Setup to|Max Hold to |                  | Clock  |
 Source      | clk (edge) | clk (edge) |Internal Clock(s) | Phase  |
 ------------+------------+------------+------------------+--------+
-MOSI        |    0.385(R)|    1.287(R)|SCK_BUFGP         |   0.000|
-SSnot       |    0.666(R)|    2.011(R)|SCK_BUFGP         |   0.000|
+MOSI        |    0.968(R)|    1.667(R)|SCK_BUFGP         |   0.000|
+SSnot       |    0.896(R)|    1.761(R)|SCK_BUFGP         |   0.000|
 ------------+------------+------------+------------------+--------+
 
 Clock SCK to Pad
@@ -54,14 +54,14 @@ Clock SCK to Pad
             | clk (edge) |                  | Clock  |
 Destination |   to PAD   |Internal Clock(s) | Phase  |
 ------------+------------+------------------+--------+
-LED<0>      |    9.984(R)|SCK_BUFGP         |   0.000|
-LED<1>      |    9.555(R)|SCK_BUFGP         |   0.000|
-LED<2>      |    9.503(R)|SCK_BUFGP         |   0.000|
-LED<3>      |    9.527(R)|SCK_BUFGP         |   0.000|
-LED<4>      |    9.449(R)|SCK_BUFGP         |   0.000|
-LED<5>      |    9.821(R)|SCK_BUFGP         |   0.000|
-LED<6>      |    9.817(R)|SCK_BUFGP         |   0.000|
-LED<7>      |    8.984(R)|SCK_BUFGP         |   0.000|
+LED<0>      |    8.757(R)|SCK_BUFGP         |   0.000|
+LED<1>      |    9.462(R)|SCK_BUFGP         |   0.000|
+LED<2>      |    8.881(R)|SCK_BUFGP         |   0.000|
+LED<3>      |    9.385(R)|SCK_BUFGP         |   0.000|
+LED<4>      |    8.820(R)|SCK_BUFGP         |   0.000|
+LED<5>      |    9.596(R)|SCK_BUFGP         |   0.000|
+LED<6>      |    9.408(R)|SCK_BUFGP         |   0.000|
+LED<7>      |    7.189(R)|SCK_BUFGP         |   0.000|
 ------------+------------+------------------+--------+
 
 Clock to Setup on destination clock SCK
@@ -69,18 +69,32 @@ Clock to Setup on destination clock SCK
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-SCK            |    3.417|         |         |         |
+SCK            |    1.865|         |         |         |
 ---------------+---------+---------+---------+---------+
 
+Pad to Pad
+---------------+---------------+---------+
+Source Pad     |Destination Pad|  Delay  |
+---------------+---------------+---------+
+SSnot          |LED<0>         |    6.627|
+SSnot          |LED<1>         |    6.597|
+SSnot          |LED<2>         |    6.607|
+SSnot          |LED<3>         |    6.905|
+SSnot          |LED<4>         |    6.898|
+SSnot          |LED<5>         |    6.882|
+SSnot          |LED<6>         |    6.306|
+SSnot          |LED<7>         |    6.296|
+---------------+---------------+---------+
 
-Analysis completed Thu Jun 05 16:23:45 2025 
+
+Analysis completed Fri Jun 06 10:07:35 2025 
 --------------------------------------------------------------------------------
 
 Trace Settings:
 -------------------------
 Trace Settings 
 
-Peak Memory Usage: 4503 MB
+Peak Memory Usage: 4487 MB
 
 
 

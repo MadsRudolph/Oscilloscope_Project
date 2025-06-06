@@ -1,7 +1,7 @@
 Release 14.1 par P.15xf (nt64)
 Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
 
-DTU-CZC62978DR::  Thu Jun 05 16:23:39 2025
+DTU-CZC62978DR::  Fri Jun 06 10:07:27 2025
 
 par -w -intstyle ise -ol high -t 1 Skifte_reg_til_Parallel_map.ncd
 Skifte_reg_til_Parallel.ncd Skifte_reg_til_Parallel.pcf 
@@ -56,7 +56,7 @@ Design Summary Report:
 
 
    Number of BUFGMUXs                        1 out of 24      4%
-   Number of Slices                         14 out of 960     1%
+   Number of Slices                          4 out of 960     1%
       Number of SLICEMs                      0 out of 480     0%
 
 
@@ -66,26 +66,26 @@ Placer effort level (-pl):    High
 Placer cost table entry (-t): 1
 Router effort level (-rl):    High 
 
-Starting initial Timing Analysis.  REAL time: 0 secs 
-Finished initial Timing Analysis.  REAL time: 0 secs 
+Starting initial Timing Analysis.  REAL time: 1 secs 
+Finished initial Timing Analysis.  REAL time: 1 secs 
 
 
 Starting Placer
-Total REAL time at the beginning of Placer: 0 secs 
+Total REAL time at the beginning of Placer: 1 secs 
 Total CPU  time at the beginning of Placer: 0 secs 
 
 Phase 1.1  Initial Placement Analysis
-Phase 1.1  Initial Placement Analysis (Checksum:13e04b8) REAL time: 1 secs 
+Phase 1.1  Initial Placement Analysis (Checksum:13e03e1) REAL time: 2 secs 
 
 Phase 2.7  Design Feasibility Check
-Phase 2.7  Design Feasibility Check (Checksum:13e04b8) REAL time: 1 secs 
+Phase 2.7  Design Feasibility Check (Checksum:13e03e1) REAL time: 2 secs 
 
 Phase 3.31  Local Placement Optimization
-Phase 3.31  Local Placement Optimization (Checksum:13e04b8) REAL time: 1 secs 
+Phase 3.31  Local Placement Optimization (Checksum:13e03e1) REAL time: 2 secs 
 
 Phase 4.2  Initial Clock and IO Placement
-.......
-.....
+..........
+..............
 WARNING:Place:1019 - A clock IOB / clock component pair have been found that are not placed at an optimal clock IOB /
    clock site pair. The clock component <SCK_BUFGP/BUFG> is placed at site <BUFGMUX_X1Y10>. The IO component <SCK> is
    placed at site <A3>.  This will not allow the use of the fast path between the IO and the Clock buffer. This is
@@ -93,35 +93,35 @@ WARNING:Place:1019 - A clock IOB / clock component pair have been found that are
    continue. This constraint disables all clock placer rules related to the specified COMP.PIN. The use of this override
    is highly discouraged as it may lead to very poor timing results. It is recommended that this error condition be
    corrected in the design.
-Phase 4.2  Initial Clock and IO Placement (Checksum:1c5c218) REAL time: 2 secs 
+Phase 4.2  Initial Clock and IO Placement (Checksum:1c5c141) REAL time: 3 secs 
 
 Phase 5.30  Global Clock Region Assignment
-Phase 5.30  Global Clock Region Assignment (Checksum:1c5c218) REAL time: 2 secs 
+Phase 5.30  Global Clock Region Assignment (Checksum:1c5c141) REAL time: 3 secs 
 
 Phase 6.36  Local Placement Optimization
-Phase 6.36  Local Placement Optimization (Checksum:1c5c218) REAL time: 2 secs 
+Phase 6.36  Local Placement Optimization (Checksum:1c5c141) REAL time: 3 secs 
 
 Phase 7.3  Local Placement Optimization
-.........
-Phase 7.3  Local Placement Optimization (Checksum:1d760bd) REAL time: 2 secs 
+........
+Phase 7.3  Local Placement Optimization (Checksum:1d75fe6) REAL time: 3 secs 
 
 Phase 8.5  Local Placement Optimization
-Phase 8.5  Local Placement Optimization (Checksum:1d760bd) REAL time: 2 secs 
+Phase 8.5  Local Placement Optimization (Checksum:1d75fe6) REAL time: 3 secs 
 
 Phase 9.8  Global Placement
-...
-Phase 9.8  Global Placement (Checksum:7d0986d) REAL time: 2 secs 
+.....
+Phase 9.8  Global Placement (Checksum:479ef4e) REAL time: 3 secs 
 
 Phase 10.5  Local Placement Optimization
-Phase 10.5  Local Placement Optimization (Checksum:7d0986d) REAL time: 2 secs 
+Phase 10.5  Local Placement Optimization (Checksum:479ef4e) REAL time: 3 secs 
 
 Phase 11.18  Placement Optimization
-Phase 11.18  Placement Optimization (Checksum:45a4124) REAL time: 2 secs 
+Phase 11.18  Placement Optimization (Checksum:3df33f0) REAL time: 3 secs 
 
 Phase 12.5  Local Placement Optimization
-Phase 12.5  Local Placement Optimization (Checksum:45a4124) REAL time: 2 secs 
+Phase 12.5  Local Placement Optimization (Checksum:3df33f0) REAL time: 3 secs 
 
-Total REAL time to Placer completion: 2 secs 
+Total REAL time to Placer completion: 3 secs 
 Total CPU  time to Placer completion: 2 secs 
 Writing design to file Skifte_reg_til_Parallel.ncd
 
@@ -130,33 +130,29 @@ Writing design to file Skifte_reg_til_Parallel.ncd
 Starting Router
 
 
-Phase  1  : 96 unrouted;      REAL time: 2 secs 
+Phase  1  : 41 unrouted;      REAL time: 4 secs 
 
-Phase  2  : 84 unrouted;      REAL time: 2 secs 
+Phase  2  : 36 unrouted;      REAL time: 4 secs 
 
-Phase  3  : 15 unrouted;      REAL time: 2 secs 
+Phase  3  : 0 unrouted;      REAL time: 4 secs 
 
-Phase  4  : 37 unrouted; (Par is working to improve performance)     REAL time: 2 secs 
+Phase  4  : 1 unrouted; (Par is working to improve performance)     REAL time: 4 secs 
 
-Phase  5  : 0 unrouted; (Par is working to improve performance)     REAL time: 3 secs 
-
-Updating file: Skifte_reg_til_Parallel.ncd with current fully routed design.
-
-Phase  6  : 0 unrouted; (Par is working to improve performance)     REAL time: 3 secs 
-
-Phase  7  : 0 unrouted; (Par is working to improve performance)     REAL time: 3 secs 
+Phase  5  : 0 unrouted; (Par is working to improve performance)     REAL time: 4 secs 
 
 Updating file: Skifte_reg_til_Parallel.ncd with current fully routed design.
 
-Phase  8  : 0 unrouted; (Par is working to improve performance)     REAL time: 3 secs 
+Phase  6  : 0 unrouted; (Par is working to improve performance)     REAL time: 5 secs 
 
-Phase  9  : 0 unrouted; (Par is working to improve performance)     REAL time: 3 secs 
+Phase  7  : 0 unrouted; (Par is working to improve performance)     REAL time: 5 secs 
 
-Phase 10  : 0 unrouted; (Par is working to improve performance)     REAL time: 3 secs 
+Phase  8  : 0 unrouted; (Par is working to improve performance)     REAL time: 5 secs 
 
-Phase 11  : 0 unrouted; (Par is working to improve performance)     REAL time: 3 secs 
+Phase  9  : 0 unrouted; (Par is working to improve performance)     REAL time: 5 secs 
 
-Total REAL time to Router completion: 3 secs 
+Phase 10  : 0 unrouted; (Par is working to improve performance)     REAL time: 5 secs 
+
+Total REAL time to Router completion: 5 secs 
 Total CPU time to Router completion: 3 secs 
 
 Partition Implementation Status
@@ -175,7 +171,7 @@ Generating Clock Report
 +---------------------+--------------+------+------+------------+-------------+
 |        Clock Net    |   Resource   |Locked|Fanout|Net Skew(ns)|Max Delay(ns)|
 +---------------------+--------------+------+------+------------+-------------+
-|           SCK_BUFGP | BUFGMUX_X1Y10| No   |   12 |  0.005     |  0.042      |
+|           SCK_BUFGP | BUFGMUX_X1Y10| No   |    5 |  0.019     |  0.063      |
 +---------------------+--------------+------+------+------------+-------------+
 
 * Net Skew is the difference between the minimum and maximum routing
@@ -195,8 +191,8 @@ Asterisk (*) preceding a constraint indicates it was not met.
   Constraint                                |    Check    | Worst Case |  Best Case | Timing |   Timing   
                                             |             |    Slack   | Achievable | Errors |    Score   
 ----------------------------------------------------------------------------------------------------------
-  Autotimespec constraint for clock net SCK | SETUP       |         N/A|     3.417ns|     N/A|           0
-  _BUFGP                                    | HOLD        |     0.965ns|            |       0|           0
+  Autotimespec constraint for clock net SCK | SETUP       |         N/A|     1.865ns|     N/A|           0
+  _BUFGP                                    | HOLD        |     0.987ns|            |       0|           0
 ----------------------------------------------------------------------------------------------------------
 
 
@@ -212,7 +208,7 @@ Generating Pad Report.
 
 All signals are completely routed.
 
-Total REAL time to PAR completion: 3 secs 
+Total REAL time to PAR completion: 5 secs 
 Total CPU time to PAR completion: 3 secs 
 
 Peak Memory Usage:  4426 MB
