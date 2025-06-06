@@ -1,3 +1,5 @@
+// ## References to datasheet pages are marked as S.xxx for Atmega2560 ##
+
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <stdlib.h>
@@ -13,27 +15,23 @@ uint8_t temp_min_pwm = 0;
 uint8_t temp_max_pwm = 255;
 uint8_t new_pwm_values_received = 0;
 
-// Initialize UART with specified baud rate
+// Initialize UART with specified baud rate. Look up the table on page 231 of the Atmega2560 datasheet, for selecting your correct parameter.
 void uart_init(unsigned int ubrr)
 {
-    UBRR0H = (unsigned char)(ubrr >> 8);
-    UBRR0L = (unsigned char)ubrr;
-    UCSR0A = (1 << U2X0);                                 // Enable double speed
-    UCSR0B = (1 << RXEN0) | (1 << TXEN0) | (1 << RXCIE0); // Enable RX, TX, and RX interrupt
-    UCSR0C = (1 << UCSZ01) | (1 << UCSZ00);               // 8-bit data format
-
-    // Enable external interrupt on PE4 (button)
-    PORTE |= (1 << PE4);   // Enable pull-up
-    EIMSK |= (1 << INT4);  // Enable INT4
-    EICRB |= (1 << ISC41); // Trigger on rising edge
+    UBRR0H = (unsigned char)(ubrr >> 8);                  // USART0 Baud rate register high byte (S.412)
+    UBRR0L = (unsigned char)ubrr;                         // USART0 Baud rate register low byte (S.412)
+    UCSR0A |= (1 << U2X0);                                 // Enable double speed (S.223)
+    UCSR0B = (1 << RXEN0) | (1 << TXEN0) | (1 << RXCIE0); // Enable RX, TX, and RX interrupt (S.224)
+    UCSR0C = (1 << UCSZ01) | (1 << UCSZ00);               // 8-bit data format (S.226)
+    // No parity ((UPM00 & UUPM01) = 0), 1 stopbit (USBS0 = 0), async mode ((UMSEL00 & UMSEL01 = 0)) (S.225-226)
+    // One complete data cycle is 1 start-bit followed by 8 data-bit's followed by 1 stop-bit. 
 }
 
-// Send one character via UART
+// Send one character via UART. Exsampel from atmega2560 datasheet on page 212
 void uart_send(char data)
 {
-    while (!(UCSR0A & (1 << UDRE0)))
-        ;
-    UDR0 = data;
+    while (!(UCSR0A & (1 << UDRE0))); // Wait until UDRE0 is high meaning buffer is clear an ready to be written (S.223)
+    UDR0 = data; // udates data into buffer and sends data (S.212)
 }
 
 // Send string via UART
