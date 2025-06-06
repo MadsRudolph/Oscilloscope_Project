@@ -25,7 +25,7 @@ void init_timer1(int top_value)
     TCNT1 = 0;  // Reset Timer1 counter
 
     TCCR1B |= (1 << WGM12) | (1 << CS11); // Set CTC mode with prescaler 8 (S.148, S.161)
-    OCR1A = 40000;                        // Set top value to 40000 for 50Hz sampling (F_CPU = 16MHz / 8 / 40000)
+    OCR1A = top_value;                    // Writes to OCR1A to set sample rate, use formula: sample_rate = (F_CPU = 16MHz / 8 / top_value)
 
     TIMSK1 |= (1 << OCIE1B); // Enable Timer1 Compare Match B interrupt (S.166)
 }

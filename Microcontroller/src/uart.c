@@ -20,11 +20,11 @@ void uart_init(unsigned int ubrr)
 {
     UBRR0H = (unsigned char)(ubrr >> 8);                  // USART0 Baud rate register high byte (S.412)
     UBRR0L = (unsigned char)ubrr;                         // USART0 Baud rate register low byte (S.412)
-    UCSR0A |= (1 << U2X0);                                 // Enable double speed (S.223)
+    UCSR0A |= (1 << U2X0);                                // Enable double speed (S.223)
     UCSR0B = (1 << RXEN0) | (1 << TXEN0) | (1 << RXCIE0); // Enable RX, TX, and RX interrupt (S.224)
     UCSR0C = (1 << UCSZ01) | (1 << UCSZ00);               // 8-bit data format (S.226)
     // No parity ((UPM00 & UUPM01) = 0), 1 stopbit (USBS0 = 0), async mode ((UMSEL00 & UMSEL01 = 0)) (S.225-226)
-    // One complete data cycle is 1 start-bit followed by 8 data-bit's followed by 1 stop-bit. 
+    // One complete data cycle is 1 start-bit followed by 8 data-bit's followed by 1 stop-bit.
 }
 
 // Send one character via UART. Exsampel from atmega2560 datasheet on page 212

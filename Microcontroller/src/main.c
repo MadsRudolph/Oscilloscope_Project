@@ -55,7 +55,7 @@ int main(void)
 
         case state_transmit_UART:
 
-            uart_send(); // 
+            uart_send(0); // Add the data that needs to be tranmitted in the perameter
 
             break;
 
