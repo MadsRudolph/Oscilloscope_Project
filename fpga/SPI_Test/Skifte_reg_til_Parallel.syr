@@ -3,14 +3,14 @@ Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.13 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.91 secs
  
 --> Parameter xsthdpdir set to xst
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.13 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.91 secs
  
 --> Reading design: Skifte_reg_til_Parallel.prj
 
@@ -128,15 +128,11 @@ Performing bidirectional port resolution...
 
 Synthesizing Unit <Skifte_reg_til_Parallel>.
     Related source file is "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd".
-    Found 4-bit register for signal <Counter>.
-    Found 4-bit adder for signal <Counter$addsub0000> created at line 30.
-    Found 8-bit register for signal <para_reg>.
+    Found 8-bit tristate buffer for signal <LED>.
     Found 8-bit register for signal <skift_reg>.
-    Found 4-bit comparator lessequal for signal <skift_reg$cmp_le0000> created at line 43.
     Summary:
-	inferred  20 D-type flip-flop(s).
-	inferred   1 Adder/Subtractor(s).
-	inferred   1 Comparator(s).
+	inferred   8 D-type flip-flop(s).
+	inferred   8 Tristate(s).
 Unit <Skifte_reg_til_Parallel> synthesized.
 
 
@@ -144,13 +140,10 @@ Unit <Skifte_reg_til_Parallel> synthesized.
 HDL Synthesis Report
 
 Macro Statistics
-# Adders/Subtractors                                   : 1
- 4-bit adder                                           : 1
-# Registers                                            : 3
- 4-bit register                                        : 1
- 8-bit register                                        : 2
-# Comparators                                          : 1
- 4-bit comparator lessequal                            : 1
+# Registers                                            : 1
+ 8-bit register                                        : 1
+# Tristates                                            : 1
+ 8-bit tristate buffer                                 : 1
 
 =========================================================================
 
@@ -163,12 +156,8 @@ Macro Statistics
 Advanced HDL Synthesis Report
 
 Macro Statistics
-# Adders/Subtractors                                   : 1
- 4-bit adder                                           : 1
-# Registers                                            : 20
- Flip-Flops                                            : 20
-# Comparators                                          : 1
- 4-bit comparator lessequal                            : 1
+# Registers                                            : 8
+ Flip-Flops                                            : 8
 
 =========================================================================
 
@@ -180,7 +169,8 @@ Optimizing unit <Skifte_reg_til_Parallel> ...
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 5) on block Skifte_reg_til_Parallel, actual ratio is 1.
+Found area constraint ratio of 100 (+ 5) on block Skifte_reg_til_Parallel, actual ratio is 0.
+FlipFlop skift_reg_7 has been replicated 1 time(s) to handle iob=true attribute.
 
 Final Macro Processing ...
 
@@ -188,8 +178,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 20
- Flip-Flops                                            : 20
+# Registers                                            : 9
+ Flip-Flops                                            : 9
 
 =========================================================================
 
@@ -218,19 +208,15 @@ Design Statistics
 # IOs                              : 12
 
 Cell Usage :
-# BELS                             : 10
-#      LUT2                        : 1
-#      LUT2_L                      : 1
-#      LUT3                        : 1
-#      LUT3_L                      : 1
-#      LUT4                        : 6
-# FlipFlops/Latches                : 20
-#      FDCE                        : 20
+# BELS                             : 1
+#      INV                         : 1
+# FlipFlops/Latches                : 9
+#      FDCE                        : 9
 # Clock Buffers                    : 1
 #      BUFGP                       : 1
 # IO Buffers                       : 11
 #      IBUF                        : 3
-#      OBUF                        : 8
+#      OBUFT                       : 8
 =========================================================================
 
 Device utilization summary:
@@ -238,11 +224,12 @@ Device utilization summary:
 
 Selected Device : 3s100ecp132-4 
 
- Number of Slices:                       13  out of    960     1%  
- Number of Slice Flip Flops:             20  out of   1920     1%  
- Number of 4 input LUTs:                 10  out of   1920     0%  
+ Number of Slices:                        4  out of    960     0%  
+ Number of Slice Flip Flops:              8  out of   1920     0%  
+ Number of 4 input LUTs:                  1  out of   1920     0%  
  Number of IOs:                          12
  Number of bonded IOBs:                  12  out of     83    14%  
+    IOB Flip Flops:                       1
  Number of GCLKs:                         1  out of     24     4%  
 
 ---------------------------
@@ -266,26 +253,25 @@ Clock Information:
 -----------------------------------+------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
-SCK                                | BUFGP                  | 20    |
+SCK                                | BUFGP                  | 9     |
 -----------------------------------+------------------------+-------+
 
 Asynchronous Control Signals Information:
 ----------------------------------------
--------------------------------------+------------------------+-------+
-Control Signal                       | Buffer(FF name)        | Load  |
--------------------------------------+------------------------+-------+
-RESET                                | IBUF                   | 12    |
-skift_reg_or0000(skift_reg_or00001:O)| NONE(skift_reg_0)      | 8     |
--------------------------------------+------------------------+-------+
+-----------------------------------+------------------------+-------+
+Control Signal                     | Buffer(FF name)        | Load  |
+-----------------------------------+------------------------+-------+
+RESET                              | IBUF                   | 9     |
+-----------------------------------+------------------------+-------+
 
 Timing Summary:
 ---------------
 Speed Grade: -4
 
-   Minimum period: 4.032ns (Maximum Frequency: 248.016MHz)
-   Minimum input arrival time before clock: 3.908ns
-   Maximum output required time after clock: 4.283ns
-   Maximum combinational path delay: No path found
+   Minimum period: 1.346ns (Maximum Frequency: 742.942MHz)
+   Minimum input arrival time before clock: 3.948ns
+   Maximum output required time after clock: 4.310ns
+   Maximum combinational path delay: 6.665ns
 
 Timing Detail:
 --------------
@@ -293,75 +279,92 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'SCK'
-  Clock period: 4.032ns (frequency: 248.016MHz)
-  Total number of paths / destination ports: 111 / 39
+  Clock period: 1.346ns (frequency: 742.942MHz)
+  Total number of paths / destination ports: 7 / 7
 -------------------------------------------------------------------------
-Delay:               4.032ns (Levels of Logic = 2)
-  Source:            Counter_2 (FF)
-  Destination:       Counter_0 (FF)
+Delay:               1.346ns (Levels of Logic = 0)
+  Source:            skift_reg_1 (FF)
+  Destination:       skift_reg_0 (FF)
   Source Clock:      SCK rising
   Destination Clock: SCK rising
 
-  Data Path: Counter_2 to Counter_0
+  Data Path: skift_reg_1 to skift_reg_0
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDCE:C->Q             5   0.591   0.808  Counter_2 (Counter_2)
-     LUT4:I0->O           10   0.704   0.917  skift_reg_cmp_le00001 (skift_reg_cmp_le0000)
-     LUT3:I2->O            1   0.704   0.000  Counter_mux0000<3>1 (Counter_mux0000<3>)
-     FDCE:D                    0.308          Counter_0
+     FDCE:C->Q             2   0.591   0.447  skift_reg_1 (skift_reg_1)
+     FDCE:D                    0.308          skift_reg_0
     ----------------------------------------
-    Total                      4.032ns (2.307ns logic, 1.725ns route)
-                                       (57.2% logic, 42.8% route)
+    Total                      1.346ns (0.899ns logic, 0.447ns route)
+                                       (66.8% logic, 33.2% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'SCK'
-  Total number of paths / destination ports: 9 / 9
+  Total number of paths / destination ports: 11 / 11
 -------------------------------------------------------------------------
-Offset:              3.908ns (Levels of Logic = 2)
+Offset:              3.948ns (Levels of Logic = 2)
   Source:            SSnot (PAD)
-  Destination:       Counter_0 (FF)
+  Destination:       skift_reg_0 (FF)
   Destination Clock: SCK rising
 
-  Data Path: SSnot to Counter_0
+  Data Path: SSnot to skift_reg_0
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O             6   1.218   0.844  SSnot_IBUF (SSnot_IBUF)
-     LUT4:I0->O            4   0.704   0.587  Counter_not00021 (Counter_not0002)
-     FDCE:CE                   0.555          Counter_0
+     IBUF:I->O             1   1.218   0.420  SSnot_IBUF (SSnot_IBUF)
+     INV:I->O             17   0.704   1.051  SSnot_inv1_INV_0 (SSnot_inv)
+     FDCE:CE                   0.555          skift_reg_0
     ----------------------------------------
-    Total                      3.908ns (2.477ns logic, 1.431ns route)
-                                       (63.4% logic, 36.6% route)
+    Total                      3.948ns (2.477ns logic, 1.471ns route)
+                                       (62.7% logic, 37.3% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'SCK'
   Total number of paths / destination ports: 8 / 8
 -------------------------------------------------------------------------
-Offset:              4.283ns (Levels of Logic = 1)
-  Source:            para_reg_7 (FF)
-  Destination:       LED<7> (PAD)
+Offset:              4.310ns (Levels of Logic = 1)
+  Source:            skift_reg_6 (FF)
+  Destination:       LED<6> (PAD)
   Source Clock:      SCK rising
 
-  Data Path: para_reg_7 to LED<7>
+  Data Path: skift_reg_6 to LED<6>
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDCE:C->Q             1   0.591   0.420  para_reg_7 (para_reg_7)
-     OBUF:I->O                 3.272          LED_7_OBUF (LED<7>)
+     FDCE:C->Q             2   0.591   0.447  skift_reg_6 (skift_reg_6)
+     OBUFT:I->O                3.272          LED_6_OBUFT (LED<6>)
     ----------------------------------------
-    Total                      4.283ns (3.863ns logic, 0.420ns route)
-                                       (90.2% logic, 9.8% route)
+    Total                      4.310ns (3.863ns logic, 0.447ns route)
+                                       (89.6% logic, 10.4% route)
+
+=========================================================================
+Timing constraint: Default path analysis
+  Total number of paths / destination ports: 8 / 8
+-------------------------------------------------------------------------
+Delay:               6.665ns (Levels of Logic = 3)
+  Source:            SSnot (PAD)
+  Destination:       LED<7> (PAD)
+
+  Data Path: SSnot to LED<7>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             1   1.218   0.420  SSnot_IBUF (SSnot_IBUF)
+     INV:I->O             17   0.704   1.051  SSnot_inv1_INV_0 (SSnot_inv)
+     OBUFT:T->O                3.272          LED_7_OBUFT (LED<7>)
+    ----------------------------------------
+    Total                      6.665ns (5.194ns logic, 1.471ns route)
+                                       (77.9% logic, 22.1% route)
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 4.00 secs
-Total CPU time to Xst completion: 4.35 secs
+Total REAL time to Xst completion: 5.00 secs
+Total CPU time to Xst completion: 5.13 secs
  
 --> 
 
-Total memory usage is 4494640 kilobytes
+Total memory usage is 4510824 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    0 (   0 filtered)
