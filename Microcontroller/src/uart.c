@@ -2,106 +2,178 @@
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
-#include <stdlib.h>
 #include <string.h>
 #include "uart.h"
+extern volatile uint16_t record_length;
+extern volatile uint16_t current_timer1_top;
 
-// UART buffer and flags
-volatile char uart_buffer[32];
-volatile uint8_t uart_index = 0;
-volatile uint8_t uart_rx_flag = 0;
+#include "ADC.h" // Needed for init_timer1()
+#define MAX_RECORD_LENGTH 1000
 
-uint8_t temp_min_pwm = 0;
-uint8_t temp_max_pwm = 255;
-uint8_t new_pwm_values_received = 0;
 
-// Initialize UART with specified baud rate. Look up the table on page 231 of the Atmega2560 datasheet, for selecting your correct parameter.
+// === UART Initialization ===
 void uart_init(unsigned int ubrr)
 {
-    UBRR0H = (unsigned char)(ubrr >> 8);                  // USART0 Baud rate register high byte (S.412)
-    UBRR0L = (unsigned char)ubrr;                         // USART0 Baud rate register low byte (S.412)
-    UCSR0A |= (1 << U2X0);                                // Enable double speed (S.223)
-    UCSR0B = (1 << RXEN0) | (1 << TXEN0) | (1 << RXCIE0); // Enable RX, TX, and RX interrupt (S.224)
-    UCSR0C = (1 << UCSZ01) | (1 << UCSZ00);               // 8-bit data format (S.226)
-    // No parity ((UPM00 & UUPM01) = 0), 1 stopbit (USBS0 = 0), async mode ((UMSEL00 & UMSEL01 = 0)) (S.225-226)
-    // One complete data cycle is 1 start-bit followed by 8 data-bit's followed by 1 stop-bit.
+    UBRR0H = (unsigned char)(ubrr >> 8);    // USART0 Baud rate register high byte (S.412)
+    UBRR0L = (unsigned char)ubrr;           // USART0 Baud rate register low byte (S.412)
+    UCSR0A |= (1 << U2X0);                  // Enable double speed (S.223)
+    UCSR0B = (1 << RXEN0) | (1 << TXEN0);   // Enable RX and TX (S.224)
+    UCSR0C = (1 << UCSZ01) | (1 << UCSZ00); // 8-bit data format (S.226)
+    // No parity, 1 stop bit, asynchronous mode
 }
 
-// Send one character via UART. Exsampel from atmega2560 datasheet on page 212
+// === Send one character ===
 void uart_send(char data)
 {
-    while (!(UCSR0A & (1 << UDRE0))); // Wait until UDRE0 is high meaning buffer is clear an ready to be written (S.223)
-    UDR0 = data; // udates data into buffer and sends data (S.212)
+    while (!(UCSR0A & (1 << UDRE0)))
+        ;        // Wait until buffer is ready (S.223)
+    UDR0 = data; // Send data (S.212)
 }
 
-// Send string via UART
+// === Send string ===
 void uart_send_string(const char *str)
 {
     while (*str)
         uart_send(*str++);
 }
 
-// ISR for UART RX
-ISR(USART0_RX_vect)
+// === Send LabVIEW-formatted oscilloscope data packet ===
+// === NEW === Type 0x02 packet (ADC samples)
+void send_oscilloscope_packet(uint8_t *samples, uint16_t length)
 {
-    char received = UDR0;
-    if (received == '\r' || received == '\n')
-    {
-        uart_buffer[uart_index] = '\0';
-        uart_index = 0;
-        uart_rx_flag = 1;
-    }
-    else if (uart_index < sizeof(uart_buffer) - 1)
-    {
-        uart_buffer[uart_index++] = received;
-    }
+    uart1_send(0x55); // Sync byte 1
+    uart1_send(0xAA); // Sync byte 2
+
+    uint16_t payload_length = 1 + length + 2; // Type + Data + Checksum
+    uart1_send((payload_length >> 8) & 0xFF); // Length MSB
+    uart1_send(payload_length & 0xFF);        // Length LSB
+
+    uart1_send(0x02); // Type: OSCILLOSCOPE
+
+    // === Critical: send all sample bytes ===
+    for (uint16_t i = 0; i < length; i++)
+        uart1_send(samples[i]);
+
+    // === Critical: send final 2 checksum bytes ===
+    uart1_send(0x00); // Checksum LSB (ZERO16)
+    uart1_send(0x00); // Checksum MSB (ZERO16)
 }
 
-// Handle UART commands for PWM
-void process_uart_command(void)
-{
-    uart_send_string("Got: ");
-    uart_send_string((char *)uart_buffer);
-    uart_send_string("\r\n");
 
-    if (strncmp((char *)uart_buffer, "MIN:", 4) == 0)
+
+// === NEW === Initialize UART1 for LabVIEW communication
+void uart1_init(unsigned int ubrr)
+{
+    UBRR1H = (unsigned char)(ubrr >> 8);
+    UBRR1L = (unsigned char)ubrr;
+    UCSR1A |= (1 << U2X1);
+    UCSR1B = (1 << RXEN1) | (1 << TXEN1) | (1 << RXCIE1); // Enable RX interrupt
+    UCSR1C = (1 << UCSZ11) | (1 << UCSZ10);
+}
+
+// === NEW === Send one character via UART1
+void uart1_send(char data)
+{
+    while (!(UCSR1A & (1 << UDRE1)))
+        ;
+    UDR1 = data;
+}
+
+// === NEW === UART1 receive buffer
+#define UART1_RX_BUFFER_SIZE 128
+volatile uint8_t uart1_rx_buffer[UART1_RX_BUFFER_SIZE];
+volatile uint8_t uart1_rx_index = 0;
+volatile uint8_t uart1_packet_ready = 0;
+
+// === NEW === UART1 RX ISR
+ISR(USART1_RX_vect)
+{
+    uint8_t byte = UDR1;
+
+    if (uart1_rx_index < UART1_RX_BUFFER_SIZE)
     {
-        int value = atoi((char *)&uart_buffer[4]);
-        if (value < 0 || value > 255)
+        uart1_rx_buffer[uart1_rx_index++] = byte;
+
+        // Once we have at least 4 bytes, check for full packet
+        if (uart1_rx_index >= 5)
         {
-            uart_send_string("Error: MIN must be between 0 and 255!\r\n");
-        }
-        else if (value >= temp_max_pwm)
-        {
-            uart_send_string("Error: MIN cannot be >= MAX!\r\n");
-        }
-        else
-        {
-            temp_min_pwm = value;
-            uart_send_string("Temp MIN stored. Press button to apply.\r\n");
-            new_pwm_values_received = 1;
-        }
-    }
-    else if (strncmp((char *)uart_buffer, "MAX:", 4) == 0)
-    {
-        int value = atoi((char *)&uart_buffer[4]);
-        if (value < 0 || value > 255)
-        {
-            uart_send_string("Error: MAX must be between 0 and 255!\r\n");
-        }
-        else if (value <= temp_min_pwm)
-        {
-            uart_send_string("Error: MAX cannot be <= MIN!\r\n");
-        }
-        else
-        {
-            temp_max_pwm = value;
-            uart_send_string("Temp MAX stored. Press button to apply.\r\n");
-            new_pwm_values_received = 1;
+            uint16_t length = (uart1_rx_buffer[2] << 8) | uart1_rx_buffer[3];
+            if (uart1_rx_index == length)
+            {
+                uart1_packet_ready = 1;
+            }
         }
     }
     else
     {
-        uart_send_string("Invalid UART command! Use MIN: or MAX:\r\n");
+        uart1_rx_index = 0; // Overflow protection
     }
+}
+
+// === NEW === Packet parser
+void parse_uart1_packet()
+{
+    if (!uart1_packet_ready)
+        return;
+
+    uart1_packet_ready = 0;
+
+    // Validate sync
+    if (uart1_rx_buffer[0] != 0x55 || uart1_rx_buffer[1] != 0xAA)
+    {
+        uart1_rx_index = 0;
+        return;
+    }
+
+    uint16_t length = (uart1_rx_buffer[2] << 8) | uart1_rx_buffer[3];
+    if (length > UART1_RX_BUFFER_SIZE)
+    {
+        uart1_rx_index = 0;
+        return;
+    }
+
+    uint8_t type = uart1_rx_buffer[4];
+
+    switch (type)
+    {
+    case 0x01: // BTN
+    {
+        uint8_t btn = uart1_rx_buffer[5];
+        uint8_t sw = uart1_rx_buffer[6];
+        uart_send_string("BTN received\r\n");
+        // TODO: store btn/sw and forward via SPI if needed
+        break;
+    }
+
+    case 0x02: // SEND
+    {
+        uint16_t sample_rate = (uart1_rx_buffer[5] << 8) | uart1_rx_buffer[6];
+        uint16_t record_len = (uart1_rx_buffer[7] << 8) | uart1_rx_buffer[8];
+
+        // Bounds checking
+        if (record_len > 0 && record_len <= MAX_RECORD_LENGTH)
+        {
+            record_length = record_len;
+        }
+
+        if (sample_rate >= 10 && sample_rate <= 10000)
+        {
+            current_timer1_top = F_CPU / (8 * sample_rate);
+            init_timer1(current_timer1_top); // Update Timer1 on-the-fly
+        }
+
+        uart_send_string("SEND parsed: updated record_length and sample_rate\r\n");
+        break;
+    }
+
+    case 0x03: // START (e.g., for BODE)
+        uart_send_string("START received\r\n");
+        break;
+
+    default:
+        uart_send_string("Unknown type\r\n");
+        break;
+    }
+
+    uart1_rx_index = 0;
 }
