@@ -24,7 +24,7 @@ void master_init()
     PORTB |= (1 << PB0);                          // Set SS high (inactive)
 
     SPCR |= (1 << SPE) | (1 << MSTR) | (1 << DORD); // Enable SPI in master mode, (DORD = 1) makes so LSB transmits first
-    SPCR |= (1 << SPR0) | (1 << SPR1);              // Set clock rate fck/128 (S.203), 250 kHz with F_CPU = 16 MHz
+    SPCR |= (1 << SPR0) | (1 << SPR1);              // Set clock rate fck/128 (S.203), 125 kHz with F_CPU = 16 MHz
     SPCR &= ~((1 << CPOL) | (1 << CPHA));           // Sample on rising edge, transmit on falling (S.200–202)
 }
 
