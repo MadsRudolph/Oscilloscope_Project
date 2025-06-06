@@ -6,7 +6,7 @@
 // SPI function declarations
 void master_init(void);
 void slave_init(void);
-unsigned char master_transmit(unsigned char data);
+void master_transmit(uint8_t data);
 unsigned char slave_reciver(unsigned char data);
 
 #endif // SPI_H

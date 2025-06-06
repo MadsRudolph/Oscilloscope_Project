@@ -25,7 +25,7 @@ enum states
 enum states state = state_init;
 
 // Interrupt Service Routine (ISR) for TIMER1 Compare Match B (see ADC.c for more info)
-ISR(TIMER1_COMPB_vect) {}
+// ISR(TIMER1_COMPB_vect) {}
 
 int main(void)
 {
@@ -44,10 +44,10 @@ int main(void)
             // Repeated SPI transfers with visible SS activity on oscilloscope
             while (1)
             {
-                master_transmit(170);   // Send data via SPI (0b10101010 = 0xAA)
-                _delay_ms(100);         // Short delay to clearly observe SS/SCK on scope
-                master_transmit(85);    // Send data via SPI (0b01010101 = 0x55)
-                _delay_ms(100);         // Short delay to clearly observe SS/SCK on scope
+                master_transmit(170); // Send data via SPI (0b10101010 = 0xAA)
+                _delay_ms(100);       // Short delay to clearly observe SS/SCK on scope
+                master_transmit(85);  // Send data via SPI (0b01010101 = 0x55)
+                _delay_ms(100);       // Short delay to clearly observe SS/SCK on scope
             }
             break;
 
