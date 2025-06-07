@@ -1,40 +1,41 @@
 #include <avr/io.h>
-#include <avr/interrupt.h> // Include interrupt handling
+#include <avr/interrupt.h>
 
-// Initialize ADC channel 0 (Analog input pin A0 on Arduino)
+// === Initialize ADC channel 0 (A0) with auto-trigger from Timer1 Compare Match B ===
 void init_ADC_kanal0()
 {
-    ADMUX = (1 << REFS0) | (1 << ADLAR); // AVcc reference + left adjust result
-                          // MUX[3:0] = 0000 → ADC0 selected — S.290 Table 26-4
+    ADMUX = (1 << REFS0) | (1 << ADLAR); // Use AVcc as reference, left-adjust result (8-bit in ADCH)
+    // ADC0 selected by default (MUX[3:0] = 0000)
 
-    ADCSRA |= (1 << ADEN); // Enable ADC — S.292
-    ADCSRA |= (1 << ADSC); // Start first conversion (warm-up) — S.293
+    ADCSRA = (1 << ADEN)  | // Enable ADC
+             (1 << ADATE) | // Auto Trigger Enable
+             (1 << ADIE)  | // Enable ADC interrupt (ISR will clear interrupt flag)
+             (1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0); // Prescaler = 128 (ADC clock = 125kHz @ 16MHz)
 
-    ADCSRA |= (1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0); // Prescaler = 128 → 125kHz ADC clock @ 16MHz — S.293
+    ADCSRB = (1 << ADTS2) | (1 << ADTS0); // Auto Trigger Source = Timer1 Compare Match B (ADTS[2:0] = 101)
 
-    //ADCSRA |= (1 << ADIE);  // Enable ADC interrupt — S.293
-    ADCSRA |= (1 << ADATE); // Enable auto-trigger — S.293
+    DIDR0 = (1 << ADC0D); // Disable digital input on ADC0 (optional but recommended)
 
-    ADCSRB |= (1 << ADTS2) | (1 << ADTS0); // Trigger source = Timer1 Compare Match B (ADTS[2:0] = 101) — S.295
+    ADCSRA |= (1 << ADSC); // Start first conversion
 }
 
+// === ADC ISR to acknowledge interrupt only ===
 ISR(ADC_vect)
 {
-    // do nothing, just prevent reset
+    // Empty ISR to clear interrupt flag (sampling is handled in TIMER1_COMPB_vect)
 }
 
-
-// Initialize Timer1 to trigger ADC at specified rate
+// === Initialize Timer1 to trigger ADC at given sampling rate ===
 void init_timer1(int top_value)
 {
-    TCCR1A = 0;  // Clear Timer1 control A — avoid PWM
-    TCNT1 = 0;   // Reset Timer1 counter
+    TCCR1A = 0;            // Normal operation
+    TCCR1B = (1 << WGM12); // CTC mode (TOP = OCR1A)
+    TCNT1 = 0;             // Reset timer counter
 
-    TCCR1B |= (1 << WGM12); // CTC mode (TOP = OCR1A) — S.148, S.161
-    TCCR1B |= (1 << CS11);  // Prescaler = 8 — S.161
+    OCR1A = top_value;     // Used by CTC mode
+    OCR1B = top_value;     // Used to trigger ADC
 
-    OCR1A = top_value;      // Sets TOP value for sampling frequency
-                            // Sampling rate = F_CPU / (8 * top_value)
+    TIMSK1 |= (1 << OCIE1B); // Enable Compare Match B interrupt
 
-    TIMSK1 |= (1 << OCIE1B); // Enable Timer1 Compare Match B interrupt — S.166
+    TCCR1B |= (1 << CS11);  // Start timer with prescaler = 8
 }

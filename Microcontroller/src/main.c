@@ -16,7 +16,6 @@
 #include "ADC.h"  // Include ADC initialization functions
 #include "SPI.h"  // Include SPI communication functions
 #include "uart.h" // Includes uart functions
-volatile uint16_t current_timer1_top;
 
 // === NEW === Define maximum buffer size for dynamic record length
 #define MAX_RECORD_LENGTH 1000
@@ -51,6 +50,7 @@ ISR(TIMER1_COMPB_vect)
         buffer_ready = true;
         sample_index = 0;
     }
+    ADCSRA |= (1 << ADSC); // Restart ADC conversion
 }
 
 int main(void)
@@ -69,7 +69,6 @@ int main(void)
             master_init();                               // Initialize SPI master (see SPI.c for details)
             uart_init(16);                               // Set a unsigned integer in the parameter to choose Baud rate (parameter(16) = Baud rate(115200)). Look up uart.c for more info
             uart1_init(16);                              // === NEW === Initialize UART1 for LabVIEW (115200 baud, U2X1 enabled)
-            uart1_send(0x55);  // should go to LabVIEW COM
             uart_send_string("System initialized.\r\n"); // === NEW === Debug message via UART0
 
             sei();                       // === NEW === Enable global interrupts
@@ -91,13 +90,13 @@ int main(void)
             // === NEW === If ADC buffer is ready, send UART packet to LabVIEW
             if (buffer_ready)
             {
-                send_oscilloscope_packet(adc_samples, record_length);
+                send_oscilloscope_packet((uint8_t *)adc_samples, record_length);
                 buffer_ready = false;
 
                 _delay_ms(100); // Short delay to avoid flooding LabVIEW
-                uart_send_string("Sample: ");
-                char buf[8];
-                sprintf(buf, "%02X\r\n", adc_samples[0]); // Print first sample in hex
+                uart_send_string("\rSample: ");
+                char buf[16];
+                sprintf(buf, "%02X      ", adc_samples[0]); // Add extra spaces to clear previous output
                 uart_send_string(buf);
             }
 

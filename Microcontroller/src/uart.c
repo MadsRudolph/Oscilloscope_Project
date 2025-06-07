@@ -4,12 +4,12 @@
 #include <avr/interrupt.h>
 #include <string.h>
 #include "uart.h"
+#include <util/delay.h>
 extern volatile uint16_t record_length;
 extern volatile uint16_t current_timer1_top;
 
 #include "ADC.h" // Needed for init_timer1()
 #define MAX_RECORD_LENGTH 1000
-
 
 // === UART Initialization ===
 void uart_init(unsigned int ubrr)
@@ -38,27 +38,40 @@ void uart_send_string(const char *str)
 }
 
 // === Send LabVIEW-formatted oscilloscope data packet ===
-// === NEW === Type 0x02 packet (ADC samples)
+// === Conforms to protocol Type 0x02 (ADC samples) with ZERO16 checksum ===
 void send_oscilloscope_packet(uint8_t *samples, uint16_t length)
 {
     uart1_send(0x55); // Sync byte 1
     uart1_send(0xAA); // Sync byte 2
 
-    uint16_t payload_length = 1 + length + 2; // Type + Data + Checksum
+    // === Compute payload length: Type (1) + Data (length) + Checksum (2) ===
+    uint16_t payload_length = 1 + length + 2;
     uart1_send((payload_length >> 8) & 0xFF); // Length MSB
     uart1_send(payload_length & 0xFF);        // Length LSB
 
     uart1_send(0x02); // Type: OSCILLOSCOPE
 
-    // === Critical: send all sample bytes ===
+    // === Initialize checksum (ZERO16 scheme sums all payload bytes to 0x0000) ===
+    uint16_t checksum = 0;
+    checksum += (payload_length >> 8); // length MSB
+    checksum += (payload_length & 0xFF); // length LSB
+    checksum += 0x02; // type
+
+    // === Send ADC samples and add to checksum ===
     for (uint16_t i = 0; i < length; i++)
+    {
         uart1_send(samples[i]);
+        checksum += samples[i];
+    }
 
-    // === Critical: send final 2 checksum bytes ===
-    uart1_send(0x00); // Checksum LSB (ZERO16)
-    uart1_send(0x00); // Checksum MSB (ZERO16)
+    // === Finalize ZERO16 checksum so that sum of payload + checksum = 0x0000 ===
+    checksum = (0x10000 - checksum) & 0xFFFF;
+
+    uart1_send(checksum & 0xFF);        // Checksum LSB
+    uart1_send((checksum >> 8) & 0xFF); // Checksum MSB
+
+    _delay_ms(2); // Allow UART1 time to transmit
 }
-
 
 
 // === NEW === Initialize UART1 for LabVIEW communication
