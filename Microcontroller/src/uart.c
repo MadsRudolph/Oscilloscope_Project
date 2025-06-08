@@ -38,39 +38,42 @@ void uart_send_string(const char *str)
 }
 
 // === Send LabVIEW-formatted oscilloscope data packet ===
-// === Conforms to protocol Type 0x02 (ADC samples) with ZERO16 checksum ===
 void send_oscilloscope_packet(uint8_t *samples, uint16_t length)
 {
     uart1_send(0x55); // Sync byte 1
     uart1_send(0xAA); // Sync byte 2
 
-    // === Compute payload length: Type (1) + Data (length) + Checksum (2) ===
-    uint16_t payload_length = 1 + length + 2;
+    uint16_t payload_length = 1 + length + 2; // Type + Data + Checksum
+
     uart1_send((payload_length >> 8) & 0xFF); // Length MSB
     uart1_send(payload_length & 0xFF);        // Length LSB
 
     uart1_send(0x02); // Type: OSCILLOSCOPE
 
-    // === Initialize checksum (ZERO16 scheme sums all payload bytes to 0x0000) ===
     uint16_t checksum = 0;
-    checksum += (payload_length >> 8); // length MSB
-    checksum += (payload_length & 0xFF); // length LSB
-    checksum += 0x02; // type
+    checksum += (payload_length >> 8);        // Length MSB
+    checksum += (payload_length & 0xFF);      // Length LSB
+    checksum += 0x02;                         // Type byte
 
-    // === Send ADC samples and add to checksum ===
-    for (uint16_t i = 0; i < length; i++)
-    {
+    for (uint16_t i = 0; i < length; i++) {
         uart1_send(samples[i]);
         checksum += samples[i];
     }
 
-    // === Finalize ZERO16 checksum so that sum of payload + checksum = 0x0000 ===
-    checksum = (0x10000 - checksum) & 0xFFFF;
+    checksum = (0x10000 - checksum) & 0xFFFF; // ZERO16 correction
 
-    uart1_send(checksum & 0xFF);        // Checksum LSB
-    uart1_send((checksum >> 8) & 0xFF); // Checksum MSB
+    uart1_send(checksum & 0xFF);              // Checksum LSB
+    uart1_send((checksum >> 8) & 0xFF);       // Checksum MSB
 
-    _delay_ms(2); // Allow UART1 time to transmit
+    _delay_ms(2); // Ensure data is sent before next packet
+}
+
+
+void uart_send_hex(uint8_t val)
+{
+    char buf[4];
+    sprintf(buf, "%02X", val);
+    uart_send_string(buf);
 }
 
 
