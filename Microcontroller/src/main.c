@@ -92,7 +92,6 @@ int main(void)
                 send_oscilloscope_packet((uint8_t *)adc_samples, record_length);
                 buffer_ready = false;
 
-                _delay_ms(300); // Short delay to avoid flooding LabVIEW
                 uart_send_string("\rSample: ");
                 char buf[16];
                 sprintf(buf, "%02X      ", adc_samples[0]); // Add extra spaces to clear previous output

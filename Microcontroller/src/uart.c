@@ -43,29 +43,27 @@ void send_oscilloscope_packet(uint8_t *samples, uint16_t length)
     uart1_send(0x55); // Sync byte 1
     uart1_send(0xAA); // Sync byte 2
 
-    uint16_t payload_length = 1 + length + 2; // Type + Data + Checksum
+    uint16_t payload_length = 2 + 2 + 1 + length + 2; // Type + Data + Checksum
 
     uart1_send((payload_length >> 8) & 0xFF); // Length MSB
     uart1_send(payload_length & 0xFF);        // Length LSB
 
     uart1_send(0x02); // Type: OSCILLOSCOPE
 
-    uint16_t checksum = 0;
-    checksum += (payload_length >> 8);        // Length MSB
-    checksum += (payload_length & 0xFF);      // Length LSB
-    checksum += 0x02;                         // Type byte
+    //uint16_t checksum = 0;
+    //checksum += (payload_length >> 8);        // Length MSB
+    //checksum += (payload_length & 0xFF);      // Length LSB
+    //checksum += 0x02;                         // Type byte
 
     for (uint16_t i = 0; i < length; i++) {
         uart1_send(samples[i]);
-        checksum += samples[i];
+        //checksum += samples[i];
     }
 
-    checksum = (0x10000 - checksum) & 0xFFFF; // ZERO16 correction
+    //checksum = (0x10000 - checksum) & 0xFFFF; // ZERO16 correction
 
-    uart1_send(checksum & 0xFF);              // Checksum LSB
-    uart1_send((checksum >> 8) & 0xFF);       // Checksum MSB
-
-    _delay_ms(2); // Ensure data is sent before next packet
+    uart1_send(0x00);              // Checksum LSB
+    uart1_send(0x00);       // Checksum MSB
 }
 
 
