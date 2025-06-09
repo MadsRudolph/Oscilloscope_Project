@@ -40,16 +40,57 @@ int main(void)
             state = state_transmit_SPI;
             break;
 
-        case state_transmit_SPI:
-            // Repeated SPI transfers with visible SS activity on oscilloscope
-            while (1)
+       case state_transmit_SPI:
+    {
+        uint8_t led = 0x01;
+        uint8_t reverse = 0x80;
+        uint8_t pattern = 0x00;
+        uint8_t wave[] = {0x01, 0x03, 0x07, 0x0F, 0x1F, 0x3F, 0x7F, 0xFF,
+                          0x7F, 0x3F, 0x1F, 0x0F, 0x07, 0x03, 0x01};
+        uint8_t len = sizeof(wave) / sizeof(wave[0]);
+        uint8_t i = 0;
+
+        while (1)
+        {
+            // 💡 Bounce two LEDs toward each other
+            for (int j = 0; j < 4; j++)
             {
-                master_transmit(170); // Send data via SPI (0b10101010 = 0xAA)
-                _delay_ms(100);       // Short delay to clearly observe SS/SCK on scope
-                master_transmit(85);  // Send data via SPI (0b01010101 = 0x55)
-                _delay_ms(100);       // Short delay to clearly observe SS/SCK on scope
+                master_transmit(led | reverse);
+                _delay_ms(100);
+                led <<= 1;
+                reverse >>= 1;
             }
-            break;
+
+            // Pause dramatically before next
+            _delay_ms(300);
+            led = 0x01;
+            reverse = 0x80;
+
+            // 🌊 Wave sequence
+            for (i = 0; i < len; i++)
+            {
+                master_transmit(wave[i]);
+                _delay_ms(80);
+            }
+
+            // 🌀 Alternating single LED bounce
+            pattern = 0x01;
+            for (i = 0; i < 7; i++)
+            {
+                master_transmit(pattern);
+                _delay_ms(70);
+                pattern <<= 1;
+            }
+            for (i = 0; i < 7; i++)
+            {
+                pattern >>= 1;
+                master_transmit(pattern);
+                _delay_ms(70);
+            }
+        }
+    }
+    break;
+
 
         default:
             break;
