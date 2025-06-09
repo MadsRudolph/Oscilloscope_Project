@@ -80,7 +80,7 @@ LAB3:    t1 = (t0 + 3968);
 
 LAB1:    return;
 LAB2:    xsi_set_current_line(25, ng0);
-    t1 = (t0 + 6596);
+    t1 = (t0 + 6600);
     t6 = (t0 + 4080);
     t7 = (t6 + 56U);
     t8 = *((char **)t7);
@@ -255,6 +255,6 @@ LAB6:    goto LAB2;
 extern void work_a_3580701064_3212880686_init()
 {
 	static char *pe[] = {(void *)work_a_3580701064_3212880686_p_0,(void *)work_a_3580701064_3212880686_p_1,(void *)work_a_3580701064_3212880686_p_2};
-	xsi_register_didat("work_a_3580701064_3212880686", "isim/TB_isim_beh.exe.sim/work/a_3580701064_3212880686.didat");
+	xsi_register_didat("work_a_3580701064_3212880686", "isim/TB_TOP34444_isim_beh.exe.sim/work/a_3580701064_3212880686.didat");
 	xsi_register_executes(pe);
 }

@@ -16,13 +16,13 @@ end ProtokolBlok;
 
 architecture Behavioral of ProtokolBlok is
 
-type Statetype is (IDLE, ADDR, Data, CheckSum, ShapeS, AmpS, FreqS);
+type Statetype is (IDLE, CheckSum, ShapeS, AmpS, FreqS);
 
 signal state, nextstate : Statetype;
-signal flag, FreqFlag, ShapeFlag, AmpFlag: STD_LOGIC;
-signal ADDRReg, DataReg, SyncReg, AmpReg, FreqReg, ShapeReg, CheckSumReg: STD_LOGIC_VECTOR(7 downto 0);
+signal sync2_flag, sync1_flag, ShapeFlag, AmpFlag, FreqFlag, CRC_flag: STD_LOGIC;
+signal SyncReg1, SyncReg2, LengthReg1, LengthReg2, AmpReg, FreqReg, ShapeReg, CheckSumReg: STD_LOGIC_VECTOR(7 downto 0);
 
-
+ 
 
 
 begin
@@ -30,6 +30,7 @@ begin
 Statereg: process(CLK, Reset)
     begin 
         if Reset = '1' then 
+		 
             state <= IDLE;  -- Reset state to IDLE
         elsif CLK'event and CLK = '1' then
             state <= nextstate;  -- Update state on clock edge
@@ -42,73 +43,82 @@ Statereg: process(CLK, Reset)
 	 
 	 
 -- Default values
-
 	
 	CheckSumReg <= "00000000";
 
 	
 	case state is
 	when IDLE =>
-		if SPIdat = "00000000" and DataReady = '1' then -- check spidat(sync) stemmer
-		flag <='1';	
-		SyncReg <= SPIdat;
-		nextstate <= ADDR; 
-		else 
-		nextstate <= IDLE; 
-		end if;
-		
-	when ADDR => 
-		if flag = '1' and DataReady = '1' then 
-			ADDRReg <= SPIdat; 
-			flag <= '1';
-			nextstate <= Data;
-		else 
-		nextstate <= ADDR;
-		end if;
+		CRC_flag <= '0';
 	
-	when Data => 
-		if flag = '1' and DataReady = '1' then 
-			DataReg <= SPIdat; 
-			nextstate <= CheckSum;
-		else
-			nextstate <= Data;
-	end if;
+		if SPIdat = "01010101" then -- check spidat(sync) stemmer
+			SigEN <= '0';
+			SyncReg1 <= SPIdat;
+			sync1_flag <= '1';
+		elsif (SPIdat xor SyncReg1) = "11111111" then
+			SyncReg2 <= SPIdat;
+			sync2_flag <= '1';
+		elsif (SPIdat and SyncReg2) = "00000000" and sync1_flag = '1' and sync2_flag = '1' then
+			LengthReg1 <= SPIdat;
+			sync1_flag <= '0';
+			sync2_flag <= '0';
+		elsif (SPIdat xor LengthReg1) = "00001010" then
+			LengthReg2 <= SPIdat;
+		elsif (SPIdat xor LengthReg2) = "00001000" then
+			nextstate <= ShapeS;
+		else 
+			nextstate <= IDLE;
+		end if; 
 
-	when Checksum =>
-		CheckSumReg <=	(SyncReg xor ADDRReg) xor DataReg;		
-			if CheckSumReg = SPIdat then
-				if ADDRReg(0) = '1' and ADDRReg(1) = '0' then -- LAV OM IFT ADDR
-				nextstate <= AmpS;
-			elsif ADDRReg(0) = '0' and ADDRReg(1) = '1' then
-				nextstate <= ShapeS;
-			elsif ADDRReg(0) = '1' and ADDRReg(1) = '1' then
-				nextstate <= FreqS;
-			else 
-				nextstate <= checksum;
-			end if;
-			end if;
 
-					
-			
-	when AmpS =>
-	AmpFlag <='1';
-	AmpReg <= DataReg;
-	nextstate <= IDLE;
-	
 	when ShapeS =>
-	ShapeFlag <='1';
-	ShapeReg <= DataReg;
-	nextstate <= IDLE;
+		if DataReady = '1' then
+			ShapeFlag <='1';
+			ShapeReg <= SPIdat;
+			nextstate <= AmpS;
+		else 
+			nextstate <=ShapeS;
+		end if;
+
+	when AmpS =>
+	if DataReady = '1' then
+		AmpFlag <='1';
+		AmpReg <= SPIdat;
+		nextstate <= FreqS;
+	else 
+		nextstate<=AmpS;
+
+	end if; 
 	
 	when FreqS =>
-	FreqFlag <='1';
-	FreqReg <= DataReg;
-	nextstate <= IDLE;	
+	if DataReady = '1' then
+		FreqFlag <='1';
+		FreqReg <= SPIdat;
+		nextstate <= CheckSum;
+	else 
+		nextstate <=FreqS;
 
+	end if; 
+	
 
-if FreqFlag = '1' and ShapeFlag = '1' and AmpFlag = '1' then
-SigEN <= '1';
-end if;
+	when CheckSum =>
+		CheckSumReg <=	(AmpReg xor FreqReg) xor ShapeReg;
+		
+		if SPIdat = "00000000" and CRC_flag ='0' and DataReady = '1' then 
+			CRC_flag <= '1';
+			nextstate <= CheckSum; 
+		
+		elsif CheckSumReg = SPIdat and CRC_flag = '1' then 		
+				SigEn <= '1';
+				nextstate <= IDLE;
+		elsif CheckSumReg /= SPIdat and CRC_flag = '1' then	
+			 nextstate <= IDLE;
+			else 
+				nextstate <= CheckSum; --Tjekke om CRC kan bruges, ellers hvad sker der hvis den ikke passer. 
+
+			end if;					
+			
+
 
 end case;
 end process;

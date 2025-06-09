@@ -3,14 +3,14 @@ Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.86 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.12 secs
  
 --> Parameter xsthdpdir set to xst
 
 
-Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.86 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.12 secs
  
 --> Reading design: SigGenSPIControl.prj
 
@@ -105,12 +105,12 @@ Slice Utilization Ratio Delta      : 5
 *                          HDL Compilation                              *
 =========================================================================
 Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/ProtokolBlok.vhd" in Library work.
-Architecture behavioral of Entity protokolblok is up to date.
+Entity <protokolblok> compiled.
+Entity <protokolblok> (Architecture <behavioral>) compiled.
 Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd" in Library work.
 Architecture behavioral of Entity skifte_reg_til_parallel is up to date.
 Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/SigGenSPIControl.vhd" in Library work.
-Entity <siggenspicontrol> compiled.
-Entity <siggenspicontrol> (Architecture <behavioral>) compiled.
+Architecture behavioral of Entity siggenspicontrol is up to date.
 
 =========================================================================
 *                     Design Hierarchy Analysis                         *
@@ -129,14 +129,13 @@ Analyzing Entity <SigGenSPIControl> in library <work> (Architecture <behavioral>
 Entity <SigGenSPIControl> analyzed. Unit <SigGenSPIControl> generated.
 
 Analyzing Entity <ProtokolBlok> in library <work> (Architecture <Behavioral>).
-WARNING:Xst:819 - "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/ProtokolBlok.vhd" line 40: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
-   <state>, <flag>, <SyncReg>, <ADDRReg>, <DataReg>
-INFO:Xst:2679 - Register <flag> in unit <ProtokolBlok> has a constant value of 1 during circuit operation. The register is replaced by logic.
-INFO:Xst:2679 - Register <AmpFlag> in unit <ProtokolBlok> has a constant value of 1 during circuit operation. The register is replaced by logic.
+WARNING:Xst:819 - "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/ProtokolBlok.vhd" line 41: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+   <state>, <SyncReg1>, <SyncReg2>, <sync1_flag>, <sync2_flag>, <LengthReg1>, <LengthReg2>, <AmpReg>, <FreqReg>, <ShapeReg>
 INFO:Xst:2679 - Register <ShapeFlag> in unit <ProtokolBlok> has a constant value of 1 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <AmpFlag> in unit <ProtokolBlok> has a constant value of 1 during circuit operation. The register is replaced by logic.
 INFO:Xst:2679 - Register <FreqFlag> in unit <ProtokolBlok> has a constant value of 1 during circuit operation. The register is replaced by logic.
 INFO:Xst:2679 - Register <SigEN> in unit <ProtokolBlok> has a constant value of 1 during circuit operation. The register is replaced by logic.
-INFO:Xst:2679 - Register <SyncReg> in unit <ProtokolBlok> has a constant value of 00000000 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <SyncReg1> in unit <ProtokolBlok> has a constant value of 01010101 during circuit operation. The register is replaced by logic.
 Entity <ProtokolBlok> analyzed. Unit <ProtokolBlok> generated.
 
 Analyzing Entity <Skifte_reg_til_Parallel> in library <work> (Architecture <Behavioral>).
@@ -154,26 +153,39 @@ Synthesizing Unit <ProtokolBlok>.
 WARNING:Xst:646 - Signal <ShapeFlag> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <FreqFlag> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <AmpFlag> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:737 - Found 8-bit latch for signal <DataReg>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
-WARNING:Xst:737 - Found 8-bit latch for signal <ADDRReg>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <sync2_flag>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 8-bit latch for signal <SyncReg2>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 8-bit latch for signal <LengthReg1>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 8-bit latch for signal <LengthReg2>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
 WARNING:Xst:737 - Found 8-bit latch for signal <AmpReg>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
 WARNING:Xst:737 - Found 8-bit latch for signal <ShapeReg>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
 WARNING:Xst:737 - Found 8-bit latch for signal <FreqReg>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <sync1_flag>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
     Using one-hot encoding for signal <state>.
-WARNING:Xst:737 - Found 7-bit latch for signal <nextstate>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 5-bit latch for signal <nextstate>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
 INFO:Xst:2371 - HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
-    Found 1-bit xor2 for signal <CheckSumReg$xor0000> created at line 78.
-    Found 1-bit xor2 for signal <CheckSumReg$xor0001> created at line 78.
-    Found 1-bit xor2 for signal <CheckSumReg$xor0002> created at line 78.
-    Found 1-bit xor2 for signal <CheckSumReg$xor0003> created at line 78.
-    Found 1-bit xor2 for signal <CheckSumReg$xor0004> created at line 78.
-    Found 1-bit xor2 for signal <CheckSumReg$xor0005> created at line 78.
-    Found 1-bit xor2 for signal <CheckSumReg$xor0006> created at line 78.
-    Found 1-bit xor2 for signal <CheckSumReg$xor0007> created at line 78.
-    Found 8-bit comparator equal for signal <nextstate$cmp_eq0001> created at line 79.
-    Found 7-bit register for signal <state>.
+    Found 8-bit xor3 for signal <CheckSumReg$xor0000> created at line 104.
+    Found 8-bit comparator equal for signal <nextstate$cmp_eq0005> created at line 105.
+    Found 1-bit xor2 for signal <nextstate$xor0000> created at line 63.
+    Found 1-bit xor2 for signal <nextstate$xor0001> created at line 63.
+    Found 1-bit xor2 for signal <nextstate$xor0002> created at line 63.
+    Found 1-bit xor2 for signal <nextstate$xor0003> created at line 63.
+    Found 1-bit xor2 for signal <nextstate$xor0004> created at line 63.
+    Found 1-bit xor2 for signal <nextstate$xor0005> created at line 63.
+    Found 1-bit xor2 for signal <nextstate$xor0006> created at line 63.
+    Found 1-bit xor2 for signal <nextstate$xor0007> created at line 63.
+    Found 1-bit xor2 for signal <nextstate$xor0008> created at line 65.
+    Found 1-bit xor2 for signal <nextstate$xor0009> created at line 65.
+    Found 1-bit xor2 for signal <nextstate$xor0010> created at line 65.
+    Found 1-bit xor2 for signal <nextstate$xor0011> created at line 65.
+    Found 1-bit xor2 for signal <nextstate$xor0012> created at line 65.
+    Found 1-bit xor2 for signal <nextstate$xor0013> created at line 65.
+    Found 1-bit xor2 for signal <nextstate$xor0014> created at line 65.
+    Found 1-bit xor2 for signal <nextstate$xor0015> created at line 65.
+    Found 5-bit register for signal <state>.
     Summary:
 	inferred   1 Comparator(s).
+	inferred   8 Xor(s).
 Unit <ProtokolBlok> synthesized.
 
 
@@ -198,17 +210,19 @@ HDL Synthesis Report
 
 Macro Statistics
 # Registers                                            : 2
- 7-bit register                                        : 1
+ 5-bit register                                        : 1
  8-bit register                                        : 1
-# Latches                                              : 6
- 7-bit latch                                           : 1
- 8-bit latch                                           : 5
+# Latches                                              : 9
+ 1-bit latch                                           : 2
+ 5-bit latch                                           : 1
+ 8-bit latch                                           : 6
 # Comparators                                          : 1
  8-bit comparator equal                                : 1
 # Tristates                                            : 1
  8-bit tristate buffer                                 : 1
-# Xors                                                 : 8
- 1-bit xor2                                            : 8
+# Xors                                                 : 17
+ 1-bit xor2                                            : 16
+ 8-bit xor3                                            : 1
 
 =========================================================================
 
@@ -221,15 +235,17 @@ Macro Statistics
 Advanced HDL Synthesis Report
 
 Macro Statistics
-# Registers                                            : 15
- Flip-Flops                                            : 15
-# Latches                                              : 6
- 7-bit latch                                           : 1
- 8-bit latch                                           : 5
+# Registers                                            : 13
+ Flip-Flops                                            : 13
+# Latches                                              : 9
+ 1-bit latch                                           : 2
+ 5-bit latch                                           : 1
+ 8-bit latch                                           : 6
 # Comparators                                          : 1
  8-bit comparator equal                                : 1
-# Xors                                                 : 8
- 1-bit xor2                                            : 8
+# Xors                                                 : 17
+ 1-bit xor2                                            : 16
+ 8-bit xor3                                            : 1
 
 =========================================================================
 
@@ -246,7 +262,31 @@ Optimizing unit <ProtokolBlok> ...
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 5) on block SigGenSPIControl, actual ratio is 3.
+Found area constraint ratio of 100 (+ 5) on block SigGenSPIControl, actual ratio is 4.
+Latch U1/FreqReg_7 has been replicated 1 time(s) to handle iob=true attribute.
+Latch U1/FreqReg_6 has been replicated 1 time(s) to handle iob=true attribute.
+Latch U1/FreqReg_5 has been replicated 1 time(s) to handle iob=true attribute.
+Latch U1/FreqReg_4 has been replicated 1 time(s) to handle iob=true attribute.
+Latch U1/FreqReg_3 has been replicated 1 time(s) to handle iob=true attribute.
+Latch U1/FreqReg_2 has been replicated 1 time(s) to handle iob=true attribute.
+Latch U1/FreqReg_1 has been replicated 1 time(s) to handle iob=true attribute.
+Latch U1/FreqReg_0 has been replicated 1 time(s) to handle iob=true attribute.
+Latch U1/ShapeReg_7 has been replicated 1 time(s) to handle iob=true attribute.
+Latch U1/ShapeReg_6 has been replicated 1 time(s) to handle iob=true attribute.
+Latch U1/ShapeReg_5 has been replicated 1 time(s) to handle iob=true attribute.
+Latch U1/ShapeReg_4 has been replicated 1 time(s) to handle iob=true attribute.
+Latch U1/ShapeReg_3 has been replicated 1 time(s) to handle iob=true attribute.
+Latch U1/ShapeReg_2 has been replicated 1 time(s) to handle iob=true attribute.
+Latch U1/ShapeReg_1 has been replicated 1 time(s) to handle iob=true attribute.
+Latch U1/ShapeReg_0 has been replicated 1 time(s) to handle iob=true attribute.
+Latch U1/AmpReg_7 has been replicated 1 time(s) to handle iob=true attribute.
+Latch U1/AmpReg_6 has been replicated 1 time(s) to handle iob=true attribute.
+Latch U1/AmpReg_5 has been replicated 1 time(s) to handle iob=true attribute.
+Latch U1/AmpReg_4 has been replicated 1 time(s) to handle iob=true attribute.
+Latch U1/AmpReg_3 has been replicated 1 time(s) to handle iob=true attribute.
+Latch U1/AmpReg_2 has been replicated 1 time(s) to handle iob=true attribute.
+Latch U1/AmpReg_1 has been replicated 1 time(s) to handle iob=true attribute.
+Latch U1/AmpReg_0 has been replicated 1 time(s) to handle iob=true attribute.
 
 Final Macro Processing ...
 
@@ -254,8 +294,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 15
- Flip-Flops                                            : 15
+# Registers                                            : 13
+ Flip-Flops                                            : 13
 
 =========================================================================
 
@@ -284,20 +324,22 @@ Design Statistics
 # IOs                              : 30
 
 Cell Usage :
-# BELS                             : 35
+# BELS                             : 84
 #      INV                         : 1
-#      LUT2                        : 9
-#      LUT3                        : 2
-#      LUT4                        : 21
-#      MUXF5                       : 1
+#      LUT2                        : 12
+#      LUT3                        : 11
+#      LUT4                        : 56
+#      LUT4_D                      : 1
+#      LUT4_L                      : 2
 #      VCC                         : 1
-# FlipFlops/Latches                : 62
-#      FDC                         : 6
+# FlipFlops/Latches                : 92
+#      FDC                         : 4
 #      FDCE                        : 8
 #      FDP                         : 1
-#      LD                          : 31
-#      LDE                         : 16
-# Clock Buffers                    : 1
+#      LD                          : 6
+#      LDE                         : 73
+# Clock Buffers                    : 2
+#      BUFG                        : 1
 #      BUFGP                       : 1
 # IO Buffers                       : 28
 #      IBUF                        : 3
@@ -309,13 +351,13 @@ Device utilization summary:
 
 Selected Device : 3s100ecp132-4 
 
- Number of Slices:                       22  out of    960     2%  
- Number of Slice Flip Flops:             38  out of   1920     1%  
- Number of 4 input LUTs:                 33  out of   1920     1%  
+ Number of Slices:                       46  out of    960     4%  
+ Number of Slice Flip Flops:             68  out of   1920     3%  
+ Number of 4 input LUTs:                 83  out of   1920     4%  
  Number of IOs:                          30
  Number of bonded IOBs:                  29  out of     83    34%  
     IOB Flip Flops:                      24
- Number of GCLKs:                         1  out of     24     4%  
+ Number of GCLKs:                         2  out of     24     8%  
 
 ---------------------------
 Partition Resource Summary:
@@ -335,18 +377,18 @@ NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
 
 Clock Information:
 ------------------
----------------------------------------------+------------------------+-------+
-Clock Signal                                 | Clock buffer(FF name)  | Load  |
----------------------------------------------+------------------------+-------+
-SCK                                          | BUFGP                  | 15    |
-U1/state_2                                   | NONE(U1/DataReg_7)     | 8     |
-U1/state_1                                   | NONE(U1/ADDRReg_7)     | 8     |
-U1/state_5                                   | NONE(U1/AmpReg_7)      | 8     |
-U1/state_4                                   | NONE(U1/ShapeReg_7)    | 8     |
-U1/state_6                                   | NONE(U1/FreqReg_7)     | 8     |
-U1/nextstate_not0001(U1/nextstate_not00011:O)| NONE(*)(U1/nextstate_6)| 7     |
----------------------------------------------+------------------------+-------+
-(*) This 1 clock signal(s) are generated by combinatorial logic,
+-----------------------------------------------+------------------------+-------+
+Clock Signal                                   | Clock buffer(FF name)  | Load  |
+-----------------------------------------------+------------------------+-------+
+SCK                                            | BUFGP                  | 13    |
+U1/state_01                                    | BUFG                   | 25    |
+U1/state_3                                     | NONE(U1/AmpReg_7)      | 16    |
+U1/state_2                                     | NONE(U1/ShapeReg_7)    | 16    |
+U1/state_4                                     | NONE(U1/FreqReg_7)     | 16    |
+U1/nextstate_not0001(U1/nextstate_not0001:O)   | NONE(*)(U1/nextstate_4)| 5     |
+U1/sync2_flag_not0001(U1/sync2_flag_not00011:O)| NONE(*)(U1/sync2_flag) | 1     |
+-----------------------------------------------+------------------------+-------+
+(*) These 2 clock signal(s) are generated by combinatorial logic,
 and XST is not able to identify which are the primary clock signals.
 Please use the CLOCK_SIGNAL constraint to specify the clock signal(s) generated by combinatorial logic.
 INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
@@ -356,15 +398,15 @@ Asynchronous Control Signals Information:
 -----------------------------------+------------------------+-------+
 Control Signal                     | Buffer(FF name)        | Load  |
 -----------------------------------+------------------------+-------+
-Reset                              | IBUF                   | 15    |
+Reset                              | IBUF                   | 13    |
 -----------------------------------+------------------------+-------+
 
 Timing Summary:
 ---------------
 Speed Grade: -4
 
-   Minimum period: 1.346ns (Maximum Frequency: 742.942MHz)
-   Minimum input arrival time before clock: 8.985ns
+   Minimum period: 6.511ns (Maximum Frequency: 153.586MHz)
+   Minimum input arrival time before clock: 10.906ns
    Maximum output required time after clock: 4.368ns
    Maximum combinational path delay: No path found
 
@@ -374,10 +416,10 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'SCK'
-  Clock period: 1.346ns (frequency: 742.942MHz)
+  Clock period: 1.430ns (frequency: 699.301MHz)
   Total number of paths / destination ports: 7 / 7
 -------------------------------------------------------------------------
-Delay:               1.346ns (Levels of Logic = 0)
+Delay:               1.430ns (Levels of Logic = 0)
   Source:            U2/skift_reg_7 (FF)
   Destination:       U2/skift_reg_6 (FF)
   Source Clock:      SCK rising
@@ -387,17 +429,64 @@ Delay:               1.346ns (Levels of Logic = 0)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDCE:C->Q             2   0.591   0.447  U2/skift_reg_7 (U2/skift_reg_7)
+     FDCE:C->Q             3   0.591   0.531  U2/skift_reg_7 (U2/skift_reg_7)
      FDCE:D                    0.308          U2/skift_reg_6
     ----------------------------------------
-    Total                      1.346ns (0.899ns logic, 0.447ns route)
-                                       (66.8% logic, 33.2% route)
+    Total                      1.430ns (0.899ns logic, 0.531ns route)
+                                       (62.9% logic, 37.1% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'U1/state_01'
+  Clock period: 6.511ns (frequency: 153.586MHz)
+  Total number of paths / destination ports: 241 / 25
+-------------------------------------------------------------------------
+Delay:               6.511ns (Levels of Logic = 4)
+  Source:            U1/SyncReg2_4 (LATCH)
+  Destination:       U1/LengthReg2_7 (LATCH)
+  Source Clock:      U1/state_01 falling
+  Destination Clock: U1/state_01 falling
+
+  Data Path: U1/SyncReg2_4 to U1/LengthReg2_7
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LDE:G->Q              2   0.676   0.482  U1/SyncReg2_4 (U1/SyncReg2_4)
+     LUT4:I2->O            1   0.704   0.499  U1/nextstate_cmp_eq000225 (U1/nextstate_cmp_eq000225)
+     LUT4:I1->O           13   0.704   0.987  U1/nextstate_cmp_eq000276 (U1/nextstate_cmp_eq0002)
+     LUT4_D:I3->O          7   0.704   0.743  U1/LengthReg2_mux0004<0>1 (U1/N5)
+     LUT3:I2->O            1   0.704   0.000  U1/LengthReg2_mux0004<7>1 (U1/LengthReg2_mux0004<7>)
+     LDE:D                     0.308          U1/LengthReg2_7
+    ----------------------------------------
+    Total                      6.511ns (3.800ns logic, 2.711ns route)
+                                       (58.4% logic, 41.6% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'U1/sync2_flag_not0001'
+  Clock period: 2.532ns (frequency: 394.945MHz)
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Delay:               2.532ns (Levels of Logic = 1)
+  Source:            U1/sync2_flag (LATCH)
+  Destination:       U1/sync2_flag (LATCH)
+  Source Clock:      U1/sync2_flag_not0001 falling
+  Destination Clock: U1/sync2_flag_not0001 falling
+
+  Data Path: U1/sync2_flag to U1/sync2_flag
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LDE:G->Q              6   0.676   0.844  U1/sync2_flag (U1/sync2_flag)
+     LUT4:I0->O            1   0.704   0.000  U1/sync2_flag_mux00031 (U1/sync2_flag_mux0003)
+     LDE:D                     0.308          U1/sync2_flag
+    ----------------------------------------
+    Total                      2.532ns (1.688ns logic, 0.844ns route)
+                                       (66.7% logic, 33.3% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'SCK'
   Total number of paths / destination ports: 9 / 9
 -------------------------------------------------------------------------
-Offset:              4.496ns (Levels of Logic = 2)
+Offset:              4.508ns (Levels of Logic = 2)
   Source:            SSnot (PAD)
   Destination:       U2/skift_reg_7 (FF)
   Destination Clock: SCK rising
@@ -406,129 +495,197 @@ Offset:              4.496ns (Levels of Logic = 2)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            30   1.218   1.262  SSnot_IBUF (SSnot_IBUF)
+     IBUF:I->O            69   1.218   1.274  SSnot_IBUF (SSnot_IBUF)
      INV:I->O              8   0.704   0.757  U2/DataReady_inv1_INV_0 (U2/DataReady_inv)
      FDCE:CE                   0.555          U2/skift_reg_0
     ----------------------------------------
-    Total                      4.496ns (2.477ns logic, 2.019ns route)
-                                       (55.1% logic, 44.9% route)
+    Total                      4.508ns (2.477ns logic, 2.031ns route)
+                                       (54.9% logic, 45.1% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'U1/state_01'
+  Total number of paths / destination ports: 624 / 49
+-------------------------------------------------------------------------
+Offset:              10.255ns (Levels of Logic = 6)
+  Source:            SSnot (PAD)
+  Destination:       U1/LengthReg2_7 (LATCH)
+  Destination Clock: U1/state_01 falling
+
+  Data Path: SSnot to U1/LengthReg2_7
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            69   1.218   1.449  SSnot_IBUF (SSnot_IBUF)
+     LUT2:I0->O           14   0.704   1.175  U2/SPIdat<3>LogicTrst1 (SPIdat<3>)
+     LUT4:I0->O            3   0.704   0.706  U1/nextstate_cmp_eq000110 (U1/nextstate_cmp_eq000110)
+     LUT2:I0->O           12   0.704   1.136  U1/nextstate_cmp_eq000122 (U1/nextstate_cmp_eq0001)
+     LUT4_D:I0->O          7   0.704   0.743  U1/LengthReg2_mux0004<0>1 (U1/N5)
+     LUT3:I2->O            1   0.704   0.000  U1/LengthReg2_mux0004<7>1 (U1/LengthReg2_mux0004<7>)
+     LDE:D                     0.308          U1/LengthReg2_7
+    ----------------------------------------
+    Total                     10.255ns (5.046ns logic, 5.209ns route)
+                                       (49.2% logic, 50.8% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'U1/state_3'
+  Total number of paths / destination ports: 32 / 32
+-------------------------------------------------------------------------
+Offset:              3.679ns (Levels of Logic = 2)
+  Source:            SSnot (PAD)
+  Destination:       U1/AmpReg_7 (LATCH)
+  Destination Clock: U1/state_3 falling
+
+  Data Path: SSnot to U1/AmpReg_7
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            69   1.218   1.449  SSnot_IBUF (SSnot_IBUF)
+     LUT2:I0->O           14   0.704   0.000  U2/SPIdat<7>LogicTrst1 (SPIdat<7>)
+     LDE:D                     0.308          U1/AmpReg_7
+    ----------------------------------------
+    Total                      3.679ns (2.230ns logic, 1.449ns route)
+                                       (60.6% logic, 39.4% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'U1/state_2'
-  Total number of paths / destination ports: 16 / 16
+  Total number of paths / destination ports: 32 / 32
 -------------------------------------------------------------------------
-Offset:              3.571ns (Levels of Logic = 2)
+Offset:              3.679ns (Levels of Logic = 2)
   Source:            SSnot (PAD)
-  Destination:       U1/DataReg_7 (LATCH)
+  Destination:       U1/ShapeReg_7 (LATCH)
   Destination Clock: U1/state_2 falling
 
-  Data Path: SSnot to U1/DataReg_7
+  Data Path: SSnot to U1/ShapeReg_7
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            30   1.218   1.341  SSnot_IBUF (SSnot_IBUF)
-     LUT2:I1->O            4   0.704   0.000  U2/SPIdat<7>LogicTrst1 (SPIdat<7>)
-     LDE:D                     0.308          U1/DataReg_7
+     IBUF:I->O            69   1.218   1.449  SSnot_IBUF (SSnot_IBUF)
+     LUT2:I0->O           14   0.704   0.000  U2/SPIdat<7>LogicTrst1 (SPIdat<7>)
+     LDE:D                     0.308          U1/ShapeReg_7
     ----------------------------------------
-    Total                      3.571ns (2.230ns logic, 1.341ns route)
-                                       (62.5% logic, 37.5% route)
+    Total                      3.679ns (2.230ns logic, 1.449ns route)
+                                       (60.6% logic, 39.4% route)
 
 =========================================================================
-Timing constraint: Default OFFSET IN BEFORE for Clock 'U1/state_1'
-  Total number of paths / destination ports: 16 / 16
+Timing constraint: Default OFFSET IN BEFORE for Clock 'U1/state_4'
+  Total number of paths / destination ports: 32 / 32
 -------------------------------------------------------------------------
-Offset:              3.571ns (Levels of Logic = 2)
+Offset:              3.679ns (Levels of Logic = 2)
   Source:            SSnot (PAD)
-  Destination:       U1/ADDRReg_7 (LATCH)
-  Destination Clock: U1/state_1 falling
+  Destination:       U1/FreqReg_7 (LATCH)
+  Destination Clock: U1/state_4 falling
 
-  Data Path: SSnot to U1/ADDRReg_7
+  Data Path: SSnot to U1/FreqReg_7
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            30   1.218   1.341  SSnot_IBUF (SSnot_IBUF)
-     LUT2:I1->O            4   0.704   0.000  U2/SPIdat<7>LogicTrst1 (SPIdat<7>)
-     LDE:D                     0.308          U1/ADDRReg_7
+     IBUF:I->O            69   1.218   1.449  SSnot_IBUF (SSnot_IBUF)
+     LUT2:I0->O           14   0.704   0.000  U2/SPIdat<7>LogicTrst1 (SPIdat<7>)
+     LDE:D                     0.308          U1/FreqReg_7
     ----------------------------------------
-    Total                      3.571ns (2.230ns logic, 1.341ns route)
-                                       (62.5% logic, 37.5% route)
+    Total                      3.679ns (2.230ns logic, 1.449ns route)
+                                       (60.6% logic, 39.4% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'U1/nextstate_not0001'
-  Total number of paths / destination ports: 61 / 7
+  Total number of paths / destination ports: 100 / 5
 -------------------------------------------------------------------------
-Offset:              8.985ns (Levels of Logic = 6)
+Offset:              10.906ns (Levels of Logic = 7)
   Source:            SSnot (PAD)
-  Destination:       U1/nextstate_6 (LATCH)
+  Destination:       U1/nextstate_0 (LATCH)
   Destination Clock: U1/nextstate_not0001 falling
 
-  Data Path: SSnot to U1/nextstate_6
+  Data Path: SSnot to U1/nextstate_0
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            30   1.218   1.341  SSnot_IBUF (SSnot_IBUF)
-     LUT2:I1->O            4   0.704   0.762  U2/SPIdat<0>LogicTrst1 (SPIdat<0>)
-     LUT4:I0->O            1   0.704   0.595  U1/nextstate_cmp_eq0001818 (U1/nextstate_cmp_eq0001818)
-     LUT4:I0->O            3   0.704   0.706  U1/nextstate_cmp_eq00018108 (U1/nextstate_cmp_eq00018108)
-     LUT2:I0->O            3   0.704   0.535  U1/nextstate_cmp_eq00018234 (U1/nextstate_cmp_eq0001)
-     LUT4:I3->O            1   0.704   0.000  U1/nextstate_mux0004<6>1 (U1/nextstate_mux0004<6>)
-     LD:D                      0.308          U1/nextstate_6
+     IBUF:I->O            69   1.218   1.449  SSnot_IBUF (SSnot_IBUF)
+     LUT2:I0->O           14   0.704   1.175  U2/SPIdat<4>LogicTrst1 (SPIdat<4>)
+     LUT4:I0->O            1   0.704   0.499  U1/nextstate_cmp_eq000225 (U1/nextstate_cmp_eq000225)
+     LUT4:I1->O           13   0.704   0.987  U1/nextstate_cmp_eq000276 (U1/nextstate_cmp_eq0002)
+     LUT4:I3->O            1   0.704   0.424  U1/nextstate_mux0005<0>1_SW0 (N6)
+     LUT4:I3->O            2   0.704   0.622  U1/nextstate_mux0005<0>1 (U1/N42)
+     LUT4:I0->O            1   0.704   0.000  U1/nextstate_mux0005<0>2 (U1/nextstate_mux0005<0>)
+     LD:D                      0.308          U1/nextstate_0
     ----------------------------------------
-    Total                      8.985ns (5.046ns logic, 3.939ns route)
-                                       (56.2% logic, 43.8% route)
+    Total                     10.906ns (5.750ns logic, 5.156ns route)
+                                       (52.7% logic, 47.3% route)
 
 =========================================================================
-Timing constraint: Default OFFSET OUT AFTER for Clock 'U1/state_6'
-  Total number of paths / destination ports: 8 / 8
+Timing constraint: Default OFFSET IN BEFORE for Clock 'U1/sync2_flag_not0001'
+  Total number of paths / destination ports: 16 / 1
 -------------------------------------------------------------------------
-Offset:              4.368ns (Levels of Logic = 1)
-  Source:            U1/FreqReg_7 (LATCH)
-  Destination:       Freq<7> (PAD)
-  Source Clock:      U1/state_6 falling
+Offset:              8.637ns (Levels of Logic = 5)
+  Source:            SSnot (PAD)
+  Destination:       U1/sync2_flag (LATCH)
+  Destination Clock: U1/sync2_flag_not0001 falling
 
-  Data Path: U1/FreqReg_7 to Freq<7>
+  Data Path: SSnot to U1/sync2_flag
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     LD:G->Q               1   0.676   0.420  U1/FreqReg_7 (U1/FreqReg_7)
-     OBUF:I->O                 3.272          Freq_7_OBUF (Freq<7>)
+     IBUF:I->O            69   1.218   1.449  SSnot_IBUF (SSnot_IBUF)
+     LUT2:I0->O           14   0.704   1.175  U2/SPIdat<3>LogicTrst1 (SPIdat<3>)
+     LUT4:I0->O            3   0.704   0.706  U1/nextstate_cmp_eq000110 (U1/nextstate_cmp_eq000110)
+     LUT2:I0->O           12   0.704   0.965  U1/nextstate_cmp_eq000122 (U1/nextstate_cmp_eq0001)
+     LUT4:I3->O            1   0.704   0.000  U1/sync2_flag_mux00031 (U1/sync2_flag_mux0003)
+     LDE:D                     0.308          U1/sync2_flag
     ----------------------------------------
-    Total                      4.368ns (3.948ns logic, 0.420ns route)
-                                       (90.4% logic, 9.6% route)
+    Total                      8.637ns (4.342ns logic, 4.295ns route)
+                                       (50.3% logic, 49.7% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'U1/state_4'
   Total number of paths / destination ports: 8 / 8
 -------------------------------------------------------------------------
 Offset:              4.368ns (Levels of Logic = 1)
-  Source:            U1/ShapeReg_7 (LATCH)
-  Destination:       Shape<7> (PAD)
+  Source:            U1/FreqReg_7_1 (LATCH)
+  Destination:       Freq<7> (PAD)
   Source Clock:      U1/state_4 falling
 
-  Data Path: U1/ShapeReg_7 to Shape<7>
+  Data Path: U1/FreqReg_7_1 to Freq<7>
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     LD:G->Q               1   0.676   0.420  U1/ShapeReg_7 (U1/ShapeReg_7)
+     LDE:G->Q              1   0.676   0.420  U1/FreqReg_7_1 (U1/FreqReg_7_1)
+     OBUF:I->O                 3.272          Freq_7_OBUF (Freq<7>)
+    ----------------------------------------
+    Total                      4.368ns (3.948ns logic, 0.420ns route)
+                                       (90.4% logic, 9.6% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'U1/state_2'
+  Total number of paths / destination ports: 8 / 8
+-------------------------------------------------------------------------
+Offset:              4.368ns (Levels of Logic = 1)
+  Source:            U1/ShapeReg_7_1 (LATCH)
+  Destination:       Shape<7> (PAD)
+  Source Clock:      U1/state_2 falling
+
+  Data Path: U1/ShapeReg_7_1 to Shape<7>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LDE:G->Q              1   0.676   0.420  U1/ShapeReg_7_1 (U1/ShapeReg_7_1)
      OBUF:I->O                 3.272          Shape_7_OBUF (Shape<7>)
     ----------------------------------------
     Total                      4.368ns (3.948ns logic, 0.420ns route)
                                        (90.4% logic, 9.6% route)
 
 =========================================================================
-Timing constraint: Default OFFSET OUT AFTER for Clock 'U1/state_5'
+Timing constraint: Default OFFSET OUT AFTER for Clock 'U1/state_3'
   Total number of paths / destination ports: 8 / 8
 -------------------------------------------------------------------------
 Offset:              4.368ns (Levels of Logic = 1)
-  Source:            U1/AmpReg_7 (LATCH)
+  Source:            U1/AmpReg_7_1 (LATCH)
   Destination:       Amp<7> (PAD)
-  Source Clock:      U1/state_5 falling
+  Source Clock:      U1/state_3 falling
 
-  Data Path: U1/AmpReg_7 to Amp<7>
+  Data Path: U1/AmpReg_7_1 to Amp<7>
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     LD:G->Q               1   0.676   0.420  U1/AmpReg_7 (U1/AmpReg_7)
+     LDE:G->Q              1   0.676   0.420  U1/AmpReg_7_1 (U1/AmpReg_7_1)
      OBUF:I->O                 3.272          Amp_7_OBUF (Amp<7>)
     ----------------------------------------
     Total                      4.368ns (3.948ns logic, 0.420ns route)
@@ -537,14 +694,14 @@ Offset:              4.368ns (Levels of Logic = 1)
 =========================================================================
 
 
-Total REAL time to Xst completion: 6.00 secs
-Total CPU time to Xst completion: 5.61 secs
+Total REAL time to Xst completion: 5.00 secs
+Total CPU time to Xst completion: 4.94 secs
  
 --> 
 
-Total memory usage is 4510820 kilobytes
+Total memory usage is 4510824 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   12 (   0 filtered)
-Number of infos    :    8 (   0 filtered)
+Number of warnings :   15 (   0 filtered)
+Number of infos    :    7 (   0 filtered)
 

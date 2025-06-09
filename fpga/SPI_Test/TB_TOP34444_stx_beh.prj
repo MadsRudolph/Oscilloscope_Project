@@ -1,0 +1,4 @@
+vhdl isim_temp "Skifte_reg_til_Parallel.vhd"
+vhdl isim_temp "ProtokolBlok.vhd"
+vhdl isim_temp "SigGenSPIControl.vhd"
+vhdl isim_temp "TB_TOP34444.vhd"
