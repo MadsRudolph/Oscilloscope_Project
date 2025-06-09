@@ -53,7 +53,7 @@ begin
     U1: entity work.ProtokolBlok 
         port map (
             Reset     => Reset,
-            Clk      => SCK,
+            Clk      => SCK,  -- passer ikke
 				Ampl		=> Amp,
 				Freq		=> Freq,
 				Shape 	=> Shape,
