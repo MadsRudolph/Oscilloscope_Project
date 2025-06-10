@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2025-06-09T15:29:34</DateModified>
+  <DateModified>2025-06-10T09:26:30</DateModified>
   <ModuleName>SigGenSPIControl</ModuleName>
   <SummaryTimeStamp>2025-06-09T12:06:17</SummaryTimeStamp>
-  <SavedFilePath>C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/iseconfig/SigGenSPIControl.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test\</ImplementationReportsDirectory>
+  <SavedFilePath>/home/Andreas/Oscilloscope_Project/fpga/SPI_Test/iseconfig/SigGenSPIControl.xreport</SavedFilePath>
+  <ImplementationReportsDirectory>/home/Andreas/Oscilloscope_Project/fpga/SPI_Test/</ImplementationReportsDirectory>
   <DateInitialized>2025-06-09T11:55:23</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>
