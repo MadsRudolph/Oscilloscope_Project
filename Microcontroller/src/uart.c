@@ -135,13 +135,35 @@ void parse_uart1_packet()
     switch (type)
     {
     case 0x01: // BTN
+{
+    uint8_t btn = uart1_rx_buffer[5];
+    uint8_t sw = uart1_rx_buffer[6];
+
+    char msg[64];
+    sprintf(msg, "BTN: %d, SW: %d\r\n", btn, sw);
+    uart_send_string(msg);
+
+    switch (btn)
     {
-        uint8_t btn = uart1_rx_buffer[5];
-        uint8_t sw = uart1_rx_buffer[6];
-        uart_send_string("BTN received\r\n");
-        // TODO: store btn/sw and forward via SPI if needed
-        break;
+        case 0x00:
+            uart_send_string("BTN0 pressed: Send current values\r\n");
+            break;
+        case 0x01:
+            uart_send_string("BTN1 pressed: Cycle parameter\r\n");
+            break;
+        case 0x02:
+            uart_send_string("BTN2 pressed: Increase value\r\n");
+            break;
+        case 0x03:
+            uart_send_string("BTN3 pressed: Decrease value\r\n");
+            break;
+        default:
+            uart_send_string("Unknown BTN value\r\n");
+            break;
     }
+    break;
+}
+
 
     case 0x02: // SEND
     {

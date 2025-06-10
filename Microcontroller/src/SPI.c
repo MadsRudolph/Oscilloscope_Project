@@ -46,3 +46,4 @@ void slave_init()
     SPCR |= (1 << SPE) | (1 << DORD); // Enable SPI in slave mode, LSB first
     // PORTB |= (1 << PB0); // REMOVE this line — SS should not be driven by slave
 }
+

@@ -14,10 +14,10 @@
 #include <util/delay.h>    // Include delay functions
 #include <string.h>        // Include string handling
 #include <stdint.h>        // Include fixed width integer types
+#include "ADC.h"           // Include ADC initialization functions
+#include "SPI.h"           // Include SPI communication functions
+#include "uart.h"          // Includes uart functions
 
-#include "ADC.h"  // Include ADC initialization functions
-#include "SPI.h"  // Include SPI communication functions
-#include "uart.h" // Includes uart functions
 
 // Declare parse_uart1_packet prototype
 void parse_uart1_packet(void);
@@ -31,6 +31,27 @@ volatile uint16_t record_length = 100;           // default, can be changed by S
 volatile uint16_t sample_index = 0;
 volatile bool buffer_ready = false;
 
+// BTN/SW state
+volatile uint8_t btn = 0;
+volatile uint8_t sw = 0;
+
+void print_uart1_packet()
+{
+    if (!uart1_packet_ready)
+        return;
+
+    uart_send_string("Received UART1 packet:\r\n");
+    for (uint8_t i = 0; i < uart1_rx_index; i++)
+    {
+        char buf[6];
+        sprintf(buf, "%02X ", uart1_rx_buffer[i]);
+        uart_send_string(buf);
+    }
+    uart_send_string("\r\n");
+
+    uart1_rx_index = 0;
+    uart1_packet_ready = 0;
+}
 // Enumeration for program states
 enum states
 {
@@ -61,9 +82,7 @@ int main(void)
 {
     while (1)
     {
-        // Parse UART1 commands from LabVIEW
-        parse_uart1_packet();
-
+        parse_uart1_packet(); // Check for incoming UART1 packets
         switch (state)
         {
         case state_init:
@@ -73,10 +92,10 @@ int main(void)
             master_init();                               // Initialize SPI master (see SPI.c for details)
             uart_init(16);                               // Set a unsigned integer in the parameter to choose Baud rate (parameter(16) = Baud rate(115200)). Look up uart.c for more info
             uart1_init(16);                              // Initialize UART1 for LabVIEW (115200 baud, U2X1 enabled)
-            uart_send_string("System initialized.\r\n"); // Debug message via UART0
-
-            sei();                       
+            uart_send_string("System initialized.\r\n"); // Debug message via UART0                      
+            sei();
             state = state_transmit_UART; // Changes state
+    
 
             break;
 
@@ -91,7 +110,7 @@ int main(void)
 
         case state_transmit_UART:
 
-            //If ADC buffer is ready, send UART packet to LabVIEW
+            // If ADC buffer is ready, send UART packet to LabVIEW
             if (buffer_ready)
             {
                 send_oscilloscope_packet((uint8_t *)adc_samples, record_length);
