@@ -6,11 +6,14 @@
 #include <string.h>
 #include "uart.h"
 #include <util/delay.h>
-extern volatile uint16_t record_length;
-extern volatile uint16_t current_timer1_top;
-
 #include "ADC.h" // Needed for init_timer1()
 #define MAX_RECORD_LENGTH 1000
+extern volatile uint16_t record_length;
+extern volatile uint16_t current_timer1_top;
+volatile uint8_t shape = 0;
+volatile uint8_t amplitude = 128;
+volatile uint8_t frequency = 100;
+static uint8_t selected_param = 0; // 0 = shape, 1 = amplitude, 2 = frequency
 
 void uart_init(unsigned int ubrr)
 {
@@ -108,6 +111,21 @@ ISR(USART1_RX_vect)
     }
 }
 
+void send_generator_packet(uint8_t active, uint8_t shape, uint8_t ampl, uint8_t freq)
+{
+    uart1_send(0x55);
+    uart1_send(0xAA);
+    uart1_send(0x00); // Length MSB
+    uart1_send(0x0B); // Length LSB (11 bytes total)
+    uart1_send(0x01); // Type: GENERATOR
+    uart1_send(active);     // Active indicator
+    uart1_send(shape);      // Shape
+    uart1_send(ampl);       // Amplitude
+    uart1_send(freq);       // Frequency
+    uart1_send(0x00);       // Checksum LSB
+    uart1_send(0x00);       // Checksum MSB
+}
+
 // Packet parser
 void parse_uart1_packet()
 {
@@ -144,24 +162,39 @@ void parse_uart1_packet()
     uart_send_string(msg);
 
     switch (btn)
-    {
-        case 0x00:
-            uart_send_string("BTN0 pressed: Send current values\r\n");
-            break;
-        case 0x01:
-            uart_send_string("BTN1 pressed: Cycle parameter\r\n");
-            break;
-        case 0x02:
-            uart_send_string("BTN2 pressed: Increase value\r\n");
-            break;
-        case 0x03:
-            uart_send_string("BTN3 pressed: Decrease value\r\n");
-            break;
-        default:
-            uart_send_string("Unknown BTN value\r\n");
-            break;
-    }
-    break;
+{
+    case 0x00:
+        uart_send_string("BTN0 pressed: Send current values\r\n");
+        // Possibly send values to FPGA here too
+        break;
+
+    case 0x01:
+        uart_send_string("BTN1 pressed: Cycle parameter\r\n");
+        selected_param = (selected_param + 1) % 3;
+        break;
+
+    case 0x02:
+        uart_send_string("BTN2 pressed: Increase value\r\n");
+        if (selected_param == 0 && shape < 3) shape++;
+        else if (selected_param == 1 && amplitude < 255) amplitude++;
+        else if (selected_param == 2 && frequency < 255) frequency++;
+        break;
+
+    case 0x03:
+        uart_send_string("BTN3 pressed: Decrease value\r\n");
+        if (selected_param == 0 && shape > 0) shape--;
+        else if (selected_param == 1 && amplitude > 0) amplitude--;
+        else if (selected_param == 2 && frequency > 0) frequency--;
+        break;
+
+    default:
+        uart_send_string("Unknown BTN value\r\n");
+        break;
+}
+
+//Always send updated values to LabVIEW
+send_generator_packet(selected_param, shape, amplitude, frequency);
+
 }
 
 
