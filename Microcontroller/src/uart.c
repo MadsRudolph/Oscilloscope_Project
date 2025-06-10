@@ -37,7 +37,7 @@ void uart_send_string(const char *str)
         uart_send(*str++);
 }
 
-// === Send LabVIEW-formatted oscilloscope data packet ===
+//Send LabVIEW-formatted oscilloscope data packet ===
 void send_oscilloscope_packet(uint8_t *samples, uint16_t length)
 {
     uart1_send(0x55); // Sync byte 1
@@ -50,32 +50,15 @@ void send_oscilloscope_packet(uint8_t *samples, uint16_t length)
 
     uart1_send(0x02); // Type: OSCILLOSCOPE
 
-    //uint16_t checksum = 0;
-    //checksum += (payload_length >> 8);        // Length MSB
-    //checksum += (payload_length & 0xFF);      // Length LSB
-    //checksum += 0x02;                         // Type byte
-
     for (uint16_t i = 0; i < length; i++) {
         uart1_send(samples[i]);
         //checksum += samples[i];
     }
-
-    //checksum = (0x10000 - checksum) & 0xFFFF; // ZERO16 correction
-
     uart1_send(0x00);              // Checksum LSB
     uart1_send(0x00);       // Checksum MSB
 }
 
-
-void uart_send_hex(uint8_t val)
-{
-    char buf[4];
-    sprintf(buf, "%02X", val);
-    uart_send_string(buf);
-}
-
-
-// === NEW === Initialize UART1 for LabVIEW communication
+//Initialize UART1 for LabVIEW communication
 void uart1_init(unsigned int ubrr)
 {
     UBRR1H = (unsigned char)(ubrr >> 8);
@@ -85,7 +68,7 @@ void uart1_init(unsigned int ubrr)
     UCSR1C = (1 << UCSZ11) | (1 << UCSZ10);
 }
 
-// === NEW === Send one character via UART1
+//Send one character via UART1
 void uart1_send(char data)
 {
     while (!(UCSR1A & (1 << UDRE1)))
@@ -93,7 +76,7 @@ void uart1_send(char data)
     UDR1 = data;
 }
 
-// === NEW === UART1 receive buffer
+//UART1 receive buffer
 #define UART1_RX_BUFFER_SIZE 128
 volatile uint8_t uart1_rx_buffer[UART1_RX_BUFFER_SIZE];
 volatile uint8_t uart1_rx_index = 0;
@@ -124,7 +107,7 @@ ISR(USART1_RX_vect)
     }
 }
 
-// === NEW === Packet parser
+//Packet parser
 void parse_uart1_packet()
 {
     if (!uart1_packet_ready)

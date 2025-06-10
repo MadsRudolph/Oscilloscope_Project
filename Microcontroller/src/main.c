@@ -2,7 +2,9 @@
 // ## Last edited: 2025-06-06 ##
 // ## Throughout the code, page references are marked as S.xxx, referring to the Atmega2560 datasheet. ##
 
+#ifndef F_CPU
 #define F_CPU 16000000UL // Define CPU frequency
+#endif
 
 #include <avr/io.h> // Include I/O functions
 #include <stdio.h>  // Include sprintf
@@ -17,12 +19,15 @@
 #include "SPI.h"  // Include SPI communication functions
 #include "uart.h" // Includes uart functions
 
-// === NEW === Define maximum buffer size for dynamic record length
+// Declare parse_uart1_packet prototype
+void parse_uart1_packet(void);
+
+// Define maximum buffer size for dynamic record length
 #define MAX_RECORD_LENGTH 1000
 volatile uint8_t adc_samples[MAX_RECORD_LENGTH]; // support dynamic size
 volatile uint16_t record_length = 100;           // default, can be changed by SEND
 
-// === NEW === ADC control flags
+// ADC control flags
 volatile uint16_t sample_index = 0;
 volatile bool buffer_ready = false;
 
@@ -35,7 +40,7 @@ enum states
 };
 static enum states state = state_init;
 
-// === NEW === Current sample rate control
+// Current sample rate control
 volatile uint16_t current_timer1_top = 200;
 
 // Interrupt Service Routine (ISR) for TIMER1 Compare Match B (see ADC.c for more info)
@@ -56,7 +61,7 @@ int main(void)
 {
     while (1)
     {
-        // === NEW === Parse UART1 commands from LabVIEW
+        // Parse UART1 commands from LabVIEW
         parse_uart1_packet();
 
         switch (state)
@@ -67,10 +72,10 @@ int main(void)
             init_timer1(current_timer1_top);             // Set ADC sample rate(10kHz) using Timer1, use formula: sample_rate = F_CPU / (8 * parameter)
             master_init();                               // Initialize SPI master (see SPI.c for details)
             uart_init(16);                               // Set a unsigned integer in the parameter to choose Baud rate (parameter(16) = Baud rate(115200)). Look up uart.c for more info
-            uart1_init(16);                              // === NEW === Initialize UART1 for LabVIEW (115200 baud, U2X1 enabled)
-            uart_send_string("System initialized.\r\n"); // === NEW === Debug message via UART0
+            uart1_init(16);                              // Initialize UART1 for LabVIEW (115200 baud, U2X1 enabled)
+            uart_send_string("System initialized.\r\n"); // Debug message via UART0
 
-            sei();                       // === NEW === Enable global interrupts
+            sei();                       
             state = state_transmit_UART; // Changes state
 
             break;
@@ -86,7 +91,7 @@ int main(void)
 
         case state_transmit_UART:
 
-            // === NEW === If ADC buffer is ready, send UART packet to LabVIEW
+            //If ADC buffer is ready, send UART packet to LabVIEW
             if (buffer_ready)
             {
                 send_oscilloscope_packet((uint8_t *)adc_samples, record_length);
