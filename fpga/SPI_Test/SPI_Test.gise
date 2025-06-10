@@ -15,7 +15,7 @@
 
   <!--                                                          -->
 
-  <!-- Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved. -->
+  <!-- Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved. -->
 
   <version xmlns="http://www.xilinx.com/XMLSchema">11.1</version>
 
@@ -110,6 +110,10 @@
     <transform xil_pn:end_ts="1749482985" xil_pn:in_ck="3508922337065718548" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1749482985">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="ProtokolBlok.vhd"/>
       <outfile xil_pn:name="SigGenSPIControl.vhd"/>
       <outfile xil_pn:name="Skifte_reg_til_Parallel.vhd"/>
@@ -131,6 +135,11 @@
     <transform xil_pn:end_ts="1749482985" xil_pn:in_ck="3508922337065718548" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1749482985">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="ProtokolBlok.vhd"/>
       <outfile xil_pn:name="SigGenSPIControl.vhd"/>
       <outfile xil_pn:name="Skifte_reg_til_Parallel.vhd"/>
@@ -140,6 +149,9 @@
     <transform xil_pn:end_ts="1749482989" xil_pn:in_ck="3508922337065718548" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="6626794455524367140" xil_pn:start_ts="1749482985">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="InputChanged"/>
       <outfile xil_pn:name="TB_TOP34444_beh.prj"/>
       <outfile xil_pn:name="TB_TOP34444_isim_beh.exe"/>
       <outfile xil_pn:name="fuse.log"/>
@@ -150,6 +162,7 @@
     <transform xil_pn:end_ts="1749482989" xil_pn:in_ck="2011899757636820479" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="3978676101294719537" xil_pn:start_ts="1749482989">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <outfile xil_pn:name="TB_TOP34444_isim_beh.wdb"/>
       <outfile xil_pn:name="isim.cmd"/>
       <outfile xil_pn:name="isim.log"/>

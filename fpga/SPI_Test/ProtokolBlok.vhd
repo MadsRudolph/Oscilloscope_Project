@@ -19,10 +19,10 @@ architecture Behavioral of ProtokolBlok is
 type Statetype is (IDLE, CheckSum, ShapeS, AmpS, FreqS);
 
 signal state, nextstate : Statetype;
-signal sync2_flag, sync1_flag, ShapeFlag, AmpFlag, FreqFlag, CRC_flag: STD_LOGIC;
+signal sync2_flag, sync1_flag, CRC_flag: STD_LOGIC;
 signal SyncReg1, SyncReg2, LengthReg1, LengthReg2, AmpReg, FreqReg, ShapeReg, CheckSumReg: STD_LOGIC_VECTOR(7 downto 0);
 
- 
+  
 
 
 begin
@@ -30,7 +30,6 @@ begin
 Statereg: process(CLK, Reset)
     begin 
         if Reset = '1' then 
-		 
             state <= IDLE;  -- Reset state to IDLE
         elsif CLK'event and CLK = '1' then
             state <= nextstate;  -- Update state on clock edge
@@ -55,16 +54,16 @@ Statereg: process(CLK, Reset)
 			SigEN <= '0';
 			SyncReg1 <= SPIdat;
 			sync1_flag <= '1';
-		elsif (SPIdat xor SyncReg1) = "11111111" then
+		elsif (SPIdat xor SyncReg1) = "11111111" then -- XOR første og andet sync byte, forventet "11111111"
 			SyncReg2 <= SPIdat;
 			sync2_flag <= '1';
-		elsif (SPIdat and SyncReg2) = "00000000" and sync1_flag = '1' and sync2_flag = '1' then
+		elsif (SPIdat and SyncReg2) = "00000000" and sync1_flag = '1' and sync2_flag = '1' then -- AND samlet sync med første length byte samt to flag for at sikre begge sync er opnået først
 			LengthReg1 <= SPIdat;
 			sync1_flag <= '0';
 			sync2_flag <= '0';
-		elsif (SPIdat xor LengthReg1) = "00001010" then
+		elsif (SPIdat xor LengthReg1) = "00001010" then -- XOR værdien fra LengthReg med næste length byte
 			LengthReg2 <= SPIdat;
-		elsif (SPIdat xor LengthReg2) = "00001000" then
+		elsif (SPIdat xor LengthReg2) = "00001000" then -- XOR samlet byte kontrol med type, hvorfra vi kan gå videre til ShapeS
 			nextstate <= ShapeS;
 		else 
 			nextstate <= IDLE;
@@ -73,7 +72,6 @@ Statereg: process(CLK, Reset)
 
 	when ShapeS =>
 		if DataReady = '1' then
-			ShapeFlag <='1';
 			ShapeReg <= SPIdat;
 			nextstate <= AmpS;
 		else 
@@ -82,7 +80,6 @@ Statereg: process(CLK, Reset)
 
 	when AmpS =>
 	if DataReady = '1' then
-		AmpFlag <='1';
 		AmpReg <= SPIdat;
 		nextstate <= FreqS;
 	else 
@@ -92,7 +89,6 @@ Statereg: process(CLK, Reset)
 	
 	when FreqS =>
 	if DataReady = '1' then
-		FreqFlag <='1';
 		FreqReg <= SPIdat;
 		nextstate <= CheckSum;
 	else 
