@@ -17,17 +17,17 @@ Total CPU time to Xst completion: 0.90 secs
 =========================================================================
 *                          HDL Compilation                              *
 =========================================================================
-Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd" in Library work.
-Entity <skifte_reg_til_parallel> compiled.
-Entity <skifte_reg_til_parallel> (Architecture <behavioral>) compiled.
+Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/TiminComponent.vhd" in Library work.
+Entity <timingcomponent> compiled.
+Entity <timingcomponent> (Architecture <behavioral>) compiled.
 
 
 Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 1.05 secs
+Total CPU time to Xst completion: 1.01 secs
  
 --> 
 
-Total memory usage is 4465472 kilobytes
+Total memory usage is 4465456 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    1 (   0 filtered)

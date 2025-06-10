@@ -1,0 +1,2 @@
+vhdl isim_temp "TiminComponent.vhd"
+vhdl isim_temp "TB_snot.vhd"
