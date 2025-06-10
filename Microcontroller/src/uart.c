@@ -36,6 +36,7 @@ void uart_send_string(const char *str)
         uart_send(*str++);
 }
 
+
 // === Send LabVIEW-formatted oscilloscope data packet ===
 void send_oscilloscope_packet(uint8_t *samples, uint16_t length)
 {
