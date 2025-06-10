@@ -11,33 +11,32 @@ extern volatile uint16_t current_timer1_top;
 #include "ADC.h" // Needed for init_timer1()
 #define MAX_RECORD_LENGTH 1000
 
-// === UART Initialization ===
 void uart_init(unsigned int ubrr)
 {
-    UBRR0H = (unsigned char)(ubrr >> 8);    // USART0 Baud rate register high byte (S.412)
-    UBRR0L = (unsigned char)ubrr;           // USART0 Baud rate register low byte (S.412)
-    UCSR0A |= (1 << U2X0);                  // Enable double speed (S.223)
-    UCSR0B = (1 << RXEN0) | (1 << TXEN0);   // Enable RX and TX (S.224)
-    UCSR0C = (1 << UCSZ01) | (1 << UCSZ00); // 8-bit data format (S.226)
-    // No parity, 1 stop bit, asynchronous mode
+    UBRR0H = (unsigned char)(ubrr >> 8);                  // USART0 Baud rate register high byte (S.412)
+    UBRR0L = (unsigned char)ubrr;                         // USART0 Baud rate register low byte (S.412)
+    UCSR0A |= (1 << U2X0);                                // Enable double speed (S.223)
+    UCSR0B = (1 << RXEN0) | (1 << TXEN0) | (1 << RXCIE0); // Enable RX, TX, and RX interrupt (S.224)
+    UCSR0C = (1 << UCSZ01) | (1 << UCSZ00);               // 8-bit data format (S.226)
+    // No parity ((UPM00 & UUPM01) = 0), 1 stopbit (USBS0 = 0), async mode ((UMSEL00 & UMSEL01 = 0)) (S.225-226)
+    // One complete data cycle is 1 start-bit followed by 8 data-bit's followed by 1 stop-bit.
 }
 
-// === Send one character ===
+// Send one character via UART. Exsampel from atmega2560 datasheet on page 212
 void uart_send(char data)
 {
-    while (!(UCSR0A & (1 << UDRE0)))
-        ;        // Wait until buffer is ready (S.223)
-    UDR0 = data; // Send data (S.212)
+    while (!(UCSR0A & (1 << UDRE0))); // Wait until UDRE0 is high meaning buffer is clear an ready to be written (S.223)
+    UDR0 = data; // udates data into buffer and sends data (S.212)
 }
 
-// === Send string ===
+// Send string via UART
 void uart_send_string(const char *str)
 {
     while (*str)
         uart_send(*str++);
 }
 
-//Send LabVIEW-formatted oscilloscope data packet ===
+// === Send LabVIEW-formatted oscilloscope data packet ===
 void send_oscilloscope_packet(uint8_t *samples, uint16_t length)
 {
     uart1_send(0x55); // Sync byte 1

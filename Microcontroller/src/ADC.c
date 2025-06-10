@@ -1,11 +1,14 @@
+// ## This file contains ADC and autotrigger initialization functions ##
+// ## References to datasheet pages are marked as S.xxx for Atmega2560 ##
+
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
 // === Initialize ADC channel 0 (A0) with auto-trigger from Timer1 Compare Match B ===
 void init_ADC_kanal0()
 {
-    ADMUX = (1 << REFS0) | (1 << ADLAR); // Use AVcc as reference, left-adjust result (8-bit in ADCH)
-    // ADC0 selected by default (MUX[3:0] = 0000)
+    ADMUX = (1 << REFS0) | (1 << ADLAR); // Use AVcc(5V) as reference, left-adjust result (8-bit in ADCH) (S.289)
+    // MUX[3:0] = 0000 → ADC0 selected (S.290 Table 26-4)
 
     ADCSRA = (1 << ADEN)  | // Enable ADC
              (1 << ADATE) | // Auto Trigger Enable
