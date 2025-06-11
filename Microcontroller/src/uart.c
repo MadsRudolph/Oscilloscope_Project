@@ -168,7 +168,36 @@ void parse_uart1_packet()
         {
         case 0x00:
             uart_send_string("BTN0 pressed: Send current values\r\n");
-            // Possibly send values to FPGA here too
+            if (selected_param == 0)
+                if(sw <= 3)
+                {
+                    shape = sw;
+                }
+                else
+                {
+                    uart_send_string("error, shape must be between 0 & 3\r\n");
+                }
+            else if (selected_param == 1)
+                if (sw <= 255)
+                {
+                    amplitude = sw;
+                }
+                else
+                {
+                    uart_send_string("error, amplitude must be between 0 & 255\r\n");
+                }
+            else if (selected_param == 2)
+                if (sw <= 255)
+                {
+                    frequency = sw;
+                }
+                else
+                {
+                    uart_send_string("error, frequency must be between 0 & 255\r\n");
+                }
+            else
+                uart_send_string("error, wrong or no operation selected \r\n");
+
             break;
 
         case 0x01:
