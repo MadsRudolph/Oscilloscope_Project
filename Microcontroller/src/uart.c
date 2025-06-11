@@ -22,14 +22,15 @@ void uart_init(unsigned int ubrr)
     UCSR0A |= (1 << U2X0);                                // Enable double speed (S.223)
     UCSR0B = (1 << RXEN0) | (1 << TXEN0) | (1 << RXCIE0); // Enable RX, TX, and RX interrupt (S.224)
     UCSR0C = (1 << UCSZ01) | (1 << UCSZ00);               // 8-bit data format (S.226)
-    // No parity ((UPM00 & UUPM01) = 0), 1 stopbit (USBS0 = 0), async mode ((UMSEL00 & UMSEL01 = 0)) (S.225-226)
+    // No parity (UPM00 & UUPM01 = 0), 1 stopbit (USBS0 = 0), async mode (UMSEL00 & UMSEL01 = 0) (S.225-226)
     // One complete data cycle is 1 start-bit followed by 8 data-bit's followed by 1 stop-bit.
 }
 
 // Send one character via UART. Exsampel from atmega2560 datasheet on page 212
 void uart_send(char data)
 {
-    while (!(UCSR0A & (1 << UDRE0))); // Wait until UDRE0 is high meaning buffer is clear an ready to be written (S.223)
+    while (!(UCSR0A & (1 << UDRE0)))
+        ;        // Wait until UDRE0 is high meaning buffer is clear an ready to be written (S.223)
     UDR0 = data; // udates data into buffer and sends data (S.212)
 }
 
@@ -49,7 +50,7 @@ void send_oscilloscope_packet(uint8_t *samples, uint16_t length)
     uint16_t payload_length = 2 + 2 + 1 + length + 2; // Type + Data + Checksum
 
     uart1_send((payload_length >> 8) & 0xFF); // Length MSB
-    uart1_send(payload_length & 0xFF);        // Length LSB
+    uart1_send(payload_length & 0xFF);        // Length LSB // er det nødvænidgt at & 0xFF?
 
     uart1_send(0x02); // Type: OSCILLOSCOPE
 
@@ -115,15 +116,15 @@ void send_generator_packet(uint8_t active, uint8_t shape, uint8_t ampl, uint8_t 
 {
     uart1_send(0x55);
     uart1_send(0xAA);
-    uart1_send(0x00); // Length MSB
-    uart1_send(0x0B); // Length LSB (11 bytes total)
-    uart1_send(0x01); // Type: GENERATOR
-    uart1_send(active);     // Active indicator
-    uart1_send(shape);      // Shape
-    uart1_send(ampl);       // Amplitude
-    uart1_send(freq);       // Frequency
-    uart1_send(0x00);       // Checksum LSB
-    uart1_send(0x00);       // Checksum MSB
+    uart1_send(0x00);   // Length MSB
+    uart1_send(0x0B);   // Length LSB (11 bytes total)
+    uart1_send(0x01);   // Type: GENERATOR
+    uart1_send(active); // Active indicator
+    uart1_send(shape);  // Shape
+    uart1_send(ampl);   // Amplitude
+    uart1_send(freq);   // Frequency
+    uart1_send(0x00);   // Checksum LSB
+    uart1_send(0x00);   // Checksum MSB
 }
 
 // Packet parser
@@ -141,6 +142,7 @@ void parse_uart1_packet()
         return;
     }
 
+    // Vaildite size of length
     uint16_t length = (uart1_rx_buffer[2] << 8) | uart1_rx_buffer[3];
     if (length > UART1_RX_BUFFER_SIZE)
     {
@@ -153,50 +155,54 @@ void parse_uart1_packet()
     switch (type)
     {
     case 0x01: // BTN
-{
-    uint8_t btn = uart1_rx_buffer[5];
-    uint8_t sw = uart1_rx_buffer[6];
+    {
+        uint8_t btn = uart1_rx_buffer[5];
+        uint8_t sw = uart1_rx_buffer[6];
 
-    char msg[64];
-    sprintf(msg, "BTN: %d, SW: %d\r\n", btn, sw);
-    uart_send_string(msg);
+        char msg[64];
+        sprintf(msg, "BTN: %d, SW: %d\r\n", btn, sw);
+        uart_send_string(msg);
 
-    switch (btn)
-{
-    case 0x00:
-        uart_send_string("BTN0 pressed: Send current values\r\n");
-        // Possibly send values to FPGA here too
-        break;
+        switch (btn)
+        {
+        case 0x00:
+            uart_send_string("BTN0 pressed: Send current values\r\n");
+            // Possibly send values to FPGA here too
+            break;
 
-    case 0x01:
-        uart_send_string("BTN1 pressed: Cycle parameter\r\n");
-        selected_param = (selected_param + 1) % 3;
-        break;
+        case 0x01:
+            uart_send_string("BTN1 pressed: Cycle parameter\r\n");
+            selected_param = (selected_param + 1) % 3;
+            break;
 
-    case 0x02:
-        uart_send_string("BTN2 pressed: Increase value\r\n");
-        if (selected_param == 0 && shape < 3) shape++;
-        else if (selected_param == 1 && amplitude < 255) amplitude++;
-        else if (selected_param == 2 && frequency < 255) frequency++;
-        break;
+        case 0x02:
+            uart_send_string("BTN2 pressed: Increase value\r\n");
+            if (selected_param == 0 && shape < 3)
+                shape++;
+            else if (selected_param == 1 && amplitude < 255)
+                amplitude++;
+            else if (selected_param == 2 && frequency < 255)
+                frequency++;
+            break;
 
-    case 0x03:
-        uart_send_string("BTN3 pressed: Decrease value\r\n");
-        if (selected_param == 0 && shape > 0) shape--;
-        else if (selected_param == 1 && amplitude > 0) amplitude--;
-        else if (selected_param == 2 && frequency > 0) frequency--;
-        break;
+        case 0x03:
+            uart_send_string("BTN3 pressed: Decrease value\r\n");
+            if (selected_param == 0 && shape > 0)
+                shape--;
+            else if (selected_param == 1 && amplitude > 0)
+                amplitude--;
+            else if (selected_param == 2 && frequency > 0)
+                frequency--;
+            break;
 
-    default:
-        uart_send_string("Unknown BTN value\r\n");
-        break;
-}
+        default:
+            uart_send_string("Unknown BTN value\r\n");
+            break;
+        }
 
-//Always send updated values to LabVIEW
-send_generator_packet(selected_param, shape, amplitude, frequency);
-
-}
-
+        // Always send updated values to LabVIEW
+        send_generator_packet(selected_param, shape, amplitude, frequency);
+    }
 
     case 0x02: // SEND
     {

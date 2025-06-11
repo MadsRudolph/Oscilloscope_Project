@@ -47,3 +47,12 @@ void slave_init()
     // PORTB |= (1 << PB0); // REMOVE this line — SS should not be driven by slave
 }
 
+void transmit_signalgenerator_data(uint8_t adress, uint16_t data)
+{
+    unsigned int checksum = adress ^ 0x55 ^ data; // calculates checksum with bitwise xor(^)
+
+    master_transmit(0x55);     // transmit sync bit
+    master_transmit(adress);   // transmis adress
+    master_transmit(data);     // transmit data
+    master_transmit(checksum); // transmit checksum
+}

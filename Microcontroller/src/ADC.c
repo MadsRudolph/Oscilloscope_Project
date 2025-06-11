@@ -7,7 +7,7 @@
 // === Initialize ADC channel 0 (A0) with auto-trigger from Timer1 Compare Match B ===
 void init_ADC_kanal0()
 {
-    ADMUX = (1 << REFS0) | (1 << ADLAR); // Use AVcc(5V) as reference, left-adjust result (8-bit in ADCH) (S.289)
+    ADMUX = (1 << REFS0) | (1 << ADLAR); // Use AVcc(5V) as reference, left-adjust result (8-bit in ADCH) (S.289-290 & S.294)
     // MUX[3:0] = 0000 → ADC0 selected (S.290 Table 26-4)
 
     // information on ADCSRA at S.292

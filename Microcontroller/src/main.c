@@ -18,7 +18,6 @@
 #include "SPI.h"           // Include SPI communication functions
 #include "uart.h"          // Includes uart functions
 
-
 // Declare parse_uart1_packet prototype
 void parse_uart1_packet(void);
 
@@ -92,19 +91,15 @@ int main(void)
             master_init();                               // Initialize SPI master (see SPI.c for details)
             uart_init(16);                               // Set a unsigned integer in the parameter to choose Baud rate (parameter(16) = Baud rate(115200)). Look up uart.c for more info
             uart1_init(16);                              // Initialize UART1 for LabVIEW (115200 baud, U2X1 enabled)
-            uart_send_string("System initialized.\r\n"); // Debug message via UART0                      
+            uart_send_string("System initialized.\r\n"); // Debug message via UART0
             sei();
             state = state_transmit_UART; // Changes state
-    
 
             break;
 
         case state_transmit_SPI:
 
-            master_transmit(170); // Send data via SPI (0b10101010 = 0xAA)
-            _delay_ms(100);       // Short delay to clearly observe SS/SCK on scope
-            master_transmit(85);  // Send data via SPI (0b01010101 = 0x55)
-            _delay_ms(100);       // Short delay to clearly observe SS/SCK on scope
+            transmit_signalgenerator_data();
 
             break;
 
