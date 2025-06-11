@@ -10,10 +10,9 @@ NET"LED[0]" LOC = M5;
 
 
   #test input
-NET"SCK" CLOCK_DEDICATED_ROUTE = FALSE; #Deaktiverer krav for masterclk
-
+NET"CLK" LOC = B8;
 NET"MOSI" LOC = B2;
-NET"SCK" LOC = A3;
+NET"SClk" LOC = A3;
+NET"SClk" CLOCK_DEDICATED_ROUTE = FALSE; 
 NET"SSnot" LOC = J3;
-
 NET "Reset" LOC = A7;

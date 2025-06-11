@@ -1,27 +1,41 @@
-V3 15
-FL /home/Andreas/Oscilloscope_Project/fpga/SPI_Test/ProtokolBlok.vhd 2025/06/10.09:37:18 P.20131013
-EN work/ProtokolBlok 1749541043 \
-      FL /home/Andreas/Oscilloscope_Project/fpga/SPI_Test/ProtokolBlok.vhd \
+V3 25
+FL /home/Andreas/Oscilloscope_Project/fpga/SPI_Test/ProtokolBlok.vhd 2025/06/10.09:37:18 P.15xf
+FL /home/Andreas/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd 2025/06/04.16:07:28 P.15xf
+FL /home/vboxuser/Oscilloscope_Project/fpga/SPI_Test/ProtokolBlok.vhd 2025/06/05.10:37:40 P.15xf
+FL /home/vboxuser/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd 2025/06/05.11:49:49 P.15xf
+FL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/ProtokolBlok.vhd 2025/06/11.13:11:25 P.15xf
+EN work/ProtokolBlok 1749640290 \
+      FL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/ProtokolBlok.vhd \
       PB ieee/std_logic_1164 1381692176
-AR work/ProtokolBlok/Behavioral 1749541044 \
-      FL /home/Andreas/Oscilloscope_Project/fpga/SPI_Test/ProtokolBlok.vhd \
-      EN work/ProtokolBlok 1749541043
-FL /home/Andreas/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd 2025/06/04.16:07:28 P.20131013
-FL /home/vboxuser/Oscilloscope_Project/fpga/SPI_Test/ProtokolBlok.vhd 2025/06/05.10:37:40 P.20131013
-FL /home/vboxuser/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd 2025/06/05.11:49:49 P.20131013
-FL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/ProtokolBlok.vhd 2025/06/09.17:24:05 P.20131013
-FL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/SigGenSPIControl.vhd 2025/06/09.12:02:38 P.20131013
-EN work/SigGenSPIControl 1749475669 \
+AR work/ProtokolBlok/Behavioral 1749640291 \
+      FL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/ProtokolBlok.vhd \
+      EN work/ProtokolBlok 1749640290 CP syncbyte CP Chk CP work/std_8bit_reg
+FL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Register.vhd 2025/06/10.16:57:38 P.15xf
+EN work/std_8bit_reg 1749640288 \
+      FL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Register.vhd \
+      PB ieee/std_logic_1164 1381692176
+AR work/std_8bit_reg/Behavioral 1749640289 \
+      FL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Register.vhd \
+      EN work/std_8bit_reg 1749640288
+FL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/SigGenSPIControl.vhd 2025/06/11.09:44:51 P.15xf
+EN work/SigGenSPIControl 1749627903 \
       FL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/SigGenSPIControl.vhd \
       PB ieee/std_logic_1164 1381692176
-AR work/SigGenSPIControl/Behavioral 1749475670 \
+AR work/SigGenSPIControl/Behavioral 1749627904 \
       FL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/SigGenSPIControl.vhd \
-      EN work/SigGenSPIControl 1749475669 CP work/ProtokolBlok \
-      CP work/Skifte_reg_til_Parallel
-FL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd 2025/06/09.11:53:37 P.20131013
-EN work/Skifte_reg_til_Parallel 1749475667 \
+      EN work/SigGenSPIControl 1749627903 CP work/ProtokolBlok \
+      CP work/Skifte_reg_til_Parallel CP work/TimingComponent
+FL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd 2025/06/10.16:15:44 P.15xf
+EN work/Skifte_reg_til_Parallel 1749627899 \
       FL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd \
       PB ieee/std_logic_1164 1381692176 PB ieee/STD_LOGIC_UNSIGNED 1335251625
-AR work/Skifte_reg_til_Parallel/Behavioral 1749475668 \
+AR work/Skifte_reg_til_Parallel/Behavioral 1749627900 \
       FL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd \
-      EN work/Skifte_reg_til_Parallel 1749475667
+      EN work/Skifte_reg_til_Parallel 1749627899
+FL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/TiminComponent.vhd 2025/06/10.15:40:43 P.15xf
+EN work/TimingComponent 1749627901 \
+      FL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/TiminComponent.vhd \
+      PB ieee/std_logic_1164 1381692176
+AR work/TimingComponent/Behavioral 1749627902 \
+      FL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/TiminComponent.vhd \
+      EN work/TimingComponent 1749627901

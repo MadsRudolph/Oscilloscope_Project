@@ -1,0 +1,5 @@
+set -tmpdir "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/xst/projnav.tmp"
+set -xsthdpdir "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/xst"
+elaborate
+-ifn TiminComponent.prj
+-ifmt mixed
