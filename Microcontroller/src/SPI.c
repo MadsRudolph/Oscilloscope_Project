@@ -1,6 +1,7 @@
 // ## This file contains SPI initialization and communication functions ##
 // ## References to datasheet pages are marked as S.xxx for Atmega2560 ##
 
+#include "SPI.h"
 #include <avr/io.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -34,7 +35,8 @@ unsigned char slave_reciver(unsigned char data)
 {
     SPDR = data; // Send dummy data to initiate clock
 
-    while (!(SPSR & (1 << SPIF))); // Wait for transmission to complete
+    while (!(SPSR & (1 << SPIF)))
+        ; // Wait for transmission to complete
 
     return SPDR; // Return received data
 }
@@ -47,12 +49,46 @@ void slave_init()
     // PORTB |= (1 << PB0); // REMOVE this line — SS should not be driven by slave
 }
 
-void transmit_signalgenerator_data(uint8_t adress, uint16_t data)
+void transmit_signalgenerator_data(uint8_t shape, uint16_t amp, uint8_t freq)
 {
-    unsigned int checksum = adress ^ 0x55 ^ data; // calculates checksum with bitwise xor(^)
+    unsigned int checksum = 0;
 
-    master_transmit(0x55);     // transmit sync bit
-    master_transmit(adress);   // transmis adress
-    master_transmit(data);     // transmit data
-    master_transmit(checksum); // transmit checksum
+    for (uint8_t adress = 1; adress < 4; adress++)
+    {
+        switch (adress)
+        {
+        case 1:
+
+            checksum = adress ^ 0x55 ^ amp; // calculates checksum with bitwise xor(^)
+
+            master_transmit(0x55);     // transmit bit(0): sync
+            master_transmit(adress);   // transmis bit(1): adress
+            master_transmit(amp);      // transmit bit(2): data
+            master_transmit(checksum); // transmit bit(3): checksum
+
+            break;
+        case 2:
+
+            checksum = adress ^ 0x55 ^ freq; // calculates checksum with bitwise xor(^)
+
+            master_transmit(0x55);     // transmit bit(0): sync
+            master_transmit(adress);   // transmis bit(1): adress
+            master_transmit(freq);     // transmit bit(2): data
+            master_transmit(checksum); // transmit bit(3): checksum
+
+            break;
+        case 3:
+
+            checksum = adress ^ 0x55 ^ shape; // calculates checksum with bitwise xor(^)
+
+            master_transmit(0x55);     // transmit bit(0): sync
+            master_transmit(adress);   // transmis bit(1): adress
+            master_transmit(shape);    // transmit bit(2): data
+            master_transmit(checksum); // transmit bit(3): checksum
+
+            break;
+        default:
+            break;
+        }
+    }
 }

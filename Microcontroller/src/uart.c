@@ -4,16 +4,16 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <string.h>
-#include "uart.h"
 #include <util/delay.h>
+#include "uart.h"
 #include "ADC.h" // Needed for init_timer1()
 #define MAX_RECORD_LENGTH 1000
 extern volatile uint16_t record_length;
 extern volatile uint16_t current_timer1_top;
+static uint8_t selected_param = 0; // 0 = shape, 1 = amplitude, 2 = frequency
 volatile uint8_t shape = 0;
 volatile uint8_t amplitude = 128;
 volatile uint8_t frequency = 100;
-static uint8_t selected_param = 0; // 0 = shape, 1 = amplitude, 2 = frequency
 
 void uart_init(unsigned int ubrr)
 {

@@ -14,5 +14,7 @@ void send_oscilloscope_packet(uint8_t *samples, uint16_t length);
 extern volatile uint8_t uart1_rx_buffer[];
 extern volatile uint8_t uart1_rx_index;
 extern volatile uint8_t uart1_packet_ready;
-
+extern volatile uint8_t shape;
+extern volatile uint8_t amplitude;
+extern volatile uint8_t frequency;
 #endif
