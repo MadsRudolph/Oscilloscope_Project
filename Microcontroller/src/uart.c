@@ -5,6 +5,7 @@
 #include <avr/interrupt.h>
 #include <string.h>
 #include <util/delay.h>
+#include <stdio.h>
 #include "uart.h"
 #include "ADC.h" // Needed for init_timer1()
 #define MAX_RECORD_LENGTH 1000
@@ -176,7 +177,7 @@ void parse_uart1_packet()
             break;
 
         case 0x02:
-            uart_send_string("BTN2 pressed: Increase value\r\n");
+            uart_send_string("BTN2 pressed: Run/Stop\r\n");
             if (selected_param == 0 && shape < 3)
                 shape++;
             else if (selected_param == 1 && amplitude < 255)
@@ -186,7 +187,7 @@ void parse_uart1_packet()
             break;
 
         case 0x03:
-            uart_send_string("BTN3 pressed: Decrease value\r\n");
+            uart_send_string("BTN3 pressed: Reset\r\n");
             if (selected_param == 0 && shape > 0)
                 shape--;
             else if (selected_param == 1 && amplitude > 0)
@@ -202,8 +203,9 @@ void parse_uart1_packet()
 
         // Always send updated values to LabVIEW
         send_generator_packet(selected_param, shape, amplitude, frequency);
+        break;
     }
-
+    
     case 0x02: // SEND
     {
         uint16_t sample_rate = (uart1_rx_buffer[5] << 8) | uart1_rx_buffer[6];
