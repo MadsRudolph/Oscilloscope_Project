@@ -327,6 +327,24 @@ BEGIN
       sclk <= '1';
 		wait for 2*sclk_period;
 
+
+		data <= "01010101";
+		wait for sclk_period;
+
+		
+		SSnot <= '0';
+		for i in 0 to 7 loop
+            mosi <= data(i);
+            SCLK <= '0';
+            wait for 2*sclk_period / 2;
+            SCLK <= '1';  -- Data is valid on rising edge
+            wait for 2*sclk_period / 2;
+      end loop;
+		
+
+		SSnot <= '1';
+      sclk <= '1';
+		wait for 2*sclk_period;
       wait;
    end process;
 
