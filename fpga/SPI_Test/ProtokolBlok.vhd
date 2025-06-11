@@ -30,7 +30,7 @@ begin
 
 SyncDec: syncbyte <= '1' when SPIdat = "01010101" else '0';
 
-CheckSumDec : Chk <= '1' when Checksum = ("01010101" xor ADDR xor Data) else '0';
+CheckSumDec: Chk <= '1' when Checksum = ("01010101" xor ADDR xor Data) else '0';
 
 
 Statereg: process(CLK, Reset)
@@ -61,14 +61,14 @@ Statereg: process(CLK, Reset)
 	when IDLE =>
 		
 		if syncbyte  = '1' and DataReady = '1' then  -- check spidat(sync) stemmer
-			SigEN <= '0';
+			SigEN <='0';
 			nextstate <= ADDRS;
 		else
 			nextstate <= IDLE;
 		end if; 
-
+	
 	when ADDRS =>
-		
+	
 		if DataReady = '1' then
 			ADDREN <= '1';
 			nextstate <= DataS;
@@ -96,29 +96,34 @@ Statereg: process(CLK, Reset)
 			nextstate <= FreqS;
 		elsif Chk = '1' and ADDR = "00000011" then
 			nextstate <= ShapeS;
+		elsif 
+			DataReady = '1' and Chk = '0' then -- Hvis checksum ikke passer.
+			nextstate <=IDLE;
 		else 
 			nextstate <= CheckSumS;
 		end if;
 		
-	when ShapeS =>
-			SigEN <= '1';
-			ShapeEN <= '1';
-			nextstate <= IDLE;
-		
 
 	when AmpS =>
-			SigEN <= '1';
 			AmpEN <= '1';
 			nextstate <= IDLE;
 
 	
 	when FreqS =>
-			SigEN <= '1';
 			FreqEN <= '1';
-			nextstate <= IDLE;		
+			nextstate <= IDLE;
+
+			
+	when ShapeS =>
+			ShapeEN <= '1';
+			nextstate <= IDLE;
+			SigEN <= '1';
+
+
 
 
 end case;
+
 end process;
 
 ADDRReg: entity work.std_8bit_reg
