@@ -7,7 +7,8 @@
 #include <util/delay.h>
 #include <stdio.h>
 #include "uart.h"
-#include "ADC.h" // Needed for init_timer1()
+#include "ADC.h"
+#include "SPI.h"
 #define MAX_RECORD_LENGTH 1000
 extern volatile uint16_t record_length;
 extern volatile uint16_t current_timer1_top;
@@ -15,6 +16,7 @@ static uint8_t selected_param = 0; // 0 = shape, 1 = amplitude, 2 = frequency
 volatile uint8_t shape = 0;
 volatile uint8_t amplitude = 128;
 volatile uint8_t frequency = 100;
+volatile uint8_t run_stop_flag = 0;
 
 void uart_init(unsigned int ubrr)
 {
@@ -155,7 +157,7 @@ void parse_uart1_packet()
 
     switch (type)
     {
-    case 0x01: // BTN
+    case 0x01: // BTN in Generator Tab
     {
         uint8_t btn = uart1_rx_buffer[5];
         uint8_t sw = uart1_rx_buffer[6];
@@ -169,7 +171,7 @@ void parse_uart1_packet()
         case 0x00:
             uart_send_string("BTN0 pressed: Send current values\r\n");
             if (selected_param == 0)
-                if(sw <= 3)
+                if (sw <= 3)
                 {
                     shape = sw;
                 }
@@ -196,8 +198,11 @@ void parse_uart1_packet()
                     uart_send_string("error, frequency must be between 0 & 255\r\n");
                 }
             else
+            {
                 uart_send_string("error, wrong or no operation selected \r\n");
-
+            }
+            transmit_signalgenerator_data(amplitude, frequency, shape); // Send data to FPGA
+            uart_send_string("Current values sent to FPGA\r\n");
             break;
 
         case 0x01:
@@ -207,22 +212,27 @@ void parse_uart1_packet()
 
         case 0x02:
             uart_send_string("BTN2 pressed: Run/Stop\r\n");
-            if (selected_param == 0 && shape < 3)
-                shape++;
-            else if (selected_param == 1 && amplitude < 255)
-                amplitude++;
-            else if (selected_param == 2 && frequency < 255)
-                frequency++;
+            if (run_stop_flag)
+            {
+                run_stop_flag = 0;
+                uart_send_string("Runnning\r\n");
+            }
+            else
+            {
+                run_stop_flag = 1;
+                uart_send_string("Paused\r\n");
+            }
             break;
 
         case 0x03:
             uart_send_string("BTN3 pressed: Reset\r\n");
-            if (selected_param == 0 && shape > 0)
-                shape--;
-            else if (selected_param == 1 && amplitude > 0)
-                amplitude--;
-            else if (selected_param == 2 && frequency > 0)
-                frequency--;
+            selected_param = 0; // Reset to shape
+            shape = 0;          // Reset shape to 0
+            amplitude = 128;    // Reset amplitude to default
+            frequency = 1;      // Reset frequency to default
+            uart_send_string("Generator reset to default values\r\n");
+            transmit_signalgenerator_data(amplitude, frequency, shape); // Send reset values to FPGA
+            uart_send_string("Reset values sent to FPGA\r\n");
             break;
 
         default:
@@ -234,8 +244,8 @@ void parse_uart1_packet()
         send_generator_packet(selected_param, shape, amplitude, frequency);
         break;
     }
-    
-    case 0x02: // SEND
+
+    case 0x02: // SEND in Oscilloscope Tab
     {
         uint16_t sample_rate = (uart1_rx_buffer[5] << 8) | uart1_rx_buffer[6];
         uint16_t record_len = (uart1_rx_buffer[7] << 8) | uart1_rx_buffer[8];

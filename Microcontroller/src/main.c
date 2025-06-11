@@ -55,8 +55,8 @@ void print_uart1_packet()
 enum states
 {
     state_init,
-    state_transmit_SPI,
-    state_transmit_UART
+    state_Run,
+    state_Stop
 };
 static enum states state = state_init;
 
@@ -93,17 +93,10 @@ int main(void)
             uart1_init(16);                              // Initialize UART1 for LabVIEW (115200 baud, U2X1 enabled)
             uart_send_string("System initialized.\r\n"); // Debug message via UART0
             sei();
-            state = state_transmit_UART; // Changes state
-
+            state = state_Run; // Changes state
             break;
 
-        case state_transmit_SPI:
-        
-            transmit_signalgenerator_data(amplitude, frequency, shape);
-
-            break;
-
-        case state_transmit_UART:
+        case state_Run:
 
             // If ADC buffer is ready, send UART packet to LabVIEW
             if (buffer_ready)
@@ -116,8 +109,18 @@ int main(void)
                 sprintf(buf, "%02X      ", adc_samples[0]); // Add extra spaces to clear previous output
                 uart_send_string(buf);
             }
-
+            if (run_stop_flag)
+            {
+                state = state_Stop; // If run_stop_flag is set, change to Stop state
+            }
             break;
+
+        case state_Stop:
+            if (!(run_stop_flag))
+            {
+                state = state_Run; // If run_stop_flag is cleared, return to Run state
+            }
+        break;
 
         default:
             break;
