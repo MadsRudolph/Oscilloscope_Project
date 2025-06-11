@@ -49,7 +49,7 @@ void slave_init()
     // PORTB |= (1 << PB0); // REMOVE this line — SS should not be driven by slave
 }
 
-void transmit_signalgenerator_data(uint8_t shape, uint16_t amp, uint8_t freq)
+void transmit_signalgenerator_data(uint16_t amp, uint8_t freq, uint8_t shape)
 {
     unsigned int checksum = 0;
 

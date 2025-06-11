@@ -98,8 +98,8 @@ int main(void)
             break;
 
         case state_transmit_SPI:
-
-            transmit_signalgenerator_data();
+        
+            transmit_signalgenerator_data(amplitude, frequency, shape);
 
             break;
 
