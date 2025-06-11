@@ -27,7 +27,7 @@ begin
 			end if;
 	end process; 	 
 
-SPIdat <= skift_reg when SSnot = '1' else (others => 'Z');
+SPIdat <= skift_reg;
 
 
 end Behavioral;

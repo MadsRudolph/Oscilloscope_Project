@@ -54,7 +54,7 @@ begin
         port map (
             Reset     => Reset,
             Clk      => Clk,
-				Ampl		=> Amp,
+				Amp		=> Amp,
 				Freq		=> Freq,
 				Shape 	=> Shape,
 				DataReady => DataReady,

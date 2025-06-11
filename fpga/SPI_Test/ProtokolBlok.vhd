@@ -20,7 +20,7 @@ type Statetype is (IDLE, ADDRS, DataS, CheckSumS, AmpS, ShapeS, FreqS);
 
 signal state, nextstate : Statetype;
 signal DataEN, ADDREN, AmpEN, FreqEN, ShapeEN, CheckSumEN, Chk, syncbyte: STD_LOGIC;
-signal CheckSum, ADDR, Data:STD_LOGIC_VECTOR (7 downto 0);
+signal CheckSum, ADDR, Data: STD_LOGIC_VECTOR (7 downto 0);
 
   
 
@@ -28,7 +28,7 @@ signal CheckSum, ADDR, Data:STD_LOGIC_VECTOR (7 downto 0);
 begin
 
 
-SyncDec: syncbyte <= '1' when SPIdat = x"55" else '0';
+SyncDec: syncbyte <= '1' when SPIdat = "01010101" else '0';
 
 CheckSumDec : Chk <= '1' when Checksum = ("01010101" xor ADDR xor Data) else '0';
 
@@ -43,14 +43,18 @@ Statereg: process(CLK, Reset)
     end process;
 
     -- Next state logic and register enable control
-    StateDec: process (SPIdat, DataReady, state, CheckSumReg, Datareg, ADDRReg)
+    StateDec: process (SPIdat, DataReady, state, Chk, syncbyte)
     begin
 	 
 	 
 -- Default values
+	DataEn <= '0';
+	ADDREn <= '0';
+	CheckSumEn <= '0';
+	AmpEn <= '0';
+	ShapeEn <= '0';
+	FreqEn <= '0';
 	
-	CheckSumReg <= "00000000";
-
 	
 	case state is
 	
@@ -84,13 +88,13 @@ Statereg: process(CLK, Reset)
 	
 
 	when CheckSumS =>
+	CheckSumEn <= '1';
 		
-		
-		if Chk = '1' and AmpEN = '1' then
+		if Chk = '1' and ADDR = "00000001" then
 			nextstate <= AmpS;
-		elsif Chk = '1' and FreqEN = '1' then
+		elsif Chk = '1' and ADDR = "00000010" then
 			nextstate <= FreqS;
-		elsif Chk = '1' and ShapeEN = '1' then
+		elsif Chk = '1' and ADDR = "00000011" then
 			nextstate <= ShapeS;
 		else 
 			nextstate <= CheckSumS;
@@ -111,9 +115,7 @@ Statereg: process(CLK, Reset)
 	when FreqS =>
 			SigEN <= '1';
 			FreqEN <= '1';
-			nextstate <= IDLE;
-				
-			
+			nextstate <= IDLE;		
 
 
 end case;
@@ -132,7 +134,7 @@ DataReg: entity work.std_8bit_reg
 	port map (
 					Reset => Reset,
 					Clk => Clk,
-					Enable => DataReg
+					Enable => DataEN,
 					Data_in => SPIdat,
 					Data_out => Data 
 					);
@@ -153,7 +155,7 @@ ShapeReg: entity work.std_8bit_reg
 					Reset => Reset,
 					Clk => Clk,
 					Enable => ShapeEn,
-					Data_in => SPIdat,
+					Data_in => Data,
 					Data_out => Shape 
 					);
 
@@ -163,7 +165,7 @@ AmpReg: entity work.std_8bit_reg
 					Reset => Reset,
 					Clk => Clk,
 					Enable => AmpEn,
-					Data_in => SPIdat,
+					Data_in => Data,
 					Data_out => Amp 
 					);
 
@@ -173,7 +175,7 @@ FreqReg: entity work.std_8bit_reg
 					Reset => Reset,
 					Clk => Clk,
 					Enable => FreqEn,
-					Data_in => SPIdat,
+					Data_in => Data,
 					Data_out => Freq
 					);
 
