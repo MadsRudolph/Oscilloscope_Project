@@ -1,4 +1,6 @@
-AR protokolblok behavioral /home/vboxuser/Oscilloscope_Project/fpga/SPI_Test/ProtokolBlok.vhd sub00/vhpl03 1749119865
-EN skifte_reg_til_parallel NULL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd sub00/vhpl00 1749197230
-AR skifte_reg_til_parallel behavioral C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd sub00/vhpl01 1749197231
-EN protokolblok NULL /home/vboxuser/Oscilloscope_Project/fpga/SPI_Test/ProtokolBlok.vhd sub00/vhpl02 1749119864
+AR protokolblok behavioral /home/Andreas/Oscilloscope_Project/fpga/SPI_Test/ProtokolBlok.vhd sub00/vhpl03 1749541044
+EN skifte_reg_til_parallel NULL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd sub00/vhpl00 1749475667
+AR siggenspicontrol behavioral C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/SigGenSPIControl.vhd sub00/vhpl05 1749475670
+AR skifte_reg_til_parallel behavioral C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd sub00/vhpl01 1749475668
+EN siggenspicontrol NULL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/SigGenSPIControl.vhd sub00/vhpl04 1749475669
+EN protokolblok NULL /home/Andreas/Oscilloscope_Project/fpga/SPI_Test/ProtokolBlok.vhd sub00/vhpl02 1749541043

@@ -9,15 +9,18 @@ ARCHITECTURE behavior OF TB IS
  
     -- Component Declaration for the Unit Under Test (UUT)
  
-    COMPONENT Skifte_reg_til_Parallel
-    PORT(
-         SCK : IN  std_logic;
-         MOSI : IN  std_logic;
-         RESET : IN  std_logic;
-         LED : OUT  std_logic_vector(7 downto 0);
-			SSnot : IN std_logic
-        );
-    END COMPONENT;
+    COMPONENT 
+    SigGenSPIControl is
+    Port ( CLK : in  STD_LOGIC;
+           Reset : in  STD_LOGIC;
+           SCK : in  STD_LOGIC;
+           MOSI : in  STD_LOGIC;
+           SSnot : in  STD_LOGIC;
+           Shape : out  STD_LOGIC_VECTOR (7 downto 0);
+           Amp : out  STD_LOGIC_VECTOR (7 downto 0);
+           Freq : out  STD_LOGIC_VECTOR (7 downto 0);
+           SigEN : out  STD_LOGIC);
+end Component;
  
    --Inputs
    signal SCK : std_logic := '0';
@@ -26,18 +29,18 @@ ARCHITECTURE behavior OF TB IS
 	signal SSnot : std_logic := '1';
 
  	--Outputs
-   signal LED : std_logic_vector(7 downto 0);
+   signal SPIdat : std_logic_vector(7 downto 0);
 
    -- Clock period definitions
 	constant SCK_period : time := 10 ns; 
 BEGIN
  
 	-- Instantiate the Unit Under Test (UUT)
-   uut: Skifte_reg_til_Parallel PORT MAP (
+   uut: SigGenSPIControl PORT MAP (
           SCK => SCK,
           MOSI => MOSI,
           RESET => RESET,
-          LED => LED,
+          SPIdat => SPIdat,
 			 SSnot => SSnot
         );
  
@@ -57,7 +60,9 @@ BEGIN
      
 
       -- insert stimulus here 
-	   RESET <= '1'; 
+	
+			-- sync 1 
+      RESET <= '1'; 
 		wait for SCK_period; 
 		RESET <= '0';
 		 
@@ -74,26 +79,626 @@ BEGIN
 		MOSI <= '1';
 		
 		wait for SCK_period; 
-		MOSI <= '1';
+		MOSI <= '0';
 		
 		wait for SCK_period; 
 		MOSI <= '1';
 		
 		wait for SCK_period; 
-		MOSI <= '1';
+		MOSI <= '0';
 		
 		wait for SCK_period; 
 		MOSI <= '1';
 		
 		wait for SCK_period; 
-		MOSI <= '1';
+		MOSI <= '0';
 		
 		wait for SCK_period;
-		SSnot <= '1';
+		SSnot <= '0';
 		
 		wait for SCK_period; 
 		
 		
+		
+		-- sync 2 
+    
+		 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '1';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '1';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '1';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '1';
+		
+		
+		wait for SCK_period; 
+		
+		
+		
+		-- length 1 
+		
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		
+		wait for SCK_period; 
+		
+			
+		-- length 2
+
+		SSnot <= '0';
+		
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '1';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '1';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period;
+		SSnot <= '0';
+		
+		wait for SCK_period; 
+		
+		
+		
+			--Type
+    
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '1';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+
+		
+		wait for SCK_period; 
+		
+		
+			--Shape
+    
+		
+		MOSI <= '1';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+
+		wait for SCK_period; 
+		
+		
+		
+			--Amp
+    
+		 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '1';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+
+		wait for SCK_period; 
+		
+		
+		
+		
+			--Freq
+    
+		
+		MOSI <= '1';
+		
+		wait for SCK_period; 
+		MOSI <= '1';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+
+		wait for SCK_period; 
+		
+		
+		
+		
+			--CRC 1
+
+		
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+
+		wait for SCK_period; 
+		
+		
+		
+		
+		--CRC 2
+		
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+
+		wait for SCK_period; 
+		
+					-- sync 1 
+		
+		SSnot <= '0';
+		
+		MOSI <= '1';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '1';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '1';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '1';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period;
+		SSnot <= '0';
+		
+		wait for SCK_period; 
+		
+		
+		
+		-- sync 2 
+  
+		
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '1';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '1';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '1';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '1';
+		
+		
+		wait for SCK_period; 
+		
+		
+		
+		-- length 1 
+		
+		
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		
+		wait for SCK_period; 
+		
+		
+		
+		
+		
+			
+		-- length 2
+		
+		SSnot <= '0';
+		
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '1';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '1';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period;
+		SSnot <= '0';
+		
+		wait for SCK_period; 
+		
+		
+		
+			--Type
+    
+		
+		
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '1';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+
+		
+		wait for SCK_period; 
+		
+		
+			--Shape
+    
+		
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '1';
+		
+
+		wait for SCK_period; 
+		
+		
+		
+			--Amp
+    
+		
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '1';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+
+		wait for SCK_period; 
+		
+		
+		
+		
+			--Freq
+    
+		
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '1';
+		
+		wait for SCK_period; 
+		MOSI <= '1';
+		
+
+		wait for SCK_period; 
+		
+		
+		
+		
+			--CRC 1
+
+		
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+
+		wait for SCK_period; 
+		
+		
+		
+		
+		--CRC 2
+    
+		
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+		wait for SCK_period; 
+		MOSI <= '0';
+		
+
+		wait for SCK_period; 
 		wait;
    end process;
 

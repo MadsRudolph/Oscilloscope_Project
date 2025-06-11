@@ -3,14 +3,14 @@ Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.91 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.12 secs
  
 --> Parameter xsthdpdir set to xst
 
 
-Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.91 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.12 secs
  
 --> Reading design: Skifte_reg_til_Parallel.prj
 
@@ -105,7 +105,8 @@ Slice Utilization Ratio Delta      : 5
 *                          HDL Compilation                              *
 =========================================================================
 Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd" in Library work.
-Architecture behavioral of Entity skifte_reg_til_parallel is up to date.
+Entity <skifte_reg_til_parallel> compiled.
+Entity <skifte_reg_til_parallel> (Architecture <behavioral>) compiled.
 
 =========================================================================
 *                     Design Hierarchy Analysis                         *
@@ -128,7 +129,7 @@ Performing bidirectional port resolution...
 
 Synthesizing Unit <Skifte_reg_til_Parallel>.
     Related source file is "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd".
-    Found 8-bit tristate buffer for signal <LED>.
+    Found 8-bit tristate buffer for signal <SPIdat>.
     Found 8-bit register for signal <skift_reg>.
     Summary:
 	inferred   8 D-type flip-flop(s).
@@ -205,7 +206,7 @@ Optimization Goal                  : Speed
 Keep Hierarchy                     : No
 
 Design Statistics
-# IOs                              : 12
+# IOs                              : 13
 
 Cell Usage :
 # BELS                             : 1
@@ -214,8 +215,9 @@ Cell Usage :
 #      FDCE                        : 9
 # Clock Buffers                    : 1
 #      BUFGP                       : 1
-# IO Buffers                       : 11
+# IO Buffers                       : 12
 #      IBUF                        : 3
+#      OBUF                        : 1
 #      OBUFT                       : 8
 =========================================================================
 
@@ -227,8 +229,8 @@ Selected Device : 3s100ecp132-4
  Number of Slices:                        4  out of    960     0%  
  Number of Slice Flip Flops:              8  out of   1920     0%  
  Number of 4 input LUTs:                  1  out of   1920     0%  
- Number of IOs:                          12
- Number of bonded IOBs:                  12  out of     83    14%  
+ Number of IOs:                          13
+ Number of bonded IOBs:                  13  out of     83    15%  
     IOB Flip Flops:                       1
  Number of GCLKs:                         1  out of     24     4%  
 
@@ -269,9 +271,9 @@ Timing Summary:
 Speed Grade: -4
 
    Minimum period: 1.346ns (Maximum Frequency: 742.942MHz)
-   Minimum input arrival time before clock: 3.948ns
+   Minimum input arrival time before clock: 3.975ns
    Maximum output required time after clock: 4.310ns
-   Maximum combinational path delay: 6.665ns
+   Maximum combinational path delay: 6.692ns
 
 Timing Detail:
 --------------
@@ -302,7 +304,7 @@ Delay:               1.346ns (Levels of Logic = 0)
 Timing constraint: Default OFFSET IN BEFORE for Clock 'SCK'
   Total number of paths / destination ports: 11 / 11
 -------------------------------------------------------------------------
-Offset:              3.948ns (Levels of Logic = 2)
+Offset:              3.975ns (Levels of Logic = 2)
   Source:            SSnot (PAD)
   Destination:       skift_reg_0 (FF)
   Destination Clock: SCK rising
@@ -311,12 +313,12 @@ Offset:              3.948ns (Levels of Logic = 2)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O             1   1.218   0.420  SSnot_IBUF (SSnot_IBUF)
-     INV:I->O             17   0.704   1.051  SSnot_inv1_INV_0 (SSnot_inv)
+     IBUF:I->O             2   1.218   0.447  SSnot_IBUF (flag_OBUF)
+     INV:I->O             17   0.704   1.051  flag_inv1_INV_0 (flag_inv)
      FDCE:CE                   0.555          skift_reg_0
     ----------------------------------------
-    Total                      3.948ns (2.477ns logic, 1.471ns route)
-                                       (62.7% logic, 37.3% route)
+    Total                      3.975ns (2.477ns logic, 1.498ns route)
+                                       (62.3% logic, 37.7% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'SCK'
@@ -324,47 +326,47 @@ Timing constraint: Default OFFSET OUT AFTER for Clock 'SCK'
 -------------------------------------------------------------------------
 Offset:              4.310ns (Levels of Logic = 1)
   Source:            skift_reg_6 (FF)
-  Destination:       LED<6> (PAD)
+  Destination:       SPIdat<6> (PAD)
   Source Clock:      SCK rising
 
-  Data Path: skift_reg_6 to LED<6>
+  Data Path: skift_reg_6 to SPIdat<6>
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FDCE:C->Q             2   0.591   0.447  skift_reg_6 (skift_reg_6)
-     OBUFT:I->O                3.272          LED_6_OBUFT (LED<6>)
+     OBUFT:I->O                3.272          SPIdat_6_OBUFT (SPIdat<6>)
     ----------------------------------------
     Total                      4.310ns (3.863ns logic, 0.447ns route)
                                        (89.6% logic, 10.4% route)
 
 =========================================================================
 Timing constraint: Default path analysis
-  Total number of paths / destination ports: 8 / 8
+  Total number of paths / destination ports: 9 / 9
 -------------------------------------------------------------------------
-Delay:               6.665ns (Levels of Logic = 3)
+Delay:               6.692ns (Levels of Logic = 3)
   Source:            SSnot (PAD)
-  Destination:       LED<7> (PAD)
+  Destination:       SPIdat<7> (PAD)
 
-  Data Path: SSnot to LED<7>
+  Data Path: SSnot to SPIdat<7>
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O             1   1.218   0.420  SSnot_IBUF (SSnot_IBUF)
-     INV:I->O             17   0.704   1.051  SSnot_inv1_INV_0 (SSnot_inv)
-     OBUFT:T->O                3.272          LED_7_OBUFT (LED<7>)
+     IBUF:I->O             2   1.218   0.447  SSnot_IBUF (flag_OBUF)
+     INV:I->O             17   0.704   1.051  flag_inv1_INV_0 (flag_inv)
+     OBUFT:T->O                3.272          SPIdat_7_OBUFT (SPIdat<7>)
     ----------------------------------------
-    Total                      6.665ns (5.194ns logic, 1.471ns route)
-                                       (77.9% logic, 22.1% route)
+    Total                      6.692ns (5.194ns logic, 1.498ns route)
+                                       (77.6% logic, 22.4% route)
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 5.00 secs
-Total CPU time to Xst completion: 5.13 secs
+Total REAL time to Xst completion: 4.00 secs
+Total CPU time to Xst completion: 4.21 secs
  
 --> 
 
-Total memory usage is 4510824 kilobytes
+Total memory usage is 4510796 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    0 (   0 filtered)

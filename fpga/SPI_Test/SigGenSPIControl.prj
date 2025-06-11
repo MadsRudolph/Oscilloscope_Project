@@ -1,0 +1,3 @@
+vhdl work "Skifte_reg_til_Parallel.vhd"
+vhdl work "ProtokolBlok.vhd"
+vhdl work "SigGenSPIControl.vhd"

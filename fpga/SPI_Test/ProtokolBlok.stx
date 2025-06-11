@@ -1,17 +1,17 @@
 Release 14.7 - xst P.20131013 (lin64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> 
-Parameter TMPDIR set to /home/vboxuser/Oscilloscope_Project/fpga/SPI_Test/xst/projnav.tmp
+Parameter TMPDIR set to /home/Andreas/Oscilloscope_Project/fpga/SPI_Test/xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 0.00 secs
+Total REAL time to Xst completion: 1.00 secs
 Total CPU time to Xst completion: 0.03 secs
  
 --> 
-Parameter xsthdpdir set to /home/vboxuser/Oscilloscope_Project/fpga/SPI_Test/xst
+Parameter xsthdpdir set to /home/Andreas/Oscilloscope_Project/fpga/SPI_Test/xst
 
 
-Total REAL time to Xst completion: 0.00 secs
+Total REAL time to Xst completion: 1.00 secs
 Total CPU time to Xst completion: 0.03 secs
  
 --> 
@@ -20,18 +20,18 @@ WARNING:Xst:3164 - Option "-debug" found multiple times in the command line. Onl
 =========================================================================
 *                          HDL Compilation                              *
 =========================================================================
-Compiling vhdl file "/home/vboxuser/Oscilloscope_Project/fpga/SPI_Test/ProtokolBlok.vhd" in Library work.
+Compiling vhdl file "/home/Andreas/Oscilloscope_Project/fpga/SPI_Test/ProtokolBlok.vhd" in Library work.
 Entity <protokolblok> compiled.
 Entity <protokolblok> (Architecture <behavioral>) compiled.
 
 
-Total REAL time to Xst completion: 0.00 secs
+Total REAL time to Xst completion: 1.00 secs
 Total CPU time to Xst completion: 0.04 secs
  
 --> 
 
 
-Total memory usage is 469824 kilobytes
+Total memory usage is 469968 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    1 (   0 filtered)

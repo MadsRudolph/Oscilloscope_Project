@@ -1,5 +1,0 @@
-Command line:
-   TB_isim_beh.exe
-     -simmode  gui
-     -simrunnum  0
-     -socket  58264

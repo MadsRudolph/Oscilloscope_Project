@@ -1,1 +1,3 @@
+work	"ProtokolBlok.vhd"
+work	"SigGenSPIControl.vhd"
 work	"Skifte_reg_til_Parallel.vhd"
