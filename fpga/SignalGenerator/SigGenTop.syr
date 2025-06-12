@@ -3,14 +3,14 @@ Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.12 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.86 secs
  
 --> Parameter xsthdpdir set to xst
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.13 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.86 secs
  
 --> Reading design: SigGenTop.prj
 
@@ -113,6 +113,8 @@ Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/
 Architecture behavioral of Entity std_2bit_reg is up to date.
 Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/std_1bit_reg.vhd" in Library work.
 Architecture behavioral of Entity std_1bit_reg is up to date.
+Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/ipcore_dir/SinusLUT.vhd" in Library work.
+Architecture sinuslut_a of Entity sinuslut is up to date.
 Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/ProtokolBlok.vhd" in Library work.
 Entity <protokolblok> compiled.
 Entity <protokolblok> (Architecture <behavioral>) compiled.
@@ -120,16 +122,14 @@ Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Skifte_
 Architecture behavioral of Entity skifte_reg_til_parallel is up to date.
 Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/TiminComponent.vhd" in Library work.
 Architecture behavioral of Entity timingcomponent is up to date.
-Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/ipcore_dir/SinusLUT.vhd" in Library work.
-Architecture sinuslut_a of Entity sinuslut is up to date.
 Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/DivClk (1).vhd" in Library work.
 Architecture divclk_arch of Entity divclk is up to date.
+Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/SigGenSPIControl.vhd" in Library work.
+Architecture behavioral of Entity siggenspicontrol is up to date.
 Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd" in Library work.
 Architecture behavioral of Entity siggendatapath is up to date.
 Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SevenSeg5.vhd" in Library work.
 Architecture sevenseg_arch of Entity sevenseg5 is up to date.
-Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/SigGenSPIControl.vhd" in Library work.
-Architecture behavioral of Entity siggenspicontrol is up to date.
 Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenTop.vhd" in Library work.
 Architecture behavioral of Entity siggentop is up to date.
 
@@ -140,12 +140,12 @@ Analyzing hierarchy for entity <SigGenTop> in library <work> (architecture <beha
 
 Analyzing hierarchy for entity <DivClk> in library <work> (architecture <DivClk_arch>).
 
+Analyzing hierarchy for entity <SigGenSPIControl> in library <work> (architecture <Behavioral>).
+
 Analyzing hierarchy for entity <SigGenDatapath> in library <work> (architecture <Behavioral>) with generics.
 	PWMinc = "0000001"
 
 Analyzing hierarchy for entity <SevenSeg5> in library <work> (architecture <SevenSeg_arch>).
-
-Analyzing hierarchy for entity <SigGenSPIControl> in library <work> (architecture <Behavioral>).
 
 Analyzing hierarchy for entity <ProtokolBlok> in library <work> (architecture <Behavioral>).
 
@@ -169,14 +169,6 @@ Entity <SigGenTop> analyzed. Unit <SigGenTop> generated.
 Analyzing Entity <DivClk> in library <work> (Architecture <DivClk_arch>).
 Entity <DivClk> analyzed. Unit <DivClk> generated.
 
-Analyzing generic Entity <SigGenDatapath> in library <work> (Architecture <Behavioral>).
-	PWMinc = "0000001"
-WARNING:Xst:2211 - "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd" line 61: Instantiating black box module <SinusLUT>.
-Entity <SigGenDatapath> analyzed. Unit <SigGenDatapath> generated.
-
-Analyzing Entity <SevenSeg5> in library <work> (Architecture <SevenSeg_arch>).
-Entity <SevenSeg5> analyzed. Unit <SevenSeg5> generated.
-
 Analyzing Entity <SigGenSPIControl> in library <work> (Architecture <Behavioral>).
 Entity <SigGenSPIControl> analyzed. Unit <SigGenSPIControl> generated.
 
@@ -197,6 +189,14 @@ Entity <Skifte_reg_til_Parallel> analyzed. Unit <Skifte_reg_til_Parallel> genera
 
 Analyzing Entity <TimingComponent> in library <work> (Architecture <Behavioral>).
 Entity <TimingComponent> analyzed. Unit <TimingComponent> generated.
+
+Analyzing generic Entity <SigGenDatapath> in library <work> (Architecture <Behavioral>).
+	PWMinc = "0000001"
+WARNING:Xst:2211 - "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd" line 61: Instantiating black box module <SinusLUT>.
+Entity <SigGenDatapath> analyzed. Unit <SigGenDatapath> generated.
+
+Analyzing Entity <SevenSeg5> in library <work> (Architecture <SevenSeg_arch>).
+Entity <SevenSeg5> analyzed. Unit <SevenSeg5> generated.
 
 
 =========================================================================
@@ -320,15 +320,15 @@ Synthesizing Unit <ProtokolBlok>.
     | Encoding           | automatic                                      |
     | Implementation     | LUT                                            |
     -----------------------------------------------------------------------
-    Found 8-bit comparator equal for signal <Chk$cmp_eq0000> created at line 33.
-    Found 1-bit xor2 for signal <Chk$xor0000> created at line 33.
-    Found 1-bit xor2 for signal <Chk$xor0002> created at line 33.
-    Found 1-bit xor2 for signal <Chk$xor0004> created at line 33.
-    Found 1-bit xor2 for signal <Chk$xor0006> created at line 33.
-    Found 1-bit xor2 for signal <Chk$xor0008> created at line 33.
-    Found 1-bit xor2 for signal <Chk$xor0009> created at line 33.
-    Found 1-bit xor2 for signal <Chk$xor0010> created at line 33.
-    Found 1-bit xor2 for signal <Chk$xor0011> created at line 33.
+    Found 8-bit comparator equal for signal <Chk$cmp_eq0000> created at line 34.
+    Found 1-bit xor2 for signal <Chk$xor0000> created at line 34.
+    Found 1-bit xor2 for signal <Chk$xor0002> created at line 34.
+    Found 1-bit xor2 for signal <Chk$xor0004> created at line 34.
+    Found 1-bit xor2 for signal <Chk$xor0006> created at line 34.
+    Found 1-bit xor2 for signal <Chk$xor0008> created at line 34.
+    Found 1-bit xor2 for signal <Chk$xor0009> created at line 34.
+    Found 1-bit xor2 for signal <Chk$xor0010> created at line 34.
+    Found 1-bit xor2 for signal <Chk$xor0011> created at line 34.
     Summary:
 	inferred   1 Finite State Machine(s).
 	inferred   1 Comparator(s).
@@ -499,7 +499,7 @@ Optimization Goal                  : Speed
 Keep Hierarchy                     : No
 
 Design Statistics
-# IOs                              : 19
+# IOs                              : 26
 
 Cell Usage :
 # BELS                             : 534
@@ -527,9 +527,9 @@ Cell Usage :
 # Clock Buffers                    : 3
 #      BUFG                        : 1
 #      BUFGP                       : 2
-# IO Buffers                       : 17
+# IO Buffers                       : 24
 #      IBUF                        : 3
-#      OBUF                        : 14
+#      OBUF                        : 21
 =========================================================================
 
 Device utilization summary:
@@ -540,8 +540,8 @@ Selected Device : 3s100ecp132-4
  Number of Slices:                      142  out of    960    14%  
  Number of Slice Flip Flops:            134  out of   1920     6%  
  Number of 4 input LUTs:                260  out of   1920    13%  
- Number of IOs:                          19
- Number of bonded IOBs:                  19  out of     83    22%  
+ Number of IOs:                          26
+ Number of bonded IOBs:                  26  out of     83    31%  
     IOB Flip Flops:                       2
  Number of BRAMs:                         2  out of      4    50%  
  Number of GCLKs:                         3  out of     24    12%  
@@ -589,7 +589,7 @@ Speed Grade: -4
 
    Minimum period: 7.940ns (Maximum Frequency: 125.950MHz)
    Minimum input arrival time before clock: 1.946ns
-   Maximum output required time after clock: 39.429ns
+   Maximum output required time after clock: 39.402ns
    Maximum combinational path delay: No path found
 
 Timing Detail:
@@ -653,29 +653,29 @@ Delay:               7.940ns (Levels of Logic = 34)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'U0/Clk1_D1'
-  Clock period: 6.703ns (frequency: 149.187MHz)
+  Clock period: 6.730ns (frequency: 148.588MHz)
   Total number of paths / destination ports: 626 / 122
 -------------------------------------------------------------------------
-Delay:               6.703ns (Levels of Logic = 5)
-  Source:            U1/ProtokolBlok/CheckSumReg/data_out_5 (FF)
+Delay:               6.730ns (Levels of Logic = 5)
+  Source:            U1/ProtokolBlok/DataReg/data_out_3 (FF)
   Destination:       U1/ProtokolBlok/state_FSM_FFd2 (FF)
   Source Clock:      U0/Clk1_D1 rising
   Destination Clock: U0/Clk1_D1 rising
 
-  Data Path: U1/ProtokolBlok/CheckSumReg/data_out_5 to U1/ProtokolBlok/state_FSM_FFd2
+  Data Path: U1/ProtokolBlok/DataReg/data_out_3 to U1/ProtokolBlok/state_FSM_FFd2
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDCE:C->Q             1   0.591   0.595  U1/ProtokolBlok/CheckSumReg/data_out_5 (U1/ProtokolBlok/CheckSumReg/data_out_5)
-     LUT3:I0->O            1   0.704   0.424  U1/ProtokolBlok/Chk8120_SW0 (N36)
-     LUT4_L:I3->LO         1   0.704   0.275  U1/ProtokolBlok/Chk8120 (U1/ProtokolBlok/Chk8120)
+     FDCE:C->Q             4   0.591   0.622  U1/ProtokolBlok/DataReg/data_out_3 (U1/ProtokolBlok/DataReg/data_out_3)
+     LUT3:I2->O            1   0.704   0.424  U1/ProtokolBlok/Chk826_SW0 (N30)
+     LUT4_L:I3->LO         1   0.704   0.275  U1/ProtokolBlok/Chk826 (U1/ProtokolBlok/Chk826)
      LUT4:I0->O            3   0.704   0.531  U1/ProtokolBlok/Chk8136 (U1/ProtokolBlok/Chk)
      MUXF5:S->O            1   0.739   0.424  U1/ProtokolBlok/state_FSM_FFd2-In26 (U1/ProtokolBlok/state_FSM_FFd2-In26)
      LUT4:I3->O            1   0.704   0.000  U1/ProtokolBlok/state_FSM_FFd2-In57 (U1/ProtokolBlok/state_FSM_FFd2-In)
      FDC:D                     0.308          U1/ProtokolBlok/state_FSM_FFd2
     ----------------------------------------
-    Total                      6.703ns (4.454ns logic, 2.249ns route)
-                                       (66.4% logic, 33.6% route)
+    Total                      6.730ns (4.454ns logic, 2.276ns route)
+                                       (66.2% logic, 33.8% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'U4/Clk1_D'
@@ -760,9 +760,9 @@ Offset:              1.946ns (Levels of Logic = 1)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'U0/Clk1_D1'
-  Total number of paths / destination ports: 2367544614 / 2
+  Total number of paths / destination ports: 1183772315 / 9
 -------------------------------------------------------------------------
-Offset:              39.429ns (Levels of Logic = 40)
+Offset:              39.402ns (Levels of Logic = 40)
   Source:            U2/SinusDec/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s3_init.ram/dpram.dp4x4.ram (RAM)
   Destination:       PWMOut (PAD)
   Source Clock:      U0/Clk1_D1 rising
@@ -811,10 +811,10 @@ Offset:              39.429ns (Levels of Logic = 40)
      LUT2:I0->O            1   0.704   0.000  U2/Mcompar_PWM_cmp_le0000_lut<5> (U2/Mcompar_PWM_cmp_le0000_lut<5>)
      MUXCY:S->O            2   0.864   0.526  U2/Mcompar_PWM_cmp_le0000_cy<5> (U2/Mcompar_PWM_cmp_le0000_cy<5>)
      LUT4:I1->O            1   0.704   0.000  U2/PWMOut12 (U2/PWMOut11)
-     MUXF5:I0->O           2   0.321   0.447  U2/PWMOut1_f5 (LD_OBUF)
+     MUXF5:I0->O           1   0.321   0.420  U2/PWMOut1_f5 (PWMOut_OBUF)
      OBUF:I->O                 3.272          PWMOut_OBUF (PWMOut)
     ----------------------------------------
-    Total                     39.429ns (28.892ns logic, 10.537ns route)
+    Total                     39.402ns (28.892ns logic, 10.510ns route)
                                        (73.3% logic, 26.7% route)
 
 =========================================================================
@@ -839,12 +839,12 @@ Offset:              4.283ns (Levels of Logic = 1)
 =========================================================================
 
 
-Total REAL time to Xst completion: 7.00 secs
-Total CPU time to Xst completion: 6.65 secs
+Total REAL time to Xst completion: 8.00 secs
+Total CPU time to Xst completion: 7.97 secs
  
 --> 
 
-Total memory usage is 4526956 kilobytes
+Total memory usage is 4526964 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    8 (   0 filtered)
