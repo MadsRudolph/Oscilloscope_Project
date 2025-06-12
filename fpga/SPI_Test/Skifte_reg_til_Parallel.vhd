@@ -21,7 +21,7 @@ begin
 		begin
 			if RESET = '1' then 
 				skift_reg <= "00000000";
-					elsif rising_edge(SClk) then
+			elsif rising_edge(SClk) then
 				skift_reg <= MOSI & skift_reg(7 downto 1);  	
 			end if;
 	end process; 	 

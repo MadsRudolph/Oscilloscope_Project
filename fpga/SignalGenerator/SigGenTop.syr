@@ -10,7 +10,7 @@ Total CPU time to Xst completion: 0.86 secs
 
 
 Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.86 secs
+Total CPU time to Xst completion: 0.87 secs
  
 --> Reading design: SigGenTop.prj
 
@@ -116,8 +116,7 @@ Architecture behavioral of Entity std_1bit_reg is up to date.
 Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/ipcore_dir/SinusLUT.vhd" in Library work.
 Architecture sinuslut_a of Entity sinuslut is up to date.
 Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/ProtokolBlok.vhd" in Library work.
-Entity <protokolblok> compiled.
-Entity <protokolblok> (Architecture <behavioral>) compiled.
+Architecture behavioral of Entity protokolblok is up to date.
 Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd" in Library work.
 Architecture behavioral of Entity skifte_reg_til_parallel is up to date.
 Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/TiminComponent.vhd" in Library work.
@@ -131,7 +130,8 @@ Architecture behavioral of Entity siggendatapath is up to date.
 Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SevenSeg5.vhd" in Library work.
 Architecture sevenseg_arch of Entity sevenseg5 is up to date.
 Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenTop.vhd" in Library work.
-Architecture behavioral of Entity siggentop is up to date.
+Entity <siggentop> compiled.
+Entity <siggentop> (Architecture <behavioral>) compiled.
 
 =========================================================================
 *                     Design Hierarchy Analysis                         *
@@ -657,18 +657,18 @@ Timing constraint: Default period analysis for Clock 'U0/Clk1_D1'
   Total number of paths / destination ports: 626 / 122
 -------------------------------------------------------------------------
 Delay:               6.730ns (Levels of Logic = 5)
-  Source:            U1/ProtokolBlok/DataReg/data_out_3 (FF)
+  Source:            U1/ProtokolBlok/ADDRReg/data_out_5 (FF)
   Destination:       U1/ProtokolBlok/state_FSM_FFd2 (FF)
   Source Clock:      U0/Clk1_D1 rising
   Destination Clock: U0/Clk1_D1 rising
 
-  Data Path: U1/ProtokolBlok/DataReg/data_out_3 to U1/ProtokolBlok/state_FSM_FFd2
+  Data Path: U1/ProtokolBlok/ADDRReg/data_out_5 to U1/ProtokolBlok/state_FSM_FFd2
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDCE:C->Q             4   0.591   0.622  U1/ProtokolBlok/DataReg/data_out_3 (U1/ProtokolBlok/DataReg/data_out_3)
-     LUT3:I2->O            1   0.704   0.424  U1/ProtokolBlok/Chk826_SW0 (N30)
-     LUT4_L:I3->LO         1   0.704   0.275  U1/ProtokolBlok/Chk826 (U1/ProtokolBlok/Chk826)
+     FDCE:C->Q             2   0.591   0.622  U1/ProtokolBlok/ADDRReg/data_out_5 (U1/ProtokolBlok/ADDRReg/data_out_5)
+     LUT3:I0->O            1   0.704   0.424  U1/ProtokolBlok/Chk8120_SW0 (N36)
+     LUT4_L:I3->LO         1   0.704   0.275  U1/ProtokolBlok/Chk8120 (U1/ProtokolBlok/Chk8120)
      LUT4:I0->O            3   0.704   0.531  U1/ProtokolBlok/Chk8136 (U1/ProtokolBlok/Chk)
      MUXF5:S->O            1   0.739   0.424  U1/ProtokolBlok/state_FSM_FFd2-In26 (U1/ProtokolBlok/state_FSM_FFd2-In26)
      LUT4:I3->O            1   0.704   0.000  U1/ProtokolBlok/state_FSM_FFd2-In57 (U1/ProtokolBlok/state_FSM_FFd2-In)
@@ -840,11 +840,11 @@ Offset:              4.283ns (Levels of Logic = 1)
 
 
 Total REAL time to Xst completion: 8.00 secs
-Total CPU time to Xst completion: 7.97 secs
+Total CPU time to Xst completion: 8.14 secs
  
 --> 
 
-Total memory usage is 4526964 kilobytes
+Total memory usage is 4527184 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    8 (   0 filtered)

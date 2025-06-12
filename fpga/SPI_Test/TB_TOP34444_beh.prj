@@ -1,4 +1,6 @@
 vhdl work "Register.vhd"
+vhdl work "../SignalGenerator/std_2bit_reg.vhd"
+vhdl work "../SignalGenerator/std_1bit_reg.vhd"
 vhdl work "TiminComponent.vhd"
 vhdl work "Skifte_reg_til_Parallel.vhd"
 vhdl work "ProtokolBlok.vhd"

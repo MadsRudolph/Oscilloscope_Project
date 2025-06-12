@@ -129,7 +129,7 @@ end case;
 
 end process;
 
-LD <= Data; -- DETTE ER EN TEST, SLET I ENDELIG KODE
+LD <= Checksum; -- DETTE ER EN TEST, SLET I ENDELIG KODE
 
 ADDRReg: entity work.std_8bit_reg
 	port map (

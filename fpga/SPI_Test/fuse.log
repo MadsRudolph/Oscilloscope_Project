@@ -4,6 +4,8 @@ Number of CPUs detected in this system: 8
 Turning on mult-threading, number of parallel sub-compilation jobs: 16 
 Determining compilation order of HDL files
 Parsing VHDL file "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Register.vhd" into library work
+Parsing VHDL file "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/../SignalGenerator/std_2bit_reg.vhd" into library work
+Parsing VHDL file "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/../SignalGenerator/std_1bit_reg.vhd" into library work
 Parsing VHDL file "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/TiminComponent.vhd" into library work
 Parsing VHDL file "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd" into library work
 Parsing VHDL file "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/ProtokolBlok.vhd" into library work
@@ -16,6 +18,8 @@ Compiling package std_logic_1164
 Compiling package std_logic_arith
 Compiling package std_logic_unsigned
 Compiling architecture behavioral of entity std_8bit_reg [std_8bit_reg_default]
+Compiling architecture behavioral of entity std_2bit_reg [std_2bit_reg_default]
+Compiling architecture behavioral of entity std_1bit_reg [std_1bit_reg_default]
 Compiling architecture behavioral of entity ProtokolBlok [protokolblok_default]
 Compiling architecture behavioral of entity Skifte_reg_til_Parallel [skifte_reg_til_parallel_default]
 Compiling architecture behavioral of entity TimingComponent [timingcomponent_default]
@@ -23,7 +27,7 @@ Compiling architecture behavioral of entity SigGenSPIControl [siggenspicontrol_d
 Compiling architecture behavior of entity tb_top34444
 Time Resolution for simulation is 1ps.
 Waiting for 1 sub-compilation(s) to finish...
-Compiled 15 VHDL Units
+Compiled 19 VHDL Units
 Built simulation executable C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/TB_TOP34444_isim_beh.exe
-Fuse Memory Usage: 34580 KB
-Fuse CPU Usage: 531 ms
+Fuse Memory Usage: 34060 KB
+Fuse CPU Usage: 562 ms

@@ -51,7 +51,7 @@ U0: entity WORK.DivClk
     port map(Reset => BTN3, Clk => Clk, TimeP => 4, Clk1 => Mclk);
 	 
 U1: entity WORK.SigGenSPIControl
-	 port map (CLK => MClk,
+	 port map (CLK => Mclk,
            Reset => BTN3,
            SClk => SClk,
            MOSI => MOSI,
@@ -64,7 +64,7 @@ U1: entity WORK.SigGenSPIControl
 			  
 
 U2: entity WORK.SigGenDataPath generic map (PWMinc => "0000001") 
-    port map(Reset => BTN3, Clk => Mclk, Shape => Shape(1 downto 0), Ampl => Amp, Freq => Freq, SigEN=> SigEN, PWMOut => PWMOut);
+    port map(Reset => BTN3, Clk => Mclk, Shape => Shape(1 downto 0), Ampl => Amp, Freq => Freq, SigEN => SigEN, PWMOut => PWMOut);
 
 
 U3: entity WORK.SevenSeg5 
