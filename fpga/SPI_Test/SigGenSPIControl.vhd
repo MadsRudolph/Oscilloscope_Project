@@ -35,7 +35,7 @@ entity SigGenSPIControl is
            SClk : in  STD_LOGIC;
            MOSI : in  STD_LOGIC;
            SSnot : in  STD_LOGIC;
-           Shape : out  STD_LOGIC_VECTOR (7 downto 0);
+           Shape : out  STD_LOGIC_VECTOR (1 downto 0);
            Amp : out  STD_LOGIC_VECTOR (7 downto 0);
            Freq : out  STD_LOGIC_VECTOR (7 downto 0);
            SigEN : out  STD_LOGIC);
@@ -68,8 +68,7 @@ begin
             Reset => Reset,
 				SPIdat => SPIdat,
 				MOSI => MOSI,
-				SClk => SClk,
-				SSnot => SSnot
+				SClk => SClk
 				);
 				
 		TimingComponent: entity work.TimingComponent 

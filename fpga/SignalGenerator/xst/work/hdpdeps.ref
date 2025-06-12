@@ -1,105 +1,93 @@
-V3 69
-FL "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/BTNdb.vhd" 2025/06/04.13:28:57 P.15xf
-FL "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/DivClk (1).vhd" 2025/06/04.13:28:52 P.15xf
-FL "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SevenSeg5.vhd" 2025/06/04.13:28:55 P.15xf
-FL "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SigGenControl.vhd" 2025/06/04.13:28:48 P.15xf
-FL "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SigGenDatapath.vhd" 2025/06/04.13:28:50 P.15xf
-FL "C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SigGenTop.vhd" 2025/06/04.14:28:22 P.15xf
+V3 58
 FL C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/ipcore_dir/SinusLUT.vhd 2025/06/05.14:40:32 P.15xf
-EN work/SinusLUT 1749718825 \
+EN work/SinusLUT 1749722650 \
       FL C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/ipcore_dir/SinusLUT.vhd \
       PB ieee/std_logic_1164 1335251622
-AR work/SinusLUT/SinusLUT_a 1749718826 \
+AR work/SinusLUT/SinusLUT_a 1749722651 \
       FL C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/ipcore_dir/SinusLUT.vhd \
-      EN work/SinusLUT 1749718825
+      EN work/SinusLUT 1749722650
 FL "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/DivClk (1).vhd" 2025/06/05.14:40:31 P.15xf
-EN work/DivClk 1749718827 \
+EN work/DivClk 1749722652 \
       FL "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/DivClk (1).vhd" \
       PB ieee/std_logic_1164 1335251622 PB ieee/std_logic_arith 1335251623 \
       PB ieee/STD_LOGIC_UNSIGNED 1335251625
-AR work/DivClk/DivClk_arch 1749718828 \
+AR work/DivClk/DivClk_arch 1749722653 \
       FL "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/DivClk (1).vhd" \
-      EN work/DivClk 1749718827
+      EN work/DivClk 1749722652
 FL "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SevenSeg5.vhd" 2025/06/05.14:40:31 P.15xf
-EN work/SevenSeg5 1749718831 \
+EN work/SevenSeg5 1749722656 \
       FL "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SevenSeg5.vhd" \
       PB ieee/std_logic_1164 1335251622 PB ieee/std_logic_arith 1335251623 \
       PB ieee/STD_LOGIC_UNSIGNED 1335251625
-AR work/SevenSeg5/SevenSeg_arch 1749718832 \
+AR work/SevenSeg5/SevenSeg_arch 1749722657 \
       FL "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SevenSeg5.vhd" \
-      EN work/SevenSeg5 1749718831
+      EN work/SevenSeg5 1749722656
 FL "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd" 2025/06/05.14:40:31 P.15xf
-EN work/SigGenDatapath 1749718829 \
+EN work/SigGenDatapath 1749722654 \
       FL "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd" \
       PB ieee/std_logic_1164 1335251622 PB ieee/std_logic_arith 1335251623 \
       PB ieee/STD_LOGIC_UNSIGNED 1335251625
-AR work/SigGenDatapath/Behavioral 1749718830 \
+AR work/SigGenDatapath/Behavioral 1749722655 \
       FL "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd" \
-      EN work/SigGenDatapath 1749718829 CP FreqCnt CP nSigCnt CP work/SinusLUT \
+      EN work/SigGenDatapath 1749722654 CP FreqCnt CP nSigCnt CP work/SinusLUT \
       CP PWMwrap CP SigSquare CP SigSaw CP Sig CP PWM CP PWMout
-FL "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenTop.vhd" 2025/06/12.10:41:23 P.15xf
-EN work/SigGenTop 1749718835 \
+FL "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenTop.vhd" 2025/06/12.12:02:51 P.15xf
+EN work/SigGenTop 1749722660 \
       FL "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenTop.vhd" \
       PB ieee/std_logic_1164 1335251622 PB ieee/std_logic_arith 1335251623 \
       PB ieee/STD_LOGIC_UNSIGNED 1335251625
-AR work/SigGenTop/Behavioral 1749718836 \
+AR work/SigGenTop/Behavioral 1749722661 \
       FL "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenTop.vhd" \
-      EN work/SigGenTop 1749718835 CP work/DivClk CP work/SigGenDataPath \
+      EN work/SigGenTop 1749722660 CP work/DivClk CP work/SigGenDataPath \
       CP work/SevenSeg5 CP LD CP work/SigGenSPIControl
-FL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/ProtokolBlok.vhd 2025/06/12.11:00:10 P.15xf
-EN work/ProtokolBlok 1749718819 \
+FL C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/std_1bit_reg.vhd 2025/06/12.11:46:23 P.15xf
+EN work/std_1bit_reg 1749722642 \
+      FL C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/std_1bit_reg.vhd \
+      PB ieee/std_logic_1164 1335251622
+AR work/std_1bit_reg/Behavioral 1749722643 \
+      FL C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/std_1bit_reg.vhd \
+      EN work/std_1bit_reg 1749722642
+FL C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/std_2bit_reg.vhd 2025/06/12.11:45:40 P.15xf
+EN work/std_2bit_reg 1749722640 \
+      FL C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/std_2bit_reg.vhd \
+      PB ieee/std_logic_1164 1335251622
+AR work/std_2bit_reg/Behavioral 1749722641 \
+      FL C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/std_2bit_reg.vhd \
+      EN work/std_2bit_reg 1749722640
+FL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/ProtokolBlok.vhd 2025/06/12.12:03:49 P.15xf
+EN work/ProtokolBlok 1749722644 \
       FL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/ProtokolBlok.vhd \
       PB ieee/std_logic_1164 1335251622
-AR work/ProtokolBlok/Behavioral 1749718820 \
+AR work/ProtokolBlok/Behavioral 1749722645 \
       FL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/ProtokolBlok.vhd \
-      EN work/ProtokolBlok 1749718819 CP syncbyte CP Chk CP work/std_8bit_reg
+      EN work/ProtokolBlok 1749722644 CP syncbyte CP Chk CP work/std_8bit_reg \
+      CP work/std_2bit_reg CP work/std_1bit_reg
 FL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Register.vhd 2025/06/12.10:56:51 P.15xf
-EN work/std_8bit_reg 1749718817 \
+EN work/std_8bit_reg 1749722638 \
       FL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Register.vhd \
       PB ieee/std_logic_1164 1335251622
-AR work/std_8bit_reg/Behavioral 1749718818 \
+AR work/std_8bit_reg/Behavioral 1749722639 \
       FL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Register.vhd \
-      EN work/std_8bit_reg 1749718817
-FL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/SigGenSPIControl.vhd 2025/06/12.09:41:32 P.15xf
-EN work/SigGenSPIControl 1749718833 \
+      EN work/std_8bit_reg 1749722638
+FL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/SigGenSPIControl.vhd 2025/06/12.12:01:57 P.15xf
+EN work/SigGenSPIControl 1749722658 \
       FL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/SigGenSPIControl.vhd \
       PB ieee/std_logic_1164 1335251622
-AR work/SigGenSPIControl/Behavioral 1749718834 \
+AR work/SigGenSPIControl/Behavioral 1749722659 \
       FL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/SigGenSPIControl.vhd \
-      EN work/SigGenSPIControl 1749718833 CP work/ProtokolBlok \
+      EN work/SigGenSPIControl 1749722658 CP work/ProtokolBlok \
       CP work/Skifte_reg_til_Parallel CP work/TimingComponent
-FL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd 2025/06/11.11:56:24 P.15xf
-EN work/Skifte_reg_til_Parallel 1749718821 \
+FL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd 2025/06/12.11:42:53 P.15xf
+EN work/Skifte_reg_til_Parallel 1749722646 \
       FL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd \
       PB ieee/std_logic_1164 1335251622 PB ieee/STD_LOGIC_UNSIGNED 1335251625
-AR work/Skifte_reg_til_Parallel/Behavioral 1749718822 \
+AR work/Skifte_reg_til_Parallel/Behavioral 1749722647 \
       FL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd \
-      EN work/Skifte_reg_til_Parallel 1749718821
+      EN work/Skifte_reg_til_Parallel 1749722646
 FL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/TiminComponent.vhd 2025/06/10.15:40:43 P.15xf
-EN work/TimingComponent 1749718823 \
+EN work/TimingComponent 1749722648 \
       FL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/TiminComponent.vhd \
       PB ieee/std_logic_1164 1335251622
-AR work/TimingComponent/Behavioral 1749718824 \
+AR work/TimingComponent/Behavioral 1749722649 \
       FL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/TiminComponent.vhd \
-      EN work/TimingComponent 1749718823
-FL C:/Users/s240324/Oscilloscope_Project/SignalGenerator/ipcore_dir/SinusLUT.vhd 2025/06/04.14:07:39 P.15xf
-FL "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/BTNdb.vhd" 2025/06/04.13:28:57 P.15xf
-EN work/BTNdb 1749042447 \
-      FL "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/BTNdb.vhd" \
-      PB ieee/std_logic_1164 1335251622 PB ieee/std_logic_arith 1335251623 \
-      PB ieee/STD_LOGIC_UNSIGNED 1335251625
-AR work/BTNdb/Behavioral 1749042448 \
-      FL "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/BTNdb.vhd" \
-      EN work/BTNdb 1749042447
-FL "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/DivClk (1).vhd" 2025/06/04.13:28:52 P.15xf
-FL "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SevenSeg5.vhd" 2025/06/04.13:28:55 P.15xf
-FL "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenControl.vhd" 2025/06/04.13:28:48 P.15xf
-EN work/SigGenControl 1749042451 \
-      FL "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenControl.vhd" \
-      PB ieee/std_logic_1164 1335251622 PB ieee/std_logic_arith 1335251623 \
-      PB ieee/STD_LOGIC_UNSIGNED 1335251625
-AR work/SigGenControl/Behavioral 1749042452 \
-      FL "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenControl.vhd" \
-      EN work/SigGenControl 1749042451 CP Disp CP BTNdb
-FL "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd" 2025/06/04.13:28:50 P.15xf
-FL "C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenTop.vhd" 2025/06/04.14:28:22 P.15xf
+      EN work/TimingComponent 1749722648

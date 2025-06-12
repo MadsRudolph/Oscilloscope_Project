@@ -43,8 +43,8 @@ architecture Behavioral of SigGenTop is
 
 signal Mclk, DispClk, SigEN: std_logic;
 signal Disp: std_logic_vector(19 downto 0); 
-signal Shape, Amp, Freq: std_logic_vector(7 downto 0);
-
+signal Amp, Freq: std_logic_vector(7 downto 0);
+signal Shape : std_logic_vector(1 downto 0);
 begin
 
 U0: entity WORK.DivClk 
@@ -65,7 +65,7 @@ U5: LD <= PWMOut;
 
 
 U1: entity WORK.SigGenSPIControl
-	 port map (CLK => Clk,
+	 port map (CLK => MClk,
            Reset => BTN3,
            SClk => SClk,
            MOSI => MOSI,

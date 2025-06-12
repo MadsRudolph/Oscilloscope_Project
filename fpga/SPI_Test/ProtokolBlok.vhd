@@ -8,7 +8,7 @@ entity ProtokolBlok is
 			  Reset : in STD_LOGIC;
 			  DataReady : in STD_LOGIC;
 			  SPIdat: in STD_LOGIC_VECTOR (7 downto 0);
-			  Shape: out STD_LOGIC_VECTOR (7 downto 0);
+			  Shape: out STD_LOGIC_VECTOR (1 downto 0);
 			  Amp: out STD_LOGIC_VECTOR (7 downto 0);
 			  Freq: out STD_LOGIC_VECTOR (7 downto 0);
 			  SigEN: out STD_LOGIC);
@@ -19,7 +19,7 @@ architecture Behavioral of ProtokolBlok is
 type Statetype is (IDLE, ADDRS, DataS, CheckSumS, AmpS, ShapeS, FreqS);
 
 signal state, nextstate : Statetype;
-signal DataEN, ADDREN, AmpEN, FreqEN, ShapeEN, CheckSumEN, Chk, syncbyte: STD_LOGIC;
+signal DataEN, ADDREN, AmpEN, FreqEN, ShapeEN, CheckSumEN, Chk, syncbyte, SigENEN: STD_LOGIC;
 signal CheckSum, ADDR, Data: STD_LOGIC_VECTOR (7 downto 0);
 
   
@@ -54,14 +54,14 @@ Statereg: process(CLK, Reset)
 	AmpEn <= '0';
 	ShapeEn <= '0';
 	FreqEn <= '0';
-	
+	SigENEN <= '0';
 	
 	case state is
 	
 	when IDLE =>
 		
 		if syncbyte  = '1' and DataReady = '1' then  -- check spidat(sync) stemmer
-			SigEN <='0';
+			SigENEN <='0';
 			nextstate <= ADDRS;
 		else
 			nextstate <= IDLE;
@@ -117,7 +117,7 @@ Statereg: process(CLK, Reset)
 	when ShapeS =>
 			ShapeEN <= '1';
 			nextstate <= IDLE;
-			SigEN <= '1';
+			SigENEN <= '1';
 
 
 
@@ -155,12 +155,12 @@ CheckSumReg: entity work.std_8bit_reg
 
 
 
-ShapeReg: entity work.std_8bit_reg
+ShapeReg: entity work.std_2bit_reg
 	port map (
 					Reset => Reset,
 					Clk => Clk,
 					Enable => ShapeEn,
-					Data_in => Data,
+					Data_in => Data (1 downto 0),
 					Data_out => Shape 
 					);
 
@@ -184,6 +184,13 @@ FreqReg: entity work.std_8bit_reg
 					Data_out => Freq
 					);
 
-
+SigENReg : entity work.std_1bit_reg
+	port map (
+					Reset => Reset,
+					Clk => Clk,
+					Enable => SigENEN,
+					Data_in => SigENEN,
+					Data_out => SigEN
+					);
 
 end Behavioral;

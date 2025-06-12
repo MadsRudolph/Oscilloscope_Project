@@ -7,7 +7,6 @@ entity Skifte_reg_til_Parallel is
     Port ( MOSI : in  STD_LOGIC;
            RESET : in  STD_LOGIC;
            SPIdat : out  STD_LOGIC_VECTOR (7 downto 0);
-			  SSnot : in STD_LOGIC;
 			  SClk : in STD_LOGIC);
 
 end Skifte_reg_til_Parallel;
