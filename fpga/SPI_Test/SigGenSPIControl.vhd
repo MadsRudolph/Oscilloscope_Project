@@ -50,7 +50,7 @@ signal DataReady: STD_LOGIC;
 begin
 
 -- Clock Divider to generate display-friendly clock
-    U1: entity work.ProtokolBlok 
+    ProtokolBlok: entity work.ProtokolBlok 
         port map (
             Reset     => Reset,
             Clk      => Clk,
@@ -63,7 +63,7 @@ begin
         );
 
     --7-Segment Display Controller
-    U2: entity work.Skifte_reg_til_Parallel 
+    SkifteReg: entity work.Skifte_reg_til_Parallel 
         port map (
             Reset => Reset,
 				SPIdat => SPIdat,
@@ -72,7 +72,7 @@ begin
 				SSnot => SSnot
 				);
 				
-		U3: entity work.TimingComponent 
+		TimingComponent: entity work.TimingComponent 
         port map (
             Reset => Reset,
             Clk => Clk,

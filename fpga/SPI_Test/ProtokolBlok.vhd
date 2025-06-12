@@ -43,7 +43,7 @@ Statereg: process(CLK, Reset)
     end process;
 
     -- Next state logic and register enable control
-    StateDec: process (SPIdat, DataReady, state, Chk, syncbyte)
+    StateDec: process (DataReady, state, Chk, syncbyte, ADDR)
     begin
 	 
 	 

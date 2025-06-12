@@ -5,46 +5,79 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="HDLParsers" num="3607" delta="new" >Unit <arg fmt="%s" index="1">work/SigGenTop</arg> is now defined in a different file.  It was defined in &quot;<arg fmt="%s" index="2">C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SigGenTop.vhd</arg>&quot;, and is now defined in &quot;<arg fmt="%s" index="3">C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenTop.vhd</arg>&quot;.
+<msg type="warning" file="Xst" num="2211" delta="old" >&quot;<arg fmt="%s" index="1">C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd</arg>&quot; line <arg fmt="%d" index="2">61</arg>: Instantiating black box module &lt;<arg fmt="%s" index="3">SinusLUT</arg>&gt;.
 </msg>
 
-<msg type="warning" file="HDLParsers" num="3607" delta="new" >Unit <arg fmt="%s" index="1">work/SigGenTop/Behavioral</arg> is now defined in a different file.  It was defined in &quot;<arg fmt="%s" index="2">C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SigGenTop.vhd</arg>&quot;, and is now defined in &quot;<arg fmt="%s" index="3">C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenTop.vhd</arg>&quot;.
+<msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">SSnot</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 </msg>
 
-<msg type="warning" file="HDLParsers" num="3607" delta="new" >Unit <arg fmt="%s" index="1">work/DivClk</arg> is now defined in a different file.  It was defined in &quot;<arg fmt="%s" index="2">C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/DivClk (1).vhd</arg>&quot;, and is now defined in &quot;<arg fmt="%s" index="3">C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/DivClk (1).vhd</arg>&quot;.
+<msg type="warning" file="Xst" num="737" delta="old" >Found <arg fmt="%d" index="1">1</arg>-bit latch for signal &lt;<arg fmt="%s" index="2">SigEN</arg>&gt;. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
 </msg>
 
-<msg type="warning" file="HDLParsers" num="3607" delta="new" >Unit <arg fmt="%s" index="1">work/DivClk/DivClk_arch</arg> is now defined in a different file.  It was defined in &quot;<arg fmt="%s" index="2">C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/DivClk (1).vhd</arg>&quot;, and is now defined in &quot;<arg fmt="%s" index="3">C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/DivClk (1).vhd</arg>&quot;.
+<msg type="info" file="Xst" num="2371" delta="old" >HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
 </msg>
 
-<msg type="warning" file="HDLParsers" num="3607" delta="new" >Unit <arg fmt="%s" index="1">work/SevenSeg5</arg> is now defined in a different file.  It was defined in &quot;<arg fmt="%s" index="2">C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SevenSeg5.vhd</arg>&quot;, and is now defined in &quot;<arg fmt="%s" index="3">C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SevenSeg5.vhd</arg>&quot;.
+<msg type="warning" file="Xst" num="646" delta="old" >Signal &lt;<arg fmt="%s" index="1">Shape&lt;7:2&gt;</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
-<msg type="warning" file="HDLParsers" num="3607" delta="new" >Unit <arg fmt="%s" index="1">work/SevenSeg5/SevenSeg_arch</arg> is now defined in a different file.  It was defined in &quot;<arg fmt="%s" index="2">C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SevenSeg5.vhd</arg>&quot;, and is now defined in &quot;<arg fmt="%s" index="3">C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SevenSeg5.vhd</arg>&quot;.
+<msg type="warning" file="Xst" num="653" delta="old" >Signal &lt;<arg fmt="%s" index="1">Disp</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">00000000000000000000</arg>.
 </msg>
 
-<msg type="warning" file="HDLParsers" num="3607" delta="new" >Unit <arg fmt="%s" index="1">work/SigGenControl</arg> is now defined in a different file.  It was defined in &quot;<arg fmt="%s" index="2">C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SigGenControl.vhd</arg>&quot;, and is now defined in &quot;<arg fmt="%s" index="3">C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenControl.vhd</arg>&quot;.
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">data_out_2</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">ShapeReg</arg>&gt;.
 </msg>
 
-<msg type="warning" file="HDLParsers" num="3607" delta="new" >Unit <arg fmt="%s" index="1">work/SigGenControl/Behavioral</arg> is now defined in a different file.  It was defined in &quot;<arg fmt="%s" index="2">C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SigGenControl.vhd</arg>&quot;, and is now defined in &quot;<arg fmt="%s" index="3">C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenControl.vhd</arg>&quot;.
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">data_out_3</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">ShapeReg</arg>&gt;.
 </msg>
 
-<msg type="warning" file="HDLParsers" num="3607" delta="new" >Unit <arg fmt="%s" index="1">work/SigGenDatapath</arg> is now defined in a different file.  It was defined in &quot;<arg fmt="%s" index="2">C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SigGenDatapath.vhd</arg>&quot;, and is now defined in &quot;<arg fmt="%s" index="3">C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd</arg>&quot;.
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">data_out_4</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">ShapeReg</arg>&gt;.
 </msg>
 
-<msg type="warning" file="HDLParsers" num="3607" delta="new" >Unit <arg fmt="%s" index="1">work/SigGenDatapath/Behavioral</arg> is now defined in a different file.  It was defined in &quot;<arg fmt="%s" index="2">C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/SigGenDatapath.vhd</arg>&quot;, and is now defined in &quot;<arg fmt="%s" index="3">C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd</arg>&quot;.
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">data_out_5</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">ShapeReg</arg>&gt;.
 </msg>
 
-<msg type="warning" file="HDLParsers" num="3607" delta="new" >Unit <arg fmt="%s" index="1">work/BTNdb</arg> is now defined in a different file.  It was defined in &quot;<arg fmt="%s" index="2">C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/BTNdb.vhd</arg>&quot;, and is now defined in &quot;<arg fmt="%s" index="3">C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/BTNdb.vhd</arg>&quot;.
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">data_out_6</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">ShapeReg</arg>&gt;.
 </msg>
 
-<msg type="warning" file="HDLParsers" num="3607" delta="new" >Unit <arg fmt="%s" index="1">work/BTNdb/Behavioral</arg> is now defined in a different file.  It was defined in &quot;<arg fmt="%s" index="2">C:/Users/s240324/Desktop/Opgivede filer til signalgnerator/BTNdb.vhd</arg>&quot;, and is now defined in &quot;<arg fmt="%s" index="3">C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/BTNdb.vhd</arg>&quot;.
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">data_out_7</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">ShapeReg</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="2211" delta="new" >&quot;<arg fmt="%s" index="1">C:/Users/s240324/Oscilloscope_Project/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd</arg>&quot; line <arg fmt="%d" index="2">61</arg>: Instantiating black box module &lt;<arg fmt="%s" index="3">SinusLUT</arg>&gt;.
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">cat_0</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">SevenSeg5</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
-<msg type="warning" file="Xst" num="1780" delta="old" >Signal &lt;<arg fmt="%s" index="1">Shape&lt;7:2&gt;</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+<msg type="warning" file="Xst" num="1895" delta="old" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">cat_1</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">SevenSeg5</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1895" delta="old" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">cat_2</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">SevenSeg5</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1895" delta="old" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">cat_3</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">SevenSeg5</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1895" delta="old" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">cat_4</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">SevenSeg5</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1895" delta="old" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">cat_5</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">SevenSeg5</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">cat_6</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">SevenSeg5</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;cat_7&gt; </arg>
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">U1/ProtokolBlok/ShapeReg/data_out_2</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">SigGenTop</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">U1/ProtokolBlok/ShapeReg/data_out_3</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">SigGenTop</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">U1/ProtokolBlok/ShapeReg/data_out_4</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">SigGenTop</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">U1/ProtokolBlok/ShapeReg/data_out_5</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">SigGenTop</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">U1/ProtokolBlok/ShapeReg/data_out_6</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">SigGenTop</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">U1/ProtokolBlok/ShapeReg/data_out_7</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">SigGenTop</arg>&gt;.
 </msg>
 
 <msg type="info" file="Xst" num="2169" delta="old" >HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
