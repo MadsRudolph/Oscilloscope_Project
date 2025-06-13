@@ -32,7 +32,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity SigGenSPIControl is
     Port ( CLK : in  STD_LOGIC;
            Reset : in  STD_LOGIC;
-           SCK : in  STD_LOGIC;
+           SClk : in  STD_LOGIC;
            MOSI : in  STD_LOGIC;
            SSnot : in  STD_LOGIC;
            Shape : out  STD_LOGIC_VECTOR (7 downto 0);
@@ -53,8 +53,8 @@ begin
     U1: entity work.ProtokolBlok 
         port map (
             Reset     => Reset,
-            Clk      => SCK,  -- passer ikke
-				Ampl		=> Amp,
+            Clk      => Clk,
+				Amp		=> Amp,
 				Freq		=> Freq,
 				Shape 	=> Shape,
 				DataReady => DataReady,
@@ -66,11 +66,18 @@ begin
     U2: entity work.Skifte_reg_til_Parallel 
         port map (
             Reset => Reset,
-            SCK   => SCK,
 				SPIdat => SPIdat,
 				MOSI => MOSI,
-				SSnot => SSnot,
-				DataReady => DataReady
+				SClk => SClk,
+				SSnot => SSnot
+				);
+				
+		U3: entity work.TimingComponent 
+        port map (
+            Reset => Reset,
+            Clk => Clk,
+				DataReady => DataReady,
+				SSnot => SSnot
 				);
 
 end Behavioral;

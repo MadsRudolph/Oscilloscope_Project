@@ -1,0 +1,16 @@
+LTspice 24.1.9 for Windows
+Circuit: C:\Users\Mads2\Projects\DTU\Oscilloscope\docs\LTspice\Filter.net
+Start Time: Wed Jun 11 17:02:32 2025
+solver = Normal
+Maximum thread count: 16
+tnom = 27
+temp = 27
+method = trap
+WARNING: Node n002 is floating.
+
+Direct Newton iteration for .op point succeeded.
+Total elapsed time: 0.292 seconds.
+
+Files loaded:
+C:\Users\Mads2\Projects\DTU\Oscilloscope\docs\LTspice\Filter.net
+

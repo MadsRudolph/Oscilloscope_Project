@@ -3,19 +3,20 @@
 
 #include <stdint.h>
 
-// UART buffer and flags
-extern volatile char uart_buffer[32];
-extern volatile uint8_t uart_index;
-extern volatile uint8_t uart_rx_flag;
-
-// Function declarations
 void uart_init(unsigned int ubrr);
 void uart_send(char data);
-void uart_send_string(const char* str);
-void process_uart_command(void);
+void uart_send_string(const char *str);
 
-// Temporary PWM values via UART
-extern uint8_t temp_min_pwm, temp_max_pwm;
-extern uint8_t new_pwm_values_received;
+void uart1_init(unsigned int ubrr);              
+void uart1_send(char data);                      
+void send_oscilloscope_packet(uint8_t *samples, uint16_t length);
+
+extern volatile uint8_t uart1_rx_buffer[];
+extern volatile uint8_t uart1_rx_index;
+extern volatile uint8_t uart1_packet_ready;
+extern volatile uint8_t shape;
+extern volatile uint8_t amplitude;
+extern volatile uint8_t frequency;
+extern volatile uint8_t run_stop_flag;
 
 #endif

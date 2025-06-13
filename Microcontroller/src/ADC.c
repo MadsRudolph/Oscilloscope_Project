@@ -1,33 +1,47 @@
-#include <avr/interrupt.h> // Include interrupt handling
+// ## This file contains ADC and autotrigger initialization functions ##
+// ## References to datasheet pages are marked as S.xxx for Atmega2560 ##
 
-// Initialize ADC channel 0 (Analog input pin A0 on Arduino)
+#include "ADC.h"
+#include <avr/io.h>
+#include <avr/interrupt.h>
+
+// === Initialize ADC channel 0 (A0) with auto-trigger from Timer1 Compare Match B ===
 void init_ADC_kanal0()
 {
-    ADMUX = (1 << REFS0); // Set reference voltage to AVcc (5V), see S.289
-                          // MUX bits = 0 → selects ADC0 input channel (S.290 Table 26-4)
+    ADMUX = (1 << REFS0) | (1 << ADLAR); // Use external voltage reffrence on AREF pin, left-adjust result (8-bit in ADCH) (S.289-290 & S.294)
+    // MUX[3:0] = 0000 → ADC0 selected (S.290 Table 26-4)
 
-    ADCSRA |= (1 << ADEN); // Enable ADC (S.292)
-    ADCSRA |= (1 << ADSC); // Start initial conversion; first sample takes longer (S.293)
+    // information on ADCSRA at S.292
+    ADCSRA = (1 << ADEN) |                               // Enable ADC
+             (1 << ADATE) |                              // Auto Trigger Enable
+             (1 << ADIE) |                               // Enable ADC interrupt (ISR will clear interrupt flag)
+             (1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0); // Prescaler = 128 (ADC clock = 125kHz @ 16MHz)
 
-    ADCSRA |= (1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0); // Set prescaler to 128 → 125kHz ADC clock at 16MHz CPU (S.293)
-                                                          // ADC takes 13 cycles to convert → 125kHz / 13 = ~9.6kHz max sample rate
+    ADCSRB = (1 << ADTS2) | (1 << ADTS0); // Auto Trigger Source = Timer1 Compare Match B (ADTS[2:0] = 101)
 
-    ADCSRA |= (1 << ADIE);  // Enable ADC interrupt (S.293)
-    ADCSRA |= (1 << ADATE); // Enable auto-triggering (S.293)
+    DIDR0 = (1 << ADC0D); // Disable digital input on ADC0 (optional but recommended)
 
-    ADCSRB |= (1 << ADTS2) | (1 << ADTS0); // Set auto-trigger source to Timer1 Compare Match B (S.295)
+    ADCSRA |= (1 << ADSC); // Start first conversion
 }
 
-// Initialize Timer1 for setting ADC sample rate
+// ADC ISR to acknowledge interrupt only
+ISR(ADC_vect)
+{
+    // Empty ISR to clear interrupt flag (sampling is handled in TIMER1_COMPB_vect)
+}
+
+// Initialize Timer1 to trigger ADC at given sampling rate
 void init_timer1(int top_value)
 {
-    TCCR1A = 0; // Clear Timer1A register to avoid conflicts
+    TCCR1A = 0; // Clear Timer1 control A — avoid PWM
     TCNT1 = 0;  // Reset Timer1 counter
 
-    TCCR1B |= (1 << WGM12) | (1 << CS11); // Set CTC mode with prescaler 8 (S.148, S.161)
-    OCR1A = 40000;                        // Set top value to 40000 for 50Hz sampling (F_CPU = 16MHz / 8 / 40000)
+    TCCR1B |= (1 << WGM12); // CTC mode (TOP = OCR1A) — S.148, S.161
+    TCCR1B |= (1 << CS11);  // Prescaler = 8 — S.161
 
-    TIMSK1 |= (1 << OCIE1B); // Enable Timer1 Compare Match B interrupt (S.166)
+    TIMSK1 |= (1 << OCIE1B); // Enable Timer1 Compare Match B interrupt — S.166
+
+    OCR1A = top_value; // Sets TOP value for sampling frequency
+                       // Sampling rate = F_CPU / (8 * top_value)
+    OCR1B = top_value; // Used to trigger ADC
 }
-
-// ISR(TIMER1_COMPB_vect) must be added in your main program to prevent crashes
