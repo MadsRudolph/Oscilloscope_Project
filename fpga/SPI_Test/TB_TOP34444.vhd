@@ -16,7 +16,7 @@ ARCHITECTURE behavior OF TB_TOP34444 IS
          Reset : IN  std_logic;
          MOSI : IN  std_logic;
          SSnot : IN  std_logic;
-         Shape : OUT  std_logic_vector(7 downto 0);
+         Shape : OUT  std_logic_vector(1 downto 0);
          Amp : OUT  std_logic_vector(7 downto 0);
          Freq : OUT  std_logic_vector(7 downto 0);
          SigEN : OUT  std_logic;
@@ -33,12 +33,12 @@ ARCHITECTURE behavior OF TB_TOP34444 IS
    signal SSnot : std_logic := '1';
 
  	--Outputs
-   signal Shape : std_logic_vector(7 downto 0);
+   signal Shape : std_logic_vector(1 downto 0);
    signal Amp : std_logic_vector(7 downto 0);
    signal Freq : std_logic_vector(7 downto 0);
    signal SigEN : std_logic;
 	
-	signal data  : std_logic_vector(7 downto 0);   -- Clock period definitions
+	signal dataTB  : std_logic_vector(7 downto 0);   -- Clock period definitions
 	
 	
    constant Clk_period : time := 10 ns;
@@ -85,13 +85,13 @@ BEGIN
 		
 		-- SEND SYNC BYTE
 		
-		data <= "01010101";
+		dataTB <= "01010101";
 		wait for sclk_period;
 
 		
 		SSnot <= '0';
 		for i in 0 to 7 loop
-            mosi <= data(i);
+            mosi <= dataTB(i);
             SCLK <= '0';
             wait for 2*sclk_period / 2;
             SCLK <= '1';  -- Data is valid on rising edge
@@ -106,12 +106,12 @@ BEGIN
 		
 		-- SEND ADDR BYTE AAMP
 		
-		data <= "00000001";
+		dataTB <= "00000001";
 		wait for sclk_period;
 		
 		SSnot <= '0';
 		for i in 0 to 7 loop
-            mosi <= data(i);
+            mosi <= dataTB(i);
             SCLK <= '0';
             wait for 2*sclk_period / 2;
             SCLK <= '1';  -- Data is valid on rising edge
@@ -127,13 +127,13 @@ BEGIN
 		
 		-- SEND DATA BYTE
 		
-		data <= "00001010";
+		dataTB <= "00001010";
 		wait for sclk_period;
 
 		
 		SSnot <= '0';
 		for i in 0 to 7 loop
-            mosi <= data(i);
+            mosi <= dataTB(i);
             SCLK <= '0';
             wait for 2*sclk_period / 2;
             SCLK <= '1';  -- Data is valid on rising edge
@@ -145,13 +145,13 @@ BEGIN
 		wait for 2*sclk_period*2;		
 		-- SEND CHECKSUM BYTE
 		
-		data <= "01011110";
+		dataTB <= "01011110";
 		wait for sclk_period;
 
 		
 		SSnot <= '0';
 		for i in 0 to 7 loop
-            mosi <= data(i);
+            mosi <= dataTB(i);
             SCLK <= '0';
             wait for 2*sclk_period / 2;
             SCLK <= '1';  -- Data is valid on rising edge
@@ -169,13 +169,13 @@ BEGIN
 
 		-- SEND SYNC BYTE 2
 
-		data <= "01010101";
+		dataTB <= "01010101";
 		wait for sclk_period;
 
 		
 		SSnot <= '0';
 		for i in 0 to 7 loop
-            mosi <= data(i);
+            mosi <= dataTB(i);
             SCLK <= '0';
             wait for 2*sclk_period / 2;
             SCLK <= '1';  -- Data is valid on rising edge
@@ -190,12 +190,12 @@ BEGIN
 		
 		-- SEND ADDR BYTE 2 FREQ
 		
-		data <= "00000010";
+		dataTB <= "00000010";
 		wait for sclk_period;
 		
 		SSnot <= '0';
 		for i in 0 to 7 loop
-            mosi <= data(i);
+            mosi <= dataTB(i);
             SCLK <= '0';
             wait for 2*sclk_period / 2;
             SCLK <= '1';  -- Data is valid on rising edge
@@ -211,13 +211,13 @@ BEGIN
 		
 		-- SEND DATA BYTE 2
 		
-		data <= "10001010";
+		dataTB <= "10001010";
 		wait for sclk_period;
 
 		
 		SSnot <= '0';
 		for i in 0 to 7 loop
-            mosi <= data(i);
+            mosi <= dataTB(i);
             SCLK <= '0';
             wait for 2*sclk_period / 2;
             SCLK <= '1';  -- Data is valid on rising edge
@@ -229,13 +229,13 @@ BEGIN
 		wait for 2*sclk_period*2;
 		
 		-- SEND CHECKSUM BYTE 2
-		data <= "11011101";
+		dataTB <= "11011101";
 		wait for sclk_period;
 
 		
 		SSnot <= '0';
 		for i in 0 to 7 loop
-            mosi <= data(i);
+            mosi <= dataTB(i);
             SCLK <= '0';
             wait for 2*sclk_period / 2;
             SCLK <= '1';  -- Data is valid on rising edge
@@ -250,13 +250,13 @@ BEGIN
 		
 		
 		-- SEND SYNC BYTE 3
-		data <= "01010101";
+		dataTB <= "01010101";
 		wait for sclk_period;
 
 		
 		SSnot <= '0';
 		for i in 0 to 7 loop
-            mosi <= data(i);
+            mosi <= dataTB(i);
             SCLK <= '0';
             wait for 2*sclk_period / 2;
             SCLK <= '1';  -- Data is valid on rising edge
@@ -271,12 +271,12 @@ BEGIN
 		
 		-- SEND ADDR BYTE 3 SHAPE
 		
-		data <= "00000011";
+		dataTB <= "00000011";
 		wait for sclk_period;
 		
 		SSnot <= '0';
 		for i in 0 to 7 loop
-            mosi <= data(i);
+            mosi <= dataTB(i);
             SCLK <= '0';
             wait for 2*sclk_period / 2;
             SCLK <= '1';  -- Data is valid on rising edge
@@ -292,13 +292,13 @@ BEGIN
 		
 		-- SEND DATA BYTE 3 
 		
-		data <= "10011010";
+		dataTB <= "10011010";
 		wait for sclk_period;
 
 		
 		SSnot <= '0';
 		for i in 0 to 7 loop
-            mosi <= data(i);
+            mosi <= dataTB(i);
             SCLK <= '0';
             wait for 2*sclk_period / 2;
             SCLK <= '1';  -- Data is valid on rising edge
@@ -310,13 +310,13 @@ BEGIN
 		wait for 2*sclk_period*2;		
 		-- SEND CHECKSUM BYTE 3
 		
-		data <= "11001100";
+		dataTB <= "11001100";
 		wait for sclk_period;
 
 		
 		SSnot <= '0';
 		for i in 0 to 7 loop
-            mosi <= data(i);
+            mosi <= dataTB(i);
             SCLK <= '0';
             wait for 2*sclk_period / 2;
             SCLK <= '1';  -- Data is valid on rising edge
@@ -328,13 +328,13 @@ BEGIN
 		wait for 2*sclk_period;
 
 
-		data <= "01010101";
+		dataTB <= "01010101";
 		wait for sclk_period;
 
 		
 		SSnot <= '0';
 		for i in 0 to 7 loop
-            mosi <= data(i);
+            mosi <= dataTB(i);
             SCLK <= '0';
             wait for 2*sclk_period / 2;
             SCLK <= '1';  -- Data is valid on rising edge

@@ -8,8 +8,9 @@ entity ProtokolBlok is
 			  Reset : in STD_LOGIC;
 			  DataReady : in STD_LOGIC;
 			  SPIdat: in STD_LOGIC_VECTOR (7 downto 0);
-			  Shape: out STD_LOGIC_VECTOR (7 downto 0);
+			  Shape: out STD_LOGIC_VECTOR (1 downto 0);
 			  Amp: out STD_LOGIC_VECTOR (7 downto 0);
+			  LD: out STD_LOGIC_VECTOR (7 downto 0); --DETTE ER ET TEST OUTPUT, SLET I ENDELIG KODE
 			  Freq: out STD_LOGIC_VECTOR (7 downto 0);
 			  SigEN: out STD_LOGIC);
 end ProtokolBlok;
@@ -19,7 +20,7 @@ architecture Behavioral of ProtokolBlok is
 type Statetype is (IDLE, ADDRS, DataS, CheckSumS, AmpS, ShapeS, FreqS);
 
 signal state, nextstate : Statetype;
-signal DataEN, ADDREN, AmpEN, FreqEN, ShapeEN, CheckSumEN, Chk, syncbyte: STD_LOGIC;
+signal DataEN, ADDREN, AmpEN, FreqEN, ShapeEN, CheckSumEN, Chk, syncbyte, SigENEN: STD_LOGIC;
 signal CheckSum, ADDR, Data: STD_LOGIC_VECTOR (7 downto 0);
 
   
@@ -43,7 +44,7 @@ Statereg: process(CLK, Reset)
     end process;
 
     -- Next state logic and register enable control
-    StateDec: process (SPIdat, DataReady, state, Chk, syncbyte)
+    StateDec: process (DataReady, state, Chk, syncbyte, ADDR)
     begin
 	 
 	 
@@ -54,21 +55,21 @@ Statereg: process(CLK, Reset)
 	AmpEn <= '0';
 	ShapeEn <= '0';
 	FreqEn <= '0';
-	
+	SigENEN <= '0';
 	
 	case state is
 	
 	when IDLE =>
-		
+		--LD <="00000001"; --TEST
 		if syncbyte  = '1' and DataReady = '1' then  -- check spidat(sync) stemmer
-			SigEN <='0';
+			SigENEN <='0';
 			nextstate <= ADDRS;
 		else
 			nextstate <= IDLE;
 		end if; 
 	
 	when ADDRS =>
-	
+		--LD <="00000010"; --TEST	
 		if DataReady = '1' then
 			ADDREN <= '1';
 			nextstate <= DataS;
@@ -78,7 +79,7 @@ Statereg: process(CLK, Reset)
 	
 	
 	when DataS =>
-		
+		--LD <="00000100"; --TEST		
 		if DataReady = '1' then
 			DataEN <= '1';
 			nextstate <= CheckSumS;
@@ -89,7 +90,7 @@ Statereg: process(CLK, Reset)
 
 	when CheckSumS =>
 	CheckSumEn <= '1';
-		
+		--LD <="00001000"; --TEST		
 		if Chk = '1' and ADDR = "00000001" then
 			nextstate <= AmpS;
 		elsif Chk = '1' and ADDR = "00000010" then
@@ -105,26 +106,35 @@ Statereg: process(CLK, Reset)
 		
 
 	when AmpS =>
+		--LD <="00010000"; --TEST	
 			AmpEN <= '1';
 			nextstate <= IDLE;
 
 	
 	when FreqS =>
+		--LD <="00100000"; --TEST	
 			FreqEN <= '1';
 			nextstate <= IDLE;
 
 			
 	when ShapeS =>
+		--LD <="01000000"; --TEST	
 			ShapeEN <= '1';
 			nextstate <= IDLE;
-			SigEN <= '1';
+			SigENEN <= '1';
 
 
 
 
 end case;
 
+
+
 end process;
+
+
+
+LD <= Data; -- DETTE ER EN TEST, SLET I ENDELIG KODE
 
 ADDRReg: entity work.std_8bit_reg
 	port map (
@@ -155,12 +165,12 @@ CheckSumReg: entity work.std_8bit_reg
 
 
 
-ShapeReg: entity work.std_8bit_reg
+ShapeReg: entity work.std_2bit_reg
 	port map (
 					Reset => Reset,
 					Clk => Clk,
 					Enable => ShapeEn,
-					Data_in => Data,
+					Data_in => Data (1 downto 0),
 					Data_out => Shape 
 					);
 
@@ -184,6 +194,13 @@ FreqReg: entity work.std_8bit_reg
 					Data_out => Freq
 					);
 
-
+SigENReg : entity work.std_1bit_reg
+	port map (
+					Reset => Reset,
+					Clk => Clk,
+					Enable => SigENEN,
+					Data_in => SigENEN,
+					Data_out => SigEN
+					);
 
 end Behavioral;

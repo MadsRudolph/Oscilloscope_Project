@@ -1,0 +1,49 @@
+Running: fuse.exe -relaunch -intstyle "ise" -incremental -o "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/FULL_BENCH_isim_beh.exe" -prj "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/FULL_BENCH_beh.prj" "work.FULL_BENCH" 
+ISim P.15xf (signature 0xc3576ebc)
+Number of CPUs detected in this system: 8
+Turning on mult-threading, number of parallel sub-compilation jobs: 16 
+Determining compilation order of HDL files
+Parsing VHDL file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/ipcore_dir/SinusLUT.vhd" into library work
+Parsing VHDL file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/../SPI_Test/Register.vhd" into library work
+Parsing VHDL file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/std_2bit_reg.vhd" into library work
+Parsing VHDL file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/std_1bit_reg.vhd" into library work
+Parsing VHDL file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/../SPI_Test/TiminComponent.vhd" into library work
+Parsing VHDL file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/../SPI_Test/Skifte_reg_til_Parallel.vhd" into library work
+Parsing VHDL file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/../SPI_Test/ProtokolBlok.vhd" into library work
+Parsing VHDL file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/../SPI_Test/SigGenSPIControl.vhd" into library work
+Parsing VHDL file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd" into library work
+Parsing VHDL file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SevenSeg5.vhd" into library work
+Parsing VHDL file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/DivClk (1).vhd" into library work
+Parsing VHDL file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenTop.vhd" into library work
+Parsing VHDL file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/FULL_BENCH.vhd" into library work
+Starting static elaboration
+Completed static elaboration
+Compiling package standard
+Compiling package std_logic_1164
+Compiling package std_logic_arith
+Compiling package std_logic_unsigned
+Compiling architecture divclk_arch of entity DivClk [divclk_default]
+Compiling architecture behavioral of entity std_8bit_reg [std_8bit_reg_default]
+Compiling architecture behavioral of entity std_2bit_reg [std_2bit_reg_default]
+Compiling architecture behavioral of entity std_1bit_reg [std_1bit_reg_default]
+Compiling architecture behavioral of entity ProtokolBlok [protokolblok_default]
+Compiling architecture behavioral of entity Skifte_reg_til_Parallel [skifte_reg_til_parallel_default]
+Compiling architecture behavioral of entity TimingComponent [timingcomponent_default]
+Compiling architecture behavioral of entity SigGenSPIControl [siggenspicontrol_default]
+Compiling package textio
+Compiling package std_logic_textio
+Compiling architecture output_stage_behavioral of entity BLK_MEM_GEN_V7_1_output_stage [\BLK_MEM_GEN_V7_1_output_stage("...]
+Compiling architecture softecc_output_reg_stage_behavioral of entity BLK_MEM_GEN_V7_1_softecc_output_reg_stage [\BLK_MEM_GEN_V7_1_softecc_output...]
+Compiling architecture mem_module_behavioral of entity BLK_MEM_GEN_V7_1_mem_module [\BLK_MEM_GEN_V7_1_mem_module("bl...]
+Compiling architecture behavioral of entity BLK_MEM_GEN_V7_1 [\BLK_MEM_GEN_V7_1("blk_mem_gen_v...]
+Compiling architecture sinuslut_a of entity SinusLUT [sinuslut_default]
+Compiling architecture behavioral of entity SigGenDatapath [\SigGenDatapath(('0','0','0','0'...]
+Compiling architecture sevenseg_arch of entity SevenSeg5 [sevenseg5_default]
+Compiling architecture behavioral of entity SigGenTop [siggentop_default]
+Compiling architecture behavior of entity full_bench
+Time Resolution for simulation is 1ps.
+Waiting for 7 sub-compilation(s) to finish...
+Compiled 39 VHDL Units
+Built simulation executable C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/FULL_BENCH_isim_beh.exe
+Fuse Memory Usage: 44912 KB
+Fuse CPU Usage: 1437 ms

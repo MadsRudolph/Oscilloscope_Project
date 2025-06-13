@@ -1,4 +1,6 @@
 vhdl isim_temp "Register.vhd"
+vhdl isim_temp "../SignalGenerator/std_2bit_reg.vhd"
+vhdl isim_temp "../SignalGenerator/std_1bit_reg.vhd"
 vhdl isim_temp "TiminComponent.vhd"
 vhdl isim_temp "Skifte_reg_til_Parallel.vhd"
 vhdl isim_temp "ProtokolBlok.vhd"
