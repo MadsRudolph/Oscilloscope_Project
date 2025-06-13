@@ -1,24 +1,24 @@
-EN timingcomponent NULL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/TiminComponent.vhd sub00/vhpl06 1749742260
-AR siggendatapath behavioral "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd" sub00/vhpl13 1749742267
-EN siggendatapath NULL "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd" sub00/vhpl12 1749742266
-EN sevenseg5 NULL "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SevenSeg5.vhd" sub00/vhpl14 1749742268
-AR protokolblok behavioral C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/ProtokolBlok.vhd sub00/vhpl03 1749742257
-AR sevenseg5 sevenseg_arch "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SevenSeg5.vhd" sub00/vhpl15 1749742269
-EN skifte_reg_til_parallel NULL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd sub00/vhpl04 1749742258
-AR std_2bit_reg behavioral C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/std_2bit_reg.vhd sub00/vhpl21 1749742251
-EN siggentop NULL "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenTop.vhd" sub00/vhpl18 1749742270
-AR std_8bit_reg behavioral C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Register.vhd sub00/vhpl01 1749742249
-AR siggentop behavioral "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenTop.vhd" sub00/vhpl19 1749742271
-EN std_8bit_reg NULL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Register.vhd sub00/vhpl00 1749742248
-AR timingcomponent behavioral C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/TiminComponent.vhd sub00/vhpl07 1749742261
-AR siggenspicontrol behavioral C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/SigGenSPIControl.vhd sub00/vhpl17 1749742265
-AR skifte_reg_til_parallel behavioral C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd sub00/vhpl05 1749742259
-EN siggenspicontrol NULL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/SigGenSPIControl.vhd sub00/vhpl16 1749742264
-AR sinuslut sinuslut_a C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/ipcore_dir/SinusLUT.vhd sub00/vhpl09 1749742255
-EN std_2bit_reg NULL C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/std_2bit_reg.vhd sub00/vhpl20 1749742250
-EN divclk NULL "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/DivClk (1).vhd" sub00/vhpl10 1749742262
-EN std_1bit_reg NULL C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/std_1bit_reg.vhd sub00/vhpl22 1749742252
-EN sinuslut NULL C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/ipcore_dir/SinusLUT.vhd sub00/vhpl08 1749742254
-AR std_1bit_reg behavioral C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/std_1bit_reg.vhd sub00/vhpl23 1749742253
-AR divclk divclk_arch "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/DivClk (1).vhd" sub00/vhpl11 1749742263
-EN protokolblok NULL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/ProtokolBlok.vhd sub00/vhpl02 1749742256
+EN timingcomponent NULL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/TiminComponent.vhd sub00/vhpl06 1749809861
+AR siggendatapath behavioral "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd" sub00/vhpl13 1749809868
+EN siggendatapath NULL "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd" sub00/vhpl12 1749809867
+EN sevenseg5 NULL "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SevenSeg5.vhd" sub00/vhpl14 1749809869
+AR protokolblok behavioral C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/ProtokolBlok.vhd sub00/vhpl03 1749809858
+AR sevenseg5 sevenseg_arch "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SevenSeg5.vhd" sub00/vhpl15 1749809870
+EN skifte_reg_til_parallel NULL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd sub00/vhpl04 1749809859
+AR std_2bit_reg behavioral C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/std_2bit_reg.vhd sub00/vhpl21 1749809852
+EN siggentop NULL "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenTop.vhd" sub00/vhpl18 1749809871
+AR std_8bit_reg behavioral C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Register.vhd sub00/vhpl01 1749809850
+AR siggentop behavioral "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenTop.vhd" sub00/vhpl19 1749809872
+EN std_8bit_reg NULL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Register.vhd sub00/vhpl00 1749809849
+AR timingcomponent behavioral C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/TiminComponent.vhd sub00/vhpl07 1749809862
+AR siggenspicontrol behavioral C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/SigGenSPIControl.vhd sub00/vhpl17 1749809866
+AR skifte_reg_til_parallel behavioral C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd sub00/vhpl05 1749809860
+EN siggenspicontrol NULL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/SigGenSPIControl.vhd sub00/vhpl16 1749809865
+AR sinuslut sinuslut_a C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/ipcore_dir/SinusLUT.vhd sub00/vhpl09 1749809856
+EN std_2bit_reg NULL C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/std_2bit_reg.vhd sub00/vhpl20 1749809851
+EN divclk NULL "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/DivClk (1).vhd" sub00/vhpl10 1749809863
+EN std_1bit_reg NULL C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/std_1bit_reg.vhd sub00/vhpl22 1749809853
+EN sinuslut NULL C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/ipcore_dir/SinusLUT.vhd sub00/vhpl08 1749809855
+AR std_1bit_reg behavioral C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/std_1bit_reg.vhd sub00/vhpl23 1749809854
+AR divclk divclk_arch "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/DivClk (1).vhd" sub00/vhpl11 1749809864
+EN protokolblok NULL C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/ProtokolBlok.vhd sub00/vhpl02 1749809857

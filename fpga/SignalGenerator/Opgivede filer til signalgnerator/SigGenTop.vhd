@@ -77,7 +77,7 @@ U4: entity WORK.DivClk
 
 U5: LD <= LED; --Skal være PWMOut
 
-
+ 
 
 
 end Behavioral;

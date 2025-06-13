@@ -60,7 +60,7 @@ Statereg: process(CLK, Reset)
 	case state is
 	
 	when IDLE =>
-		
+		--LD <="00000001"; --TEST
 		if syncbyte  = '1' and DataReady = '1' then  -- check spidat(sync) stemmer
 			SigENEN <='0';
 			nextstate <= ADDRS;
@@ -69,7 +69,7 @@ Statereg: process(CLK, Reset)
 		end if; 
 	
 	when ADDRS =>
-	
+		--LD <="00000010"; --TEST	
 		if DataReady = '1' then
 			ADDREN <= '1';
 			nextstate <= DataS;
@@ -79,7 +79,7 @@ Statereg: process(CLK, Reset)
 	
 	
 	when DataS =>
-		
+		--LD <="00000100"; --TEST		
 		if DataReady = '1' then
 			DataEN <= '1';
 			nextstate <= CheckSumS;
@@ -90,7 +90,7 @@ Statereg: process(CLK, Reset)
 
 	when CheckSumS =>
 	CheckSumEn <= '1';
-		
+		--LD <="00001000"; --TEST		
 		if Chk = '1' and ADDR = "00000001" then
 			nextstate <= AmpS;
 		elsif Chk = '1' and ADDR = "00000010" then
@@ -106,16 +106,19 @@ Statereg: process(CLK, Reset)
 		
 
 	when AmpS =>
+		--LD <="00010000"; --TEST	
 			AmpEN <= '1';
 			nextstate <= IDLE;
 
 	
 	when FreqS =>
+		--LD <="00100000"; --TEST	
 			FreqEN <= '1';
 			nextstate <= IDLE;
 
 			
 	when ShapeS =>
+		--LD <="01000000"; --TEST	
 			ShapeEN <= '1';
 			nextstate <= IDLE;
 			SigENEN <= '1';
@@ -129,7 +132,9 @@ end case;
 
 end process;
 
-LD <= Checksum; -- DETTE ER EN TEST, SLET I ENDELIG KODE
+
+
+LD <= Data; -- DETTE ER EN TEST, SLET I ENDELIG KODE
 
 ADDRReg: entity work.std_8bit_reg
 	port map (

@@ -44,7 +44,7 @@ Setup/Hold to clock SClk
             |Max Setup to|Max Hold to |                  | Clock  |
 Source      | clk (edge) | clk (edge) |Internal Clock(s) | Phase  |
 ------------+------------+------------+------------------+--------+
-MOSI        |    0.190(R)|    1.449(R)|SClk_BUFGP        |   0.000|
+MOSI        |   -0.316(R)|    1.929(R)|SClk_BUFGP        |   0.000|
 ------------+------------+------------+------------------+--------+
 
 Clock to Setup on destination clock Clk
@@ -52,7 +52,7 @@ Clock to Setup on destination clock Clk
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-Clk            |    7.655|         |         |         |
+Clk            |    7.802|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock SClk
@@ -60,11 +60,11 @@ Clock to Setup on destination clock SClk
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-SClk           |    1.742|         |         |         |
+SClk           |    1.734|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 
-Analysis completed Thu Jun 12 17:31:21 2025 
+Analysis completed Fri Jun 13 10:53:03 2025 
 --------------------------------------------------------------------------------
 
 Trace Settings:

@@ -133,7 +133,7 @@ wait for sclk_period;
 		
 		-- SEND DATA BYTE
 		
-		dataTB <= "00001010";
+		dataTB <= "10000000";
 		wait for sclk_period;
 
 		SSnot <= '0';
@@ -151,7 +151,7 @@ wait for sclk_period;
 		wait for 2*sclk_period*2;		
 		-- SEND CHECKSUM BYTE
 		
-		dataTB <= "01011110";
+		dataTB <= "11010100";
 		wait for sclk_period;
 
 		SSnot <= '0';
