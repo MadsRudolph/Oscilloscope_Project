@@ -9,4 +9,6 @@ vhdl work "C:\Users\s240324\Oscilloscope_Project\fpga\SPI_Test\SigGenSPIControl.
 vhdl work "C:\Users\s240324\Oscilloscope_Project\fpga\SignalGenerator\Opgivede filer til signalgnerator\SigGenDatapath.vhd"
 vhdl work "C:\Users\s240324\Oscilloscope_Project\fpga\SignalGenerator\Opgivede filer til signalgnerator\SevenSeg5.vhd"
 vhdl work "C:\Users\s240324\Oscilloscope_Project\fpga\SignalGenerator\Opgivede filer til signalgnerator\DivClk (1).vhd"
+vhdl work "C:\Users\s240324\Oscilloscope_Project\fpga\SignalGenerator\DispMux.vhd"
+vhdl work "C:\Users\s240324\Oscilloscope_Project\fpga\SignalGenerator\BTNdb.vhd"
 vhdl work "C:\Users\s240324\Oscilloscope_Project\fpga\SignalGenerator\Opgivede filer til signalgnerator\SigGenTop.vhd"
