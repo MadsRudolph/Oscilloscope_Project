@@ -21,13 +21,28 @@
       "showGrid": true,
       "traces": [
         {
-          "color": "rgb(228, 26, 28)",
-          "signal": "V(/out)",
+          "color": "rgb(255, 255, 51)",
+          "signal": "V(/out1)",
           "trace_type": 257
         },
         {
           "color": "rgb(55, 126, 184)",
           "signal": "V(/out2)",
+          "trace_type": 257
+        },
+        {
+          "color": "rgb(77, 175, 74)",
+          "signal": "V(/out3)",
+          "trace_type": 257
+        },
+        {
+          "color": "rgb(152, 78, 163)",
+          "signal": "V(/out4)",
+          "trace_type": 257
+        },
+        {
+          "color": "rgb(255, 127, 0)",
+          "signal": "V(/out5)",
           "trace_type": 257
         }
       ]
