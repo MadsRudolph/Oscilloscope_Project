@@ -20,21 +20,22 @@ signal DispSel : std_logic_vector(1 downto 0);
 
 begin
 	
-	process(BTN1, reset)
+	process(BTN1, Reset)
 	begin 
-		if reset = '1' then 
-		DispSel <= "00";
-		elsif rising_edge(clk) then
+		if Reset = '1' then 
+			DispSel <= "00";
+		elsif rising_edge(Clk) then
 			if BTN1 = '1' then
-				if DispSel < 4 then 
-				    DispSel <= DispSel +1;
-				else
-					 DispSel <= "00";
-				end if;
+				case DispSel is
+					when "00" => DispSel <= "01";
+					when "01" => DispSel <= "10";
+					when "10" => DispSel <= "00";
+					when others => DispSel <= "00";
+				end case;
 			end if;
 		end if; 
 	end process;
-	
+
 	
 	
 	process(DispSel, Shape, Amp, Freq)
@@ -56,4 +57,3 @@ begin
 		end process; 
 
 end Behavioral;
-

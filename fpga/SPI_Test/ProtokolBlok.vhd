@@ -116,15 +116,9 @@ Statereg: process(CLK, Reset)
 			nextstate <= IDLE;
 			SigENEN <= '1';
 
-
-
-
 end case;
 
-
-
 end process;
-
 
 
 LD <= Data; -- DETTE ER EN TEST, SLET I ENDELIG KODE
