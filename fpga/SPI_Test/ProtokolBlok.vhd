@@ -10,9 +10,9 @@ entity ProtokolBlok is
 			  SPIdat: in STD_LOGIC_VECTOR (7 downto 0);
 			  Shape: out STD_LOGIC_VECTOR (1 downto 0);
 			  Amp: out STD_LOGIC_VECTOR (7 downto 0);
-			  LD: out STD_LOGIC_VECTOR (7 downto 0); --DETTE ER ET TEST OUTPUT, SLET I ENDELIG KODE
+			  LD: out STD_LOGIC;
 			  Freq: out STD_LOGIC_VECTOR (7 downto 0);
-			  SigEN: out STD_LOGIC);
+			  SigEN: inout STD_LOGIC);
 end ProtokolBlok;
 
 architecture Behavioral of ProtokolBlok is
@@ -121,7 +121,7 @@ end case;
 end process;
 
 
-LD <= Data; -- DETTE ER EN TEST, SLET I ENDELIG KODE
+LD <= SigEn;
 
 ADDRReg: entity work.std_8bit_reg
 	port map (
