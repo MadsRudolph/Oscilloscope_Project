@@ -17,7 +17,7 @@ end ProtokolBlok;
 
 architecture Behavioral of ProtokolBlok is
 
-type Statetype is (IDLE, ADDRS, DataS, CheckSumS, AmpS, ShapeS, FreqS);
+type Statetype is (IDLE, ADDRS, DataS, CheckSumEnS, CheckSumS, AmpS, ShapeS, FreqS);
 
 signal state, nextstate : Statetype;
 signal DataEN, ADDREN, AmpEN, FreqEN, ShapeEN, CheckSumEN, Chk, syncbyte, SigENEN: STD_LOGIC;
@@ -31,7 +31,7 @@ begin
 
 SyncDec: syncbyte <= '1' when SPIdat = "01010101" else '0';
 
-CheckSumDec: Chk <= '1' when Checksum = ("01010101" xor ADDR xor Data) else '0';
+CheckSumDec: Chk <= '1' when Checksum = (("01010101" xor ADDR) xor Data) else '0';
 
 
 Statereg: process(CLK, Reset)
@@ -79,25 +79,29 @@ Statereg: process(CLK, Reset)
 	when DataS =>
 		if DataReady = '1' then
 			DataEN <= '1';
-			nextstate <= CheckSumS;
+			nextstate <= CheckSumEnS;
 		else
 			nextstate <= DataS;
 		end if;
-	
+		
+   when CheckSumEnS =>
+		if DataReady = '1' then
+			CheckSumEn <= '1';
+			nextstate <= CheckSumS;
+		else
+			nextstate <= CheckSumEnS;
+		end if;
 
 	when CheckSumS =>
-	CheckSumEn <= '1';
 		if Chk = '1' and ADDR = "00000001" then
 			nextstate <= AmpS;
+			
 		elsif Chk = '1' and ADDR = "00000010" then
 			nextstate <= FreqS;
 		elsif Chk = '1' and ADDR = "00000011" then
 			nextstate <= ShapeS;
-		elsif 
-			DataReady = '1' and Chk = '0' then -- Hvis checksum ikke passer.
-			nextstate <=IDLE;
-		else 
-			nextstate <= CheckSumS;
+		else
+			nextstate <=IDLE;			
 		end if;
 		
 

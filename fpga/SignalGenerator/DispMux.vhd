@@ -20,7 +20,7 @@ signal DispSel : std_logic_vector(1 downto 0);
 
 begin
 	
-	process(BTN1, Reset)
+	process(BTN1, Reset, Clk)
 	begin 
 		if Reset = '1' then 
 			DispSel <= "00";

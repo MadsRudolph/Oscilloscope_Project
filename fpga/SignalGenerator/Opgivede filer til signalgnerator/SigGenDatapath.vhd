@@ -105,7 +105,7 @@ end process;
 
 
 PWMcomp: PWM <= '1' when PWMcnt <= SigAmpl else '0';
-
+ 
 PWMon: PWMout <= PWM when SigEn = '1' else '0';
 
 end Behavioral;
