@@ -31,7 +31,7 @@ U0: entity WORK.DivClk
     port map(Reset => BTN3db, Clk => Clk, TimeP => 4, Clk1 => Mclk);
 	 
 U1: entity WORK.SigGenSPIControl
-	 port map (CLK => Mclk,
+	 port map (CLK => Clk,
            Reset => BTN3db,
            SClk => SClk,
            MOSI => MOSI,

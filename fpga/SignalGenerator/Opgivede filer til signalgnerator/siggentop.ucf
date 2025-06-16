@@ -13,7 +13,6 @@ NET "BTN1" LOC = C11;
 #Assignment of CLK
 NET "clk" LOC = B8;
 
-
 #Assignment of 7-seg cathode
 NET"cat[7]" LOC = N13;
 NET"cat[6]" LOC = M12;
