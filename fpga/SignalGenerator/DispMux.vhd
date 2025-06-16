@@ -24,7 +24,7 @@ begin
 	begin 
 		if Reset = '1' then 
 			DispSel <= "00";
-		elsif rising_edge(Clk) then
+				elsif rising_edge(Clk) then
 			if BTN1 = '1' then
 				case DispSel is
 					when "00" => DispSel <= "01";
@@ -42,7 +42,7 @@ begin
 	begin 
 		
 		if DispSel = "00" then 
-		Disp <= x"450" & "000000" & shape; 
+		Disp <= x"450" & "000000" & Shape; 
 		
 		
 		elsif DispSel = "01" then  

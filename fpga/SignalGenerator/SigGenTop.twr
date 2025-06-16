@@ -44,7 +44,7 @@ Setup/Hold to clock Clk
             |Max Setup to|Max Hold to |                  | Clock  |
 Source      | clk (edge) | clk (edge) |Internal Clock(s) | Phase  |
 ------------+------------+------------+------------------+--------+
-BTN1        |    0.922(R)|    0.443(R)|Clk_BUFGP         |   0.000|
+BTN1        |    1.072(R)|    0.324(R)|Clk_BUFGP         |   0.000|
 BTN3        |    0.593(R)|    0.711(R)|Clk_BUFGP         |   0.000|
 ------------+------------+------------+------------------+--------+
 
@@ -53,7 +53,7 @@ Setup/Hold to clock SClk
             |Max Setup to|Max Hold to |                  | Clock  |
 Source      | clk (edge) | clk (edge) |Internal Clock(s) | Phase  |
 ------------+------------+------------+------------------+--------+
-MOSI        |   -0.301(R)|    1.844(R)|SClk_BUFGP        |   0.000|
+MOSI        |    0.334(R)|    1.328(R)|SClk_BUFGP        |   0.000|
 ------------+------------+------------+------------------+--------+
 
 Clock to Setup on destination clock Clk
@@ -61,7 +61,7 @@ Clock to Setup on destination clock Clk
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-Clk            |    7.905|         |         |         |
+Clk            |    7.839|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock SClk
@@ -69,11 +69,11 @@ Clock to Setup on destination clock SClk
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-SClk           |    1.719|         |         |         |
+SClk           |    1.797|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 
-Analysis completed Mon Jun 16 10:48:41 2025 
+Analysis completed Mon Jun 16 11:39:49 2025 
 --------------------------------------------------------------------------------
 
 Trace Settings:
