@@ -263,6 +263,12 @@ void parse_uart1_packet()
         }
 
         uart_send_string("SEND parsed: updated record_length and sample_rate\r\n");
+
+        // Debug message
+        char debug_msg[64];
+        snprintf(debug_msg, sizeof(debug_msg), "Sample rate: %u, Record length: %u, Timer1 TOP: %lu\r\n", sample_rate, record_length, (unsigned long)current_timer1_top);
+        uart_send_string(debug_msg);
+
         break;
     }
 

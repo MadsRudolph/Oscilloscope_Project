@@ -65,7 +65,6 @@ void transmit_signalgenerator_data(uint16_t amp, uint8_t freq, uint8_t shape)
             master_transmit(adress);   // transmis bit(1): adress
             master_transmit(amp);      // transmit bit(2): data
             master_transmit(checksum); // transmit bit(3): checksum
-
             break;
         case 2:
 
@@ -75,7 +74,6 @@ void transmit_signalgenerator_data(uint16_t amp, uint8_t freq, uint8_t shape)
             master_transmit(adress);   // transmis bit(1): adress
             master_transmit(freq);     // transmit bit(2): data
             master_transmit(checksum); // transmit bit(3): checksum
-
             break;
         case 3:
 
@@ -85,7 +83,6 @@ void transmit_signalgenerator_data(uint16_t amp, uint8_t freq, uint8_t shape)
             master_transmit(adress);   // transmis bit(1): adress
             master_transmit(shape);    // transmit bit(2): data
             master_transmit(checksum); // transmit bit(3): checksum
-
             break;
         default:
             break;
