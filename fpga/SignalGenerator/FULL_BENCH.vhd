@@ -16,6 +16,7 @@ ARCHITECTURE behavior OF FULL_BENCH IS
     COMPONENT SigGenTop
     PORT(
          BTN3 : IN  std_logic;
+         BTN1 : IN  std_logic;
          Clk : IN  std_logic;
          MOSI : IN  std_logic;
          SClk : IN  std_logic;
@@ -34,6 +35,7 @@ ARCHITECTURE behavior OF FULL_BENCH IS
    signal MOSI : std_logic := '0';
    signal SClk : std_logic := '0';
    signal SSnot : std_logic := '1';
+	signal BTN1 : std_logic := '0';
 
 	--BiDirs
    signal PWMOut : std_logic;
@@ -61,7 +63,8 @@ BEGIN
           An => An,
           Cat => Cat,
           LD => LD,
-          PWMOut => PWMOut
+          PWMOut => PWMOut,
+ 			 BTN1 => BTN1
         );
 
    -- Clock process definitions

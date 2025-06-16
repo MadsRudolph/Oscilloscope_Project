@@ -1,8 +1,12 @@
 Release 14.1 Drc P.15xf (nt64)
 Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
 
-Fri Jun 13 10:53:06 2025
+Mon Jun 16 10:48:44 2025
 
 drc -z SigGenTop.ncd SigGenTop.pcf
 
-DRC detected 0 errors and 0 warnings.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net U6/Disp_or0000 is sourced
+   by a combinatorial pin. This is not good design practice. Use the CE pin to
+   control the loading of data into the flip-flop.
+DRC detected 0 errors and 1 warnings.  Please see the previously displayed
+individual error or warning messages for more details.

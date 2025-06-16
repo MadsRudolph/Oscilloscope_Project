@@ -17,6 +17,7 @@ NET "LD[0]" LOC = M5;
 
 #BTN signals
 NET "BTN3" LOC = A7;
+NET "BTN1" LOC = C11;
 #Assignment of CLK
 NET "clk" LOC = B8;
 
