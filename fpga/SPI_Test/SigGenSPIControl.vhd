@@ -38,8 +38,8 @@ entity SigGenSPIControl is
            Shape : out  STD_LOGIC_VECTOR (1 downto 0);
            Amp : out  STD_LOGIC_VECTOR (7 downto 0);
            Freq : out  STD_LOGIC_VECTOR (7 downto 0);
-			  LD: out STD_LOGIC_VECTOR (7 downto 0); --DETTE ER EN TEST, SLET I ENDELIG KODE
-           SigEN : out  STD_LOGIC);
+			  LD: out STD_LOGIC;
+           SigEN : inout  STD_LOGIC); -- inout da den bruges som et internt signal også
 end SigGenSPIControl;
 
 architecture Behavioral of SigGenSPIControl is

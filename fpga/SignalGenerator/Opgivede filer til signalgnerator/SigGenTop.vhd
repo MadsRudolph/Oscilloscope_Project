@@ -13,15 +13,15 @@ entity SigGenTop is
 			SSnot  : in std_logic;
 			An     : out std_logic_vector(3 downto 0);
 			Cat    : out std_logic_vector(7 downto 0);
-			LD		 : out std_logic_vector(7 downto 0);
+			LD		 : out std_logic;
          PWMOut : inout std_logic);
 end SigGenTop;
 
 architecture Behavioral of SigGenTop is
 
-signal Mclk, DispClk, SigEN, BTN1db, BTN3db: std_logic;
+signal Mclk, DispClk, SigEN, BTN1db, BTN3db, LED: std_logic;
 signal Disp: std_logic_vector(19 downto 0); 
-signal Amp, Freq, LED: std_logic_vector(7 downto 0);
+signal Amp, Freq : std_logic_vector(7 downto 0);
 signal Shape : std_logic_vector(1 downto 0);
 
 
