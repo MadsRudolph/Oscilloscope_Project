@@ -28,7 +28,7 @@ signal Shape : std_logic_vector(1 downto 0);
 begin
 
 U0: entity WORK.DivClk 
-    port map(Reset => BTN3db, Clk => Clk, TimeP => 4, Clk1 => Mclk);
+    port map(Reset => BTN3db, Clk => Clk, TimeP => 1, Clk1 => Mclk); -- timep var oprindeligt 4 
 	 
 U1: entity WORK.SigGenSPIControl
 	 port map (CLK => Clk,

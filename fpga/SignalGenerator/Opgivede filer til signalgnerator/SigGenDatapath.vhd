@@ -39,7 +39,8 @@ signal SigCnt, nSigCnt, FreqCnt: std_logic_vector(11 downto 0);
 signal Sig, SigSquare, SigSaw, SigSinus : std_logic_vector(7 downto 0); 
 signal SigAmpl: std_logic_vector(6 downto 0); 
 signal PWMcnt: std_logic_vector(6 downto 0) := "0000000";
-signal PWM, PWMwrap : std_logic;
+signal wrapcnt : std_logic_vector(2 downto 0);
+signal PWM, PWMwrap: std_logic;
 
 begin
 
@@ -48,7 +49,7 @@ FreqDec: FreqCnt <= "00" & Freq(7 downto 6) & Freq(5 downto 4) & '0' & Freq(3 do
 FreqAdd: nSigCnt <= SigCnt + FreqCnt;
 
 
-SigReg: process (Reset, Clk)
+SigReg: process (Reset, PWMwrap, Clk)
 begin
   if Reset = '1' then SigCnt <= X"000";
   elsif Clk'event and Clk = '1' then
@@ -73,7 +74,7 @@ begin
   PWMcnt <= PWMcntvar(6 downto 0);
 end process;     
 
-PWMdec: PWMwrap <= '1' when PWMcnt = "0000000" else '0';
+--PWMdec: PWMwrap <= '1' when PWMcnt = "0000000" else '0'; -- denne fjernes da der nederst er lavet et delay på 4 clocks
 
 SquareDec: SigSquare <= "00000000" when SigCnt < X"800" else "11111111";
 
@@ -103,6 +104,29 @@ begin
 --  SigAmpl <= "1111111";
 end process;
 
+
+
+-- denne proces sænker pwmwrap med 4 clocks 
+PWMWrapDelay : process (Clk, wrapcnt, Reset)
+begin
+	if Reset = '1' then
+		wrapcnt <="000";
+		PWMWrap <= '0';
+
+	elsif rising_edge(clk) then
+		if wrapcnt < "011" then 
+			wrapcnt <= wrapcnt +1;
+			PWMwrap <= '0';
+	
+		elsif wrapcnt = "100" then 
+			PWMWrap <= '1';
+			wrapcnt <= "000";
+		else
+			PWMwrap <= '0'; 
+	
+		end if; 
+	end if; 
+end process; 
 
 PWMcomp: PWM <= '1' when PWMcnt <= SigAmpl else '0';
  

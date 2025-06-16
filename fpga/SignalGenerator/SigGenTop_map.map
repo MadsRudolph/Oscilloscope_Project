@@ -9,7 +9,7 @@ Target Device  : xc3s100e
 Target Package : cp132
 Target Speed   : -4
 Mapper Version : spartan3e -- $Revision: 1.55 $
-Mapped Date    : Mon Jun 16 15:15:23 2025
+Mapped Date    : Mon Jun 16 18:08:43 2025
 
 vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 INFO:Security:50 - The XILINXD_LICENSE_FILE environment variable is set to
@@ -50,17 +50,17 @@ Design Summary:
 Number of errors:      0
 Number of warnings:    3
 Logic Utilization:
-  Total Number Slice Registers:         183 out of   1,920    9%
-    Number used as Flip Flops:          172
+  Total Number Slice Registers:         187 out of   1,920    9%
+    Number used as Flip Flops:          176
     Number used as Latches:              11
-  Number of 4 input LUTs:               328 out of   1,920   17%
+  Number of 4 input LUTs:               331 out of   1,920   17%
 Logic Distribution:
-  Number of occupied Slices:            210 out of     960   21%
-    Number of Slices containing only related logic:     210 out of     210 100%
-    Number of Slices containing unrelated logic:          0 out of     210   0%
+  Number of occupied Slices:            213 out of     960   22%
+    Number of Slices containing only related logic:     213 out of     213 100%
+    Number of Slices containing unrelated logic:          0 out of     213   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
-  Total Number of 4 input LUTs:         333 out of   1,920   17%
-    Number used as logic:               328
+  Total Number of 4 input LUTs:         336 out of   1,920   17%
+    Number used as logic:               331
     Number used as a route-thru:          5
 
   The Slice Logic Distribution report is not meaningful if the design is
