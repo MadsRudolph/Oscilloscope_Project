@@ -17,7 +17,7 @@ volatile uint8_t shape = 0;
 volatile uint8_t amplitude = 128;
 volatile uint8_t frequency = 100;
 volatile uint8_t run_stop_flag = 0;
-
+volatile uint8_t BTN_falg = 0;
 void uart_init(unsigned int ubrr)
 {
     UBRR0H = (unsigned char)(ubrr >> 8);                  // USART0 Baud rate register high byte (S.412)
@@ -174,6 +174,7 @@ void parse_uart1_packet()
                 if (sw <= 3)
                 {
                     shape = sw;
+                    BTN_falg = 3;
                 }
                 else
                 {
@@ -183,6 +184,7 @@ void parse_uart1_packet()
                 if (sw <= 255)
                 {
                     amplitude = sw;
+                    BTN_falg = 1;
                 }
                 else
                 {
@@ -192,6 +194,7 @@ void parse_uart1_packet()
                 if (sw <= 255)
                 {
                     frequency = sw;
+                    BTN_falg = 2;
                 }
                 else
                 {
@@ -201,7 +204,7 @@ void parse_uart1_packet()
             {
                 uart_send_string("error, wrong or no operation selected \r\n");
             }
-            transmit_signalgenerator_data(amplitude, frequency, shape); // Send data to FPGA
+            transmit_signalgenerator_data(amplitude, frequency, shape, BTN_falg); // Send data to FPGA
             uart_send_string("Current values sent to FPGA\r\n");
             break;
 
@@ -231,7 +234,11 @@ void parse_uart1_packet()
             amplitude = 128;    // Reset amplitude to default
             frequency = 1;      // Reset frequency to default
             uart_send_string("Generator reset to default values\r\n");
-            transmit_signalgenerator_data(amplitude, frequency, shape); // Send reset values to FPGA
+            for (int i = 1; i < 4; i++)
+            {
+                BTN_falg = i;
+                transmit_signalgenerator_data(amplitude, frequency, shape, BTN_falg); // Send reset values to FPGA
+            }
             uart_send_string("Reset values sent to FPGA\r\n");
             break;
 

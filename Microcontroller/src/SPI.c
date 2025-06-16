@@ -49,46 +49,43 @@ void slave_init()
     // PORTB |= (1 << PB0); // REMOVE this line — SS should not be driven by slave
 }
 
-void transmit_signalgenerator_data(uint16_t amp, uint8_t freq, uint8_t shape)
+void transmit_signalgenerator_data(uint16_t amp, uint8_t freq, uint8_t shape, uint8_t BTN_flag)
 {
     unsigned int checksum = 0;
 
-    for (uint8_t adress = 1; adress < 4; adress++)
+    switch (BTN_flag)
     {
-        switch (adress)
-        {
-        case 1:
+    case 1:
 
-            checksum = adress ^ 0x55 ^ amp; // calculates checksum with bitwise xor(^)
+        checksum = BTN_flag ^ 0x55 ^ amp; // calculates checksum with bitwise xor(^)
 
-            master_transmit(0x55);     // transmit bit(0): sync
-            master_transmit(adress);   // transmis bit(1): adress
-            master_transmit(amp);      // transmit bit(2): data
-            master_transmit(checksum); // transmit bit(3): checksum
+        master_transmit(0x55);     // transmit bit(0): sync
+        master_transmit(BTN_flag);   // transmis bit(1): BTN_flag
+        master_transmit(amp);      // transmit bit(2): data
+        master_transmit(checksum); // transmit bit(3): checksum
 
-            break;
-        case 2:
+        break;
+    case 2:
 
-            checksum = adress ^ 0x55 ^ freq; // calculates checksum with bitwise xor(^)
+        checksum = BTN_flag ^ 0x55 ^ freq; // calculates checksum with bitwise xor(^)
 
-            master_transmit(0x55);     // transmit bit(0): sync
-            master_transmit(adress);   // transmis bit(1): adress
-            master_transmit(freq);     // transmit bit(2): data
-            master_transmit(checksum); // transmit bit(3): checksum
+        master_transmit(0x55);     // transmit bit(0): sync
+        master_transmit(BTN_flag);   // transmis bit(1): BTN_flag
+        master_transmit(freq);     // transmit bit(2): data
+        master_transmit(checksum); // transmit bit(3): checksum
 
-            break;
-        case 3:
+        break;
+    case 3:
 
-            checksum = adress ^ 0x55 ^ shape; // calculates checksum with bitwise xor(^)
+        checksum = BTN_flag ^ 0x55 ^ shape; // calculates checksum with bitwise xor(^)
 
-            master_transmit(0x55);     // transmit bit(0): sync
-            master_transmit(adress);   // transmis bit(1): adress
-            master_transmit(shape);    // transmit bit(2): data
-            master_transmit(checksum); // transmit bit(3): checksum
+        master_transmit(0x55);     // transmit bit(0): sync
+        master_transmit(BTN_flag);   // transmis bit(1): BTN_flag
+        master_transmit(shape);    // transmit bit(2): data
+        master_transmit(checksum); // transmit bit(3): checksum
 
-            break;
-        default:
-            break;
-        }
+        break;
+    default:
+        break;
     }
 }
