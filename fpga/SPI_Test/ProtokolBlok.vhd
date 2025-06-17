@@ -1,6 +1,7 @@
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 
 entity ProtokolBlok is
@@ -11,6 +12,8 @@ entity ProtokolBlok is
 			  Shape: out STD_LOGIC_VECTOR (1 downto 0);
 			  Amp: out STD_LOGIC_VECTOR (7 downto 0);
 			  LD: out STD_LOGIC;
+			  LD2: out STD_LOGIC;
+			  LD3: out STD_LOGIC;
 			  Freq: out STD_LOGIC_VECTOR (7 downto 0);
 			  SigEN: inout STD_LOGIC);
 end ProtokolBlok;
@@ -20,11 +23,9 @@ architecture Behavioral of ProtokolBlok is
 type Statetype is (IDLE, ADDRS, DataS, CheckSumEnS, CheckSumS, AmpS, ShapeS, FreqS);
 
 signal state, nextstate : Statetype;
-signal DataEN, ADDREN, AmpEN, FreqEN, ShapeEN, CheckSumEN, Chk, syncbyte, SigENEN: STD_LOGIC;
+signal DataEN, ADDREN, AmpEN, FreqEN, ShapeEN, CheckSumEN, Chk, syncbyte, SigENEN, tusFlag, totusFlag: STD_LOGIC;
 signal CheckSum, ADDR, Data: STD_LOGIC_VECTOR (7 downto 0);
-
-  
-
+signal TestCnt: STD_LOGIC_VECTOR (15 downto 0); -- Dette er til test af robust kommunikation
 
 begin
 
@@ -32,7 +33,6 @@ begin
 SyncDec: syncbyte <= '1' when SPIdat = "01010101" else '0';
 
 CheckSumDec: Chk <= '1' when Checksum = (("01010101" xor ADDR) xor Data) else '0';
-
 
 Statereg: process(CLK, Reset)
     begin 
@@ -46,8 +46,7 @@ Statereg: process(CLK, Reset)
     -- Next state logic and register enable control
     StateDec: process (DataReady, state, Chk, syncbyte, ADDR)
     begin
-	 
-	 
+	 	 
 -- Default values
 	DataEn <= '0';
 	ADDREn <= '0';
@@ -119,13 +118,31 @@ Statereg: process(CLK, Reset)
 			ShapeEN <= '1';
 			nextstate <= IDLE;
 			SigENEN <= '1';
+			TestCnt <= TestCnt + "0001"; -- Dette er til test af robust kommunikation
 
 end case;
+
 
 end process;
 
 
+Process(TestCnt)
+begin
+	if TestCnt < "0000011111010000" then -- led lys hvis under 2000 shapes
+	tusFlag <= '1';
+	totusFlag <= '0';
+	elsif TestCnt >= "0000011111010000" then -- led lyser hvis over 2000 shapes 
+	totusFlag <= '1';
+	tusFlag <= '0';
+	else 
+		tusFlag <= '0';
+		totusFlag <= '0';
+	end if; 
+end process; 
+
 LD <= SigEn;
+LD2 <= tusFlag;
+LD3 <= totusFlag; 
 
 ADDRReg: entity work.std_8bit_reg
 	port map (

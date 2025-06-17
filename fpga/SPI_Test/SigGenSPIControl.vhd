@@ -38,6 +38,8 @@ entity SigGenSPIControl is
            Shape : out  STD_LOGIC_VECTOR (1 downto 0);
            Amp : out  STD_LOGIC_VECTOR (7 downto 0);
            Freq : out  STD_LOGIC_VECTOR (7 downto 0);
+			  LD2: out STD_LOGIC;
+			  LD3: out STD_LOGIC;
 			  LD: out STD_LOGIC;
            SigEN : inout  STD_LOGIC); -- inout da den bruges som et internt signal også
 	
@@ -62,6 +64,8 @@ begin
 				DataReady => DataReady,
 				SPIdat => SPIdat,
 				SigEN => SigEN,
+				LD2 => LD2,
+				LD3 => LD3,
 				LD => LD
         );
 

@@ -1,7 +1,7 @@
 Release 14.1 - par P.15xf (nt64)
 Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
 
-Mon Jun 16 18:08:59 2025
+Tue Jun 17 17:07:27 2025
 
 
 # NOTE: This file is designed to be imported into a spreadsheet program
@@ -140,9 +140,9 @@ N14|Cat<2>|IOB|IO_L01N_1/A15|OUTPUT|LVCMOS25*|1|12|SLOW|NONE**|||LOCATED|NO|NONE
 P1||DIFFM|IO_L02P_2/DOUT/BUSY|UNUSED||2|||||||||
 P2|||VCCINT||||||||1.2||||
 P3|||VCCO_2|||2|||||2.50||||
-P4||IOB|IO/D5|UNUSED||2|||||||||
+P4|LD2|IOB|IO/D5|OUTPUT|LVCMOS25*|2|12|SLOW|NONE**|||LOCATED|NO|NONE|
 P5|||GND||||||||||||
-P6||DIFFM|IO_L06P_2/D2/GCLK2|UNUSED||2|||||||||
+P6|LD3|IOB|IO_L06P_2/D2/GCLK2|OUTPUT|LVCMOS25*|2|12|SLOW|NONE**|||LOCATED|NO|NONE|
 P7||DIFFS|IO_L06N_2/D1/GCLK3|UNUSED||2|||||||||
 P8||DIFFM|IO_L07P_2/M0|UNUSED||2|||||||||
 P9|||VCCAUX||||||||2.5||||
