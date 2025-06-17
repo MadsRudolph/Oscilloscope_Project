@@ -1,6 +1,6 @@
 #ifndef UART_H
 #define UART_H
-
+#include <stdbool.h>       // Include boolean support
 #include <stdint.h>
 
 void uart_init(unsigned int ubrr);

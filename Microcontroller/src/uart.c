@@ -9,6 +9,7 @@
 #include "uart.h"
 #include "ADC.h"
 #include "SPI.h"
+#include <stdbool.h>       // Include boolean support
 #define MAX_RECORD_LENGTH 1000
 extern volatile uint16_t record_length;
 extern volatile uint16_t current_timer1_top;
@@ -17,6 +18,7 @@ volatile uint8_t shape = 0;
 volatile uint8_t amplitude = 128;
 volatile uint8_t frequency = 100;
 volatile uint8_t run_stop_flag = 0;
+extern volatile bool start_stress_test_flag; // Flag to trigger SPI stress test
 
 void uart_init(unsigned int ubrr)
 {
@@ -273,7 +275,8 @@ void parse_uart1_packet()
     }
 
     case 0x03: // START (e.g., for BODE)
-        uart_send_string("START received\r\n");
+        uart_send_string("START received: triggering SPI stress test\r\n");
+        start_stress_test_flag = true;
         break;
 
     default:

@@ -1,0 +1,68 @@
+(ExpressProject "TLV3501"
+  (ProjectVersion "19981106")
+  (SoftwareVersion "17.4-2019 S018 (3945310)  [5/16/2021]-[07/26/21]")
+  (ProjectType "Analog or A/D Mixed Mode")
+  (Folder "Design Resources"
+    (Folder "Library"
+      (File ".\library\tlv3501.olb"
+        (Type "Schematic Library")))
+    ("Allegro Netlist Directory" "allegro")
+    (DOCKED "TRUE")
+    (DOCKING_POSITION "61215")
+    (NoModify)
+    (File ".\tlv3501.dsn"
+      (Type "Schematic Design"))
+    (BuildFileAddedOrDeleted "x")
+    (CompileFileAddedOrDeleted "x")
+    (PSPICE_Regenerate_Netlist_Flag "FALSE"))
+  (Folder "Layout")
+  (Folder "Outputs"
+    (File ".\tlv3501-pspicefiles\schematic1\schematic1.net"
+      (Type "Report")))
+  (Folder "PSpice Resources"
+    (Folder "Simulation Profiles"
+      (ActiveProfile ".\tlv3501-pspicefiles\schematic1\tlv3501_sim.sim")
+      (File.PSpice.{09528990-3187-11D2-BC7B-00A0C90CBF91}
+         ".\tlv3501-pspicefiles\schematic1\tlv3501_sim.sim"
+        (DisplayName "SCHEMATIC1-TLV3501_SIM")
+        (Type "PSpice Profile")))
+    (Folder "Model Libraries"
+      (Sort User)
+      (File ".\tlv3501.lib"
+        (Type "PSpiceLibrary")
+        (DisplayName ".\tlv3501.lib")))
+    (Folder "Stimulus Files"
+      (Sort User))
+    (Folder "Include Files"
+      (Sort User)))
+  (DefaultLibraryBrowseDirectory "library\PSpice")
+  (Folder "Logs")
+  (PartMRUSelector
+    (TLV3501
+      (FullPartName "TLV3501.Normal")
+      (LibraryName "C:\MODELING\TLV3501\PSPICE\TLV3501.OLB")
+      (DeviceIndex "0")))
+  (LastUsedLibraryBrowseDirectory "C:\Modeling\TLV3501\PSPICE")
+  (GlobalState
+    (FileView
+      (Path "Design Resources")
+      (Path "Design Resources" "Library")
+      (Path "Outputs")
+      (Select "Design Resources" ".\tlv3501.dsn"))
+    (HierarchyView)
+    (Doc
+      (Type "COrCapturePMDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 0 200 0 598"))
+      (Tab 0))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 5 1319 24 639")
+        (Scroll "-156 0")
+        (Zoom "100")
+        (Occurrence "/"))
+      (Path "C:\MODELING\TLV3501\PSPICE\TLV3501.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "PAGE1")))
+  (MPSSessionName "a0491820"))
