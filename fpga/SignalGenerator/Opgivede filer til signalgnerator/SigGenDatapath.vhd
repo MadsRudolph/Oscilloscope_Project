@@ -23,7 +23,7 @@ use IEEE.STD_LOGIC_ARITH.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity SigGenDatapath is
-  generic( PWMinc : std_logic_vector(6 downto 0) := "0010000" );
+  generic( PWMinc : std_logic_vector(6 downto 0) := "0000001" ); -- sat markant ned
   Port ( Reset  : in std_logic;	
          Clk    : in std_logic;
          SigEN  : in std_logic;
@@ -39,7 +39,8 @@ signal SigCnt, nSigCnt, FreqCnt: std_logic_vector(11 downto 0);
 signal Sig, SigSquare, SigSaw, SigSinus : std_logic_vector(7 downto 0); 
 signal SigAmpl: std_logic_vector(6 downto 0); 
 signal PWMcnt: std_logic_vector(6 downto 0) := "0000000";
-signal PWM, PWMwrap : std_logic;
+--signal wrapcnt : std_logic_vector(2 downto 0);
+signal PWM, PWMwrap: std_logic;
 
 begin
 
@@ -48,7 +49,7 @@ FreqDec: FreqCnt <= "00" & Freq(7 downto 6) & Freq(5 downto 4) & '0' & Freq(3 do
 FreqAdd: nSigCnt <= SigCnt + FreqCnt;
 
 
-SigReg: process (Reset, Clk)
+SigReg: process (Reset, PWMwrap, Clk)
 begin
   if Reset = '1' then SigCnt <= X"000";
   elsif Clk'event and Clk = '1' then
@@ -61,23 +62,30 @@ end process;
 SinusDec : entity WORK.SinusLUT PORT MAP (clka => Clk, addra => SigCnt, douta => SigSinus);
 
 PWMcount: process(Reset, Clk)
-variable PWMcntvar: std_logic_vector(7 downto 0);
+variable PWMcntvar: std_logic_vector(8 downto 0);
 begin
-  if Reset = '1' then PWMcntvar := "00000000";
+  if Reset = '1' then PWMcntvar := "000000000";
   elsif Clk'event and Clk = '1' then
     PWMcntvar := PWMcntvar + PWMinc;
-		if PWMcntvar > "10000000" then
-			PWMcntvar := "00000000";
+		if PWMcntvar > "111111111" then  --udviddet med 2 bit for at sænke signalet 
+			PWMcntvar := "000000000";
 		end if;
+		end if;
+		if PWMcntvar = "000000000" then 
+		PWMwrap <= '1'; 
+		else 
+		PWMwrap <= '0';
   end if;
-  PWMcnt <= PWMcntvar(6 downto 0);
+  PWMcnt <= PWMcntvar(6 downto 0); -- PWMcnt er kun 7 bit da den skal tælle hurtigere og følge clock direkte 
 end process;     
 
-PWMdec: PWMwrap <= '1' when PWMcnt = "0000000" else '0';
+--PWMdec: PWMwrap <= '1' when PWMcnt = "00000000" else '0'; -- denne fjernes
 
 SquareDec: SigSquare <= "00000000" when SigCnt < X"800" else "11111111";
 
 SawDec: SigSaw <= SigCnt(11 downto 4);
+
+--Tridec: 
 
 SigMux: Sig <= X"FF" when Shape = "00" else
                SigSquare when Shape = "01" else
@@ -102,6 +110,7 @@ begin
   SigAmpl <= MulC(15 downto 9);
 --  SigAmpl <= "1111111";
 end process;
+
 
 
 PWMcomp: PWM <= '1' when PWMcnt <= SigAmpl else '0';

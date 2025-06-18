@@ -6,12 +6,14 @@
 NET"PWMOut" LOC = C12;
 
 NET "LD" LOC = M5;
-
+NET "LD2" LOC = N4;
+NET "LD3" LOC = G1;
+NET "LD4" LOC = P4;
 #BTN signals
 NET "BTN3" LOC = A7;
 NET "BTN1" LOC = C11;
 #Assignment of CLK
-NET "clk" LOC = B8;
+NET "Clk" LOC = B8;
 
 #Assignment of 7-seg cathode
 NET"cat[7]" LOC = N13;

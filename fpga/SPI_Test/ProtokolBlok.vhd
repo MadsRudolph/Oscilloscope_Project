@@ -1,6 +1,7 @@
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 
 entity ProtokolBlok is
@@ -11,6 +12,9 @@ entity ProtokolBlok is
 			  Shape: out STD_LOGIC_VECTOR (1 downto 0);
 			  Amp: out STD_LOGIC_VECTOR (7 downto 0);
 			  LD: out STD_LOGIC;
+			  LD2: out STD_LOGIC;
+			  LD3: out STD_LOGIC;
+			  LD4: out STD_LOGIC;
 			  Freq: out STD_LOGIC_VECTOR (7 downto 0);
 			  SigEN: inout STD_LOGIC);
 end ProtokolBlok;
@@ -20,11 +24,9 @@ architecture Behavioral of ProtokolBlok is
 type Statetype is (IDLE, ADDRS, DataS, CheckSumEnS, CheckSumS, AmpS, ShapeS, FreqS);
 
 signal state, nextstate : Statetype;
-signal DataEN, ADDREN, AmpEN, FreqEN, ShapeEN, CheckSumEN, Chk, syncbyte, SigENEN: STD_LOGIC;
+signal DataEN, ADDREN, AmpEN, FreqEN, ShapeEN, ShapeEN_prev, CheckSumEN, Chk, syncbyte, SigENEN, UnderFlag, OverFlag, LigeFlag: STD_LOGIC;
 signal CheckSum, ADDR, Data: STD_LOGIC_VECTOR (7 downto 0);
-
-  
-
+signal TestCnt: STD_LOGIC_VECTOR(15 downto 0):= "0000000000000000"; -- Dette er til test af robust kommunikation
 
 begin
 
@@ -33,21 +35,24 @@ SyncDec: syncbyte <= '1' when SPIdat = "01010101" else '0';
 
 CheckSumDec: Chk <= '1' when Checksum = (("01010101" xor ADDR) xor Data) else '0';
 
-
 Statereg: process(CLK, Reset)
     begin 
         if Reset = '1' then 
             state <= IDLE;  -- Reset state to IDLE
         elsif CLK'event and CLK = '1' then
             state <= nextstate;  -- Update state on clock edge
+				if ShapeEN = '1' and ShapeEN_prev = '0' then -- puls som sikrer vi tæller en op på antal shapes modtaget korrekt
+					TestCnt <= TestCnt + "0000000000000001";
+				end if; 
+				ShapeEN_prev <= ShapeEN;
+			
         end if;
     end process;
 
     -- Next state logic and register enable control
     StateDec: process (DataReady, state, Chk, syncbyte, ADDR)
     begin
-	 
-	 
+	 	 
 -- Default values
 	DataEn <= '0';
 	ADDREn <= '0';
@@ -117,16 +122,39 @@ Statereg: process(CLK, Reset)
 			
 	when ShapeS =>
 			ShapeEN <= '1';
-			nextstate <= IDLE;
 			SigENEN <= '1';
-
+			nextstate <= IDLE;
 end case;
+
 
 end process;
 
 
-LD <= SigEn;
+Process(TestCnt)
+begin
+	if TestCnt < "0010101001001011" then -- led lys hvis under 10827 adresser
+	UnderFlag <= '1';
+	OverFlag <= '0';
+	LigeFlag <= '0'; 
+	elsif TestCnt = "0010101001001011" then -- led lyser hvis over 10827 shapes
+	OverFlag <= '0';
+	UnderFlag <= '0';
+	LigeFlag <= '1';
+	elsif TestCnt > "0010101001001011" then -- led lyser hvis over 10827 shapes
+	OverFlag <= '1';
+	LigeFlag <= '0';
+	UnderFlag <= '0';
+	else 
+		UnderFlag <= '0';
+		OverFlag <= '0';
+		LigeFlag <= '0'; 
+	end if; 
+end process; 
 
+LD <= SigEn;
+LD2 <= UnderFlag;
+LD3 <= OverFlag; 
+LD4 <= LigeFlag; 
 ADDRReg: entity work.std_8bit_reg
 	port map (
 					Reset => Reset,
