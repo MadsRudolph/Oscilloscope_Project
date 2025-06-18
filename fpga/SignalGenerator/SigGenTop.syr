@@ -4,13 +4,13 @@ Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.12 secs
+Total CPU time to Xst completion: 0.11 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.13 secs
+Total CPU time to Xst completion: 0.11 secs
  
 --> Reading design: SigGenTop.prj
 
@@ -107,35 +107,36 @@ Cores Search Directories           : {"ipcore_dir"  }
 =========================================================================
 *                          HDL Compilation                              *
 =========================================================================
-Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Register.vhd" in Library work.
+Compiling vhdl file "C:/Users/s245946/Oscilloscope_Project/fpga/SPI_Test/Register.vhd" in Library work.
 Architecture behavioral of Entity std_8bit_reg is up to date.
-Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/std_2bit_reg.vhd" in Library work.
+Compiling vhdl file "C:/Users/s245946/Oscilloscope_Project/fpga/SignalGenerator/std_2bit_reg.vhd" in Library work.
 Architecture behavioral of Entity std_2bit_reg is up to date.
-Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/std_1bit_reg.vhd" in Library work.
+Compiling vhdl file "C:/Users/s245946/Oscilloscope_Project/fpga/SignalGenerator/std_1bit_reg.vhd" in Library work.
 Architecture behavioral of Entity std_1bit_reg is up to date.
-Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/ipcore_dir/SinusLUT.vhd" in Library work.
+Compiling vhdl file "C:/Users/s245946/Oscilloscope_Project/fpga/SignalGenerator/ipcore_dir/SinusLUT.vhd" in Library work.
 Architecture sinuslut_a of Entity sinuslut is up to date.
-Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/ProtokolBlok.vhd" in Library work.
-Entity <protokolblok> compiled.
-Entity <protokolblok> (Architecture <behavioral>) compiled.
-Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd" in Library work.
+Compiling vhdl file "C:/Users/s245946/Oscilloscope_Project/fpga/SPI_Test/ProtokolBlok.vhd" in Library work.
+Architecture behavioral of Entity protokolblok is up to date.
+Compiling vhdl file "C:/Users/s245946/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd" in Library work.
 Architecture behavioral of Entity skifte_reg_til_parallel is up to date.
-Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/TiminComponent.vhd" in Library work.
+Compiling vhdl file "C:/Users/s245946/Oscilloscope_Project/fpga/SPI_Test/TiminComponent.vhd" in Library work.
 Architecture behavioral of Entity timingcomponent is up to date.
-Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/SigGenSPIControl.vhd" in Library work.
-Architecture behavioral of Entity siggenspicontrol is up to date.
-Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd" in Library work.
+Compiling vhdl file "C:/Users/s245946/Oscilloscope_Project/fpga/SPI_Test/SigGenSPIControl.vhd" in Library work.
+Entity <siggenspicontrol> compiled.
+Entity <siggenspicontrol> (Architecture <behavioral>) compiled.
+Compiling vhdl file "C:/Users/s245946/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd" in Library work.
 Architecture behavioral of Entity siggendatapath is up to date.
-Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SevenSeg5.vhd" in Library work.
+Compiling vhdl file "C:/Users/s245946/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SevenSeg5.vhd" in Library work.
 Architecture sevenseg_arch of Entity sevenseg5 is up to date.
-Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/DivClk (1).vhd" in Library work.
+Compiling vhdl file "C:/Users/s245946/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/DivClk (1).vhd" in Library work.
 Architecture divclk_arch of Entity divclk is up to date.
-Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/DispMux.vhd" in Library work.
+Compiling vhdl file "C:/Users/s245946/Oscilloscope_Project/fpga/SignalGenerator/DispMux.vhd" in Library work.
 Architecture behavioral of Entity dispmux is up to date.
-Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/BTNdb.vhd" in Library work.
+Compiling vhdl file "C:/Users/s245946/Oscilloscope_Project/fpga/SignalGenerator/BTNdb.vhd" in Library work.
 Architecture behavioral of Entity btndb is up to date.
-Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenTop.vhd" in Library work.
-Architecture behavioral of Entity siggentop is up to date.
+Compiling vhdl file "C:/Users/s245946/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenTop.vhd" in Library work.
+Entity <siggentop> compiled.
+Entity <siggentop> (Architecture <behavioral>) compiled.
 
 =========================================================================
 *                     Design Hierarchy Analysis                         *
@@ -197,7 +198,7 @@ Entity <TimingComponent> analyzed. Unit <TimingComponent> generated.
 
 Analyzing generic Entity <SigGenDatapath> in library <work> (Architecture <Behavioral>).
 	PWMinc = "0000001"
-WARNING:Xst:2211 - "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd" line 62: Instantiating black box module <SinusLUT>.
+WARNING:Xst:2211 - "C:/Users/s245946/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd" line 62: Instantiating black box module <SinusLUT>.
 Entity <SigGenDatapath> analyzed. Unit <SigGenDatapath> generated.
 
 Analyzing Entity <SevenSeg5> in library <work> (Architecture <SevenSeg_arch>).
@@ -220,7 +221,7 @@ Entity <BTNdb> analyzed. Unit <BTNdb> generated.
 Performing bidirectional port resolution...
 
 Synthesizing Unit <SevenSeg5>.
-    Related source file is "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SevenSeg5.vhd".
+    Related source file is "C:/Users/s245946/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SevenSeg5.vhd".
     Found 16x16-bit ROM for signal <DataN$rom0000>.
     Found 4-bit register for signal <an>.
     Found 8-bit register for signal <cat>.
@@ -238,7 +239,7 @@ Unit <SevenSeg5> synthesized.
 
 
 Synthesizing Unit <DivClk>.
-    Related source file is "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/DivClk (1).vhd".
+    Related source file is "C:/Users/s245946/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/DivClk (1).vhd".
     Found 1-bit register for signal <Clk1_D>.
     Found 25-bit up counter for signal <Cnt1>.
     Summary:
@@ -248,7 +249,7 @@ Unit <DivClk> synthesized.
 
 
 Synthesizing Unit <DispMux>.
-    Related source file is "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/DispMux.vhd".
+    Related source file is "C:/Users/s245946/Oscilloscope_Project/fpga/SignalGenerator/DispMux.vhd".
     Found finite state machine <FSM_0> for signal <DispSel>.
     -----------------------------------------------------------------------
     | States             | 3                                              |
@@ -271,7 +272,7 @@ Unit <DispMux> synthesized.
 
 
 Synthesizing Unit <BTNdb>.
-    Related source file is "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/BTNdb.vhd".
+    Related source file is "C:/Users/s245946/Oscilloscope_Project/fpga/SignalGenerator/BTNdb.vhd".
     Found finite state machine <FSM_1> for signal <State>.
     -----------------------------------------------------------------------
     | States             | 4                                              |
@@ -294,7 +295,7 @@ Unit <BTNdb> synthesized.
 
 
 Synthesizing Unit <Skifte_reg_til_Parallel>.
-    Related source file is "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd".
+    Related source file is "C:/Users/s245946/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd".
     Found 8-bit register for signal <skift_reg>.
     Summary:
 	inferred   8 D-type flip-flop(s).
@@ -302,7 +303,7 @@ Unit <Skifte_reg_til_Parallel> synthesized.
 
 
 Synthesizing Unit <TimingComponent>.
-    Related source file is "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/TiminComponent.vhd".
+    Related source file is "C:/Users/s245946/Oscilloscope_Project/fpga/SPI_Test/TiminComponent.vhd".
     Found 1-bit register for signal <SSnotOld>.
     Found 1-bit register for signal <SSnotSync>.
     Summary:
@@ -311,7 +312,7 @@ Unit <TimingComponent> synthesized.
 
 
 Synthesizing Unit <std_8bit_reg>.
-    Related source file is "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Register.vhd".
+    Related source file is "C:/Users/s245946/Oscilloscope_Project/fpga/SPI_Test/Register.vhd".
     Found 8-bit register for signal <data_out>.
     Summary:
 	inferred   8 D-type flip-flop(s).
@@ -319,7 +320,7 @@ Unit <std_8bit_reg> synthesized.
 
 
 Synthesizing Unit <std_2bit_reg>.
-    Related source file is "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/std_2bit_reg.vhd".
+    Related source file is "C:/Users/s245946/Oscilloscope_Project/fpga/SignalGenerator/std_2bit_reg.vhd".
     Found 2-bit register for signal <data_out>.
     Summary:
 	inferred   2 D-type flip-flop(s).
@@ -327,7 +328,7 @@ Unit <std_2bit_reg> synthesized.
 
 
 Synthesizing Unit <std_1bit_reg>.
-    Related source file is "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/std_1bit_reg.vhd".
+    Related source file is "C:/Users/s245946/Oscilloscope_Project/fpga/SignalGenerator/std_1bit_reg.vhd".
     Found 1-bit register for signal <data_out>.
     Summary:
 	inferred   1 D-type flip-flop(s).
@@ -335,7 +336,7 @@ Unit <std_1bit_reg> synthesized.
 
 
 Synthesizing Unit <SigGenDatapath>.
-    Related source file is "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd".
+    Related source file is "C:/Users/s245946/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd".
     Found 16-bit adder for signal <MulC$addsub0000> created at line 105.
     Found 16-bit adder for signal <MulC$addsub0001> created at line 105.
     Found 16-bit adder for signal <MulC$addsub0002> created at line 105.
@@ -359,7 +360,7 @@ Unit <SigGenDatapath> synthesized.
 
 
 Synthesizing Unit <ProtokolBlok>.
-    Related source file is "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/ProtokolBlok.vhd".
+    Related source file is "C:/Users/s245946/Oscilloscope_Project/fpga/SPI_Test/ProtokolBlok.vhd".
     Found finite state machine <FSM_2> for signal <state>.
     -----------------------------------------------------------------------
     | States             | 8                                              |
@@ -374,32 +375,34 @@ Synthesizing Unit <ProtokolBlok>.
     | Encoding           | automatic                                      |
     | Implementation     | LUT                                            |
     -----------------------------------------------------------------------
-WARNING:Xst:737 - Found 16-bit latch for signal <TestCnt>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
-    Found 8-bit comparator equal for signal <Chk$cmp_eq0000> created at line 35.
-    Found 1-bit xor2 for signal <Chk$xor0000> created at line 35.
-    Found 1-bit xor2 for signal <Chk$xor0002> created at line 35.
-    Found 1-bit xor2 for signal <Chk$xor0004> created at line 35.
-    Found 1-bit xor2 for signal <Chk$xor0006> created at line 35.
-    Found 1-bit xor2 for signal <Chk$xor0008> created at line 35.
-    Found 1-bit xor2 for signal <Chk$xor0009> created at line 35.
-    Found 1-bit xor2 for signal <Chk$xor0010> created at line 35.
-    Found 1-bit xor2 for signal <Chk$xor0011> created at line 35.
-    Found 16-bit adder for signal <TestCnt$add0000> created at line 121.
-    Found 16-bit comparator less for signal <tusFlag$cmp_lt0000> created at line 131.
+    Found 8-bit comparator equal for signal <Chk$cmp_eq0000> created at line 36.
+    Found 1-bit xor2 for signal <Chk$xor0000> created at line 36.
+    Found 1-bit xor2 for signal <Chk$xor0002> created at line 36.
+    Found 1-bit xor2 for signal <Chk$xor0004> created at line 36.
+    Found 1-bit xor2 for signal <Chk$xor0006> created at line 36.
+    Found 1-bit xor2 for signal <Chk$xor0008> created at line 36.
+    Found 1-bit xor2 for signal <Chk$xor0009> created at line 36.
+    Found 1-bit xor2 for signal <Chk$xor0010> created at line 36.
+    Found 1-bit xor2 for signal <Chk$xor0011> created at line 36.
+    Found 16-bit comparator greater for signal <OverFlag$cmp_gt0000> created at line 142.
+    Found 1-bit register for signal <ShapeEN_prev>.
+    Found 16-bit up counter for signal <TestCnt>.
+    Found 16-bit comparator less for signal <UnderFlag$cmp_lt0000> created at line 135.
     Summary:
 	inferred   1 Finite State Machine(s).
-	inferred   1 Adder/Subtractor(s).
-	inferred   2 Comparator(s).
+	inferred   1 Counter(s).
+	inferred   1 D-type flip-flop(s).
+	inferred   3 Comparator(s).
 Unit <ProtokolBlok> synthesized.
 
 
 Synthesizing Unit <SigGenSPIControl>.
-    Related source file is "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/SigGenSPIControl.vhd".
+    Related source file is "C:/Users/s245946/Oscilloscope_Project/fpga/SPI_Test/SigGenSPIControl.vhd".
 Unit <SigGenSPIControl> synthesized.
 
 
 Synthesizing Unit <SigGenTop>.
-    Related source file is "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenTop.vhd".
+    Related source file is "C:/Users/s245946/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenTop.vhd".
 Unit <SigGenTop> synthesized.
 
 
@@ -409,26 +412,27 @@ HDL Synthesis Report
 Macro Statistics
 # ROMs                                                 : 1
  16x16-bit ROM                                         : 1
-# Adders/Subtractors                                   : 9
- 16-bit adder                                          : 8
+# Adders/Subtractors                                   : 8
+ 16-bit adder                                          : 7
  9-bit adder                                           : 1
-# Counters                                             : 4
+# Counters                                             : 5
  12-bit up counter                                     : 2
+ 16-bit up counter                                     : 1
  2-bit up counter                                      : 1
  25-bit up counter                                     : 1
 # Accumulators                                         : 1
  12-bit up accumulator                                 : 1
-# Registers                                            : 14
- 1-bit register                                        : 4
+# Registers                                            : 15
+ 1-bit register                                        : 5
  2-bit register                                        : 1
  4-bit register                                        : 1
  8-bit register                                        : 7
  9-bit register                                        : 1
-# Latches                                              : 2
- 16-bit latch                                          : 1
+# Latches                                              : 1
  20-bit latch                                          : 1
-# Comparators                                          : 4
+# Comparators                                          : 5
  12-bit comparator less                                : 1
+ 16-bit comparator greater                             : 1
  16-bit comparator less                                : 1
  7-bit comparator lessequal                            : 1
  8-bit comparator equal                                : 1
@@ -462,8 +466,8 @@ Optimizing FSM <U1/ProtokolBlok/state/FSM> on signal <state[1:3]> with gray enco
  freqs       | 101
 -------------------------
 Analyzing FSM <FSM_1> for best encoding.
+Optimizing FSM <U6/State/FSM> on signal <State[1:2]> with user encoding.
 Optimizing FSM <U7/State/FSM> on signal <State[1:2]> with user encoding.
-Optimizing FSM <U8/State/FSM> on signal <State[1:2]> with user encoding.
 ----------------------
  State    | Encoding
 ----------------------
@@ -473,7 +477,7 @@ Optimizing FSM <U8/State/FSM> on signal <State[1:2]> with user encoding.
  wbtndown | 11
 ----------------------
 Analyzing FSM <FSM_0> for best encoding.
-Optimizing FSM <U6/DispSel/FSM> on signal <DispSel[1:3]> with one-hot encoding.
+Optimizing FSM <U5/DispSel/FSM> on signal <DispSel[1:3]> with one-hot encoding.
 -------------------
  State | Encoding
 -------------------
@@ -498,22 +502,23 @@ Macro Statistics
 # FSMs                                                 : 3
 # ROMs                                                 : 1
  16x16-bit ROM                                         : 1
-# Adders/Subtractors                                   : 9
- 16-bit adder                                          : 8
+# Adders/Subtractors                                   : 8
+ 16-bit adder                                          : 7
  9-bit adder                                           : 1
-# Counters                                             : 4
+# Counters                                             : 5
  12-bit up counter                                     : 2
+ 16-bit up counter                                     : 1
  2-bit up counter                                      : 1
  25-bit up counter                                     : 1
 # Accumulators                                         : 1
  12-bit up accumulator                                 : 1
-# Registers                                            : 75
- Flip-Flops                                            : 75
-# Latches                                              : 2
- 16-bit latch                                          : 1
+# Registers                                            : 76
+ Flip-Flops                                            : 76
+# Latches                                              : 1
  20-bit latch                                          : 1
-# Comparators                                          : 4
+# Comparators                                          : 5
  12-bit comparator less                                : 1
+ 16-bit comparator greater                             : 1
  16-bit comparator less                                : 1
  7-bit comparator lessequal                            : 1
  8-bit comparator equal                                : 1
@@ -552,7 +557,7 @@ Optimizing unit <ProtokolBlok> ...
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 5) on block SigGenTop, actual ratio is 21.
+Found area constraint ratio of 100 (+ 5) on block SigGenTop, actual ratio is 23.
 
 Final Macro Processing ...
 
@@ -560,8 +565,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 148
- Flip-Flops                                            : 148
+# Registers                                            : 165
+ Flip-Flops                                            : 165
 
 =========================================================================
 
@@ -587,40 +592,41 @@ Optimization Goal                  : Speed
 Keep Hierarchy                     : No
 
 Design Statistics
-# IOs                              : 22
+# IOs                              : 23
 
 Cell Usage :
-# BELS                             : 675
+# BELS                             : 721
 #      GND                         : 2
-#      INV                         : 8
-#      LUT1                        : 54
-#      LUT2                        : 92
+#      INV                         : 12
+#      LUT1                        : 62
+#      LUT2                        : 101
 #      LUT2_D                      : 1
 #      LUT2_L                      : 1
-#      LUT3                        : 65
-#      LUT3_D                      : 2
+#      LUT3                        : 68
+#      LUT3_D                      : 1
 #      LUT3_L                      : 7
-#      LUT4                        : 115
+#      LUT4                        : 118
 #      LUT4_D                      : 1
-#      LUT4_L                      : 4
+#      LUT4_L                      : 5
 #      MULT_AND                    : 9
-#      MUXCY                       : 155
-#      MUXF5                       : 17
+#      MUXCY                       : 172
+#      MUXF5                       : 19
 #      VCC                         : 2
 #      XORCY                       : 140
-# FlipFlops/Latches                : 175
+# FlipFlops/Latches                : 176
 #      FDC                         : 64
 #      FDCE                        : 82
+#      FDE                         : 17
 #      FDP                         : 1
 #      FDPE                        : 1
-#      LD                          : 27
+#      LD                          : 11
 # RAMS                             : 2
 #      RAMB16_S4_S4                : 2
 # Clock Buffers                    : 2
 #      BUFGP                       : 2
-# IO Buffers                       : 20
+# IO Buffers                       : 21
 #      IBUF                        : 4
-#      OBUF                        : 16
+#      OBUF                        : 17
 =========================================================================
 
 Device utilization summary:
@@ -628,11 +634,11 @@ Device utilization summary:
 
 Selected Device : 3s100ecp132-4 
 
- Number of Slices:                      190  out of    960    19%  
- Number of Slice Flip Flops:            174  out of   1920     9%  
- Number of 4 input LUTs:                350  out of   1920    18%  
- Number of IOs:                          22
- Number of bonded IOBs:                  22  out of     83    26%  
+ Number of Slices:                      205  out of    960    21%  
+ Number of Slice Flip Flops:            175  out of   1920     9%  
+ Number of 4 input LUTs:                377  out of   1920    19%  
+ Number of IOs:                          23
+ Number of bonded IOBs:                  23  out of     83    27%  
     IOB Flip Flops:                       1
  Number of BRAMs:                         2  out of      4    50%  
  Number of GCLKs:                         2  out of     24     8%  
@@ -655,17 +661,16 @@ NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
 
 Clock Information:
 ------------------
-----------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------+-------+
-Clock Signal                                              | Clock buffer(FF name)                                                                                                           | Load  |
-----------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------+-------+
-Clk                                                       | BUFGP                                                                                                                           | 128   |
-U4/Clk1_D                                                 | NONE(U3/DispCount_1)                                                                                                            | 14    |
-SClk                                                      | BUFGP                                                                                                                           | 8     |
-U2/SinusDec/N1                                            | NONE(U2/SinusDec/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s3_init.ram/dpram.dp4x4.ram)| 2     |
-U6/Disp_or0000(U6/Disp_or00001:O)                         | NONE(*)(U6/Disp_18)                                                                                                             | 11    |
-U1/ProtokolBlok/ShapeEN(U1/ProtokolBlok/state_FSM_Out01:O)| NONE(*)(U1/ProtokolBlok/TestCnt_15)                                                                                             | 16    |
-----------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------+-------+
-(*) These 2 clock signal(s) are generated by combinatorial logic,
+-----------------------------------+---------------------------------------------------------------------------------------------------------------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)                                                                                                           | Load  |
+-----------------------------------+---------------------------------------------------------------------------------------------------------------------------------+-------+
+Clk                                | BUFGP                                                                                                                           | 145   |
+U4/Clk1_D                          | NONE(U3/DispCount_1)                                                                                                            | 14    |
+SClk                               | BUFGP                                                                                                                           | 8     |
+U2/SinusDec/N1                     | NONE(U2/SinusDec/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s3_init.ram/dpram.dp4x4.ram)| 2     |
+U5/Disp_or0000(U5/Disp_or00001:O)  | NONE(*)(U5/Disp_18)                                                                                                             | 11    |
+-----------------------------------+---------------------------------------------------------------------------------------------------------------------------------+-------+
+(*) This 1 clock signal(s) are generated by combinatorial logic,
 and XST is not able to identify which are the primary clock signals.
 Please use the CLOCK_SIGNAL constraint to specify the clock signal(s) generated by combinatorial logic.
 INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
@@ -675,14 +680,14 @@ Asynchronous Control Signals Information:
 -----------------------------------+-----------------------------------------+-------+
 Control Signal                     | Buffer(FF name)                         | Load  |
 -----------------------------------+-----------------------------------------+-------+
-BTN3db(U8/BTNout1:O)               | NONE(U1/ProtokolBlok/ADDRReg/data_out_0)| 148   |
+BTN3db(U7/BTNout1:O)               | NONE(U1/ProtokolBlok/ADDRReg/data_out_0)| 148   |
 -----------------------------------+-----------------------------------------+-------+
 
 Timing Summary:
 ---------------
 Speed Grade: -4
 
-   Minimum period: 5.994ns (Maximum Frequency: 166.833MHz)
+   Minimum period: 6.446ns (Maximum Frequency: 155.135MHz)
    Minimum input arrival time before clock: 2.685ns
    Maximum output required time after clock: 39.498ns
    Maximum combinational path delay: No path found
@@ -693,50 +698,28 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'Clk'
-  Clock period: 5.994ns (frequency: 166.833MHz)
-  Total number of paths / destination ports: 2093 / 184
+  Clock period: 6.446ns (frequency: 155.135MHz)
+  Total number of paths / destination ports: 2598 / 218
 -------------------------------------------------------------------------
-Delay:               5.994ns (Levels of Logic = 26)
-  Source:            U4/Cnt1_1 (FF)
-  Destination:       U4/Cnt1_24 (FF)
+Delay:               6.446ns (Levels of Logic = 4)
+  Source:            U7/count_7 (FF)
+  Destination:       U1/ProtokolBlok/TestCnt_15 (FF)
   Source Clock:      Clk rising
   Destination Clock: Clk rising
 
-  Data Path: U4/Cnt1_1 to U4/Cnt1_24
+  Data Path: U7/count_7 to U1/ProtokolBlok/TestCnt_15
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDC:C->Q              2   0.591   0.622  U4/Cnt1_1 (U4/Cnt1_1)
-     LUT1:I0->O            1   0.704   0.000  U4/Mcount_Cnt1_cy<1>_rt (U4/Mcount_Cnt1_cy<1>_rt)
-     MUXCY:S->O            1   0.464   0.000  U4/Mcount_Cnt1_cy<1> (U4/Mcount_Cnt1_cy<1>)
-     MUXCY:CI->O           1   0.059   0.000  U4/Mcount_Cnt1_cy<2> (U4/Mcount_Cnt1_cy<2>)
-     MUXCY:CI->O           1   0.059   0.000  U4/Mcount_Cnt1_cy<3> (U4/Mcount_Cnt1_cy<3>)
-     MUXCY:CI->O           1   0.059   0.000  U4/Mcount_Cnt1_cy<4> (U4/Mcount_Cnt1_cy<4>)
-     MUXCY:CI->O           1   0.059   0.000  U4/Mcount_Cnt1_cy<5> (U4/Mcount_Cnt1_cy<5>)
-     MUXCY:CI->O           1   0.059   0.000  U4/Mcount_Cnt1_cy<6> (U4/Mcount_Cnt1_cy<6>)
-     MUXCY:CI->O           1   0.059   0.000  U4/Mcount_Cnt1_cy<7> (U4/Mcount_Cnt1_cy<7>)
-     MUXCY:CI->O           1   0.059   0.000  U4/Mcount_Cnt1_cy<8> (U4/Mcount_Cnt1_cy<8>)
-     MUXCY:CI->O           1   0.059   0.000  U4/Mcount_Cnt1_cy<9> (U4/Mcount_Cnt1_cy<9>)
-     MUXCY:CI->O           1   0.059   0.000  U4/Mcount_Cnt1_cy<10> (U4/Mcount_Cnt1_cy<10>)
-     MUXCY:CI->O           1   0.059   0.000  U4/Mcount_Cnt1_cy<11> (U4/Mcount_Cnt1_cy<11>)
-     MUXCY:CI->O           1   0.059   0.000  U4/Mcount_Cnt1_cy<12> (U4/Mcount_Cnt1_cy<12>)
-     MUXCY:CI->O           1   0.059   0.000  U4/Mcount_Cnt1_cy<13> (U4/Mcount_Cnt1_cy<13>)
-     MUXCY:CI->O           1   0.059   0.000  U4/Mcount_Cnt1_cy<14> (U4/Mcount_Cnt1_cy<14>)
-     MUXCY:CI->O           1   0.059   0.000  U4/Mcount_Cnt1_cy<15> (U4/Mcount_Cnt1_cy<15>)
-     MUXCY:CI->O           1   0.059   0.000  U4/Mcount_Cnt1_cy<16> (U4/Mcount_Cnt1_cy<16>)
-     MUXCY:CI->O           1   0.059   0.000  U4/Mcount_Cnt1_cy<17> (U4/Mcount_Cnt1_cy<17>)
-     MUXCY:CI->O           1   0.059   0.000  U4/Mcount_Cnt1_cy<18> (U4/Mcount_Cnt1_cy<18>)
-     MUXCY:CI->O           1   0.059   0.000  U4/Mcount_Cnt1_cy<19> (U4/Mcount_Cnt1_cy<19>)
-     MUXCY:CI->O           1   0.059   0.000  U4/Mcount_Cnt1_cy<20> (U4/Mcount_Cnt1_cy<20>)
-     MUXCY:CI->O           1   0.059   0.000  U4/Mcount_Cnt1_cy<21> (U4/Mcount_Cnt1_cy<21>)
-     MUXCY:CI->O           1   0.059   0.000  U4/Mcount_Cnt1_cy<22> (U4/Mcount_Cnt1_cy<22>)
-     MUXCY:CI->O           0   0.059   0.000  U4/Mcount_Cnt1_cy<23> (U4/Mcount_Cnt1_cy<23>)
-     XORCY:CI->O           1   0.804   0.499  U4/Mcount_Cnt1_xor<24> (Result<24>)
-     LUT2:I1->O            1   0.704   0.000  U4/Mcount_Cnt1_eqn_241 (U4/Mcount_Cnt1_eqn_24)
-     FDC:D                     0.308          U4/Cnt1_24
+     FDCE:C->Q             2   0.591   0.622  U7/count_7 (U7/count_7)
+     LUT4:I0->O            1   0.704   0.499  U7/State_cmp_eq000017 (U7/State_cmp_eq000017)
+     LUT3:I1->O            5   0.704   0.712  U7/State_cmp_eq000043 (U7/State_cmp_eq0000)
+     LUT4:I1->O            1   0.704   0.000  U1/ProtokolBlok/TestCnt_and000011 (U1/ProtokolBlok/TestCnt_and00001)
+     MUXF5:I1->O          16   0.321   1.034  U1/ProtokolBlok/TestCnt_and00001_f5 (U1/ProtokolBlok/TestCnt_and0000)
+     FDE:CE                    0.555          U1/ProtokolBlok/TestCnt_0
     ----------------------------------------
-    Total                      5.994ns (4.873ns logic, 1.121ns route)
-                                       (81.3% logic, 18.7% route)
+    Total                      6.446ns (3.579ns logic, 2.867ns route)
+                                       (55.5% logic, 44.5% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'U4/Clk1_D'
@@ -785,58 +768,21 @@ Delay:               1.532ns (Levels of Logic = 0)
                                        (58.7% logic, 41.3% route)
 
 =========================================================================
-Timing constraint: Default period analysis for Clock 'U1/ProtokolBlok/ShapeEN'
-  Clock period: 4.318ns (frequency: 231.589MHz)
-  Total number of paths / destination ports: 136 / 16
--------------------------------------------------------------------------
-Delay:               4.318ns (Levels of Logic = 16)
-  Source:            U1/ProtokolBlok/TestCnt_1 (LATCH)
-  Destination:       U1/ProtokolBlok/TestCnt_15 (LATCH)
-  Source Clock:      U1/ProtokolBlok/ShapeEN falling
-  Destination Clock: U1/ProtokolBlok/ShapeEN falling
-
-  Data Path: U1/ProtokolBlok/TestCnt_1 to U1/ProtokolBlok/TestCnt_15
-                                Gate     Net
-    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
-    ----------------------------------------  ------------
-     LD:G->Q               1   0.676   0.595  U1/ProtokolBlok/TestCnt_1 (U1/ProtokolBlok/TestCnt_1)
-     LUT1:I0->O            1   0.704   0.000  U1/ProtokolBlok/Madd_TestCnt_add0000_cy<1>_rt (U1/ProtokolBlok/Madd_TestCnt_add0000_cy<1>_rt)
-     MUXCY:S->O            1   0.464   0.000  U1/ProtokolBlok/Madd_TestCnt_add0000_cy<1> (U1/ProtokolBlok/Madd_TestCnt_add0000_cy<1>)
-     MUXCY:CI->O           1   0.059   0.000  U1/ProtokolBlok/Madd_TestCnt_add0000_cy<2> (U1/ProtokolBlok/Madd_TestCnt_add0000_cy<2>)
-     MUXCY:CI->O           1   0.059   0.000  U1/ProtokolBlok/Madd_TestCnt_add0000_cy<3> (U1/ProtokolBlok/Madd_TestCnt_add0000_cy<3>)
-     MUXCY:CI->O           1   0.059   0.000  U1/ProtokolBlok/Madd_TestCnt_add0000_cy<4> (U1/ProtokolBlok/Madd_TestCnt_add0000_cy<4>)
-     MUXCY:CI->O           1   0.059   0.000  U1/ProtokolBlok/Madd_TestCnt_add0000_cy<5> (U1/ProtokolBlok/Madd_TestCnt_add0000_cy<5>)
-     MUXCY:CI->O           1   0.059   0.000  U1/ProtokolBlok/Madd_TestCnt_add0000_cy<6> (U1/ProtokolBlok/Madd_TestCnt_add0000_cy<6>)
-     MUXCY:CI->O           1   0.059   0.000  U1/ProtokolBlok/Madd_TestCnt_add0000_cy<7> (U1/ProtokolBlok/Madd_TestCnt_add0000_cy<7>)
-     MUXCY:CI->O           1   0.059   0.000  U1/ProtokolBlok/Madd_TestCnt_add0000_cy<8> (U1/ProtokolBlok/Madd_TestCnt_add0000_cy<8>)
-     MUXCY:CI->O           1   0.059   0.000  U1/ProtokolBlok/Madd_TestCnt_add0000_cy<9> (U1/ProtokolBlok/Madd_TestCnt_add0000_cy<9>)
-     MUXCY:CI->O           1   0.059   0.000  U1/ProtokolBlok/Madd_TestCnt_add0000_cy<10> (U1/ProtokolBlok/Madd_TestCnt_add0000_cy<10>)
-     MUXCY:CI->O           1   0.059   0.000  U1/ProtokolBlok/Madd_TestCnt_add0000_cy<11> (U1/ProtokolBlok/Madd_TestCnt_add0000_cy<11>)
-     MUXCY:CI->O           1   0.059   0.000  U1/ProtokolBlok/Madd_TestCnt_add0000_cy<12> (U1/ProtokolBlok/Madd_TestCnt_add0000_cy<12>)
-     MUXCY:CI->O           1   0.059   0.000  U1/ProtokolBlok/Madd_TestCnt_add0000_cy<13> (U1/ProtokolBlok/Madd_TestCnt_add0000_cy<13>)
-     MUXCY:CI->O           0   0.059   0.000  U1/ProtokolBlok/Madd_TestCnt_add0000_cy<14> (U1/ProtokolBlok/Madd_TestCnt_add0000_cy<14>)
-     XORCY:CI->O           1   0.804   0.000  U1/ProtokolBlok/Madd_TestCnt_add0000_xor<15> (U1/ProtokolBlok/TestCnt_add0000<15>)
-     LD:D                      0.308          U1/ProtokolBlok/TestCnt_15
-    ----------------------------------------
-    Total                      4.318ns (3.723ns logic, 0.595ns route)
-                                       (86.2% logic, 13.8% route)
-
-=========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'Clk'
   Total number of paths / destination ports: 3 / 3
 -------------------------------------------------------------------------
 Offset:              2.685ns (Levels of Logic = 2)
   Source:            BTN1 (PAD)
-  Destination:       U7/State_FSM_FFd2 (FF)
+  Destination:       U6/State_FSM_FFd2 (FF)
   Destination Clock: Clk rising
 
-  Data Path: BTN1 to U7/State_FSM_FFd2
+  Data Path: BTN1 to U6/State_FSM_FFd2
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      IBUF:I->O             1   1.218   0.455  BTN1_IBUF (BTN1_IBUF)
-     LUT4:I2->O            1   0.704   0.000  U7/State_FSM_FFd2-In1 (U7/State_FSM_FFd2-In)
-     FDC:D                     0.308          U7/State_FSM_FFd2
+     LUT4:I2->O            1   0.704   0.000  U6/State_FSM_FFd2-In1 (U6/State_FSM_FFd2-In)
+     FDC:D                     0.308          U6/State_FSM_FFd2
     ----------------------------------------
     Total                      2.685ns (2.230ns logic, 0.455ns route)
                                        (83.1% logic, 16.9% route)
@@ -862,7 +808,7 @@ Offset:              1.946ns (Levels of Logic = 1)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'Clk'
-  Total number of paths / destination ports: 1183772308 / 2
+  Total number of paths / destination ports: 1183772402 / 5
 -------------------------------------------------------------------------
 Offset:              39.498ns (Levels of Logic = 40)
   Source:            U2/SinusDec/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s3_init.ram/dpram.dp4x4.ram (RAM)
@@ -920,33 +866,6 @@ Offset:              39.498ns (Levels of Logic = 40)
                                        (73.1% logic, 26.9% route)
 
 =========================================================================
-Timing constraint: Default OFFSET OUT AFTER for Clock 'U1/ProtokolBlok/ShapeEN'
-  Total number of paths / destination ports: 24 / 2
--------------------------------------------------------------------------
-Offset:              8.004ns (Levels of Logic = 9)
-  Source:            U1/ProtokolBlok/TestCnt_4 (LATCH)
-  Destination:       LD2 (PAD)
-  Source Clock:      U1/ProtokolBlok/ShapeEN falling
-
-  Data Path: U1/ProtokolBlok/TestCnt_4 to LD2
-                                Gate     Net
-    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
-    ----------------------------------------  ------------
-     LD:G->Q               2   0.676   0.622  U1/ProtokolBlok/TestCnt_4 (U1/ProtokolBlok/TestCnt_4)
-     LUT1:I0->O            1   0.704   0.000  U1/ProtokolBlok/Mcompar_tusFlag_cmp_lt0000_cy<0>_rt (U1/ProtokolBlok/Mcompar_tusFlag_cmp_lt0000_cy<0>_rt)
-     MUXCY:S->O            1   0.464   0.000  U1/ProtokolBlok/Mcompar_tusFlag_cmp_lt0000_cy<0> (U1/ProtokolBlok/Mcompar_tusFlag_cmp_lt0000_cy<0>)
-     MUXCY:CI->O           1   0.059   0.000  U1/ProtokolBlok/Mcompar_tusFlag_cmp_lt0000_cy<1> (U1/ProtokolBlok/Mcompar_tusFlag_cmp_lt0000_cy<1>)
-     MUXCY:CI->O           1   0.059   0.000  U1/ProtokolBlok/Mcompar_tusFlag_cmp_lt0000_cy<2> (U1/ProtokolBlok/Mcompar_tusFlag_cmp_lt0000_cy<2>)
-     MUXCY:CI->O           1   0.059   0.000  U1/ProtokolBlok/Mcompar_tusFlag_cmp_lt0000_cy<3> (U1/ProtokolBlok/Mcompar_tusFlag_cmp_lt0000_cy<3>)
-     MUXCY:CI->O           1   0.059   0.000  U1/ProtokolBlok/Mcompar_tusFlag_cmp_lt0000_cy<4> (U1/ProtokolBlok/Mcompar_tusFlag_cmp_lt0000_cy<4>)
-     MUXCY:CI->O           2   0.459   0.447  U1/ProtokolBlok/Mcompar_tusFlag_cmp_lt0000_cy<5> (U1/ProtokolBlok/Mcompar_tusFlag_cmp_lt0000_cy<5>)
-     INV:I->O              1   0.704   0.420  U1/ProtokolBlok/Mcompar_tusFlag_cmp_lt0000_cy<5>_inv_INV_0 (LD2_OBUF)
-     OBUF:I->O                 3.272          LD2_OBUF (LD2)
-    ----------------------------------------
-    Total                      8.004ns (6.515ns logic, 1.489ns route)
-                                       (81.4% logic, 18.6% route)
-
-=========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'U4/Clk1_D'
   Total number of paths / destination ports: 12 / 12
 -------------------------------------------------------------------------
@@ -969,13 +888,13 @@ Offset:              4.283ns (Levels of Logic = 1)
 
 
 Total REAL time to Xst completion: 7.00 secs
-Total CPU time to Xst completion: 6.89 secs
+Total CPU time to Xst completion: 6.96 secs
  
 --> 
 
-Total memory usage is 4527040 kilobytes
+Total memory usage is 4527056 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   11 (   0 filtered)
+Number of warnings :   10 (   0 filtered)
 Number of infos    :    5 (   0 filtered)
 

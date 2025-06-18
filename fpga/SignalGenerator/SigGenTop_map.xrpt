@@ -5,14 +5,14 @@
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="Map" timeStamp="Tue Jun 17 17:07:18 2025">
+  <application stringID="Map" timeStamp="Wed Jun 18 14:47:02 2025">
     <section stringID="User_Env">
       <table stringID="User_EnvVar">
         <column stringID="variable"/>
         <column stringID="value"/>
         <row stringID="row" value="0">
           <item stringID="variable" value="Path"/>
-          <item stringID="value" value="P:\Xilinx\14.1\ISE_DS\ISE\\lib\nt64;P:\Xilinx\14.1\ISE_DS\ISE\\bin\nt64;C:\Program Files (x86)\Xilinx\14.1\ISE_DS\ISE\bin\nt64;C:\Program Files (x86)\Xilinx\14.1\ISE_DS\ISE\lib\nt64;C:\Program Files (x86)\Xilinx\Vivado\2012.1\bin;C:\Program Files (x86)\Xilinx\14.1\ISE_DS\EDK\bin\nt64;C:\Program Files (x86)\Xilinx\14.1\ISE_DS\EDK\lib\nt64;C:\Program Files (x86)\Xilinx\14.1\ISE_DS\EDK\gnu\microblaze\nt64\bin;C:\Program Files (x86)\Xilinx\14.1\ISE_DS\EDK\gnu\powerpc-eabi\nt64\bin;C:\Program Files (x86)\Xilinx\14.1\ISE_DS\EDK\gnuwin\bin;C:\Program Files (x86)\Xilinx\14.1\ISE_DS\EDK\gnu\arm\nt64\bin;C:\Program Files (x86)\Xilinx\14.1\ISE_DS\common\bin\nt64;C:\Program Files (x86)\Xilinx\14.1\ISE_DS\common\lib\nt64;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\IVI Foundation\VISA\WinNT\Bin\;C:\Program Files\IVI Foundation\VISA\Win64\Bin\;C:\Program Files (x86)\IVI Foundation\VISA\WinNT\Bin;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;M:\Commands;C:\Program Files\Matlab R2019a\runtime\win64;C:\Program Files\Matlab R2019a\bin;C:\Users\s240324\AppData\Local\Microsoft\WindowsApps;C:\Users\s240324\AppData\Local\Programs\Git\cmd"/>
+          <item stringID="value" value="P:\Xilinx\14.1\ISE_DS\ISE\\lib\nt64;P:\Xilinx\14.1\ISE_DS\ISE\\bin\nt64;C:\Program Files (x86)\Xilinx\14.1\ISE_DS\ISE\bin\nt64;C:\Program Files (x86)\Xilinx\14.1\ISE_DS\ISE\lib\nt64;C:\Program Files (x86)\Xilinx\Vivado\2012.1\bin;C:\Program Files (x86)\Xilinx\14.1\ISE_DS\EDK\bin\nt64;C:\Program Files (x86)\Xilinx\14.1\ISE_DS\EDK\lib\nt64;C:\Program Files (x86)\Xilinx\14.1\ISE_DS\EDK\gnu\microblaze\nt64\bin;C:\Program Files (x86)\Xilinx\14.1\ISE_DS\EDK\gnu\powerpc-eabi\nt64\bin;C:\Program Files (x86)\Xilinx\14.1\ISE_DS\EDK\gnuwin\bin;C:\Program Files (x86)\Xilinx\14.1\ISE_DS\EDK\gnu\arm\nt64\bin;C:\Program Files (x86)\Xilinx\14.1\ISE_DS\common\bin\nt64;C:\Program Files (x86)\Xilinx\14.1\ISE_DS\common\lib\nt64;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\IVI Foundation\VISA\WinNT\Bin\;C:\Program Files\IVI Foundation\VISA\Win64\Bin\;C:\Program Files (x86)\IVI Foundation\VISA\WinNT\Bin;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;M:\Commands;C:\Program Files\Matlab R2019a\runtime\win64;C:\Program Files\Matlab R2019a\bin;C:\Users\s245946\AppData\Local\Microsoft\WindowsApps;C:\Users\s245946\AppData\Local\Programs\Git\cmd"/>
         </row>
         <row stringID="row" value="1">
           <item stringID="variable" value="PATHEXT"/>
@@ -72,26 +72,26 @@
       <section stringID="MAP_DESIGN_SUMMARY">
         <item dataType="int" stringID="MAP_NUM_ERRORS" value="0"/>
         <item dataType="int" stringID="MAP_FILTERED_WARNINGS" value="0"/>
-        <item dataType="int" stringID="MAP_NUM_WARNINGS" value="2"/>
-        <item UNITS="KB" dataType="int" stringID="MAP_PEAK_MEMORY" value="4535532"/>
-        <item stringID="MAP_TOTAL_REAL_TIME" value="1 secs "/>
+        <item dataType="int" stringID="MAP_NUM_WARNINGS" value="1"/>
+        <item UNITS="KB" dataType="int" stringID="MAP_PEAK_MEMORY" value="4545300"/>
+        <item stringID="MAP_TOTAL_REAL_TIME" value="3 secs "/>
         <item stringID="MAP_TOTAL_CPU_TIME" value="1 secs "/>
       </section>
       <section stringID="MAP_SLICE_REPORTING">
-        <item AVAILABLE="1920" dataType="int" label="Number of Slice Registers" stringID="MAP_SLICE_REGISTERS" value="174">
-          <item dataType="int" label="Number of Slice Flip Flops" stringID="MAP_NUM_SLICE_FF" value="147"/>
-          <item dataType="int" stringID="MAP_NUM_SLICE_LATCH" value="27"/>
+        <item AVAILABLE="1920" dataType="int" label="Number of Slice Registers" stringID="MAP_SLICE_REGISTERS" value="175">
+          <item dataType="int" label="Number of Slice Flip Flops" stringID="MAP_NUM_SLICE_FF" value="164"/>
+          <item dataType="int" stringID="MAP_NUM_SLICE_LATCH" value="11"/>
         </item>
-        <item AVAILABLE="1920" dataType="int" label="Number of 4 input LUTs" stringID="MAP_NUM_4_INPUT_LUT" value="348">
-          <item dataType="int" label="Number of route-thrus" stringID="MAP_NUM_LUT_RT" value="54"/>
+        <item AVAILABLE="1920" dataType="int" label="Number of 4 input LUTs" stringID="MAP_NUM_4_INPUT_LUT" value="376">
+          <item dataType="int" label="Number of route-thrus" stringID="MAP_NUM_LUT_RT" value="62"/>
         </item>
-        <item AVAILABLE="960" dataType="int" label="Number of occupied Slices" stringID="MAP_OCCUPIED_SLICES" value="218">
+        <item AVAILABLE="960" dataType="int" label="Number of occupied Slices" stringID="MAP_OCCUPIED_SLICES" value="235">
           <item dataType="int" label="Number of Slices containing unrelated logic" stringID="MAP_NUM_SLICE_UNRELATED" value="0"/>
         </item>
       </section>
       <section stringID="MAP_IOB_REPORTING">
         <section stringID="MAP_IOB_DATA">
-          <item AVAILABLE="83" dataType="int" stringID="MAP_AGG_BONDED_IO" value="22"/>
+          <item AVAILABLE="83" dataType="int" stringID="MAP_AGG_BONDED_IO" value="23"/>
           <item dataType="int" label="IOB Flip Flops" stringID="MAP_NUM_IOB_FF" value="1"/>
         </section>
       </section>
@@ -273,13 +273,22 @@
             <item label="IOB&#xA;Delay" stringID="IOB_DELAY" value="0 / 0"/>
           </row>
           <row stringID="row" value="19">
+            <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="LD4"/>
+            <item stringID="Type" value="IOB"/>
+            <item stringID="Direction" value="OUTPUT"/>
+            <item label="IO&#xA;Standard" sort="smart" stringID="IO_STANDARD" value="LVCMOS25"/>
+            <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
+            <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
+            <item label="IOB&#xA;Delay" stringID="IOB_DELAY" value="0 / 0"/>
+          </row>
+          <row stringID="row" value="20">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="MOSI"/>
             <item stringID="Type" value="IBUF"/>
             <item stringID="Direction" value="INPUT"/>
             <item label="IO&#xA;Standard" sort="smart" stringID="IO_STANDARD" value="LVCMOS25"/>
             <item label="IOB&#xA;Delay" stringID="IOB_DELAY" value="0 / 0"/>
           </row>
-          <row stringID="row" value="20">
+          <row stringID="row" value="21">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="PWMOut"/>
             <item stringID="Type" value="IOB"/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -288,14 +297,14 @@
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
             <item label="IOB&#xA;Delay" stringID="IOB_DELAY" value="0 / 0"/>
           </row>
-          <row stringID="row" value="21">
+          <row stringID="row" value="22">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="SClk"/>
             <item stringID="Type" value="IBUF"/>
             <item stringID="Direction" value="INPUT"/>
             <item label="IO&#xA;Standard" sort="smart" stringID="IO_STANDARD" value="LVCMOS25"/>
             <item label="IOB&#xA;Delay" stringID="IOB_DELAY" value="0 / 0"/>
           </row>
-          <row stringID="row" value="22">
+          <row stringID="row" value="23">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="SSnot"/>
             <item stringID="Type" value="IBUF"/>
             <item stringID="Direction" value="INPUT"/>
@@ -306,7 +315,7 @@
       </section>
       <section stringID="MAP_RPM_MACROS">
         <section stringID="MAP_SHAPE_SECTION">
-          <item dataType="int" stringID="MAP_NUM_SHAPE" value="16"/>
+          <item dataType="int" stringID="MAP_NUM_SHAPE" value="17"/>
         </section>
       </section>
       <section stringID="MAP_GUIDE_REPORT"/>

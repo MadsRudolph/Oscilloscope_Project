@@ -40,6 +40,7 @@ entity SigGenSPIControl is
            Freq : out  STD_LOGIC_VECTOR (7 downto 0);
 			  LD2: out STD_LOGIC;
 			  LD3: out STD_LOGIC;
+			  LD4: out STD_LOGIC;
 			  LD: out STD_LOGIC;
            SigEN : inout  STD_LOGIC); -- inout da den bruges som et internt signal også
 	
@@ -66,6 +67,7 @@ begin
 				SigEN => SigEN,
 				LD2 => LD2,
 				LD3 => LD3,
+				LD4 => LD4,
 				LD => LD
         );
 

@@ -23,7 +23,9 @@ ARCHITECTURE behavior OF FULL_BENCH IS
          SSnot : IN  std_logic;
          An : OUT  std_logic_vector(3 downto 0);
          Cat : OUT  std_logic_vector(7 downto 0);
-         LD : OUT  std_logic_vector(7 downto 0);
+         LD : OUT  std_logic;
+			LD2 : OUT std_logic;
+			LD3 : OUT std_logic;
          PWMOut : INOUT  std_logic
         );
     END COMPONENT;
@@ -43,7 +45,9 @@ ARCHITECTURE behavior OF FULL_BENCH IS
  	--Outputs
    signal An : std_logic_vector(3 downto 0);
    signal Cat : std_logic_vector(7 downto 0);
-   signal LD : std_logic_vector(7 downto 0);
+   signal LD : std_logic;
+	signal LD2 : std_logic;
+	signal LD3 : std_logic;
 
 	signal dataTB  : std_logic_vector(7 downto 0);   -- Clock period definitions
 
