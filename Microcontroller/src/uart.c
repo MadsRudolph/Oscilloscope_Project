@@ -171,13 +171,13 @@ void parse_uart1_packet()
         case 0x00:
             uart_send_string("BTN0 pressed: Send current values\r\n");
             if (selected_param == 0)
-                if (sw <= 3)
+                if (sw <= 4)
                 {
                     shape = sw;
                 }
                 else
                 {
-                    uart_send_string("error, shape must be between 0 & 3\r\n");
+                    uart_send_string("error, shape must be between 0 & 4\r\n");
                 }
             else if (selected_param == 1)
                 if (sw <= 255)
