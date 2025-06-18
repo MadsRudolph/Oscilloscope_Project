@@ -1,0 +1,140 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "33ea2c5c-8786-4c1d-9e9b-dd794a9e2536")
+	(paper "A4")
+	(lib_symbols)
+	(sheet
+		(at 26.67 26.67)
+		(size 43.18 20.32)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "795d9d6f-aa30-46f2-a872-b61b4155bb6b")
+		(property "Sheetname" "Passive filter"
+			(at 26.67 25.9584 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "Passive_filter.kicad_sch"
+			(at 26.67 47.5746 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "FilterDesign"
+				(path "/33ea2c5c-8786-4c1d-9e9b-dd794a9e2536"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 26.67 58.42)
+		(size 43.18 19.05)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "908d50da-bd48-48be-8442-c9172878ebf3")
+		(property "Sheetname" "Active Filter"
+			(at 26.67 57.7084 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "Active_Filter.kicad_sch"
+			(at 26.67 78.0546 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "FilterDesign"
+				(path "/33ea2c5c-8786-4c1d-9e9b-dd794a9e2536"
+					(page "3")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 26.67 88.9)
+		(size 43.18 20.32)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "c8085467-f311-403f-8661-ee5b4433750a")
+		(property "Sheetname" "Sallen-key topology low-pass"
+			(at 26.67 88.1884 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "Sallen-key topology low-pass.kicad_sch"
+			(at 26.67 109.8046 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "FilterDesign"
+				(path "/33ea2c5c-8786-4c1d-9e9b-dd794a9e2536"
+					(page "4")
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)
