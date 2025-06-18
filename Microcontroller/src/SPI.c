@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <util/delay.h>
+#include "uart.h"
 
 // Send a byte via SPI as master
 void master_transmit(uint8_t data)
@@ -48,6 +49,34 @@ void slave_init()
     SPCR |= (1 << SPE) | (1 << DORD); // Enable SPI in slave mode, LSB first
     // PORTB |= (1 << PB0); // REMOVE this line — SS should not be driven by slave
 }
+
+void spi_stress_test_10000_packets()
+{
+    uart_send_string("Starting SPI stress test (10,827 packets)...\r\n");
+
+    uint16_t packet_count = 0;
+    uint8_t val;
+
+    // 
+    for (uint16_t i = 0; i < 10827; i++)
+    {
+        val = i % 256;
+        transmit_signalgenerator_data(val, val, val); // Sends 3 packets
+        packet_count += 1;
+
+        if ((i % 500) == 0) // less frequent UART to reduce lag
+        {
+            char buf[48];
+            sprintf(buf, "Packets sent: %u\r\n", packet_count);
+            uart_send_string(buf);
+        }
+    }
+
+    char final_buf[64];
+    sprintf(final_buf, "Stress test complete. Sent %u packets.\r\n", packet_count);
+    uart_send_string(final_buf);
+}
+
 
 void transmit_signalgenerator_data(uint16_t amp, uint8_t freq, uint8_t shape)
 {
