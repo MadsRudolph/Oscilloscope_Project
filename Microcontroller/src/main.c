@@ -131,7 +131,7 @@ int main(void)
             break;
 
         case state_SPITest:
-            spi_stress_test_10000_bytes(); // Call the function from SPI.c
+            spi_stress_test_10000_packets(); // Call the function from SPI.c
             state = state_Run;
             break;
 

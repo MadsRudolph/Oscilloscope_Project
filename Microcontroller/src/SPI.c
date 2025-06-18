@@ -50,43 +50,33 @@ void slave_init()
     // PORTB |= (1 << PB0); // REMOVE this line — SS should not be driven by slave
 }
 
-void spi_stress_test_10000_bytes()
+void spi_stress_test_10000_packets()
 {
-    uart_send_string("Starting SPI stress test (exactly 10 packets)...\r\n");
+    uart_send_string("Starting SPI stress test (10,827 packets)...\r\n");
 
-    uint16_t bytes_sent = 0;
+    uint16_t packet_count = 0;
     uint8_t val;
 
-    // Send 10 packets of data, each packet is 12 bytes
-    for (uint16_t i = 0; i < 10; i++)
+    // 
+    for (uint16_t i = 0; i < 10827; i++)
     {
         val = i % 256;
-        transmit_signalgenerator_data(val, val, val); // 3 packets = 12 bytes
-        bytes_sent += 12;
+        transmit_signalgenerator_data(val, val, val); // Sends 3 packets
+        packet_count += 1;
 
-        if ((i % 100) == 0)
+        if ((i % 500) == 0) // less frequent UART to reduce lag
         {
-            char buf[32];
-            sprintf(buf, "Bytes sent: %u\r\n", bytes_sent);
+            char buf[48];
+            sprintf(buf, "Packets sent: %u\r\n", packet_count);
             uart_send_string(buf);
         }
     }
 
-    // Manually send 1 more packet = 4 bytes → total = 10000
-    val = 0xAA;
-    uint8_t addr = 1;
-    uint8_t checksum = 0x55 ^ addr ^ val;
-
-    master_transmit(0x55);
-    master_transmit(addr);
-    master_transmit(val);
-    master_transmit(checksum);
-    bytes_sent += 4;
-
     char final_buf[64];
-    sprintf(final_buf, "Stress test complete. Sent %u bytes.\r\n", bytes_sent);
+    sprintf(final_buf, "Stress test complete. Sent %u packets.\r\n", packet_count);
     uart_send_string(final_buf);
 }
+
 
 void transmit_signalgenerator_data(uint16_t amp, uint8_t freq, uint8_t shape)
 {
