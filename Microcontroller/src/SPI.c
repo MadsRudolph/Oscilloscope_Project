@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <util/delay.h>
+#include "uart.h"
 
 // Send a byte via SPI as master
 void master_transmit(uint8_t data)
@@ -47,6 +48,44 @@ void slave_init()
     DDRB |= (1 << DDB3);              // Set MISO as output
     SPCR |= (1 << SPE) | (1 << DORD); // Enable SPI in slave mode, LSB first
     // PORTB |= (1 << PB0); // REMOVE this line — SS should not be driven by slave
+}
+
+void spi_stress_test_10000_bytes()
+{
+    uart_send_string("Starting SPI stress test (exactly 10 packets)...\r\n");
+
+    uint16_t bytes_sent = 0;
+    uint8_t val;
+
+    // Send 10 packets of data, each packet is 12 bytes
+    for (uint16_t i = 0; i < 10; i++)
+    {
+        val = i % 256;
+        transmit_signalgenerator_data(val, val, val); // 3 packets = 12 bytes
+        bytes_sent += 12;
+
+        if ((i % 100) == 0)
+        {
+            char buf[32];
+            sprintf(buf, "Bytes sent: %u\r\n", bytes_sent);
+            uart_send_string(buf);
+        }
+    }
+
+    // Manually send 1 more packet = 4 bytes → total = 10000
+    val = 0xAA;
+    uint8_t addr = 1;
+    uint8_t checksum = 0x55 ^ addr ^ val;
+
+    master_transmit(0x55);
+    master_transmit(addr);
+    master_transmit(val);
+    master_transmit(checksum);
+    bytes_sent += 4;
+
+    char final_buf[64];
+    sprintf(final_buf, "Stress test complete. Sent %u bytes.\r\n", bytes_sent);
+    uart_send_string(final_buf);
 }
 
 void transmit_signalgenerator_data(uint16_t amp, uint8_t freq, uint8_t shape)

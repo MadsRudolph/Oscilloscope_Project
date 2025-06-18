@@ -272,8 +272,10 @@ void parse_uart1_packet()
         break;
     }
 
-    case 0x03: // START (e.g., for BODE)
-        uart_send_string("START received\r\n");
+    case 0x04: // Stress Test (START)
+        uart_send_string("START received: triggering SPI stress test\r\n");
+        extern volatile uint8_t run_stress_test_flag;
+        run_stress_test_flag = 1;
         break;
 
     default:

@@ -33,6 +33,7 @@ volatile bool buffer_ready = false;
 // BTN/SW state
 volatile uint8_t btn = 0;
 volatile uint8_t sw = 0;
+volatile uint8_t run_stress_test_flag = 0; // Triggered by START (BTN3) from LabVIEW
 
 void print_uart1_packet()
 {
@@ -56,7 +57,8 @@ enum states
 {
     state_init,
     state_Run,
-    state_Stop
+    state_Stop,
+    state_SPITest
 };
 static enum states state = state_init;
 
@@ -98,7 +100,12 @@ int main(void)
 
         case state_Run:
 
-            // If ADC buffer is ready, send UART packet to LabVIEW
+            if (run_stress_test_flag)
+            {
+                run_stress_test_flag = 0;
+                state = state_SPITest;
+            }
+
             if (buffer_ready)
             {
                 send_oscilloscope_packet((uint8_t *)adc_samples, record_length);
@@ -106,12 +113,13 @@ int main(void)
 
                 uart_send_string("\rSample: ");
                 char buf[16];
-                sprintf(buf, "%02X      ", adc_samples[0]); // Add extra spaces to clear previous output
+                sprintf(buf, "%02X      ", adc_samples[0]);
                 uart_send_string(buf);
             }
+
             if (run_stop_flag)
             {
-                state = state_Stop; // If run_stop_flag is set, change to Stop state
+                state = state_Stop;
             }
             break;
 
@@ -120,7 +128,12 @@ int main(void)
             {
                 state = state_Run; // If run_stop_flag is cleared, return to Run state
             }
-        break;
+            break;
+
+        case state_SPITest:
+            spi_stress_test_10000_bytes(); // Call the function from SPI.c
+            state = state_Run;
+            break;
 
         default:
             break;
