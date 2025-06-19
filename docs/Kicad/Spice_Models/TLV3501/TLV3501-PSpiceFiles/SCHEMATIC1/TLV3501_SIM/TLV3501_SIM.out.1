@@ -1,0 +1,51 @@
+
+**** 07/26/21 16:28:51 ******* PSpice 17.4.0 (Nov 2018) ******* ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-TLV3501_SIM"  [ C:\Modeling\TLV3501\PSPICE\TLV3501-PSpiceFiles\SCHEMATIC1\TLV3501_SIM.sim ] 
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+** Creating circuit file "TLV3501_SIM.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+* From [PSPICE NETLIST] section of C:\SPB_DATA\cdssetup\OrCAD_PSpice\17.4.0\PSpice.ini file:
+.lib "nom.lib" 
+
+*Analysis directives: 
+.TRAN  0 500ns 0 
+.OPTIONS ADVCONV
+.PROBE64 V(alias(*)) I(alias(*)) W(alias(*)) D(alias(*)) NOISE(alias(*)) 
+.INC "..\SCHEMATIC1.net" 
+
+
+
+**** INCLUDING SCHEMATIC1.net ****
+* source TLV3501
+.EXTERNAL INPUT IN-
+.EXTERNAL INPUT IN+
+.EXTERNAL INPUT V-
+.EXTERNAL INPUT V+
+.EXTERNAL INPUT OUT
+X_U1         IN+ IN- V- V+ V- OUT TLV3501
+V_VINN         IN- 0 1.65
+V_V+         V+ 0 3.3
+R_R2         0 V-  1m TC=0,0 
+V_V1         IN+ 0  
++PULSE 1.55 1.75 0 10p 10p 50n 100n
+R_R3         V- OUT  10k TC=0,0 
+
+**** RESUMING TLV3501_SIM.cir ****
+.END
+
+ERROR(ORPSIM-15108): Subcircuit TLV3501 used by X_U1 is undefined
+
