@@ -5,7 +5,7 @@ use IEEE.STD_LOGIC_unsigned.all;
 
 
 entity DispMux is
-    Port ( Shape : in  STD_LOGIC_VECTOR (1 downto 0);
+    Port ( Shape : in  STD_LOGIC_VECTOR (2 downto 0);
 			  Amp : in  STD_LOGIC_VECTOR (7 downto 0);
 			  Freq : in  STD_LOGIC_VECTOR (7 downto 0);
 			  Reset : in std_logic; 
@@ -42,7 +42,7 @@ begin
 	begin 
 		
 		if DispSel = "00" then 
-		Disp <= x"450" & "000000" & Shape; 
+		Disp <= x"450" & "00000" & Shape; -- 20 bits i alt 
 		
 		
 		elsif DispSel = "01" then  

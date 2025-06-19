@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2025-06-16T12:03:47</DateModified>
+  <DateModified>2025-06-19T09:28:43</DateModified>
   <ModuleName>SigGenTop</ModuleName>
-  <SummaryTimeStamp>2025-06-16T11:39:55</SummaryTimeStamp>
+  <SummaryTimeStamp>2025-06-17T11:56:31</SummaryTimeStamp>
   <SavedFilePath>C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/iseconfig/SigGenTop.xreport</SavedFilePath>
   <ImplementationReportsDirectory>C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator\</ImplementationReportsDirectory>
   <DateInitialized>2025-06-04T13:31:31</DateInitialized>

@@ -33,6 +33,7 @@ volatile bool buffer_ready = false;
 // BTN/SW state
 volatile uint8_t btn = 0;
 volatile uint8_t sw = 0;
+volatile uint8_t run_stress_test_flag = 0; // Triggered by START (BTN3) from LabVIEW
 
 void print_uart1_packet()
 {
@@ -114,10 +115,10 @@ int main(void)
 
         case state_Run:
 
-            if (start_stress_test_flag)
+            if (run_stress_test_flag)
             {
+                run_stress_test_flag = 0;
                 state = state_SPITest;
-                start_stress_test_flag = false;
             }
 
             if (buffer_ready)
@@ -145,7 +146,9 @@ int main(void)
             break;
 
         case state_SPITest:
-            spi_stress_test();
+
+            spi_stress_test_10000_packets(); // Call the function from SPI.c
+
             state = state_Run;
             break;
 

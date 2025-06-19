@@ -1,9 +1,12 @@
 //! **************************************************************************
-// Written by: Map P.15xf on Mon Jun 16 15:15:26 2025
+// Written by: Map P.15xf on Thu Jun 19 10:06:56 2025
 //! **************************************************************************
 
 SCHEMATIC START;
 COMP "LD" LOCATE = SITE "M5" LEVEL 1;
+COMP "LD2" LOCATE = SITE "N4" LEVEL 1;
+COMP "LD3" LOCATE = SITE "G1" LEVEL 1;
+COMP "LD4" LOCATE = SITE "P4" LEVEL 1;
 COMP "Clk" LOCATE = SITE "B8" LEVEL 1;
 COMP "BTN1" LOCATE = SITE "C11" LEVEL 1;
 COMP "BTN3" LOCATE = SITE "A7" LEVEL 1;

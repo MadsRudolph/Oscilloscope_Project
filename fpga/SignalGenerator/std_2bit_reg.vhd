@@ -2,15 +2,15 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
-entity std_2bit_reg is
+entity std_3bit_reg is
     Port ( reset : in  STD_LOGIC;
            clk : in  STD_LOGIC;
            enable : in  STD_LOGIC;
-           data_in : in  STD_LOGIC_VECTOR (1 downto 0);
-           data_out : out  STD_LOGIC_VECTOR (1 downto 0));
-end std_2bit_reg;
+           data_in : in  STD_LOGIC_VECTOR (2 downto 0);
+           data_out : out  STD_LOGIC_VECTOR (2 downto 0));
+end std_3bit_reg;
 
-architecture Behavioral of std_2bit_reg is
+architecture Behavioral of std_3bit_reg is
 begin
     process (reset, clk)
     begin

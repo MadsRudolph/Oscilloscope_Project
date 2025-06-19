@@ -173,13 +173,13 @@ void parse_uart1_packet()
         case 0x00:
             uart_send_string("BTN0 pressed: Send current values\r\n");
             if (selected_param == 0)
-                if (sw <= 3)
+                if (sw <= 4)
                 {
                     shape = sw;
                 }
                 else
                 {
-                    uart_send_string("error, shape must be between 0 & 3\r\n");
+                    uart_send_string("error, shape must be between 0 & 4\r\n");
                 }
             else if (selected_param == 1)
                 if (sw <= 255)
@@ -273,10 +273,10 @@ void parse_uart1_packet()
 
         break;
     }
-
-    case 0x03: // START (e.g., for BODE)
+    case 0x04: // Stress Test (START)
         uart_send_string("START received: triggering SPI stress test\r\n");
-        start_stress_test_flag = true;
+        extern volatile uint8_t run_stress_test_flag;
+        run_stress_test_flag = 1;
         break;
 
     default:
