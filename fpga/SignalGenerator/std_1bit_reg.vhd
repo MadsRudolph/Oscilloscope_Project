@@ -10,7 +10,7 @@ entity std_1bit_reg is
            data_out : out  STD_LOGIC);
 end std_1bit_reg;
 
-architecture Behavioral of std_1bit_reg is
+	architecture Behavioral of std_1bit_reg is
 begin
     process (reset, clk)
     begin

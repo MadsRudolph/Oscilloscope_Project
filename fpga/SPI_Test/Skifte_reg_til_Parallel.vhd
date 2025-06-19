@@ -12,7 +12,7 @@ entity Skifte_reg_til_Parallel is
 end Skifte_reg_til_Parallel;
 
 architecture Behavioral of Skifte_reg_til_Parallel is
-signal skift_reg : std_logic_vector (7 downto 0);
+signal skift_reg : std_logic_vector (7 downto 0); -- Register hvor MOSI data gemmes.
 
 
 begin
@@ -20,13 +20,13 @@ begin
 	process(SClk, RESET)
 		begin
 			if RESET = '1' then 
-				skift_reg <= "00000000";
+				skift_reg <= "00000000"; -- Register tømmes ved reset.
 			elsif rising_edge(SClk) then
-				skift_reg <= MOSI & skift_reg(7 downto 1);  	
+				skift_reg <= MOSI & skift_reg(7 downto 1);  	-- Skifte register, læser MOSI bit.
 			end if;
 	end process; 	 
 
-SPIdat <= skift_reg;
+SPIdat <= skift_reg; -- Parallel indlæsing mellem skifteregister og SPIdat
 
 
 end Behavioral;

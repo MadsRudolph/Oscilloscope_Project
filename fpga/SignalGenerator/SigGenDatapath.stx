@@ -1,37 +1,45 @@
-Release 14.1 - xst P.15xf (nt64)
-Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
---> Parameter TMPDIR set to C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/xst/projnav.tmp
+Release 14.7 - xst P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> 
+Parameter TMPDIR set to /home/joakimbutenko/Oscilloscope_Project/fpga/SignalGenerator/xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.13 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.03 secs
  
---> Parameter xsthdpdir set to C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/xst
+--> 
+Parameter xsthdpdir set to /home/joakimbutenko/Oscilloscope_Project/fpga/SignalGenerator/xst
 
 
-Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.13 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.03 secs
  
---> WARNING:Xst:3164 - Option "-debug" found multiple times in the command line. Only the first occurence is considered.
+--> 
+WARNING:Xst:3164 - Option "-debug" found multiple times in the command line. Only the first occurence is considered.
 
 =========================================================================
 *                          HDL Compilation                              *
 =========================================================================
-Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/ipcore_dir/SinusLUT.vhd" in Library work.
+WARNING:HDLParsers:3607 - Unit work/SigGenDatapath is now defined in a different file.  It was defined in "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd", and is now defined in "/home/joakimbutenko/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd".
+WARNING:HDLParsers:3607 - Unit work/SigGenDatapath/Behavioral is now defined in a different file.  It was defined in "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd", and is now defined in "/home/joakimbutenko/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd".
+WARNING:HDLParsers:3607 - Unit work/SinusLUT is now defined in a different file.  It was defined in "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/ipcore_dir/SinusLUT.vhd", and is now defined in "/home/joakimbutenko/Oscilloscope_Project/fpga/SignalGenerator/ipcore_dir/SinusLUT.vhd".
+WARNING:HDLParsers:3607 - Unit work/SinusLUT/SinusLUT_a is now defined in a different file.  It was defined in "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/ipcore_dir/SinusLUT.vhd", and is now defined in "/home/joakimbutenko/Oscilloscope_Project/fpga/SignalGenerator/ipcore_dir/SinusLUT.vhd".
+Compiling vhdl file "/home/joakimbutenko/Oscilloscope_Project/fpga/SignalGenerator/ipcore_dir/SinusLUT.vhd" in Library work.
 Architecture sinuslut_a of Entity sinuslut is up to date.
-Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd" in Library work.
+Compiling vhdl file "/home/joakimbutenko/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd" in Library work.
 Entity <siggendatapath> compiled.
 Entity <siggendatapath> (Architecture <behavioral>) compiled.
 
 
-Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.20 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.04 secs
  
 --> 
 
-Total memory usage is 4473704 kilobytes
+
+Total memory usage is 470384 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :    1 (   0 filtered)
+Number of warnings :    5 (   0 filtered)
 Number of infos    :    0 (   0 filtered)
 
