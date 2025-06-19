@@ -31,9 +31,9 @@ signal TestCnt: STD_LOGIC_VECTOR(15 downto 0):= "0000000000000000"; -- Dette er 
 begin
 
 
-SyncDec: syncbyte <= '1' when SPIdat = "01010101" else '0';
+SyncDec: syncbyte <= '1' when SPIdat = "01010101" else '0'; --Byte som indikerer start af datapakke
 
-CheckSumDec: Chk <= '1' when Checksum = (("01010101" xor ADDR) xor Data) else '0';
+CheckSumDec: Chk <= '1' when Checksum = (("01010101" xor ADDR) xor Data) else '0'; -- Kontrol signal som indikere at data er modtaget korrekt
 
 Statereg: process(CLK, Reset)
     begin 
@@ -42,8 +42,8 @@ Statereg: process(CLK, Reset)
 				TestCnt <= "0000000000000000";
 		  elsif CLK'event and CLK = '1' then
             state <= nextstate;  -- Update state on clock edge
-				if ShapeEN = '1' and ShapeEN_prev = '0' then -- puls som sikrer vi tÊller en op pÂ antal shapes modtaget korrekt
-					TestCnt <= TestCnt + "0000000000000001";
+				if ShapeEN = '1' and ShapeEN_prev = '0' then -- puls som sikrer vi tller en op p antal shapes modtaget korrekt
+					TestCnt <= TestCnt + "0000000000000001"; -- T√¶ller til robusthed
 				end if; 
 				ShapeEN_prev <= ShapeEN;
 			
@@ -62,6 +62,8 @@ Statereg: process(CLK, Reset)
 	ShapeEn <= '0';
 	FreqEn <= '0';
 	SigENEN <= '0';
+	
+	--State machine
 	
 	case state is
 	
@@ -98,7 +100,7 @@ Statereg: process(CLK, Reset)
 			nextstate <= CheckSumEnS;
 		end if;
 
-	when CheckSumS =>
+	when CheckSumS => -- Styring af hvilken data, der skal indl√¶ses
 		if Chk = '1' and ADDR = "00000001" then
 			nextstate <= AmpS;
 			
@@ -123,7 +125,7 @@ Statereg: process(CLK, Reset)
 			
 	when ShapeS =>
 			ShapeEN <= '1';
-			SigENEN <= '1';
+			SigENEN <= '1'; -- Enable signal til Signalenable
 			nextstate <= IDLE;
 end case;
 
@@ -131,9 +133,9 @@ end case;
 end process;
 
 
-Process(TestCnt)
+Process(TestCnt) -- Kontrol af kommunikations robusthed.
 begin
-	if TestCnt < "0010101001001011" then -- led lys hvis under 10827 adresser
+	if TestCnt < "0010101001001011" then -- led lys hvis under 10827 shapes
 	UnderFlag <= '1';
 	OverFlag <= '0';
 	LigeFlag <= '0'; 
@@ -146,7 +148,7 @@ begin
 	LigeFlag <= '0';
 	UnderFlag <= '0';
 	else 
-		UnderFlag <= '0';
+		UnderFlag <= '0'; 
 		OverFlag <= '0';
 		LigeFlag <= '0'; 
 	end if; 

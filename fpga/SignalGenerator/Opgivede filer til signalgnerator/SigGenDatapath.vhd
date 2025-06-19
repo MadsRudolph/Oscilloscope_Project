@@ -21,7 +21,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_ARITH.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
-
+ -- Denne komponent stÃ¥r for at generere vores PWM signal
 entity SigGenDatapath is
   generic( PWMinc : std_logic_vector(6 downto 0) := "0000001" ); -- sat markant ned
   Port ( Reset  : in std_logic;	
@@ -67,7 +67,7 @@ begin
   if Reset = '1' then PWMcntvar := "000000000";
   elsif Clk'event and Clk = '1' then
     PWMcntvar := PWMcntvar + PWMinc;
-		if PWMcntvar > "111111111" then  --udviddet med 2 bit for at sænke signalet 
+		if PWMcntvar > "111111111" then  --udviddet med 2 bit for at snke signalet 
 			PWMcntvar := "000000000";
 		end if;
 		end if;
@@ -76,7 +76,7 @@ begin
 		else 
 		PWMwrap <= '0';
   end if;
-  PWMcnt <= PWMcntvar(6 downto 0); -- PWMcnt er kun 7 bit da den skal tælle hurtigere og følge clock direkte 
+  PWMcnt <= PWMcntvar(6 downto 0); -- PWMcnt er kun 7 bit da den skal tlle hurtigere og flge clock direkte 
 end process;     
 
 --PWMdec: PWMwrap <= '1' when PWMcnt = "00000000" else '0'; -- denne fjernes
