@@ -61,7 +61,7 @@ void spi_stress_test_10000_packets()
     for (uint16_t i = 0; i < 10827; i++)
     {
         val = i % 256;
-        transmit_signalgenerator_data(val, val, val); // Sends 3 packets
+        transmit_signalgenerator_data(val, val, val); // Sends 1 packet
         packet_count += 1;
 
         if ((i % 500) == 0) // less frequent UART to reduce lag
