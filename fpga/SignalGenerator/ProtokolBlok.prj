@@ -1,0 +1,4 @@
+vhdl work "../SPI_Test/Register.vhd"
+vhdl work "std_2bit_reg.vhd"
+vhdl work "std_1bit_reg.vhd"
+vhdl work "../SPI_Test/ProtokolBlok.vhd"

@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -o "C:/Users/s245946/Oscilloscope_Project/fpga/SignalGenerator/FULL_BENCH_isim_beh.exe" -prj "C:/Users/s245946/Oscilloscope_Project/fpga/SignalGenerator/FULL_BENCH_beh.prj" "work.FULL_BENCH" 

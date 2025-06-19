@@ -17,12 +17,12 @@
 #include "ADC.h"           // Include ADC initialization functions
 #include "SPI.h"           // Include SPI communication functions
 #include "uart.h"          // Includes uart functions
-
+volatile bool start_stress_test_flag = false; // Flag to trigger SPI stress test
 // Declare parse_uart1_packet prototype
 void parse_uart1_packet(void);
 
 // Define maximum buffer size for dynamic record length
-#define MAX_RECORD_LENGTH 1000
+#define MAX_RECORD_LENGTH 10
 volatile uint8_t adc_samples[MAX_RECORD_LENGTH]; // support dynamic size
 volatile uint16_t record_length = 100;           // default, can be changed by SEND
 
@@ -33,6 +33,7 @@ volatile bool buffer_ready = false;
 // BTN/SW state
 volatile uint8_t btn = 0;
 volatile uint8_t sw = 0;
+volatile uint8_t run_stress_test_flag = 0; // Triggered by START (BTN3) from LabVIEW
 
 void print_uart1_packet()
 {
@@ -56,7 +57,8 @@ enum states
 {
     state_init,
     state_Run,
-    state_Stop
+    state_Stop,
+    state_SPITest
 };
 static enum states state = state_init;
 
@@ -75,6 +77,21 @@ ISR(TIMER1_COMPB_vect)
         buffer_ready = true;
         sample_index = 0;
     }
+}
+
+void spi_stress_test()
+{
+    for (int i = 0; i < 10; i++)
+    { // e.g., 10 x 1000-byte tests = 10,000 bytes
+        for (uint16_t j = 0; j < 250; j++)// 1000 bytes total (4 bytes per iteration)
+        {
+            uint8_t test_val = j % 256; // Example test value, can be adjusted
+            transmit_signalgenerator_data(test_val, test_val, test_val); // Transmit data over SPI
+            _delay_us(50); // Delay for safety; adjust/remove as needed
+        }
+        uart_send_string("Sent 1000 bytes via SPI.\r\n");
+    }
+    uart_send_string("SPI stress test complete.\r\n");
 }
 
 int main(void)
@@ -98,7 +115,12 @@ int main(void)
 
         case state_Run:
 
-            // If ADC buffer is ready, send UART packet to LabVIEW
+            if (run_stress_test_flag)
+            {
+                run_stress_test_flag = 0;
+                state = state_SPITest;
+            }
+
             if (buffer_ready)
             {
                 send_oscilloscope_packet((uint8_t *)adc_samples, record_length);
@@ -106,12 +128,13 @@ int main(void)
 
                 uart_send_string("\rSample: ");
                 char buf[16];
-                sprintf(buf, "%02X      ", adc_samples[0]); // Add extra spaces to clear previous output
+                sprintf(buf, "%02X      ", adc_samples[0]);
                 uart_send_string(buf);
             }
+
             if (run_stop_flag)
             {
-                state = state_Stop; // If run_stop_flag is set, change to Stop state
+                state = state_Stop;
             }
             break;
 
@@ -120,7 +143,14 @@ int main(void)
             {
                 state = state_Run; // If run_stop_flag is cleared, return to Run state
             }
-        break;
+            break;
+
+        case state_SPITest:
+
+            spi_stress_test_10000_packets(); // Call the function from SPI.c
+
+            state = state_Run;
+            break;
 
         default:
             break;

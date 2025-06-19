@@ -9,6 +9,7 @@
 #include "uart.h"
 #include "ADC.h"
 #include "SPI.h"
+#include <stdbool.h>       // Include boolean support
 #define MAX_RECORD_LENGTH 1000
 extern volatile uint16_t record_length;
 extern volatile uint16_t current_timer1_top;
@@ -17,6 +18,7 @@ volatile uint8_t shape = 0;
 volatile uint8_t amplitude = 128;
 volatile uint8_t frequency = 100;
 volatile uint8_t run_stop_flag = 0;
+extern volatile bool start_stress_test_flag; // Flag to trigger SPI stress test
 
 void uart_init(unsigned int ubrr)
 {
@@ -171,13 +173,13 @@ void parse_uart1_packet()
         case 0x00:
             uart_send_string("BTN0 pressed: Send current values\r\n");
             if (selected_param == 0)
-                if (sw <= 3)
+                if (sw <= 4)
                 {
                     shape = sw;
                 }
                 else
                 {
-                    uart_send_string("error, shape must be between 0 & 3\r\n");
+                    uart_send_string("error, shape must be between 0 & 4\r\n");
                 }
             else if (selected_param == 1)
                 if (sw <= 255)
@@ -263,11 +265,18 @@ void parse_uart1_packet()
         }
 
         uart_send_string("SEND parsed: updated record_length and sample_rate\r\n");
+
+        // Debug message
+        char debug_msg[64];
+        snprintf(debug_msg, sizeof(debug_msg), "Sample rate: %u, Record length: %u, Timer1 TOP: %lu\r\n", sample_rate, record_length, (unsigned long)current_timer1_top);
+        uart_send_string(debug_msg);
+
         break;
     }
-
-    case 0x03: // START (e.g., for BODE)
-        uart_send_string("START received\r\n");
+    case 0x04: // Stress Test (START)
+        uart_send_string("START received: triggering SPI stress test\r\n");
+        extern volatile uint8_t run_stress_test_flag;
+        run_stress_test_flag = 1;
         break;
 
     default:

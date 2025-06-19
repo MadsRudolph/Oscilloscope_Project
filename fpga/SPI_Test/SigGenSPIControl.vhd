@@ -35,10 +35,15 @@ entity SigGenSPIControl is
            SClk : in  STD_LOGIC;
            MOSI : in  STD_LOGIC;
            SSnot : in  STD_LOGIC;
-           Shape : out  STD_LOGIC_VECTOR (7 downto 0);
+           Shape : out  STD_LOGIC_VECTOR (2 downto 0);
            Amp : out  STD_LOGIC_VECTOR (7 downto 0);
            Freq : out  STD_LOGIC_VECTOR (7 downto 0);
-           SigEN : out  STD_LOGIC);
+			  LD2: out STD_LOGIC;
+			  LD3: out STD_LOGIC;
+			  LD4: out STD_LOGIC;
+			  LD: out STD_LOGIC;
+           SigEN : inout  STD_LOGIC); -- inout da den bruges som et internt signal også
+	
 end SigGenSPIControl;
 
 architecture Behavioral of SigGenSPIControl is
@@ -50,7 +55,7 @@ signal DataReady: STD_LOGIC;
 begin
 
 -- Clock Divider to generate display-friendly clock
-    U1: entity work.ProtokolBlok 
+    ProtokolBlok: entity work.ProtokolBlok 
         port map (
             Reset     => Reset,
             Clk      => Clk,
@@ -59,20 +64,23 @@ begin
 				Shape 	=> Shape,
 				DataReady => DataReady,
 				SPIdat => SPIdat,
-				SigEN => SigEN
+				SigEN => SigEN,
+				LD2 => LD2,
+				LD3 => LD3,
+				LD4 => LD4,
+				LD => LD
         );
 
     --7-Segment Display Controller
-    U2: entity work.Skifte_reg_til_Parallel 
+    SkifteReg: entity work.Skifte_reg_til_Parallel 
         port map (
             Reset => Reset,
 				SPIdat => SPIdat,
 				MOSI => MOSI,
-				SClk => SClk,
-				SSnot => SSnot
+				SClk => SClk
 				);
 				
-		U3: entity work.TimingComponent 
+		TimingComponent: entity work.TimingComponent 
         port map (
             Reset => Reset,
             Clk => Clk,

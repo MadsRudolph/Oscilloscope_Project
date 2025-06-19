@@ -99,3 +99,5 @@ begin
 	 end process;
 
 end SevenSeg_arch;
+
+

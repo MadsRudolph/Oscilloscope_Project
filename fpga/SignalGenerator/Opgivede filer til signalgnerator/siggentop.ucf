@@ -1,23 +1,19 @@
 #assignment of led signals
 
-NET"Ld" LOC = M5;
-#assign switch signals
-NET"SW[7]" LOC = N3;
-NET"SW[6]" LOC = E2;
-NET"SW[5]" LOC = F3;
-NET"SW[4]" LOC = G3;
-NET"SW[3]" LOC = B4;
-NET"SW[2]" LOC = K3;
-NET"SW[1]" LOC = L3;
-NET"SW[0]" LOC = P11;
-#BTN signals
-NET "BTN0" LOC = G12;
-NET "BTN1" LOC = C11;
-NET "BTN2" LOC = M4;
-NET "BTN3" LOC = A7;
-#Assignment of CLK
-NET "clk" LOC = B8;
+#NET"Ld" LOC = M5;
 
+#PWM out 
+NET"PWMOut" LOC = C12;
+
+NET "LD" LOC = M5;
+NET "LD2" LOC = N4;
+NET "LD3" LOC = G1;
+NET "LD4" LOC = P4;
+#BTN signals
+NET "BTN3" LOC = A7;
+NET "BTN1" LOC = C11;
+#Assignment of CLK
+NET "Clk" LOC = B8;
 
 #Assignment of 7-seg cathode
 NET"cat[7]" LOC = N13;
@@ -34,3 +30,10 @@ NET"an[0]" LOC = F12;
 NET"an[1]" LOC = J12;
 NET"an[2]" LOC = M13;
 NET"an[3]" LOC = K14;
+
+
+# Vores UCF
+NET"MOSI" LOC = B2;
+NET"SClk" LOC = A3;
+NET"SClk" CLOCK_DEDICATED_ROUTE = FALSE; 
+NET"SSnot" LOC = J3;

@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <util/delay.h>
+#include "uart.h"
 
 // Send a byte via SPI as master
 void master_transmit(uint8_t data)
@@ -26,7 +27,7 @@ void master_init()
     PORTB |= (1 << PB0);                          // Set SS high (inactive)
 
     SPCR |= (1 << SPE) | (1 << MSTR) | (1 << DORD); // Enable SPI in master mode, (DORD = 1) makes so LSB transmits first
-    SPCR |= (1 << SPR0) | (1 << SPR1);              // Set SCK clock rate too fck/128 (S.203), 125 kHz with F_CPU = 16 MHz
+    SPCR |= (1 << SPI2X) | (1 << SPR1);             // Set SCK clock rate too fck/32 (S.203), 500kHz with F_CPU = 16 MHz(500 kilo baud)
     SPCR &= ~((1 << CPOL) | (1 << CPHA));           // Sample on rising edge, transmit on falling (S.200–202)
 }
 
@@ -49,6 +50,34 @@ void slave_init()
     // PORTB |= (1 << PB0); // REMOVE this line — SS should not be driven by slave
 }
 
+void spi_stress_test_10000_packets()
+{
+    uart_send_string("Starting SPI stress test (10,827 packets)...\r\n");
+
+    uint16_t packet_count = 0;
+    uint8_t val;
+
+    // 
+    for (uint16_t i = 0; i < 10827; i++)
+    {
+        val = i % 256;
+        transmit_signalgenerator_data(val, val, val); // Sends 1 packet
+        packet_count += 1;
+
+        if ((i % 500) == 0) // less frequent UART to reduce lag
+        {
+            char buf[48];
+            sprintf(buf, "Packets sent: %u\r\n", packet_count);
+            uart_send_string(buf);
+        }
+    }
+
+    char final_buf[64];
+    sprintf(final_buf, "Stress test complete. Sent %u packets.\r\n", packet_count);
+    uart_send_string(final_buf);
+}
+
+
 void transmit_signalgenerator_data(uint16_t amp, uint8_t freq, uint8_t shape)
 {
     unsigned int checksum = 0;
@@ -65,7 +94,6 @@ void transmit_signalgenerator_data(uint16_t amp, uint8_t freq, uint8_t shape)
             master_transmit(adress);   // transmis bit(1): adress
             master_transmit(amp);      // transmit bit(2): data
             master_transmit(checksum); // transmit bit(3): checksum
-
             break;
         case 2:
 
@@ -75,7 +103,6 @@ void transmit_signalgenerator_data(uint16_t amp, uint8_t freq, uint8_t shape)
             master_transmit(adress);   // transmis bit(1): adress
             master_transmit(freq);     // transmit bit(2): data
             master_transmit(checksum); // transmit bit(3): checksum
-
             break;
         case 3:
 
@@ -85,7 +112,6 @@ void transmit_signalgenerator_data(uint16_t amp, uint8_t freq, uint8_t shape)
             master_transmit(adress);   // transmis bit(1): adress
             master_transmit(shape);    // transmit bit(2): data
             master_transmit(checksum); // transmit bit(3): checksum
-
             break;
         default:
             break;
