@@ -24,7 +24,7 @@ architecture Behavioral of SigGenTop is
 signal DispClk, SigEN, BTN1db, BTN3db, LED, LED2, LED3, LED4: std_logic;
 signal Disp: std_logic_vector(19 downto 0); 
 signal Amp, Freq : std_logic_vector(7 downto 0);
-signal Shape : std_logic_vector(1 downto 0);
+signal Shape : std_logic_vector(2 downto 0);
 
 
 begin
@@ -46,7 +46,7 @@ U1: entity WORK.SigGenSPIControl
 			  
 							
 U2: entity WORK.SigGenDataPath generic map (PWMinc => "0000001") 
-    port map(Reset => BTN3db, Clk => Clk, Shape => Shape(1 downto 0), Ampl => Amp, Freq => Freq, SigEN => SigEN, PWMOut => PWMOut);
+    port map(Reset => BTN3db, Clk => Clk, Shape => Shape(2 downto 0), Ampl => Amp, Freq => Freq, SigEN => SigEN, PWMOut => PWMOut);
 
 
 U3: entity WORK.SevenSeg5 

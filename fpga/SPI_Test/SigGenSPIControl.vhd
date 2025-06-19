@@ -35,7 +35,7 @@ entity SigGenSPIControl is
            SClk : in  STD_LOGIC;
            MOSI : in  STD_LOGIC;
            SSnot : in  STD_LOGIC;
-           Shape : out  STD_LOGIC_VECTOR (1 downto 0);
+           Shape : out  STD_LOGIC_VECTOR (2 downto 0);
            Amp : out  STD_LOGIC_VECTOR (7 downto 0);
            Freq : out  STD_LOGIC_VECTOR (7 downto 0);
 			  LD2: out STD_LOGIC;

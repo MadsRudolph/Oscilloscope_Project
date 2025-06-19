@@ -27,7 +27,7 @@ entity SigGenDatapath is
   Port ( Reset  : in std_logic;	
          Clk    : in std_logic;
          SigEN  : in std_logic;
-         Shape  : in std_logic_vector(1 downto 0);
+         Shape  : in std_logic_vector(2 downto 0);
          Ampl   : in std_logic_vector(7 downto 0);
          Freq   : in std_logic_vector(7 downto 0);
          PWMOut : out std_logic);
@@ -36,7 +36,7 @@ end SigGenDatapath;
 architecture Behavioral of SigGenDatapath is
 
 signal SigCnt, nSigCnt, FreqCnt: std_logic_vector(11 downto 0);
-signal Sig, SigSquare, SigSaw, SigSinus : std_logic_vector(7 downto 0); 
+signal Sig, SigSquare, SigSaw, SigSinus, SigTri : std_logic_vector(7 downto 0); 
 signal SigAmpl: std_logic_vector(6 downto 0); 
 signal PWMcnt: std_logic_vector(6 downto 0) := "0000000";
 --signal wrapcnt : std_logic_vector(2 downto 0);
@@ -85,12 +85,21 @@ SquareDec: SigSquare <= "00000000" when SigCnt < X"800" else "11111111";
 
 SawDec: SigSaw <= SigCnt(11 downto 4);
 
---Tridec: 
+Tridec: process(SigCnt)
+begin
+	if Sigcnt < x"800" then
+		SigTri <= SigCnt (10 downto 3);
+			elsif SigCnt >= x"800" then
+		SigTri <= not SigCnt(10 downto 3);
+	end if; 
+end process;
 
-SigMux: Sig <= X"FF" when Shape = "00" else
-               SigSquare when Shape = "01" else
-               SigSaw when Shape = "10" else
-               SigSinus;
+
+SigMux: Sig <= X"FF" when Shape = "000" else
+               SigSquare when Shape = "001" else
+               SigSaw when Shape = "010" else
+               SigSinus when Shape = "011" else
+					SigTri when Shape = "100";
 
 
 AmplDec: process(Ampl, Sig)
