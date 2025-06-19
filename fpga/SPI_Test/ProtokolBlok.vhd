@@ -9,7 +9,7 @@ entity ProtokolBlok is
 			  Reset : in STD_LOGIC;
 			  DataReady : in STD_LOGIC;
 			  SPIdat: in STD_LOGIC_VECTOR (7 downto 0);
-			  Shape: out STD_LOGIC_VECTOR (1 downto 0);
+			  Shape: out STD_LOGIC_VECTOR (2 downto 0);
 			  Amp: out STD_LOGIC_VECTOR (7 downto 0);
 			  LD: out STD_LOGIC;
 			  LD2: out STD_LOGIC;
@@ -39,7 +39,8 @@ Statereg: process(CLK, Reset)
     begin 
         if Reset = '1' then 
             state <= IDLE;  -- Reset state to IDLE
-        elsif CLK'event and CLK = '1' then
+				TestCnt <= "0000000000000000";
+		  elsif CLK'event and CLK = '1' then
             state <= nextstate;  -- Update state on clock edge
 				if ShapeEN = '1' and ShapeEN_prev = '0' then -- puls som sikrer vi tæller en op på antal shapes modtaget korrekt
 					TestCnt <= TestCnt + "0000000000000001";
@@ -184,12 +185,12 @@ CheckSumReg: entity work.std_8bit_reg
 
 
 
-ShapeReg: entity work.std_2bit_reg
+ShapeReg: entity work.std_3bit_reg
 	port map (
 					Reset => Reset,
 					Clk => Clk,
 					Enable => ShapeEn,
-					Data_in => Data (1 downto 0),
+					Data_in => Data (2 downto 0),
 					Data_out => Shape 
 					);
 
