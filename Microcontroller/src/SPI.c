@@ -4,8 +4,6 @@
 #include "SPI.h"
 #include <avr/io.h>
 #include <stdio.h>
-#include <stdlib.h>
-#include <util/delay.h>
 #include "uart.h"
 
 // Send a byte via SPI as master

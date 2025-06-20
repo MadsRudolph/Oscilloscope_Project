@@ -8,11 +8,8 @@
 
 #include <avr/io.h> // Include I/O functions
 #include <stdio.h>  // Include sprintf
-#include <stdlib.h>
 #include <stdbool.h>       // Include boolean support
 #include <avr/interrupt.h> // Include interrupt handling
-#include <util/delay.h>    // Include delay functions
-#include <string.h>        // Include string handling
 #include <stdint.h>        // Include fixed width integer types
 #include "ADC.h"           // Include ADC initialization functions
 #include "SPI.h"           // Include SPI communication functions
