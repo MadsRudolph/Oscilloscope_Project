@@ -241,7 +241,7 @@ void parse_uart1_packet()
 
             transmit_signalgenerator_data(amplitude, frequency, shape); // Send reset values to FPGA
             uart_send_string("Reset values sent to FPGA\r\n");
-
+            break;
         default:
             uart_send_string("Unknown BTN value\r\n");
             break;
