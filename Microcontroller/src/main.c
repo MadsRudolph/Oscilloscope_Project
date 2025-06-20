@@ -91,6 +91,9 @@ int main(void)
             uart_init(16);                               // Set a unsigned integer in the parameter to choose Baud rate (parameter(16) = Baud rate(115200)). Look up uart.c for more info
             uart1_init(16);                              // Initialize UART1 for LabVIEW (115200 baud, U2X1 enabled)
             uart_send_string("System initialized.\r\n"); // Debug message via UART0
+            DDRD |= (1 << PD7);                          // Set PD7 as output for reset signal
+            PORTD &= ~(1 << PD7);                         // Set PD7 low
+
             sei();
             state = state_Run; // Changes state
             break;
