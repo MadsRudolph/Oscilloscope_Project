@@ -226,14 +226,21 @@ void parse_uart1_packet()
 
         case 0x03:
             uart_send_string("BTN3 pressed: Reset\r\n");
-            selected_param = 0; // Reset to shape
-            shape = 0;          // Reset shape to 0
-            amplitude = 128;    // Reset amplitude to default
-            frequency = 1;      // Reset frequency to default
+
+            // Send reset pulse to FPGA via PD7
+            PORTD |= (1 << PD7); // Pull PD7 high
+            _delay_ms(10);        // Wait 10 ms
+            PORTD &= ~(1 << PD7);  // Pull PD7 low
+
+            // Reset internal parameters
+            selected_param = 0;
+            shape = 0;
+            amplitude = 128;
+            frequency = 1;
             uart_send_string("Generator reset to default values\r\n");
+
             transmit_signalgenerator_data(amplitude, frequency, shape); // Send reset values to FPGA
             uart_send_string("Reset values sent to FPGA\r\n");
-            break;
 
         default:
             uart_send_string("Unknown BTN value\r\n");
