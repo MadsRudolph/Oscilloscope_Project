@@ -17,6 +17,7 @@ volatile uint8_t shape = 0;
 volatile uint8_t amplitude = 128;
 volatile uint8_t frequency = 100;
 volatile uint8_t run_stop_flag = 0;
+float sample_rate = 0;
 
 void uart_init(unsigned int ubrr)
 {
@@ -254,26 +255,23 @@ void parse_uart1_packet()
 
     case 0x02: // SEND in Oscilloscope Tab
     {
-        uint16_t sample_rate = (uart1_rx_buffer[5] << 8) | uart1_rx_buffer[6];
         uint16_t record_len = (uart1_rx_buffer[7] << 8) | uart1_rx_buffer[8];
+        
 
         // Bounds checking
         if (record_len > 0 && record_len <= MAX_RECORD_LENGTH)
         {
             record_length = record_len;
-        }
-
-        if (sample_rate >= 10 && sample_rate <= 10000)
-        {
-            current_timer1_top = F_CPU / (8 * sample_rate);
+            float sample_rate = ((11520.0f*record_length) / (7.0f+record_length))*0.95f; // Calculates Maximum ADC sample rate with 5% margin
+            current_timer1_top = F_CPU / (8.0f * sample_rate);
             init_timer1(current_timer1_top); // Update Timer1 on-the-fly
         }
-
+    
         uart_send_string("SEND parsed: updated record_length and sample_rate\r\n");
 
         // Debug message
         char debug_msg[64];
-        snprintf(debug_msg, sizeof(debug_msg), "Sample rate: %u, Record length: %u, Timer1 TOP: %lu\r\n", sample_rate, record_length, (unsigned long)current_timer1_top);
+        snprintf(debug_msg, sizeof(debug_msg), "Sample rate: %.2f, Record length: %u, Timer1 TOP: %lu\r\n", sample_rate, record_length, (unsigned long)current_timer1_top);
         uart_send_string(debug_msg);
 
         break;
