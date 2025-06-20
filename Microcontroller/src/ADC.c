@@ -12,16 +12,15 @@ void init_ADC_kanal0()
     // MUX[3:0] = 0000 → ADC0 selected (S.290 Table 26-4)
 
     // information on ADCSRA at S.292
-    ADCSRA = (1 << ADEN) |                               // Enable ADC
-             (1 << ADATE) |                              // Auto Trigger Enable
-             (1 << ADIE) |                               // Enable ADC interrupt (ISR will clear interrupt flag)
-             (1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0); // Prescaler = 128 (ADC clock = 125kHz @ 16MHz)
+    ADCSRA = (1 << ADEN) |  // Enable ADC
+             (1 << ADATE) | // Auto Trigger Enable
+             (1 << ADIE) |  // Enable ADC interrupt (ISR will clear interrupt flag)
+             (1 << ADSC) |  // Start first conversion
+             (1 << ADPS2);  // Prescaler = 16 (ADC clock = 1MHz @ 16MHz(F_CPU))
 
     ADCSRB = (1 << ADTS2) | (1 << ADTS0); // Auto Trigger Source = Timer1 Compare Match B (ADTS[2:0] = 101)
 
-    DIDR0 = (1 << ADC0D); // Disable digital input on ADC0 (optional but recommended)
-
-    ADCSRA |= (1 << ADSC); // Start first conversion
+    DIDR0 = (1 << ADC0D); // Disable digital input on ADC0 (optional but recommended) (S.295)n
 }
 
 // ADC ISR to acknowledge interrupt only
