@@ -53,7 +53,7 @@ void send_oscilloscope_packet(uint8_t *samples, uint16_t length)
     uint16_t payload_length = 2 + 2 + 1 + length + 2; // Type + Data + Checksum
 
     uart1_send((payload_length >> 8) & 0xFF); // Length MSB
-    uart1_send(payload_length & 0xFF);        // Length LSB // er det nødvænidgt at & 0xFF?
+    uart1_send(payload_length & 0xFF);        // Length LSB
 
     uart1_send(0x02); // Type: OSCILLOSCOPE
 
@@ -90,7 +90,7 @@ volatile uint8_t uart1_rx_buffer[UART1_RX_BUFFER_SIZE];
 volatile uint8_t uart1_rx_index = 0;
 volatile uint8_t uart1_packet_ready = 0;
 
-// === NEW === UART1 RX ISR
+// UART1 RX ISR
 ISR(USART1_RX_vect)
 {
     uint8_t byte = UDR1;
