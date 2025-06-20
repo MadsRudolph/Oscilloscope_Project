@@ -1,13 +1,13 @@
 // ## Program developed by Mads Rodulph and Sigurd Hestbech Christiansen ##
-// ## Last edited: 2025-06-06 ##
+// ## Last edited: 20-6-2025 ##
 // ## Throughout the code, page references are marked as S.xxx, referring to the Atmega2560 datasheet. ##
 
 #ifndef F_CPU
 #define F_CPU 16000000UL // Define CPU frequency
 #endif
 
-#include <avr/io.h> // Include I/O functions
-#include <stdio.h>  // Include sprintf
+#include <avr/io.h>        // Include I/O functions
+#include <stdio.h>         // Include sprintf
 #include <stdbool.h>       // Include boolean support
 #include <avr/interrupt.h> // Include interrupt handling
 #include <stdint.h>        // Include fixed width integer types
