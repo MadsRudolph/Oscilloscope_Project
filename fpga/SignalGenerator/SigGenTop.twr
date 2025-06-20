@@ -1,13 +1,13 @@
 --------------------------------------------------------------------------------
-Release 14.1 Trace  (nt64)
-Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+Release 14.7 Trace  (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-P:\Xilinx\14.1\ISE_DS\ISE\bin\nt64\unwrapped\trce.exe -intstyle ise -v 3 -s 4
--n 3 -fastpaths -xml SigGenTop.twx SigGenTop.ncd -o SigGenTop.twr SigGenTop.pcf
+/opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64/unwrapped/trce -intstyle ise -v 3 -s 4 -n
+3 -fastpaths -xml SigGenTop.twx SigGenTop.ncd -o SigGenTop.twr SigGenTop.pcf
 
 Design file:              SigGenTop.ncd
 Physical constraint file: SigGenTop.pcf
-Device,package,speed:     xc3s100e,cp132,-4 (PRODUCTION 1.27 2012-04-23)
+Device,package,speed:     xc3s100e,cp132,-4 (PRODUCTION 1.27 2013-10-13)
 Report level:             verbose report
 
 Environment Variable      Effect 
@@ -87,14 +87,14 @@ SClk           |    1.566|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 
-Analysis completed Thu Jun 19 10:07:08 2025 
+Analysis completed Fri Jun 20 09:26:39 2025 
 --------------------------------------------------------------------------------
 
 Trace Settings:
 -------------------------
 Trace Settings 
 
-Peak Memory Usage: 4503 MB
+Peak Memory Usage: 326 MB
 
 
 

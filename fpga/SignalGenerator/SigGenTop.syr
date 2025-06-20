@@ -1,18 +1,21 @@
-Release 14.1 - xst P.15xf (nt64)
-Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
---> Parameter TMPDIR set to xst/projnav.tmp
+Release 14.7 - xst P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> 
+Parameter TMPDIR set to xst/projnav.tmp
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.14 secs
+Total CPU time to Xst completion: 0.07 secs
  
---> Parameter xsthdpdir set to xst
+--> 
+Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.14 secs
+Total CPU time to Xst completion: 0.07 secs
  
---> Reading design: SigGenTop.prj
+--> 
+Reading design: SigGenTop.prj
 
 TABLE OF CONTENTS
   1) Synthesis Options Summary
@@ -107,35 +110,34 @@ Cores Search Directories           : {"ipcore_dir"  }
 =========================================================================
 *                          HDL Compilation                              *
 =========================================================================
-Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Register.vhd" in Library work.
+Compiling vhdl file "/home/Mads/Oscilloscope_Project/fpga/SPI_Test/Register.vhd" in Library work.
 Architecture behavioral of Entity std_8bit_reg is up to date.
-Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/std_2bit_reg.vhd" in Library work.
+Compiling vhdl file "/home/Mads/Oscilloscope_Project/fpga/SignalGenerator/std_2bit_reg.vhd" in Library work.
 Architecture behavioral of Entity std_3bit_reg is up to date.
-Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/std_1bit_reg.vhd" in Library work.
+Compiling vhdl file "/home/Mads/Oscilloscope_Project/fpga/SignalGenerator/std_1bit_reg.vhd" in Library work.
 Architecture behavioral of Entity std_1bit_reg is up to date.
-Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/ipcore_dir/SinusLUT.vhd" in Library work.
+Compiling vhdl file "/home/Mads/Oscilloscope_Project/fpga/SignalGenerator/ipcore_dir/SinusLUT.vhd" in Library work.
 Architecture sinuslut_a of Entity sinuslut is up to date.
-Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/ProtokolBlok.vhd" in Library work.
-Entity <protokolblok> compiled.
-Entity <protokolblok> (Architecture <behavioral>) compiled.
-Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd" in Library work.
+Compiling vhdl file "/home/Mads/Oscilloscope_Project/fpga/SPI_Test/ProtokolBlok.vhd" in Library work.
+Architecture behavioral of Entity protokolblok is up to date.
+Compiling vhdl file "/home/Mads/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd" in Library work.
 Architecture behavioral of Entity skifte_reg_til_parallel is up to date.
-Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/TiminComponent.vhd" in Library work.
-Architecture behavioral of Entity timingcomponent is up to date.
-Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/SigGenSPIControl.vhd" in Library work.
+Compiling vhdl file "/home/Mads/Oscilloscope_Project/fpga/SPI_Test/TiminComponent.vhd" in Library work.
+Entity <timingcomponent> compiled.
+Entity <timingcomponent> (Architecture <behavioral>) compiled.
+Compiling vhdl file "/home/Mads/Oscilloscope_Project/fpga/SPI_Test/SigGenSPIControl.vhd" in Library work.
 Architecture behavioral of Entity siggenspicontrol is up to date.
-Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd" in Library work.
-Entity <siggendatapath> compiled.
-Entity <siggendatapath> (Architecture <behavioral>) compiled.
-Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SevenSeg5.vhd" in Library work.
+Compiling vhdl file "/home/Mads/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd" in Library work.
+Architecture behavioral of Entity siggendatapath is up to date.
+Compiling vhdl file "/home/Mads/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SevenSeg5.vhd" in Library work.
 Architecture sevenseg_arch of Entity sevenseg5 is up to date.
-Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/DivClk (1).vhd" in Library work.
+Compiling vhdl file "/home/Mads/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/DivClk (1).vhd" in Library work.
 Architecture divclk_arch of Entity divclk is up to date.
-Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/DispMux.vhd" in Library work.
+Compiling vhdl file "/home/Mads/Oscilloscope_Project/fpga/SignalGenerator/DispMux.vhd" in Library work.
 Architecture behavioral of Entity dispmux is up to date.
-Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/BTNdb.vhd" in Library work.
+Compiling vhdl file "/home/Mads/Oscilloscope_Project/fpga/SignalGenerator/BTNdb.vhd" in Library work.
 Architecture behavioral of Entity btndb is up to date.
-Compiling vhdl file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenTop.vhd" in Library work.
+Compiling vhdl file "/home/Mads/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenTop.vhd" in Library work.
 Architecture behavioral of Entity siggentop is up to date.
 
 =========================================================================
@@ -198,7 +200,7 @@ Entity <TimingComponent> analyzed. Unit <TimingComponent> generated.
 
 Analyzing generic Entity <SigGenDatapath> in library <work> (Architecture <Behavioral>).
 	PWMinc = "0000001"
-WARNING:Xst:2211 - "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd" line 62: Instantiating black box module <SinusLUT>.
+WARNING:Xst:2211 - "/home/Mads/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd" line 62: Instantiating black box module <SinusLUT>.
 Entity <SigGenDatapath> analyzed. Unit <SigGenDatapath> generated.
 
 Analyzing Entity <SevenSeg5> in library <work> (Architecture <SevenSeg_arch>).
@@ -221,7 +223,7 @@ Entity <BTNdb> analyzed. Unit <BTNdb> generated.
 Performing bidirectional port resolution...
 
 Synthesizing Unit <SevenSeg5>.
-    Related source file is "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SevenSeg5.vhd".
+    Related source file is "/home/Mads/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SevenSeg5.vhd".
     Found 16x16-bit ROM for signal <DataN$rom0000>.
     Found 4-bit register for signal <an>.
     Found 8-bit register for signal <cat>.
@@ -239,7 +241,7 @@ Unit <SevenSeg5> synthesized.
 
 
 Synthesizing Unit <DivClk>.
-    Related source file is "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/DivClk (1).vhd".
+    Related source file is "/home/Mads/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/DivClk (1).vhd".
     Found 1-bit register for signal <Clk1_D>.
     Found 25-bit up counter for signal <Cnt1>.
     Summary:
@@ -249,7 +251,7 @@ Unit <DivClk> synthesized.
 
 
 Synthesizing Unit <DispMux>.
-    Related source file is "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/DispMux.vhd".
+    Related source file is "/home/Mads/Oscilloscope_Project/fpga/SignalGenerator/DispMux.vhd".
     Found finite state machine <FSM_0> for signal <DispSel>.
     -----------------------------------------------------------------------
     | States             | 3                                              |
@@ -272,7 +274,7 @@ Unit <DispMux> synthesized.
 
 
 Synthesizing Unit <BTNdb>.
-    Related source file is "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/BTNdb.vhd".
+    Related source file is "/home/Mads/Oscilloscope_Project/fpga/SignalGenerator/BTNdb.vhd".
     Found finite state machine <FSM_1> for signal <State>.
     -----------------------------------------------------------------------
     | States             | 4                                              |
@@ -295,7 +297,7 @@ Unit <BTNdb> synthesized.
 
 
 Synthesizing Unit <Skifte_reg_til_Parallel>.
-    Related source file is "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd".
+    Related source file is "/home/Mads/Oscilloscope_Project/fpga/SPI_Test/Skifte_reg_til_Parallel.vhd".
     Found 8-bit register for signal <skift_reg>.
     Summary:
 	inferred   8 D-type flip-flop(s).
@@ -303,7 +305,7 @@ Unit <Skifte_reg_til_Parallel> synthesized.
 
 
 Synthesizing Unit <TimingComponent>.
-    Related source file is "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/TiminComponent.vhd".
+    Related source file is "/home/Mads/Oscilloscope_Project/fpga/SPI_Test/TiminComponent.vhd".
     Found 1-bit register for signal <SSnotOld>.
     Found 1-bit register for signal <SSnotSync>.
     Summary:
@@ -312,7 +314,7 @@ Unit <TimingComponent> synthesized.
 
 
 Synthesizing Unit <std_8bit_reg>.
-    Related source file is "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/Register.vhd".
+    Related source file is "/home/Mads/Oscilloscope_Project/fpga/SPI_Test/Register.vhd".
     Found 8-bit register for signal <data_out>.
     Summary:
 	inferred   8 D-type flip-flop(s).
@@ -320,7 +322,7 @@ Unit <std_8bit_reg> synthesized.
 
 
 Synthesizing Unit <std_3bit_reg>.
-    Related source file is "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/std_2bit_reg.vhd".
+    Related source file is "/home/Mads/Oscilloscope_Project/fpga/SignalGenerator/std_2bit_reg.vhd".
     Found 3-bit register for signal <data_out>.
     Summary:
 	inferred   3 D-type flip-flop(s).
@@ -328,7 +330,7 @@ Unit <std_3bit_reg> synthesized.
 
 
 Synthesizing Unit <std_1bit_reg>.
-    Related source file is "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/std_1bit_reg.vhd".
+    Related source file is "/home/Mads/Oscilloscope_Project/fpga/SignalGenerator/std_1bit_reg.vhd".
     Found 1-bit register for signal <data_out>.
     Summary:
 	inferred   1 D-type flip-flop(s).
@@ -336,7 +338,7 @@ Unit <std_1bit_reg> synthesized.
 
 
 Synthesizing Unit <SigGenDatapath>.
-    Related source file is "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd".
+    Related source file is "/home/Mads/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd".
 WARNING:Xst:737 - Found 8-bit latch for signal <Sig>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
 INFO:Xst:2371 - HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
     Found 16-bit adder for signal <MulC$addsub0000> created at line 114.
@@ -362,7 +364,7 @@ Unit <SigGenDatapath> synthesized.
 
 
 Synthesizing Unit <ProtokolBlok>.
-    Related source file is "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/ProtokolBlok.vhd".
+    Related source file is "/home/Mads/Oscilloscope_Project/fpga/SPI_Test/ProtokolBlok.vhd".
     Found finite state machine <FSM_2> for signal <state>.
     -----------------------------------------------------------------------
     | States             | 8                                              |
@@ -386,10 +388,10 @@ Synthesizing Unit <ProtokolBlok>.
     Found 1-bit xor2 for signal <Chk$xor0009> created at line 36.
     Found 1-bit xor2 for signal <Chk$xor0010> created at line 36.
     Found 1-bit xor2 for signal <Chk$xor0011> created at line 36.
-    Found 16-bit comparator greater for signal <OverFlag$cmp_gt0000> created at line 143.
+    Found 16-bit comparator greater for signal <OverFlag$cmp_gt0000> created at line 145.
     Found 1-bit register for signal <ShapeEN_prev>.
     Found 16-bit up counter for signal <TestCnt>.
-    Found 16-bit comparator less for signal <UnderFlag$cmp_lt0000> created at line 136.
+    Found 16-bit comparator less for signal <UnderFlag$cmp_lt0000> created at line 138.
     Summary:
 	inferred   1 Finite State Machine(s).
 	inferred   1 Counter(s).
@@ -399,12 +401,12 @@ Unit <ProtokolBlok> synthesized.
 
 
 Synthesizing Unit <SigGenSPIControl>.
-    Related source file is "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/SigGenSPIControl.vhd".
+    Related source file is "/home/Mads/Oscilloscope_Project/fpga/SPI_Test/SigGenSPIControl.vhd".
 Unit <SigGenSPIControl> synthesized.
 
 
 Synthesizing Unit <SigGenTop>.
-    Related source file is "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenTop.vhd".
+    Related source file is "/home/Mads/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenTop.vhd".
 Unit <SigGenTop> synthesized.
 
 
@@ -968,12 +970,13 @@ Offset:              4.283ns (Levels of Logic = 1)
 =========================================================================
 
 
-Total REAL time to Xst completion: 7.00 secs
-Total CPU time to Xst completion: 7.39 secs
+Total REAL time to Xst completion: 11.00 secs
+Total CPU time to Xst completion: 8.41 secs
  
 --> 
 
-Total memory usage is 4527048 kilobytes
+
+Total memory usage is 524672 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :   11 (   0 filtered)

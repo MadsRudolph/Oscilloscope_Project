@@ -35,7 +35,7 @@ begin
 
 	if Reset = '1' then
 		SSnotOld <= '0'; -- Nulstiller tidligere SSnot værdi
-	elsif rising_edge(Clk) thenSS
+	elsif rising_edge(Clk) then
 		SSnotOld <= SSnotSync; -- Gemmer forrige SSNOT værdi
 
 	end if;
