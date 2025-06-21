@@ -14,14 +14,21 @@
 #include "ADC.h"           // Include ADC initialization functions
 #include "SPI.h"           // Include SPI communication functions
 #include "uart.h"          // Includes uart functions
-
+#include <util/delay.h>    // Include delay functions
 // Declare parse_uart1_packet prototype
 void parse_uart1_packet(void);
 
 // Define maximum buffer size for dynamic record length
 #define MAX_RECORD_LENGTH 1000
-volatile uint8_t adc_samples[MAX_RECORD_LENGTH]; // support dynamic size
-volatile uint16_t record_length = 100;           // default, can be changed by SEND
+volatile uint8_t buffer_a[MAX_RECORD_LENGTH]; // triple buffer A
+volatile uint8_t buffer_b[MAX_RECORD_LENGTH]; // triple buffer B
+volatile uint8_t buffer_c[MAX_RECORD_LENGTH]; // triple buffer C
+volatile uint8_t *active_buffer = buffer_a;   // buffer we write into
+volatile uint8_t *send_buffer = buffer_b;     // buffer we send from
+volatile uint8_t *standby_buffer = buffer_c;  // next available buffer
+volatile bool buffer_in_use = false;          // New flag
+
+volatile uint16_t record_length = 100; // default, can be changed by SEND
 
 // ADC control flags
 volatile uint16_t sample_index = 0;
@@ -67,13 +74,24 @@ ISR(TIMER1_COMPB_vect)
 {
     if (sample_index < record_length)
     {
-        adc_samples[sample_index++] = ADCH; // 8-bit ADC value from ADC0
+        active_buffer[sample_index++] = ADCH;
     }
-    else
+    else if (!buffer_in_use) // Prevent overwrite!
     {
+        cli();
         buffer_ready = true;
+        buffer_in_use = true;
+
+        // Rotate triple buffers
+        uint8_t *temp = (uint8_t *)standby_buffer;
+        standby_buffer = send_buffer;
+        send_buffer = active_buffer;
+        active_buffer = temp;
+
         sample_index = 0;
+        sei();
     }
+    // else: buffer_in_use == true → skip until main loop clears it
 }
 
 int main(void)
@@ -92,7 +110,7 @@ int main(void)
             uart1_init(16);                              // Initialize UART1 for LabVIEW (115200 baud, U2X1 enabled)
             uart_send_string("System initialized.\r\n"); // Debug message via UART0
             DDRD |= (1 << PD7);                          // Set PD7 as output for reset signal
-            PORTD &= ~(1 << PD7);                         // Set PD7 low
+            PORTD &= ~(1 << PD7);                        // Set PD7 low
 
             sei();
             state = state_Run; // Changes state
@@ -108,13 +126,20 @@ int main(void)
 
             if (buffer_ready)
             {
-                send_oscilloscope_packet((uint8_t *)adc_samples, record_length);
+                // --- Only protect flag swapping ---
+                cli();
                 buffer_ready = false;
+                buffer_in_use = false;
+                sei();
 
+                // --- Transmission runs with interrupts ON ---
+                send_oscilloscope_packet((uint8_t *)send_buffer, record_length);
+                _delay_ms(9); // Wait for UART transmission to complete
                 uart_send_string("\rSample: ");
                 char buf[16];
-                sprintf(buf, "%02X      ", adc_samples[0]);
+                sprintf(buf, "%02X      ", send_buffer[0]);
                 uart_send_string(buf);
+
             }
 
             if (run_stop_flag)
