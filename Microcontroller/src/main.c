@@ -11,10 +11,13 @@
 #include <stdbool.h>       // Include boolean support
 #include <avr/interrupt.h> // Include interrupt handling
 #include <stdint.h>        // Include fixed width integer types
+#include <util/delay.h>    // Includes delay function
 #include "ADC.h"           // Include ADC initialization functions
-#include "SPI.h"           // Include SPI communication functions
-#include "uart.h"          // Includes uart functions
-#include <util/delay.h>    // Include delay functions
+#include "SPI.h"           // Include SPI init functions
+#include "UART.h"          // Includes uart init functions
+#include "UART1_comm.h"    // Includes uart1 communication functions
+#include "SPI_comm.h"      // Include SPI communication functions
+
 // Declare parse_uart1_packet prototype
 void parse_uart1_packet(void);
 
@@ -139,7 +142,6 @@ int main(void)
                 char buf[16];
                 sprintf(buf, "%02X      ", send_buffer[0]);
                 uart_send_string(buf);
-
             }
 
             if (run_stop_flag)

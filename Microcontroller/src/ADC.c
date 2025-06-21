@@ -1,3 +1,5 @@
+// ## Program developed by Mads Rodulph and Sigurd Hestbech Christiansen ##
+// ## Last edited: 21-6-2025 ##
 // ## This file contains ADC and autotrigger initialization functions ##
 // ## References to datasheet pages are marked as S.xxx for Atmega2560 ##
 
