@@ -44,9 +44,9 @@ Setup/Hold to clock Clk
             |Max Setup to|Max Hold to |                  | Clock  |
 Source      | clk (edge) | clk (edge) |Internal Clock(s) | Phase  |
 ------------+------------+------------+------------------+--------+
-BTN1        |    1.428(R)|    0.037(R)|Clk_BUFGP         |   0.000|
-BTN3        |    1.136(R)|    0.275(R)|Clk_BUFGP         |   0.000|
-SSnot       |    1.058(R)|    0.335(R)|Clk_BUFGP         |   0.000|
+BTN1        |    0.945(R)|    0.424(R)|Clk_BUFGP         |   0.000|
+BTN3        |    1.502(R)|    0.197(R)|Clk_BUFGP         |   0.000|
+SSnot       |    1.029(R)|    0.355(R)|Clk_BUFGP         |   0.000|
 ------------+------------+------------+------------------+--------+
 
 Setup/Hold to clock SClk
@@ -54,7 +54,7 @@ Setup/Hold to clock SClk
             |Max Setup to|Max Hold to |                  | Clock  |
 Source      | clk (edge) | clk (edge) |Internal Clock(s) | Phase  |
 ------------+------------+------------+------------------+--------+
-MOSI        |   -0.247(R)|    1.797(R)|SClk_BUFGP        |   0.000|
+MOSI        |   -0.389(R)|    1.910(R)|SClk_BUFGP        |   0.000|
 ------------+------------+------------+------------------+--------+
 
 Clock Clk to Pad
@@ -62,11 +62,11 @@ Clock Clk to Pad
             | clk (edge) |                  | Clock  |
 Destination |   to PAD   |Internal Clock(s) | Phase  |
 ------------+------------+------------------+--------+
-LD          |    8.347(R)|Clk_BUFGP         |   0.000|
-LD2         |   10.804(R)|Clk_BUFGP         |   0.000|
-LD3         |   13.189(R)|Clk_BUFGP         |   0.000|
-LD4         |   12.913(R)|Clk_BUFGP         |   0.000|
-PWMOut      |   37.542(R)|Clk_BUFGP         |   0.000|
+LD          |    8.585(R)|Clk_BUFGP         |   0.000|
+LD2         |   10.826(R)|Clk_BUFGP         |   0.000|
+LD3         |   12.978(R)|Clk_BUFGP         |   0.000|
+LD4         |   12.712(R)|Clk_BUFGP         |   0.000|
+PWMOut      |   36.444(R)|Clk_BUFGP         |   0.000|
 ------------+------------+------------------+--------+
 
 Clock to Setup on destination clock Clk
@@ -74,8 +74,8 @@ Clock to Setup on destination clock Clk
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-Clk            |    5.303|         |         |         |
-SClk           |    7.949|         |         |         |
+Clk            |    5.385|         |         |         |
+SClk           |    7.651|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock SClk
@@ -83,11 +83,11 @@ Clock to Setup on destination clock SClk
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-SClk           |    1.566|         |         |         |
+SClk           |    1.863|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 
-Analysis completed Thu Jun 19 10:07:08 2025 
+Analysis completed Sun Jun 22 10:55:23 2025 
 --------------------------------------------------------------------------------
 
 Trace Settings:

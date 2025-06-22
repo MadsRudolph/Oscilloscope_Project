@@ -21,7 +21,7 @@ begin
 Process(Reset, Clk)
 begin 
 	if reset ='1' then 
-		SSnotSync <= '0';
+		SSnotSync <= '1';
 	elsif rising_edge(Clk) then --  SSnot signal fra Master synkroniseres med intern clock i FPGA
 		SSnotSync <= SSnot; 
 		
@@ -34,8 +34,8 @@ process(Reset, Clk)
 begin
 
 	if Reset = '1' then
-		SSnotOld <= '0'; -- Nulstiller tidligere SSnot værdi
-	elsif rising_edge(Clk) thenSS
+		SSnotOld <= '1'; -- Nulstiller tidligere SSnot værdi
+	elsif rising_edge(Clk) then
 		SSnotOld <= SSnotSync; -- Gemmer forrige SSNOT værdi
 
 	end if;

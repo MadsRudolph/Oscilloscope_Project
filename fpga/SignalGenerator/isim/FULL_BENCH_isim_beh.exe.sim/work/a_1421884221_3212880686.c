@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "C:/Users/s245946/Oscilloscope_Project/fpga/SignalGenerator/BTNdb.vhd";
+static const char *ng0 = "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/BTNdb.vhd";
 extern char *IEEE_P_3620187407;
 
 char *ieee_p_3620187407_sub_674691591_3965413181(char *, char *, char *, char *, unsigned char );

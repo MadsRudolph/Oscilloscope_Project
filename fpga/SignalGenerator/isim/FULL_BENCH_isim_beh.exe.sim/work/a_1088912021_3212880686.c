@@ -21,13 +21,13 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "C:/Users/s245946/Oscilloscope_Project/fpga/SignalGenerator/std_2bit_reg.vhd";
+static const char *ng0 = "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/std_2bit_reg.vhd";
 extern char *IEEE_P_2592010699;
 
 unsigned char ieee_p_2592010699_sub_1744673427_503743352(char *, char *, unsigned int , unsigned int );
 
 
-static void work_a_4002409220_3212880686_p_0(char *t0)
+static void work_a_1088912021_3212880686_p_0(char *t0)
 {
     char *t1;
     char *t2;
@@ -60,16 +60,16 @@ LAB3:    t1 = (t0 + 3152);
 
 LAB1:    return;
 LAB2:    xsi_set_current_line(18, ng0);
-    t1 = xsi_get_transient_memory(2U);
-    memset(t1, 0, 2U);
+    t1 = xsi_get_transient_memory(3U);
+    memset(t1, 0, 3U);
     t5 = t1;
-    memset(t5, (unsigned char)2, 2U);
+    memset(t5, (unsigned char)2, 3U);
     t6 = (t0 + 3232);
     t7 = (t6 + 56U);
     t8 = *((char **)t7);
     t9 = (t8 + 56U);
     t10 = *((char **)t9);
-    memcpy(t10, t1, 2U);
+    memcpy(t10, t1, 3U);
     xsi_driver_first_trans_fast_port(t6);
     goto LAB3;
 
@@ -92,16 +92,16 @@ LAB7:    xsi_set_current_line(21, ng0);
     t8 = *((char **)t7);
     t9 = (t8 + 56U);
     t10 = *((char **)t9);
-    memcpy(t10, t6, 2U);
+    memcpy(t10, t6, 3U);
     xsi_driver_first_trans_fast_port(t2);
     goto LAB8;
 
 }
 
 
-extern void work_a_4002409220_3212880686_init()
+extern void work_a_1088912021_3212880686_init()
 {
-	static char *pe[] = {(void *)work_a_4002409220_3212880686_p_0};
-	xsi_register_didat("work_a_4002409220_3212880686", "isim/FULL_BENCH_isim_beh.exe.sim/work/a_4002409220_3212880686.didat");
+	static char *pe[] = {(void *)work_a_1088912021_3212880686_p_0};
+	xsi_register_didat("work_a_1088912021_3212880686", "isim/FULL_BENCH_isim_beh.exe.sim/work/a_1088912021_3212880686.didat");
 	xsi_register_executes(pe);
 }

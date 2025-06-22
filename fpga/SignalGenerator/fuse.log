@@ -1,23 +1,23 @@
-Running: P:\Xilinx\14.1\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -o C:/Users/s245946/Oscilloscope_Project/fpga/SignalGenerator/FULL_BENCH_isim_beh.exe -prj C:/Users/s245946/Oscilloscope_Project/fpga/SignalGenerator/FULL_BENCH_beh.prj work.FULL_BENCH 
+Running: P:\Xilinx\14.1\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -o C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/FULL_BENCH_isim_beh.exe -prj C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/FULL_BENCH_beh.prj work.FULL_BENCH 
 ISim P.15xf (signature 0xc3576ebc)
 Number of CPUs detected in this system: 8
 Turning on mult-threading, number of parallel sub-compilation jobs: 16 
 Determining compilation order of HDL files
-Parsing VHDL file "C:/Users/s245946/Oscilloscope_Project/fpga/SignalGenerator/ipcore_dir/SinusLUT.vhd" into library work
-Parsing VHDL file "C:/Users/s245946/Oscilloscope_Project/fpga/SignalGenerator/../SPI_Test/Register.vhd" into library work
-Parsing VHDL file "C:/Users/s245946/Oscilloscope_Project/fpga/SignalGenerator/std_2bit_reg.vhd" into library work
-Parsing VHDL file "C:/Users/s245946/Oscilloscope_Project/fpga/SignalGenerator/std_1bit_reg.vhd" into library work
-Parsing VHDL file "C:/Users/s245946/Oscilloscope_Project/fpga/SignalGenerator/../SPI_Test/TiminComponent.vhd" into library work
-Parsing VHDL file "C:/Users/s245946/Oscilloscope_Project/fpga/SignalGenerator/../SPI_Test/Skifte_reg_til_Parallel.vhd" into library work
-Parsing VHDL file "C:/Users/s245946/Oscilloscope_Project/fpga/SignalGenerator/../SPI_Test/ProtokolBlok.vhd" into library work
-Parsing VHDL file "C:/Users/s245946/Oscilloscope_Project/fpga/SignalGenerator/../SPI_Test/SigGenSPIControl.vhd" into library work
-Parsing VHDL file "C:/Users/s245946/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd" into library work
-Parsing VHDL file "C:/Users/s245946/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SevenSeg5.vhd" into library work
-Parsing VHDL file "C:/Users/s245946/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/DivClk (1).vhd" into library work
-Parsing VHDL file "C:/Users/s245946/Oscilloscope_Project/fpga/SignalGenerator/DispMux.vhd" into library work
-Parsing VHDL file "C:/Users/s245946/Oscilloscope_Project/fpga/SignalGenerator/BTNdb.vhd" into library work
-Parsing VHDL file "C:/Users/s245946/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenTop.vhd" into library work
-Parsing VHDL file "C:/Users/s245946/Oscilloscope_Project/fpga/SignalGenerator/FULL_BENCH.vhd" into library work
+Parsing VHDL file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/ipcore_dir/SinusLUT.vhd" into library work
+Parsing VHDL file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/../SPI_Test/Register.vhd" into library work
+Parsing VHDL file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/std_2bit_reg.vhd" into library work
+Parsing VHDL file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/std_1bit_reg.vhd" into library work
+Parsing VHDL file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/../SPI_Test/TiminComponent.vhd" into library work
+Parsing VHDL file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/../SPI_Test/Skifte_reg_til_Parallel.vhd" into library work
+Parsing VHDL file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/../SPI_Test/ProtokolBlok.vhd" into library work
+Parsing VHDL file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/../SPI_Test/SigGenSPIControl.vhd" into library work
+Parsing VHDL file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenDatapath.vhd" into library work
+Parsing VHDL file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SevenSeg5.vhd" into library work
+Parsing VHDL file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/DivClk (1).vhd" into library work
+Parsing VHDL file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/DispMux.vhd" into library work
+Parsing VHDL file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/BTNdb.vhd" into library work
+Parsing VHDL file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/Opgivede filer til signalgnerator/SigGenTop.vhd" into library work
+Parsing VHDL file "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/FULL_BENCH.vhd" into library work
 Starting static elaboration
 Completed static elaboration
 Compiling package standard
@@ -25,7 +25,7 @@ Compiling package std_logic_1164
 Compiling package std_logic_arith
 Compiling package std_logic_unsigned
 Compiling architecture behavioral of entity std_8bit_reg [std_8bit_reg_default]
-Compiling architecture behavioral of entity std_2bit_reg [std_2bit_reg_default]
+Compiling architecture behavioral of entity std_3bit_reg [std_3bit_reg_default]
 Compiling architecture behavioral of entity std_1bit_reg [std_1bit_reg_default]
 Compiling architecture behavioral of entity ProtokolBlok [protokolblok_default]
 Compiling architecture behavioral of entity Skifte_reg_til_Parallel [skifte_reg_til_parallel_default]
@@ -48,6 +48,6 @@ Compiling architecture behavior of entity full_bench
 Time Resolution for simulation is 1ps.
 Waiting for 9 sub-compilation(s) to finish...
 Compiled 43 VHDL Units
-Built simulation executable C:/Users/s245946/Oscilloscope_Project/fpga/SignalGenerator/FULL_BENCH_isim_beh.exe
-Fuse Memory Usage: 45136 KB
-Fuse CPU Usage: 1437 ms
+Built simulation executable C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/FULL_BENCH_isim_beh.exe
+Fuse Memory Usage: 45312 KB
+Fuse CPU Usage: 1468 ms

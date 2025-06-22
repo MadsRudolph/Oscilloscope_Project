@@ -10,7 +10,7 @@ NET "LD2" LOC = N4;
 NET "LD3" LOC = G1;
 NET "LD4" LOC = P4;
 #BTN signals
-NET "BTN3" LOC = A7;
+NET "BTN3" LOC = A13;
 NET "BTN1" LOC = C11;
 #Assignment of CLK
 NET "Clk" LOC = B8;

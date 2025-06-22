@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "C:/Users/s245946/Oscilloscope_Project/fpga/SignalGenerator/DispMux.vhd";
+static const char *ng0 = "C:/Users/s240324/Oscilloscope_Project/fpga/SignalGenerator/DispMux.vhd";
 extern char *IEEE_P_2592010699;
 extern char *IEEE_P_3620187407;
 
@@ -70,7 +70,7 @@ LAB3:    t1 = (t0 + 3880);
 
 LAB1:    return;
 LAB2:    xsi_set_current_line(26, ng0);
-    t1 = (t0 + 6387);
+    t1 = (t0 + 6388);
     t6 = (t0 + 3976);
     t7 = (t6 + 56U);
     t8 = *((char **)t7);
@@ -94,24 +94,24 @@ LAB8:    goto LAB3;
 LAB7:    xsi_set_current_line(29, ng0);
     t2 = (t0 + 2152U);
     t6 = *((char **)t2);
-    t2 = (t0 + 6389);
+    t2 = (t0 + 6390);
     t12 = xsi_mem_cmp(t2, t6, 2U);
     if (t12 == 1)
         goto LAB11;
 
-LAB15:    t8 = (t0 + 6391);
+LAB15:    t8 = (t0 + 6392);
     t13 = xsi_mem_cmp(t8, t6, 2U);
     if (t13 == 1)
         goto LAB12;
 
-LAB16:    t10 = (t0 + 6393);
+LAB16:    t10 = (t0 + 6394);
     t15 = xsi_mem_cmp(t10, t6, 2U);
     if (t15 == 1)
         goto LAB13;
 
 LAB17:
 LAB14:    xsi_set_current_line(33, ng0);
-    t1 = (t0 + 6401);
+    t1 = (t0 + 6402);
     t5 = (t0 + 3976);
     t6 = (t5 + 56U);
     t7 = *((char **)t6);
@@ -123,7 +123,7 @@ LAB14:    xsi_set_current_line(33, ng0);
 LAB10:    goto LAB8;
 
 LAB11:    xsi_set_current_line(30, ng0);
-    t16 = (t0 + 6395);
+    t16 = (t0 + 6396);
     t18 = (t0 + 3976);
     t19 = (t18 + 56U);
     t20 = *((char **)t19);
@@ -134,7 +134,7 @@ LAB11:    xsi_set_current_line(30, ng0);
     goto LAB10;
 
 LAB12:    xsi_set_current_line(31, ng0);
-    t1 = (t0 + 6397);
+    t1 = (t0 + 6398);
     t5 = (t0 + 3976);
     t6 = (t5 + 56U);
     t7 = *((char **)t6);
@@ -145,7 +145,7 @@ LAB12:    xsi_set_current_line(31, ng0);
     goto LAB10;
 
 LAB13:    xsi_set_current_line(32, ng0);
-    t1 = (t0 + 6399);
+    t1 = (t0 + 6400);
     t5 = (t0 + 3976);
     t6 = (t5 + 56U);
     t7 = *((char **)t6);
@@ -197,7 +197,7 @@ LAB0:    xsi_set_current_line(44, ng0);
     t1 = (t0 + 2152U);
     t2 = *((char **)t1);
     t1 = (t0 + 6340U);
-    t3 = (t0 + 6403);
+    t3 = (t0 + 6404);
     t6 = (t5 + 0U);
     t7 = (t6 + 0U);
     *((int *)t7) = 0;
@@ -260,8 +260,8 @@ LAB3:    t1 = (t0 + 3896);
 
 LAB1:    return;
 LAB2:    xsi_set_current_line(45, ng0);
-    t7 = (t0 + 6405);
-    t12 = (t0 + 6417);
+    t7 = (t0 + 6406);
+    t12 = (t0 + 6418);
     t16 = ((IEEE_P_2592010699) + 4024);
     t18 = (t17 + 0U);
     t19 = (t18 + 0U);
@@ -279,10 +279,10 @@ LAB2:    xsi_set_current_line(45, ng0);
     t22 = (t19 + 0U);
     *((int *)t22) = 0;
     t22 = (t19 + 4U);
-    *((int *)t22) = 5;
+    *((int *)t22) = 4;
     t22 = (t19 + 8U);
     *((int *)t22) = 1;
-    t23 = (5 - 0);
+    t23 = (4 - 0);
     t9 = (t23 * 1);
     t9 = (t9 + 1);
     t22 = (t19 + 12U);
@@ -293,8 +293,8 @@ LAB2:    xsi_set_current_line(45, ng0);
     t26 = ((IEEE_P_2592010699) + 4024);
     t27 = (t0 + 6276U);
     t22 = xsi_base_array_concat(t22, t25, t26, (char)97, t14, t15, (char)97, t24, t27, (char)101);
-    t9 = (12U + 6U);
-    t28 = (t9 + 2U);
+    t9 = (12U + 5U);
+    t28 = (t9 + 3U);
     t29 = (20U != t28);
     if (t29 == 1)
         goto LAB5;

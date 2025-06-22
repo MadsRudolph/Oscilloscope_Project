@@ -21,7 +21,7 @@ entity SigGenTop is
 end SigGenTop;
 
 architecture Behavioral of SigGenTop is
-signal DispClk, SigEN, BTN1db, BTN3db, LED, LED2, LED3, LED4: std_logic;
+signal DispClk, SigEN, BTN1db, LED, LED2, LED3, LED4: std_logic;
 signal Disp: std_logic_vector(19 downto 0); 
 signal Amp, Freq : std_logic_vector(7 downto 0);
 signal Shape : std_logic_vector(2 downto 0);
@@ -31,7 +31,7 @@ begin
 	 
 U1: entity WORK.SigGenSPIControl
 	 port map (CLK => Clk,
-           Reset => BTN3db,
+           Reset => BTN3,
            SClk => SClk,
            MOSI => MOSI,
            SSnot => SSnot,
@@ -46,15 +46,15 @@ U1: entity WORK.SigGenSPIControl
 			  
 							
 U2: entity WORK.SigGenDataPath generic map (PWMinc => "0000001") 
-    port map(Reset => BTN3db, Clk => Clk, Shape => Shape(2 downto 0), Ampl => Amp, Freq => Freq, SigEN => SigEN, PWMOut => PWMOut);
+    port map(Reset => BTN3, Clk => Clk, Shape => Shape(2 downto 0), Ampl => Amp, Freq => Freq, SigEN => SigEN, PWMOut => PWMOut);
 
 
 U3: entity WORK.SevenSeg5 
-    port map(Reset => BTN3db, Clk => DispClk, Data => Disp, An => An, Cat => Cat);  
+    port map(Reset => BTN3, Clk => DispClk, Data => Disp, An => An, Cat => Cat);  
 
 
 U4: entity WORK.DivClk 
-    port map(Reset => BTN3db, Clk => Clk, TimeP => 50e3, Clk1 => DispClk);
+    port map(Reset => BTN3, Clk => Clk, TimeP => 50e3, Clk1 => DispClk);
 
 
 LD <= LED; --Run signal
@@ -67,26 +67,20 @@ U5: entity WORK.DispMux
 			Amp => Amp,
 			Freq => Freq,
 			Clk => Clk,
-			Reset => BTN3db,
+			Reset => BTN3,
 			BTN1 => BTN1db,
 			Disp => Disp); 
 
  
 U6: entity WORK.BTNdb
 		port map( 
-			Reset => BTN3db,
+			Reset => BTN3,
 			Clk => Clk,
 			BTNin => BTN1,
 			BTNout => BTN1db 
 			);
 			
-U7: entity WORK.BTNdb
-		port map( 
-			Reset => BTN3db,
-			Clk => Clk,
-			BTNin => BTN3,
-			BTNout => BTN3db
-			);			
+
 	
 	
 end Behavioral;

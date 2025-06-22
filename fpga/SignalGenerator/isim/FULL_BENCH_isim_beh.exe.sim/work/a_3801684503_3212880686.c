@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "C:/Users/s245946/Oscilloscope_Project/fpga/SPI_Test/TiminComponent.vhd";
+static const char *ng0 = "C:/Users/s240324/Oscilloscope_Project/fpga/SPI_Test/TiminComponent.vhd";
 extern char *IEEE_P_2592010699;
 
 unsigned char ieee_p_2592010699_sub_1605435078_503743352(char *, unsigned char , unsigned char );
@@ -65,7 +65,7 @@ LAB2:    xsi_set_current_line(24, ng0);
     t6 = *((char **)t5);
     t7 = (t6 + 56U);
     t8 = *((char **)t7);
-    *((unsigned char *)t8) = (unsigned char)2;
+    *((unsigned char *)t8) = (unsigned char)3;
     xsi_driver_first_trans_fast(t1);
     goto LAB3;
 
@@ -120,7 +120,7 @@ LAB2:    xsi_set_current_line(37, ng0);
     t6 = *((char **)t5);
     t7 = (t6 + 56U);
     t8 = *((char **)t7);
-    *((unsigned char *)t8) = (unsigned char)2;
+    *((unsigned char *)t8) = (unsigned char)3;
     xsi_driver_first_trans_fast(t1);
     goto LAB3;
 
