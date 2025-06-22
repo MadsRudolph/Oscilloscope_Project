@@ -43,7 +43,7 @@ void spi_stress_test_10000_packets()
     uart_send_string(final_buf);
 }
 
-void transmit_signalgenerator_data(uint16_t amp, uint8_t freq, uint8_t shape)
+void transmit_signalgenerator_data(uint8_t amp, uint8_t freq, uint8_t shape)
 {
     unsigned int checksum = 0;
 
