@@ -48,6 +48,7 @@ void uart1_init(unsigned int ubrr)
 void uart1_send(char data)
 {
     while (!(UCSR1A & (1 << UDRE1)))
+
         ;        // Wait until data register is empty
     UDR1 = data; // Load data into register for transmission
 }
