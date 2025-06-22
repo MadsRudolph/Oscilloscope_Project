@@ -110,7 +110,8 @@ int main(void)
 
             if (buffer_ready)
             {
-                // prevent race condition during buffer flag update
+                // Disable interrupts while accessing shared buffers, to prevent them from being modified during transmission
+                // this is necessary to ensure data integrity as the ISR may write to the buffer while we are sending it
                 cli();
                 buffer_ready = false;
                 buffer_in_use = false;
