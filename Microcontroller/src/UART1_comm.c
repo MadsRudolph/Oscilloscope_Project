@@ -94,22 +94,6 @@ void send_generator_packet(uint8_t active, uint8_t shape, uint8_t ampl, uint8_t 
     uart1_send(0x00);
 }
 
-// Send oscilloscope sample rate and record length to LabVIEW (after SEND command)
-void send_scope_parameters_to_labview(uint16_t record_len, uint16_t s_rate)
-{
-    uart1_send(0x55); // sync
-    uart1_send(0xAA);
-    uart1_send(0x00);
-    uart1_send(0x09);                     // total length = 9 bytes
-    uart1_send(0x02);                     // packet type: OSCILLOSCOPE config (0x02)
-    uart1_send((s_rate >> 8) & 0xFF);     // sample rate MSB
-    uart1_send(s_rate & 0xFF);            // sample rate LSB
-    uart1_send((record_len >> 8) & 0xFF); // record len MSB
-    uart1_send(record_len & 0xFF);        // record len LSB
-    uart1_send(0x00);                     // checksum
-    uart1_send(0x00);
-}
-
 // Parse incoming LabVIEW packet and respond accordingly
 void parse_uart1_packet()
 {
