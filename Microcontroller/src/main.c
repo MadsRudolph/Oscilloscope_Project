@@ -29,36 +29,19 @@ volatile uint8_t buffer_c[MAX_RECORD_LENGTH]; // triple buffer C
 volatile uint8_t *active_buffer = buffer_a;   // buffer we write into
 volatile uint8_t *send_buffer = buffer_b;     // buffer we send from
 volatile uint8_t *standby_buffer = buffer_c;  // next available buffer
-volatile bool buffer_in_use = false;          // New flag
-
-volatile uint16_t record_length = 100; // default, can be changed by SEND
+volatile bool buffer_in_use = false;          // indicates if buffer is locked for transmission
+volatile uint16_t current_timer1_top = 200;   // ADC sampling rate control (OCR1A value)
+volatile uint16_t record_length = 100;        // number of samples per transmission
 
 // ADC control flags
-volatile uint16_t sample_index = 0;
-volatile bool buffer_ready = false;
+volatile uint16_t sample_index = 0; // current sample index into active buffer
+volatile bool buffer_ready = false; // signals that a full buffer is ready to send
 
 // BTN/SW state
 volatile uint8_t btn = 0;
 volatile uint8_t sw = 0;
-volatile uint8_t run_stress_test_flag = 0; // Triggered by START (BTN3) from LabVIEW
+volatile uint8_t run_stress_test_flag = 0; // triggered by LabVIEW START (BTN3)
 
-void print_uart1_packet()
-{
-    if (!uart1_packet_ready)
-        return;
-
-    uart_send_string("Received UART1 packet:\r\n");
-    for (uint8_t i = 0; i < uart1_rx_index; i++)
-    {
-        char buf[6];
-        sprintf(buf, "%02X ", uart1_rx_buffer[i]);
-        uart_send_string(buf);
-    }
-    uart_send_string("\r\n");
-
-    uart1_rx_index = 0;
-    uart1_packet_ready = 0;
-}
 // Enumeration for program states
 enum states
 {
@@ -69,9 +52,6 @@ enum states
 };
 static enum states state = state_init;
 
-// Current sample rate control
-volatile uint16_t current_timer1_top = 200;
-
 // Interrupt Service Routine (ISR) for TIMER1 Compare Match B (see ADC.c for more info)
 ISR(TIMER1_COMPB_vect)
 {
@@ -79,13 +59,13 @@ ISR(TIMER1_COMPB_vect)
     {
         active_buffer[sample_index++] = ADCH;
     }
-    else if (!buffer_in_use) // Prevent overwrite!
+    else if (!buffer_in_use)
     {
         cli();
         buffer_ready = true;
         buffer_in_use = true;
 
-        // Rotate triple buffers
+        // rotate buffers: standby → send → active
         uint8_t *temp = (uint8_t *)standby_buffer;
         standby_buffer = send_buffer;
         send_buffer = active_buffer;
@@ -94,29 +74,30 @@ ISR(TIMER1_COMPB_vect)
         sample_index = 0;
         sei();
     }
-    // else: buffer_in_use == true → skip until main loop clears it
+    // if buffer is still in use, skip storing until main clears it
 }
 
 int main(void)
 {
     while (1)
     {
-        parse_uart1_packet(); // Check for incoming UART1 packets
+        parse_uart1_packet(); // check for UART1 commands from LabVIEW
+
         switch (state)
         {
         case state_init:
 
-            init_ADC_kanal0();                           // Uncomment to initialize ADC0 with auto-trigger via Timer1 ***mayby make it so ADC refrencec is 3.3V this is not the case at the moment
-            init_timer1(current_timer1_top);             // Set ADC sample rate(10kHz) using Timer1, use formula: sample_rate = F_CPU / (8 * parameter)
-            master_init();                               // Initialize SPI master (see SPI.c for details)
-            uart_init(16);                               // Set a unsigned integer in the parameter to choose Baud rate (parameter(16) = Baud rate(115200)). Look up uart.c for more info
-            uart1_init(16);                              // Initialize UART1 for LabVIEW (115200 baud, U2X1 enabled)
-            uart_send_string("System initialized.\r\n"); // Debug message via UART0
-            DDRD |= (1 << PD7);                          // Set PD7 as output for reset signal
-            PORTD &= ~(1 << PD7);                        // Set PD7 low
+            init_ADC_kanal0();                           // configure ADC0 with auto-trigger via Timer1
+            init_timer1(current_timer1_top);             // configure Timer1 for ADC sampling
+            master_init();                               // initialize SPI as master
+            uart_init(16);                               // init UART0 (115200 baud)
+            uart1_init(16);                              // init UART1 (115200 baud, for LabVIEW)
+            uart_send_string("System initialized.\r\n"); // confirm system boot
+            DDRD |= (1 << PD7);                          // configure PD7 as output (FPGA reset)
+            PORTD &= ~(1 << PD7);                        // ensure reset line is low
 
-            sei();
-            state = state_Run; // Changes state
+            sei();             // enable global interrupts
+            state = state_Run; // move to Run state
             break;
 
         case state_Run:
@@ -129,15 +110,16 @@ int main(void)
 
             if (buffer_ready)
             {
-                // --- Only protect flag swapping ---
+                // prevent race condition during buffer flag update
                 cli();
                 buffer_ready = false;
                 buffer_in_use = false;
                 sei();
 
-                // --- Transmission runs with interrupts ON ---
+                // send data to LabVIEW
                 send_oscilloscope_packet((uint8_t *)send_buffer, record_length);
-                _delay_ms(9); // Wait for UART transmission to complete
+                _delay_ms(9); // wait for UART to complete before sending debug text
+
                 uart_send_string("\rSample: ");
                 char buf[16];
                 sprintf(buf, "%02X      ", send_buffer[0]);
@@ -153,12 +135,12 @@ int main(void)
         case state_Stop:
             if (!(run_stop_flag))
             {
-                state = state_Run; // If run_stop_flag is cleared, return to Run state
+                state = state_Run; // resume sampling when unpaused
             }
             break;
 
         case state_SPITest:
-            spi_stress_test_10000_packets(); // Call the function from SPI.c
+            spi_stress_test_10000_packets(); // run SPI communication stress test
             state = state_Run;
             break;
 

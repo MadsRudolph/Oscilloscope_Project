@@ -19,24 +19,21 @@ void uart_init(unsigned int ubrr)
     UCSR0C = (1 << UCSZ01) | (1 << UCSZ00);               // 8-bit data format (S.226)
     // No parity (UPM00 & UUPM01 = 0), 1 stopbit (USBS0 = 0), async mode (UMSEL00 & UMSEL01 = 0) (S.225-226)
     // One complete data cycle is 1 start-bit followed by 8 data-bit's followed by 1 stop-bit.
+    // UART0 used for debugging via USB serial terminal
 }
 
-// UART0: Send single byte (used for debug prints)
 void uart_send(char data)
 {
     while (!(UCSR0A & (1 << UDRE0)))
-        ;
-    UDR0 = data;
+        ;        // Wait until data register is empty
+    UDR0 = data; // Load data into register for transmission
 }
 
-// UART0: Send string
 void uart_send_string(const char *str)
 {
     while (*str)
-        uart_send(*str++);
+        uart_send(*str++); // Send each character in the string
 }
-
-// === LabVIEW UART1: Data and command communication ===
 
 void uart1_init(unsigned int ubrr)
 {
@@ -44,13 +41,13 @@ void uart1_init(unsigned int ubrr)
     UBRR1L = (unsigned char)ubrr;
     UCSR1A |= (1 << U2X1); // Double speed mode
     UCSR1B = (1 << RXEN1) | (1 << TXEN1) | (1 << RXCIE1);
-    UCSR1C = (1 << UCSZ11) | (1 << UCSZ10); // 8-bit
+    UCSR1C = (1 << UCSZ11) | (1 << UCSZ10); // 8-bit data format
+    // UART1 used for LabVIEW communication over RS232
 }
 
-// UART1: Send single byte (used for LabVIEW packets)
 void uart1_send(char data)
 {
     while (!(UCSR1A & (1 << UDRE1)))
-        ;
-    UDR1 = data;
+        ;        // Wait until data register is empty
+    UDR1 = data; // Load data into register for transmission
 }

@@ -7,7 +7,7 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
-// === Initialize ADC channel 0 (A0) with auto-trigger from Timer1 Compare Match B ===
+// Initialize ADC channel 0 (A0) with auto-trigger from Timer1 Compare Match B
 void init_ADC_kanal0()
 {
     ADMUX = (1 << ADLAR); // Use external voltage reffrence on AREF pin, left-adjust result (8-bit in ADCH) (S.289-290 & S.294)
@@ -22,7 +22,7 @@ void init_ADC_kanal0()
 
     ADCSRB = (1 << ADTS2) | (1 << ADTS0); // Auto Trigger Source = Timer1 Compare Match B (ADTS[2:0] = 101)
 
-    DIDR0 = (1 << ADC0D); // Disable digital input on ADC0 (optional but recommended) (S.295)n
+    DIDR0 = (1 << ADC0D); // Disable digital input on ADC0 (S.295)
 }
 
 // ADC ISR to acknowledge interrupt only
