@@ -55,7 +55,7 @@ ISR(USART1_RX_vect)
 // Send a full oscilloscope data packet to LabVIEW
 void send_oscilloscope_packet(uint8_t *samples, uint16_t length)
 {
-    TIMSK1 &= ~(1 << OCIE1B); // disable ADC sampling interrupt while transmitting
+    TIMSK1 &= ~(1 << OCIE1B); // Disable Timer1 Compare Match B interrupt, with the purpose of disableing ADC auto-trigger
 
     uart1_send(0x55); // sync byte 1
     uart1_send(0xAA); // sync byte 2
@@ -75,7 +75,7 @@ void send_oscilloscope_packet(uint8_t *samples, uint16_t length)
         ;                  // wait for final byte to be fully shifted out
     UCSR1A |= (1 << TXC1); // clear transmit complete flag
 
-    TIMSK1 |= (1 << OCIE1B); // re-enable ADC interrupt
+    TIMSK1 |= (1 << OCIE1B); // re-enable ADC auto-trigger
 }
 
 // Send current generator configuration back to LabVIEW
