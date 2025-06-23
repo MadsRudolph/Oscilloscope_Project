@@ -1,8 +1,11 @@
+
 # ⚡ Oscilloscope & Signal Generator — DTU 30082 Project
 
 Welcome to the **Oscilloscope_Project**, developed for the DTU course **30082 – Projektarbejde i Digitalteknik**.  
 This full-stack embedded system connects a **Basys 2 FPGA** signal generator, an **ATmega2560 oscilloscope**, and a **LabVIEW GUI**.  
 It visualizes analog signals in real time and allows waveform control through a robust UART/SPI interface.
+
+📄 **[Project Report (PDF)](docs/Oscilloscope_Project_Rapport.pdf)**
 
 ---
 
@@ -11,25 +14,10 @@ It visualizes analog signals in real time and allows waveform control through a 
 ```
 Oscilloscope_Project/
 ├── Microcontroller/           # PlatformIO-based ATmega2560 codebase
-│   ├── include/               # Header files
-│   ├── src/                   # Source files (ADC, UART, SPI, main.c, etc.)
-│   ├── lib/                   # Shared libs (if any)
-│   ├── test/                  # Unit or hardware test code
-│   └── platformio.ini         # PlatformIO build config
-│
 ├── fpga/                      # VHDL projects for signal generation
-│   ├── SignalGenerator/       # PWM and waveform logic
-│   ├── SPI_Test/              # SPI slave & protocol decoder
-│   ├── *.vhd, *.xise, *.gise  # Top-level ISE project and source files
-│
-├── docs/                      # Technical documentation and filter design
-│   ├── Kicad/FilterDesign/    # Filter schematics and sim files
-│   ├── LTspice/               # SPICE simulations for filter tuning
-│   └── osciloscop_projekt...  # Maple worksheet for low-pass filter math
-│
+├── docs/                      # Technical documentation and filter analysis
 ├── README.md
-├── .gitignore
-└── .gitkeep
+└── .gitignore
 ```
 
 ---
@@ -41,7 +29,7 @@ Design and implement a digital oscilloscope system that:
 - Sends sampled data to a LabVIEW GUI over UART
 - Receives waveform control commands via UART (shape, freq, amp)
 - Forwards these settings to an FPGA-based signal generator via SPI
-- Generates desired analog output through PWM + active low-pass filter
+- Generates analog output through PWM and active low-pass filtering
 
 ---
 
@@ -60,7 +48,7 @@ Design and implement a digital oscilloscope system that:
 
 ### UART (MCU ↔ LabVIEW)
 - **Baudrate:** `115200`, 8N1
-- **Protocol Format:**
+- **Packet Format:**
   ```
   [0x55, 0xAA] + Length (2B) + Type (1B) + Data + Checksum (2B)
   ```
@@ -68,12 +56,14 @@ Design and implement a digital oscilloscope system that:
   - `0x01` — Generator BTN pressed (with SW value)
   - `0x02` — Oscilloscope settings (sample rate, record length)
   - `0x03` — Start Bode plot
+  - `0x04` — Trigger SPI stress test
 
 ### SPI (MCU → FPGA)
-- 4-byte packets with sync and checksum:
+- 4-byte command packets:
   ```
   [0x55][ADDR][DATA][CHKSUM]
   ADDR: 1 = Amplitude, 2 = Frequency, 3 = Shape
+  CHKSUM: ADDR ^ 0x55 ^ DATA
   ```
 
 ---
@@ -83,41 +73,61 @@ Design and implement a digital oscilloscope system that:
 ### 🟨 Microcontroller (ATmega2560)
 - **ADC:** Timer1-triggered, 8-bit resolution (0–3.3V range)
 - **UART0:** Debug output
-- **UART1:** Full-duplex packet parser for LabVIEW GUI
-- **SPI Master:** Sends shape/freq/amp to FPGA
-- **Double buffer** system for uninterrupted sampling
+- **UART1:** LabVIEW interface with interrupt-driven RX
+- **SPI Master:** Sends waveform configuration to FPGA
+- **Double/triple buffer** system for uninterrupted sampling
+- **Stress test logic:** Transmits 10,000+ SPI packets after reset
 
 ### 🟦 FPGA (Basys 2)
-- **PWM Generator:** Output shaped using lookup tables
-- **SPI Slave:** Custom shift register receives waveform config
-- **Waveform Types:** Sine, Square, Sawtooth
-- **Low-pass filter** external circuit smooths PWM to analog
+- **PWM Generator:** Look-up tables drive pulse width per shape
+- **SPI Slave:** Bit-shift protocol with byte-level sync and XOR validation
+- **Waveform Types:** Constant, Square, Sawtooth, Triangle
+- **Low-pass filter:** External 2nd–4th order analog smoothing stage
 
 ### 🟥 LabVIEW GUI
 - **Tabs:** Generator, Oscilloscope, Bode Plot
-- **Live Display:** ADC waveform, sample control
-- **Checksum Algorithms:** ZERO16, LRC8, CRC16-CCITT
-- **Built-in simulator:** Protocol testing without hardware
+- **Live Display:** ADC waveform and waveform config feedback
+- **User Input:** Shape, amplitude, frequency, sample rate, record length
+- **Checksums:** Supports ZERO16, LRC8, CRC16-CCITT
+- **Simulator:** Emulate communication without hardware
 
 ---
 
 ## 🔍 Filter Design
 
-- Built with **KiCad** and **LTspice**
-- Verified performance of 2nd and 4th order low-pass filters
-- Adjusted for PWM ripple suppression and waveform fidelity
-- Transfer functions derived in **Maple**
+- Designed using **KiCad** and validated in **LTspice**
+- Active filters reduce PWM ripple for sine/sawtooth fidelity
+- Mathematical modeling and transfer function analysis via **Maple**
+
+### 📈 Output vs Filtered Waveform
+
+The following scope capture shows both the raw PWM signal (red) and the filtered analog output (blue), confirming the effectiveness of the low-pass filter design:
+
+![Filtered PWM Output](docs/combinedview.png)
+
+---
+
+## ⚠️ Known Limitations
+
+- ❌ **User cannot freely adjust sample rate**  
+  Sample rate is internally derived based on selected record length for optimal performance and continuous sampling.  
+  Manual control of the sample rate is not supported in the final version, though it was implemented in earlier iterations.
+  
+- ✅ **Triangle waveform added**  
+  Not part of original spec, added as an extra signal type.
 
 ---
 
 ## ✅ Features Implemented
 
-- [x] Timer-driven ADC (up to 10,000 sps)
-- [x] UART protocol parsing with packet integrity checks
-- [x] SPI communication with XOR checksums
-- [x] Real-time waveform generation via PWM
-- [x] Functional LabVIEW interface with return feedback
-- [x] Active analog filtering validated with simulation
+- [x] Timer-driven ADC sampling (up to 10,000 sps)
+- [x] UART parser with sync header, length, type, and checksum
+- [x] SPI communication with custom byte-protocol and integrity checks
+- [x] Real-time waveform generation: Constant, Square, Sawtooth, Triangle
+- [x] GUI feedback and control via LabVIEW
+- [x] External analog filtering tuned to PWM frequency
+- [x] SPI stress test system (10k packets + FPGA reset)
+- [x] Robust double-buffer system for uninterrupted signal capture
 
 ---
 
@@ -132,7 +142,7 @@ Design and implement a digital oscilloscope system that:
 - Andreas Jacobsen  
 - Joakim Butenko
 
-> All members have reviewed and understood the entire system.
+> All members contributed to testing, integration, and review across subsystems.
 
 ---
 
