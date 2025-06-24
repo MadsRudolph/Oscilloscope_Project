@@ -89,14 +89,13 @@ void send_oscilloscope_packet(uint8_t *samples, uint16_t length)
     uart1_tx_buffer[i++] = payload_length & 0xFF;
     uart1_tx_buffer[i++] = 0x02;
 
-    uint8_t checksum = 0;
     for (uint16_t j = 0; j < length; j++)
     {
         uart1_tx_buffer[i++] = samples[j];
-        checksum ^= samples[j];
+       
     }
 
-    uart1_tx_buffer[i++] = checksum;
+    uart1_tx_buffer[i++] = 0x00;
     uart1_tx_buffer[i++] = 0x00;
 
     uart1_tx_length = i;
@@ -213,7 +212,7 @@ void parse_uart1_packet()
         {
             record_length = record_len;
             // set optimal sample rate based on record length
-            sample_rate = ((11520.0f * record_length) / (7.0f + record_length)) * 0.95f; // calculate sample rate
+            sample_rate = ((11520.0f * record_length) / (7.0f + record_length)) * 0.80f; // calculate sample rate
             current_timer1_top = F_CPU / (8.0f * sample_rate);
             init_timer1(current_timer1_top); // reconfigure Timer1 for new sample rate
         }
