@@ -29,7 +29,7 @@ volatile uint8_t buffer_c[MAX_RECORD_LENGTH]; // triple buffer C
 volatile uint8_t *active_buffer = buffer_a;   // buffer we write into
 volatile uint8_t *send_buffer = buffer_b;     // buffer we send from
 volatile uint8_t *standby_buffer = buffer_c;  // next available buffer
-volatile bool buffer_in_use = false;          // indicates if buffer is locked for transmission
+volatile bool send_buffer_locked = false;     // indicates that the send buffer is currently being sent
 volatile uint16_t current_timer1_top = 200;   // ADC sampling rate control (OCR1A value)
 volatile uint16_t record_length = 100;        // number of samples per transmission
 
@@ -59,22 +59,19 @@ ISR(TIMER1_COMPB_vect)
     {
         active_buffer[sample_index++] = ADCH;
     }
-    else if (!buffer_in_use)
+    else if (!send_buffer_locked)
     {
-        cli();
         buffer_ready = true;
-        buffer_in_use = true;
+        send_buffer_locked = true;
 
         // rotate buffers: standby → send → active
-        uint8_t *temp = (uint8_t *)standby_buffer;
-        standby_buffer = send_buffer;
+        uint8_t *temp = send_buffer;
         send_buffer = active_buffer;
         active_buffer = temp;
 
         sample_index = 0;
-        sei();
     }
-    // if buffer is still in use, skip storing until main clears it
+    // else: do nothing — buffer will rotate after transmission finishes
 }
 
 int main(void)
@@ -108,18 +105,21 @@ int main(void)
                 state = state_SPITest;
             }
 
+            if (buffer_ready && !send_buffer_locked)
+            {
+                // Should never happen — just a safety net
+                uart_send_string("ERROR: Buffer ready but not locked.\r\n");
+            }
+
             if (buffer_ready)
             {
-                // Disable interrupts while accessing shared buffers, to prevent them from being modified during transmission
-                // this is necessary to ensure data integrity as the ISR may write to the buffer while we are sending it
-                cli();
                 buffer_ready = false;
-                buffer_in_use = false;
-                sei();
 
-                // send data to LabVIEW
+                // Transmit while send_buffer is locked
                 send_oscilloscope_packet((uint8_t *)send_buffer, record_length);
-                _delay_ms(9); // wait for UART to complete before sending debug text
+
+                // Now mark it as free
+                send_buffer_locked = false;
 
                 uart_send_string("\rSample: ");
                 char buf[16];
