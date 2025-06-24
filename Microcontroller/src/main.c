@@ -23,12 +23,10 @@ void parse_uart1_packet(void);
 
 // Define maximum buffer size for dynamic record length
 #define MAX_RECORD_LENGTH 1000
-volatile uint8_t buffer_a[MAX_RECORD_LENGTH]; // triple buffer A
-volatile uint8_t buffer_b[MAX_RECORD_LENGTH]; // triple buffer B
-volatile uint8_t buffer_c[MAX_RECORD_LENGTH]; // triple buffer C
-volatile uint8_t *active_buffer = buffer_a;   // buffer we write into
-volatile uint8_t *send_buffer = buffer_b;     // buffer we send from
-volatile uint8_t *standby_buffer = buffer_c;  // next available buffer
+volatile uint8_t buffer_a[MAX_RECORD_LENGTH];
+volatile uint8_t buffer_b[MAX_RECORD_LENGTH];
+volatile uint8_t *active_buffer = buffer_a;
+volatile uint8_t *send_buffer = buffer_b;
 volatile bool send_buffer_locked = false;     // indicates that the send buffer is currently being sent
 volatile uint16_t current_timer1_top = 200;   // ADC sampling rate control (OCR1A value)
 volatile uint16_t record_length = 100;        // number of samples per transmission
@@ -59,8 +57,10 @@ ISR(TIMER1_COMPB_vect)
     {
         active_buffer[sample_index++] = ADCH;
     }
-    else if (!send_buffer_locked)
+    
+    if (sample_index >= record_length && !send_buffer_locked && !buffer_ready)
     {
+
         buffer_ready = true;
         send_buffer_locked = true;
 
