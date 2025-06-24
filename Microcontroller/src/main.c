@@ -94,7 +94,7 @@ int main(void)
                 state = state_SPITest;
             }
 
-            if (buffer_ready && !send_buffer_locked)
+            if (buffer_ready && !send_buffer_locked && !uart1_tx_active)
             {
                 buffer_ready = false;
                 send_buffer_locked = true;
@@ -106,13 +106,7 @@ int main(void)
 
                 sample_index = 0; // reset index for fresh sampling
 
-                // --- Temporarily disable ADC sampling ---
-                TIMSK1 &= ~(1 << OCIE1B);
-
                 send_oscilloscope_packet((uint8_t *)send_buffer, record_length);
-
-                // --- Resume sampling ---
-                TIMSK1 |= (1 << OCIE1B);
 
                 send_buffer_locked = false;
 
@@ -122,6 +116,12 @@ int main(void)
                 sprintf(buf, "%02X ", send_buffer[0]);
                 uart_send_string(buf);
             }
+            else if (!uart1_tx_active && send_buffer_locked)
+            {
+                send_buffer_locked = false;
+            }
+            
+
 
             if (run_stop_flag)
             {

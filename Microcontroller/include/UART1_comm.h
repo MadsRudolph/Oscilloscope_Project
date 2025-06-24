@@ -13,5 +13,6 @@ extern volatile uint8_t shape;
 extern volatile uint8_t amplitude;
 extern volatile uint8_t frequency;
 extern volatile uint8_t run_stop_flag;
+extern volatile uint8_t uart1_tx_active;
 
 #endif

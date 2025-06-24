@@ -29,6 +29,28 @@ volatile uint8_t uart1_rx_buffer[UART1_RX_BUFFER_SIZE]; // circular RX buffer
 volatile uint8_t uart1_rx_index = 0;                    // current write index in RX buffer
 volatile uint8_t uart1_packet_ready = 0;                // set when complete packet is received
 
+
+#define MAX_TX_LENGTH 1024
+volatile uint8_t uart1_tx_buffer[MAX_TX_LENGTH];
+volatile uint16_t uart1_tx_length = 0;
+volatile uint16_t uart1_tx_index = 0;
+volatile uint8_t uart1_tx_active = 0;
+
+
+ISR(USART1_UDRE_vect)
+{
+    if (uart1_tx_index < uart1_tx_length)
+    {
+        UDR1 = uart1_tx_buffer[uart1_tx_index++];
+    }
+    else
+    {
+    // Transmission færdig
+    uart1_tx_active = 0;
+    UCSR1B &= ~(1 << UDRIE1); // disable interrupt
+    } 
+}
+
 // UART1 RX interrupt — assembles bytes into packet buffer and checks length field
 ISR(USART1_RX_vect)
 {
@@ -43,7 +65,9 @@ ISR(USART1_RX_vect)
         {
             uint16_t length = (uart1_rx_buffer[2] << 8) | uart1_rx_buffer[3];
             if (uart1_rx_index == length)
+            {
                 uart1_packet_ready = 1; // entire packet received
+            }
         }
     }
     else
@@ -56,23 +80,32 @@ ISR(USART1_RX_vect)
 void send_oscilloscope_packet(uint8_t *samples, uint16_t length)
 {
     
+    int16_t i = 0;
+    uint16_t payload_length = 2 + 2 + 1 + length + 2;
+    
+    uart1_tx_buffer[i++] = 0x55;
+    uart1_tx_buffer[i++] = 0xAA;
+    uart1_tx_buffer[i++] = (payload_length >> 8) & 0xFF;
+    uart1_tx_buffer[i++] = payload_length & 0xFF;
+    uart1_tx_buffer[i++] = 0x02;
 
-    uart1_send(0x55); // sync byte 1
-    uart1_send(0xAA); // sync byte 2
-
-    uint16_t payload_length = 2 + 2 + 1 + length + 2; // full packet size including header and checksum
-    uart1_send((payload_length >> 8) & 0xFF);         // length high byte
-    uart1_send(payload_length & 0xFF);                // length low byte
-    uart1_send(0x02);                                 // packet type: OSCILLOSCOPE (0x02)
-
-    for (uint16_t i = 0; i < length; i++)
+    uint8_t checksum = 0;
+    for (uint16_t j = 0; j < length; j++)
     {
-        while (!(UCSR1A & (1 << UDRE1))) ;
-        uart1_send(samples[i]); // send all sample data (1 byte each)
+        uart1_tx_buffer[i++] = samples[j];
+        checksum ^= samples[j];
     }
 
-    uart1_send(0x00); // checksum byte 1
-    uart1_send(0x00); // checksum byte 2
+    uart1_tx_buffer[i++] = checksum;
+    uart1_tx_buffer[i++] = 0x00;
+
+    uart1_tx_length = i;
+    uart1_tx_index = 0;
+    uart1_tx_active = 1;
+
+    UDR1 = uart1_tx_buffer[uart1_tx_index++];
+    UCSR1B |= (1 << UDRIE1);
+
 }
 
 // Send current generator configuration back to LabVIEW
