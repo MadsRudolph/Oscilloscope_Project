@@ -57,9 +57,10 @@ ISR(TIMER1_COMPB_vect)
     {
         active_buffer[sample_index++] = ADCH;
     }
-    else
+    if (sample_index >= record_length && !buffer_ready && !send_buffer_locked)
     {
         buffer_ready = true; // signal that main should rotate and send
+        sample_index = 0;
     }
 }
 
@@ -93,19 +94,40 @@ int main(void)
                 run_stress_test_flag = 0;
                 state = state_SPITest;
             }
+
+            // Kombineret håndtering af bufferrotation og afsendelse
+            if (buffer_ready && !send_buffer_locked)
+            {
+                send_buffer_locked = true;
+                buffer_ready = false;
+
+                // Roter buffere
+                uint8_t *temp = send_buffer;
+                send_buffer = active_buffer;
+                active_buffer = temp;
+
+                // Send data
+                send_oscilloscope_packet((uint8_t *)send_buffer, record_length);
+                send_buffer_locked = false;
+
+                // Debug print
+                uart_send_string("\rSample: ");
+                char buf[16];
+                sprintf(buf, "%02X ", send_buffer[0]);
+                uart_send_string(buf);    
+            }
+
             // Check if a full buffer is ready to send
             if (buffer_ready)
             {
-                // Lock the send buffer so ISR won’t reuse it
-                send_buffer_locked = true;
-
                 // Swap pointers
                 uint8_t *temp = send_buffer;
                 send_buffer = active_buffer;
                 active_buffer = temp;
 
-                sample_index = 0;     // reset sample index for new active buffer
-                buffer_ready = false; // clear ready flag
+                sample_index = 0;          // reset sample index for new active buffer
+                buffer_ready = false;      // clear ready flag
+                send_buffer_locked = true; // Lock the send buffer so ISR won’t reuse it
 
                 send_oscilloscope_packet((uint8_t *)send_buffer, record_length);
                 send_buffer_locked = false;

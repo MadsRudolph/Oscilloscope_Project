@@ -66,16 +66,13 @@ void send_oscilloscope_packet(uint8_t *samples, uint16_t length)
     uart1_send(0x02);                                 // packet type: OSCILLOSCOPE (0x02)
 
     for (uint16_t i = 0; i < length; i++)
+    {
+        while (!(UCSR1A & (1 << UDR1))) ;
         uart1_send(samples[i]); // send all sample data (1 byte each)
+    }
 
     uart1_send(0x00); // checksum byte 1
     uart1_send(0x00); // checksum byte 2
-
-    while (!(UCSR1A & (1 << TXC1)))
-        ;                  // wait for final byte to be fully shifted out
-    UCSR1A |= (1 << TXC1); // clear transmit complete flag
-
-
 }
 
 // Send current generator configuration back to LabVIEW
