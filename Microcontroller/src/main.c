@@ -57,10 +57,9 @@ ISR(TIMER1_COMPB_vect)
     {
         active_buffer[sample_index++] = ADCH;
     }
-    if (sample_index >= record_length && !buffer_ready && !send_buffer_locked)
+    else if (!buffer_ready && !send_buffer_locked)
     {
-        buffer_ready = true; // signal that main should rotate and send
-        sample_index = 0;
+        buffer_ready = true; // tell main to rotate and send
     }
 }
 
@@ -95,49 +94,40 @@ int main(void)
                 state = state_SPITest;
             }
 
-            // Kombineret håndtering af bufferrotation og afsendelse
             if (buffer_ready && !send_buffer_locked)
             {
-                send_buffer_locked = true;
                 buffer_ready = false;
+                send_buffer_locked = true;
 
-                // Roter buffere
+                // --- Swap buffers BEFORE disabling sampling ---
                 uint8_t *temp = send_buffer;
                 send_buffer = active_buffer;
                 active_buffer = temp;
 
-                // Send data
-                send_oscilloscope_packet((uint8_t *)send_buffer, record_length);
-                send_buffer_locked = false;
+                sample_index = 0; // reset index for fresh sampling
 
-                // Debug print
-                uart_send_string("\rSample: ");
-                char buf[16];
-                sprintf(buf, "%02X ", send_buffer[0]);
-                uart_send_string(buf);    
-            }
-
-            // Check if a full buffer is ready to send
-            if (buffer_ready)
-            {
-                // Swap pointers
-                uint8_t *temp = send_buffer;
-                send_buffer = active_buffer;
-                active_buffer = temp;
-
-                sample_index = 0;          // reset sample index for new active buffer
-                buffer_ready = false;      // clear ready flag
-                send_buffer_locked = true; // Lock the send buffer so ISR won’t reuse it
+                // --- Temporarily disable ADC sampling ---
+                TIMSK1 &= ~(1 << OCIE1B);
 
                 send_oscilloscope_packet((uint8_t *)send_buffer, record_length);
+
+                // --- Resume sampling ---
+                TIMSK1 |= (1 << OCIE1B);
+
                 send_buffer_locked = false;
 
                 // Debug output
                 uart_send_string("\rSample: ");
                 char buf[16];
-                sprintf(buf, "%02X", send_buffer[0]);
+                sprintf(buf, "%02X ", send_buffer[0]);
                 uart_send_string(buf);
             }
+
+            if (run_stop_flag)
+            {
+                state = state_Stop;
+            }
+            break;
 
             if (run_stop_flag)
             {
