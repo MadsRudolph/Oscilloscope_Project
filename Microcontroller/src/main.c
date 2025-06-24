@@ -27,9 +27,9 @@ volatile uint8_t buffer_a[MAX_RECORD_LENGTH];
 volatile uint8_t buffer_b[MAX_RECORD_LENGTH];
 volatile uint8_t *active_buffer = buffer_a;
 volatile uint8_t *send_buffer = buffer_b;
-volatile bool send_buffer_locked = false;     // indicates that the send buffer is currently being sent
-volatile uint16_t current_timer1_top = 200;   // ADC sampling rate control (OCR1A value)
-volatile uint16_t record_length = 100;        // number of samples per transmission
+volatile bool send_buffer_locked = false;   // indicates that the send buffer is currently being sent
+volatile uint16_t current_timer1_top = 200; // ADC sampling rate control (OCR1A value)
+volatile uint16_t record_length = 100;      // number of samples per transmission
 
 // ADC control flags
 volatile uint16_t sample_index = 0; // current sample index into active buffer
@@ -57,21 +57,10 @@ ISR(TIMER1_COMPB_vect)
     {
         active_buffer[sample_index++] = ADCH;
     }
-    
-    if (sample_index >= record_length && !send_buffer_locked && !buffer_ready)
+    else
     {
-
-        buffer_ready = true;
-        send_buffer_locked = true;
-
-        // rotate buffers: standby → send → active
-        uint8_t *temp = send_buffer;
-        send_buffer = active_buffer;
-        active_buffer = temp;
-
-        sample_index = 0;
+        buffer_ready = true; // signal that main should rotate and send
     }
-    // else: do nothing — buffer will rotate after transmission finishes
 }
 
 int main(void)
@@ -104,26 +93,27 @@ int main(void)
                 run_stress_test_flag = 0;
                 state = state_SPITest;
             }
-
-            if (buffer_ready && !send_buffer_locked)
-            {
-                // Should never happen — just a safety net
-                uart_send_string("ERROR: Buffer ready but not locked.\r\n");
-            }
-
+            // Check if a full buffer is ready to send
             if (buffer_ready)
             {
-                buffer_ready = false;
+                // Lock the send buffer so ISR won’t reuse it
+                send_buffer_locked = true;
 
-                // Transmit while send_buffer is locked
+                // Swap pointers
+                uint8_t *temp = send_buffer;
+                send_buffer = active_buffer;
+                active_buffer = temp;
+
+                sample_index = 0;     // reset sample index for new active buffer
+                buffer_ready = false; // clear ready flag
+
                 send_oscilloscope_packet((uint8_t *)send_buffer, record_length);
-
-                // Now mark it as free
                 send_buffer_locked = false;
 
+                // Debug output
                 uart_send_string("\rSample: ");
                 char buf[16];
-                sprintf(buf, "%02X      ", send_buffer[0]);
+                sprintf(buf, "%02X", send_buffer[0]);
                 uart_send_string(buf);
             }
 
